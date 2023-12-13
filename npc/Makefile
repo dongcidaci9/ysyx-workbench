@@ -12,7 +12,7 @@ sim:
 	verilator -Wall -cc -build -exe -j 0 -trace $(VERILOG_SRCS) $(SIM_MAIN_SRCS)
 
 run:
-	./obj_dir/Vtop
+	./obj_dir/Vexample
 
 wave:
 	gtkwave wave.vcd
