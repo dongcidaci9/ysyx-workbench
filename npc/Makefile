@@ -1,7 +1,9 @@
 VERILOG_SRC_DIR = vsrc
 SIM_MAIN_SRC_DIR = csrc
-VERILOG_SRCS = $(wildcard $(VERILOG_SRC_DIR)/*.v)
-SIM_MAIN_SRCS = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
+VERILOG_SRC = $(wildcard $(VERILOG_SRC_DIR)/*.v)
+SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
+SIM_TARGET_NOTDIR = $(notdir $(VERILOG_SRC))
+SIM_TARGET = V$(basename $(SIM_TARGET_NOTDIR))
 
 all:
 	@echo "Write this Makefile by your self."
@@ -9,10 +11,10 @@ all:
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
-	verilator -Wall -cc -build -exe -j 0 -trace $(VERILOG_SRCS) $(SIM_MAIN_SRCS)
+	verilator -Wall -cc -build -exe -j 0 -trace $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 run:
-	./obj_dir/Vexample
+	./obj_dir/$(SIM_TARGET)
 
 wave:
 	gtkwave wave.vcd
