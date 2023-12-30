@@ -13,7 +13,7 @@ sim:
 	@echo "Write this Makefile by your self."
 	verilator -Wall -cc -build -exe -j 0 -trace $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
-run:
+run:sim
 	./obj_dir/$(SIM_TARGET)
 
 wave:
