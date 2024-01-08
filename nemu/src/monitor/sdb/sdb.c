@@ -62,7 +62,7 @@ static int cmd_si(char *args) {
 	return 0;
 }
 
-static int cmd_infor(char *args);
+static int cmd_info(char *args);
 
 static int cmd_help(char *args);
 
@@ -74,8 +74,8 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si},
-  { "infor", "Print register status", cmd_infor }
+  { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
+  { "info", "Print register status", cmd_info }
 
   /* TODO: Add more commands */
 
@@ -83,13 +83,23 @@ static struct {
 
 #define NR_CMD ARRLEN(cmd_table)
 
-static int cmd_infor(char *args) {
+static int cmd_info(char *args) {
 	char *arg = strtok(NULL, " ");
-
-	if (strcmp(arg, "r") == 0) { isa_reg_display(); return 0; }
-	else { printf("ERROR: undefined command.\n"); return 0; }
+	
+	if (arg == NULL) {
+		printf("Usage: r - Print register status\nw- Print watchpoints status\n");	
+	} else {
+		if (strcmp(arg, "r") == 0) { 
+			isa_reg_display(); 
+		} else if (strcmp(arg, "w") == 0) {
+			//empty	
+		} else { 
+			printf("ERROR: undefined command.\n"); 
+		}
+	}
+	
+	return 0;
 }
-
 static int cmd_help(char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
