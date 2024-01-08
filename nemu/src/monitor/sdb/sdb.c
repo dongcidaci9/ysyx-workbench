@@ -63,9 +63,9 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_info(char *args) {
-	if (strcmp(args, "r") == 0) isa_reg_display();
-	else printf("ERROR: undefined command.\n");
-	nemu_state.state = NEMU_STOP;
+	char *arg = strtok(NULL, " ");
+	if (arg == NULL) printf("ERROR: undefined command.\n");
+	if (strcmp(arg, "r") == 0) isa_reg_display();
 	return 0;
 }
 
