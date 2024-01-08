@@ -62,7 +62,7 @@ static int cmd_si(char *args) {
 	return 0;
 }
 
-static int cmd_info(char *args);
+static int cmd_infor(char *args);
 
 static int cmd_help(char *args);
 
@@ -75,7 +75,7 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si},
-  { "info", "Print register status", cmd_info }
+  { "infor", "Print register status", cmd_infor }
 
   /* TODO: Add more commands */
 
@@ -83,7 +83,7 @@ static struct {
 
 #define NR_CMD ARRLEN(cmd_table)
 
-static int cmd_info(char *args) {
+static int cmd_infor(char *args) {
 	char *arg = strtok(NULL, " ");
 
 	if (strcmp(arg, "r") == 0) { isa_reg_display(); return 0; }
