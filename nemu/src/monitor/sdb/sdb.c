@@ -50,7 +50,15 @@ static int cmd_c(char *args) {
 
 static int cmd_q(char *args) {
 	nemu_state.state = NEMU_QUIT;
-  return -1;
+	return -1;
+}
+
+static int cmd_si(char *args) {
+	int step;
+	if (args == NULL) step = 1;
+	else sscanf(args, "%d", &step);
+	cpu_exec(step);
+	return 0;
 }
 
 static int cmd_help(char *args);
@@ -63,6 +71,7 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
+  { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1.", cmd_si}
 
   /* TODO: Add more commands */
 
