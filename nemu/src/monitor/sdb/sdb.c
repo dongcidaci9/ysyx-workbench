@@ -12,7 +12,7 @@
 *
 * See the Mulan PSL v2 for more details.
 ***************************************************************************************/
-
+#include <memory/paddr.h>
 #include <isa.h>
 #include <cpu/cpu.h>
 #include <readline/readline.h>
@@ -53,16 +53,11 @@ static int cmd_q(char *args) {
 	return -1;
 }
 
-static int cmd_si(char *args) {
-	char *arg = strtok(NULL, " ");
-	int step;
-	if (arg == NULL)  step = 1;
-	else sscanf(arg, "%d", &step);
-	cpu_exec(step);
-	return 0;
-}
+static int cmd_x(char *args);
 
 static int cmd_info(char *args);
+
+static int cmd_si(char *args);
 
 static int cmd_help(char *args);
 
@@ -75,13 +70,31 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
-  { "info", "Print registers/watchpoints status", cmd_info }
+  { "info", "Print registers/watchpoints status", cmd_info },
+  { "x", "As starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x }
 
   /* TODO: Add more commands */
 
 };
 
 #define NR_CMD ARRLEN(cmd_table)
+
+static int cmd_x(char *args) {
+	char *arg = strtok(NULL, " ");
+	char *baseaddr = strtok(NULL, " ");
+
+	int len = 0;
+	paddr_t addr = 0;
+	sscanf(arg, "%d", &len);
+	sscanf(baseaddr, "%x", &addr);
+
+	int i = 0;
+	for (i = 0; i < len ; i ++) {
+		printf("%#x\n", paddr_read(addr, 4));
+		addr = addr + 4;
+	}
+	return 0;
+}
 
 static int cmd_info(char *args) {
 	char *arg = strtok(NULL, " ");
@@ -100,6 +113,16 @@ static int cmd_info(char *args) {
 	
 	return 0;
 }
+
+static int cmd_si(char *args) {
+	char *arg = strtok(NULL, " ");
+	int step;
+	if (arg == NULL)  step = 1;
+	else sscanf(arg, "%d", &step);
+	cpu_exec(step);
+	return 0;
+}
+
 static int cmd_help(char *args) {
   /* extract the first argument */
   char *arg = strtok(NULL, " ");
