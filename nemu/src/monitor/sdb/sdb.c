@@ -81,6 +81,12 @@ static struct {
 
 static int cmd_x(char *args) {
 	char *arg = strtok(NULL, " ");
+
+	if (arg == NULL) {
+		printf("ERROR: undefined command.\n");
+		return 0;
+	}
+
 	char *baseaddr = strtok(NULL, " ");
 
 	int len = 0;
