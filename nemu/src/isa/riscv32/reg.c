@@ -7,7 +7,6 @@
 *
 * See the Mulan PSL v2 for more details.
 ***************************************************************************************/
-
 #include <isa.h>
 #include "local-include/reg.h"
 
@@ -23,7 +22,7 @@ void isa_reg_display() {
 	int i;
 
 	for (i = 0; i < reg_num; i++) {
-		printf("Reg %s: %x\n", regs[i], cpu.gpr[i]);
+		printf("Reg-%s: %-20x\n", regs[i], cpu.gpr[i]);
 	}
 }
 
