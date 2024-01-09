@@ -75,7 +75,7 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
-  { "info", "Print register status", cmd_info }
+  { "info", "Print registers/watchpoints status", cmd_info }
 
   /* TODO: Add more commands */
 
@@ -92,7 +92,7 @@ static int cmd_info(char *args) {
 		if (strcmp(arg, "r") == 0) { 
 			isa_reg_display(); 
 		} else if (strcmp(arg, "w") == 0) {
-			//empty	
+			//undefined	
 		} else { 
 			printf("ERROR: undefined command.\n"); 
 		}
