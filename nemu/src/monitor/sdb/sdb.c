@@ -123,7 +123,7 @@ static int cmd_info(char *args) {
 static int cmd_si(char *args) {
 	char *arg = strtok(NULL, " ");
 	int step;
-	if (arg == NULL)  step = 1;
+	if (arg == NULL) step = 1;
 	else sscanf(arg, "%d", &step);
 	cpu_exec(step);
 	return 0;
