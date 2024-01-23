@@ -102,18 +102,15 @@ static bool make_token(char *e) {
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
-
-		switch (rules[i].token_type) {
-			case TK_NUM:
-			case TK_HEXNUM:
-				strncpy(tokens[nr_token].str, substr_start, substr_len);
-				tokens[nr_token].str[substr_len] = '\0';
-			default: TODO();
-        };
-		nr_token ++;
-
-        break;
-      }
+				switch (rules[i].token_type) {
+					case TK_NUM: case TK_HEXNUM:
+						strncpy(tokens[nr_token].str, substr_start, substr_len);
+						tokens[nr_token].str[substr_len] = '\0';
+					default: TODO();
+					}
+				nr_token ++;
+				break;
+			}
     }
 
     if (i == NR_REGEX) {
@@ -218,8 +215,7 @@ word_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
 
-  return 0;
+  return eval(0, nr_token-1, success);
 	
 }
