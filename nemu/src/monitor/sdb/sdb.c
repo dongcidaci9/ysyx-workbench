@@ -135,7 +135,7 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_p(char *args) {
-	bool success;
+	bool success = true;
 	word_t res = expr(args, &success);
 	if (!success) {
 		printf("Invalid expression\n");
