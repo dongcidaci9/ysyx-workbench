@@ -132,7 +132,7 @@ bool check_parentheses(int p, int q) {
 			if (tokens[i].type == '(') par ++;
 			else if (tokens[i].type == ')') par --;
 			
-			if (par == 0) return (i==q); 
+			if (par == 0) return true; 
 		}
 	} 
 	return false;
