@@ -149,7 +149,7 @@ int find_op(int p, int q) {
 			int tmp_type = 0;
 			switch (tokens[i].type) {
 				case '*' : case '/': tmp_type = 1; break;
-				case '+' : case '_': tmp_type = 2; break;
+				case '+' : case '-': tmp_type = 2; break;
 				default: assert(0);
 			}
 			if (tmp_type >= op_type) {
@@ -159,7 +159,7 @@ int find_op(int p, int q) {
 		}
 	}
 	if (par != 0) return -1;
-	printf("ret: %d\n", ret);
+	printf("op: %d\n", ret);
 	return ret;
 }
 
