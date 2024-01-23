@@ -134,14 +134,14 @@ int find_op(int p, int q) {
 	int ret = -1, par = 0, op = 0;
 	for (int i = p; i <= q; i ++) {
 		if (tokens[i].type == TK_NUM || tokens[i].type == TK_HEXNUM) {
-			break;	
+			continue;	
 		}
 		if (tokens[i].type == '(') {
 			par ++;
 		} else if (tokens[i].type == ')') {
 			par --;
 		} else if (par > 0) {
-			break;
+			continue;
 		} else {
 			int tmp = 0;
 			switch (tokens[i].type) {
