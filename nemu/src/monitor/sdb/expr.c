@@ -131,7 +131,7 @@ bool check_parentheses(int p, int q) {
 }
 
 int find_op(int p, int q) {
-	int ret = -1, par = 0, op_type = 0;
+	int ret = -1, par = 0, op = 0;
 	for (int i = p; i <= q; i ++) {
 		if (tokens[i].type == TK_NUM || tokens[i].type == TK_HEXNUM) {
 			continue;	
@@ -140,20 +140,17 @@ int find_op(int p, int q) {
 			par ++;
 		} else if (tokens[i].type == ')') {
 			par --;
-			if (par == 0) {
-				return -1;
-			}
 		} else if (par > 0) {
-			continue;
+			break;
 		} else {
-			int tmp_type = 0;
+			int tmp = 0;
 			switch (tokens[i].type) {
-				case '*' : case '/': tmp_type = 1; break;
-				case '+' : case '-': tmp_type = 2; break;
+				case '*' : case '/': tmp = 1; break;
+				case '+' : case '-': tmp = 2; break;
 				default: assert(0);
 			}
-			if (tmp_type >= op_type) {
-				op_type = tmp_type;
+			if (tmp >= op) {
+				op = tmp;
 				ret = i;
 			}
 		}
