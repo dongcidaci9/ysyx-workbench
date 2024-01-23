@@ -126,23 +126,31 @@ static bool make_token(char *e) {
 }
 
 bool check_parentheses(int p, int q) {
-	if (tokens[p].type == ')' && tokens[q].type == ')') return true;
-	else return false;
+	if (tokens[p].type == ')' && tokens[q].type == ')') {
+		int par = 0;
+		for (int i = p; i <= q; i ++) {
+			if (tokens[i].type == '(') par ++;
+			else if (tokens[i].type == ')') par --;
+
+			if (par == 0) return (i == q); 
+		}
+	} 
+	return false;
 }
 
 int find_op(int p, int q) {
 	int ret = -1, par = 0, op_type = 0;
 	for (int i = p; i <= q; i ++) {
-		if (tokens[i].type == TK_NUM) {
+		if (tokens[i].type == TK_NUM || tokens[i].type == TK_HEXNUM) {
 			continue;	
 		}
 		if (tokens[i].type == '(') {
 			par ++;
 		} else if (tokens[i].type == ')') {
+			par --;
 			if (par == 0) {
 				return -1;
 			}
-			par --;
 		} else if (par > 0) {
 			continue;
 		} else {
