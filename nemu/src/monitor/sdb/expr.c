@@ -20,6 +20,7 @@
  */
 #include <regex.h>
 
+word_t eval(int p, int q, bool *success); 
 enum {
   TK_NOTYPE = 256, TK_NUM, TK_HEXNUM, TK_EQ, TK_NEQ, 
 
@@ -124,6 +125,92 @@ static bool make_token(char *e) {
   return true;
 }
 
+bool check_parentheses(int p, int q) {
+	if (tokens[p].type == ')' && tokens[q].type == ')') return true;
+	else return false;
+}
+
+int find_op(int p, int q) {
+	int ret = -1, par = 0, op_type = 0;
+	for (int i = p; i <= q; i ++) {
+		if (tokens[i].type == TK_NUM) {
+			continue;	
+		}
+		if (tokens[i].type == '(') {
+			par ++;
+		} else if (tokens[i].type == ')') {
+			if (par == 0) {
+				return -1;
+			}
+			par --;
+		} else if (par > 0) {
+			continue;
+		} else {
+			int tmp_type = 0;
+			switch (tokens[i].type) {
+				case '*' : case '/': tmp_type = 1; break;
+				case '+' : case '_': tmp_type = 2; break;
+				default: assert(0);
+			}
+			if (tmp_type >= op_type) {
+				op_type = tmp_type;
+				ret = i;
+			}
+		}
+	}
+	if (par != 0) return -1;
+	return ret;
+}
+
+word_t eval(int p, int q, bool *success) {
+	*success = true;
+	if (p > q) {
+    /* Bad expression */
+		*success = false;
+		return 0;
+  } else if (p == q) {
+    /* Single token.
+     * For now this token should be a number.
+     * Return the value of the number.
+     */
+		if (tokens[p].type != TK_NUM || tokens[p].type != TK_HEXNUM) {
+			*success = false;
+			return 0;
+		}
+		word_t ret = strtol(tokens[p].str, NULL, 10);
+		return ret;
+  } else if (check_parentheses(p, q) == true) {
+    /* The expression is surrounded by a matched pair of parentheses.
+     * If that is the case, just throw away the parentheses.
+     */
+    return eval(p + 1, q - 1, success);
+  } else {
+    int op = find_op(p, q);
+		if (op < 0) {
+			*success = false;
+			return 0;
+		}
+
+    word_t val1 = eval(p, op - 1, success);
+		if (!*success) return 0;
+    word_t val2 = eval(op + 1, q, success);
+		if (!*success) return 0;
+
+    switch (tokens[op].type) {
+      case '+': return val1 + val2;
+      case '-': return val1 - val2;
+      case '*': return val1 * val2;
+      case '/': if (val2 == 0) {
+									*success = false;
+									return 0;
+								} else {
+									return (sword_t)val1 / (sword_t)val2;
+								}
+      default: assert(0);
+    }
+  }
+}
+
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
@@ -134,4 +221,5 @@ word_t expr(char *e, bool *success) {
   TODO();
 
   return 0;
+	
 }

@@ -47,7 +47,6 @@ static int cmd_c(char *args) {
   return 0;
 }
 
-
 static int cmd_q(char *args) {
 	nemu_state.state = NEMU_QUIT;
 	return -1;
@@ -58,6 +57,8 @@ static int cmd_x(char *args);
 static int cmd_info(char *args);
 
 static int cmd_si(char *args);
+
+static int cmd_p(char *args);
 
 static int cmd_help(char *args);
 
@@ -71,7 +72,8 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
   { "info", "Print registers/watchpoints status", cmd_info },
-  { "x", "As starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x }
+  { "x", "As starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
+  { "p", "Find the value of the expression EXPR", cmd_p }
 
   /* TODO: Add more commands */
 
@@ -123,15 +125,28 @@ static int cmd_info(char *args) {
 static int cmd_si(char *args) {
 	char *arg = strtok(NULL, " ");
 	int step;
+	
 	if (arg == NULL) step = 1;
 	else sscanf(arg, "%d", &step);
+	
 	cpu_exec(step);
+
+	return 0;
+}
+
+static int cmd_p(char *args) {
+	bool success;
+	word_t res = expr(args, &success);
+	if (!success) {
+		printf("Invalid expression\n");
+	} else {
+		printf("%u\n", res);
+	}
 	return 0;
 }
 
 static int cmd_help(char *args) {
-  /* extract the first argument */
-  char *arg = strtok(NULL, " ");
+	char *arg = strtok(NULL, " ");
   int i;
 
   if (arg == NULL) {
