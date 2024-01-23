@@ -103,13 +103,13 @@ static bool make_token(char *e) {
          * of tokens, some extra actions should be performed.
          */
 				switch (rules[i].token_type) {
+					case TK_NOTYPE: break;
 					case TK_NUM: case TK_HEXNUM:
 						strncpy(tokens[nr_token].str, substr_start, substr_len);
 						tokens[nr_token].str[substr_len] = '\0';
-					default: TODO();
+					default: continue;
 					}
 				nr_token ++;
-				break;
 			}
     }
 
