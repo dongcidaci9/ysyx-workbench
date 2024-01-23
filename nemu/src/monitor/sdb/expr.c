@@ -37,17 +37,17 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
-	{" +", TK_NOTYPE},				// spaces
-	{"[0-9]+", TK_NUM},				// one decimal number
-	{"0x[0-9,a-f]+", TK_HEXNUM},	// one hexadecimal number
-	{"\\+", '+'},					// plus
-	{"\\-", '-'},					// minus
-	{"\\*", '*'},					// multiply 
-	{"\\/", '/'},					// divide
-	{"\\(", '('},					// left parentthesis 
-	{"\\)", ')'},					// right parentthesis 
-	{"==", TK_EQ},					// equal
-	{"!=", TK_NEQ},					// nonequal
+	{" +", TK_NOTYPE},								// spaces
+	{"[0-9]+", TK_NUM},								// one decimal number
+	{"0x[0-9,a-f]+", TK_HEXNUM},			// one hexadecimal number
+	{"\\+", '+'},											// plus
+	{"\\-", '-'},											// minus
+	{"\\*", '*'},											// multiply 
+	{"\\/", '/'},											// divide
+	{"\\(", '('},											// left parentthesis 
+	{"\\)", ')'},											// right parentthesis 
+	{"==", TK_EQ},										// equal
+	{"!=", TK_NEQ}										// nonequal
 };
 
 #define NR_REGEX ARRLEN(rules)
