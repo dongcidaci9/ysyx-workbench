@@ -173,7 +173,7 @@ word_t eval(int p, int q, bool *success) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-		if (tokens[p].type != TK_NUM || tokens[p].type != TK_HEXNUM) {
+		if (tokens[p].type != TK_NUM && tokens[p].type != TK_HEXNUM) {
 			*success = false;
 			return 0;
 		}
