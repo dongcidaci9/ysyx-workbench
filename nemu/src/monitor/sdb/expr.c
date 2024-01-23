@@ -77,7 +77,7 @@ typedef struct token {
 } Token; // token buffer
 
 static Token tokens[32] __attribute__((used)) = {};
-static int nr_token __attribute__((used))  = 0;
+static int nr_token __attribute__((used))  = 0; // means that could be not used.
 
 static bool make_token(char *e) {
   int position = 0;
@@ -159,6 +159,7 @@ int find_op(int p, int q) {
 		}
 	}
 	if (par != 0) return -1;
+	printf("ret: %d\n", ret);
 	return ret;
 }
 
