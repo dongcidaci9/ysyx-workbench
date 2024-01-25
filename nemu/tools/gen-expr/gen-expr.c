@@ -94,7 +94,7 @@ int main(int argc, char *argv[]) {
     sscanf(argv[1], "%d", &loop);
   }
   int i;
-	int limit = 5;
+	int limit = 1;
   for (i = 0; i < loop; i ++) {
 		buf_start = buf;
 
