@@ -34,7 +34,7 @@ build:
 	mkdir -p $@
 
 run:all
-	./build/gen-expr 10 > input
+	./build/gen-expr 5 > input
 
 clean:
 	rm -rf build input
