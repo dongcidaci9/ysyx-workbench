@@ -39,7 +39,8 @@ static char *buf_end = buf + (sizeof(buf)/sizeof(buf[0]));
 static uint32_t choose(uint32_t n) {
 	return rand() % n;
 }
-static void gen_space() {
+
+/* static void gen_space() {
 	int size = choose(3) + 1;
 	if (buf_start < buf_end) {
 		int writes = snprintf(buf_start, buf_end-buf_start, "%*s", size, "");
@@ -48,7 +49,7 @@ static void gen_space() {
 		}
 	}
 }
-
+*/
 static void gen_num() {
 	int num = choose(INT8_MAX) + 1;	// INT8_MAX = 127 
 	if (buf_start < buf_end) {
@@ -57,7 +58,7 @@ static void gen_num() {
 			buf_start += writes;
 		}
 	}
-	gen_space();
+//	gen_space();
 }
 
 static void gen_char(char c) {
