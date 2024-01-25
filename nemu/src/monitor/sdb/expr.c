@@ -165,7 +165,7 @@ int find_op(int p, int q) {
 		}
 	}
 	if (par != 0) return -1;
-	printf("op %d: ", ret);
+	printf("op: %d\n", ret);
 	return ret;
 }
 
