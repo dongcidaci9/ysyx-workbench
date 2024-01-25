@@ -144,14 +144,16 @@ int find_op(int p, int q) {
 	for (int i = p; i <= q; i ++) {
 		if (tokens[i].type == TK_NUM || tokens[i].type == TK_HEXNUM) {
 			continue;	
-		}
-		if (tokens[i].type == '(') {
+		} else if(tokens[i].type == '('){
 			par ++;
-		} else if (tokens[i].type == ')') {
-			par --;
-		} else if (par > 0) {
-			continue;
-		} else {
+			i ++;
+      while(1){
+				if(tokens[i].type == '(') par ++;
+        else if(tokens[i].type == ')') par --;
+        i ++;
+        if (par == 0) break;
+			} if (i > q) break;
+    } else {
 			int tmp = 0;
 			switch (tokens[i].type) {
 				case '*' : case '/': tmp = 1; break;
