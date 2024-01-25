@@ -21,7 +21,7 @@
 #include <string.h>
 
 // this should be enough
-#define BUF_SIZE 1024 * 1024
+#define BUF_SIZE 512 * 512 
 
 static char buf[BUF_SIZE] = {};
 static char code_buf[BUF_SIZE + 128] = {}; // a little larger than `buf`
