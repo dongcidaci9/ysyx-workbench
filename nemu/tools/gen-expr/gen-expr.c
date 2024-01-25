@@ -80,8 +80,8 @@ static void gen_rand_op() {
 static void gen_rand_expr(int limit, int n) {
 	if (n >= limit) return;
   switch (choose(3)) {
-    case 0: gen_num(); break;
-		case 1: n ++; gen_char('('); gen_num(); gen_rand_op(); gen_num(); gen_char(')'); break;
+    case 0: n ++; gen_num(); break;
+		case 1: gen_char('('); gen_rand_expr(limit, n); gen_char(')'); break;
     default: gen_rand_expr(limit, n); gen_rand_op(); gen_rand_expr(limit, n); break;
 	}
 }
