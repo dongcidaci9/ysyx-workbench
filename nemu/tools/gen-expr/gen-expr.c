@@ -76,11 +76,12 @@ static void gen_rand_op() {
 	gen_char(op);
 }
 
-static void gen_rand_expr() {
+static void gen_rand_expr(int limit, int n) {
+	if (n >= limit) return;
   switch (choose(3)) {
     case 0: gen_num(); break;
-		case 1: gen_char('('); gen_rand_expr(); gen_char(')'); break;
-    default: gen_rand_expr(); gen_rand_op(); gen_rand_expr(); break;
+		case 1: gen_char('('); gen_rand_expr(limit, n); gen_char(')'); n ++;break;
+    default: gen_rand_expr(limit, n); gen_rand_op(); gen_rand_expr(limit, n); n ++ ; break;
 	}
 }
 
@@ -92,9 +93,11 @@ int main(int argc, char *argv[]) {
     sscanf(argv[1], "%d", &loop);
   }
   int i;
+	int limit = 5;
   for (i = 0; i < loop; i ++) {
 		buf_start = buf;
-    gen_rand_expr();
+
+    gen_rand_expr(limit, 0);
 
 // write the code_buf
     sprintf(code_buf, code_format, buf);
