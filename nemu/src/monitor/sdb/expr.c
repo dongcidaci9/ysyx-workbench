@@ -127,10 +127,17 @@ static bool make_token(char *e) {
 }
 
 bool check_parentheses(int p, int q) {
-	if (tokens[p].type == '(' && tokens[q].type == ')') return true; 
+	int par = 0, i = 0;
+	if (tokens[p].type == '(' && tokens[q].type == ')') {
+		for (i = p - 1; i <= q - 1; i ++) {
+			if (tokens[i].type == '(') par ++;
+			if (tokens[i].type == '(') par --;
+			if (par < 0) return false;
+		}	
+	if (par == 0) return true; 
+	}
 	return false;
 }
-
 
 int find_op(int p, int q) {
 	int ret = -1, par = 0, op = 0;
