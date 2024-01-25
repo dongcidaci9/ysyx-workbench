@@ -50,7 +50,6 @@ static void gen_space() {
 }
 
 static void gen_num() {
-	gen_space();
 	int num = choose(63) + 1;	// INT8_MAX = 127 
 	if (buf_start < buf_end) {
 		int writes = snprintf(buf_start, buf_end-buf_start, "%d", num);
@@ -58,6 +57,7 @@ static void gen_num() {
 			buf_start += writes;
 		}
 	}
+	gen_space();
 }
 
 static void gen_char(char c) {
@@ -80,8 +80,8 @@ static void gen_rand_expr(int limit, int n) {
 	if (n >= limit) return;
   switch (choose(3)) {
     case 0: gen_num(); break;
-		case 1: gen_char('('); gen_rand_expr(limit, n); gen_char(')'); n ++;break;
-    default: gen_rand_expr(limit, n); gen_rand_op(); gen_rand_expr(limit, n); n ++ ; break;
+		case 1: n ++; gen_char('('); gen_num(); gen_rand_op(); gen_num(); gen_char(')'); break;
+    default: gen_rand_expr(limit, n); gen_rand_op(); gen_rand_expr(limit, n); break;
 	}
 }
 
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
     sscanf(argv[1], "%d", &loop);
   }
   int i;
-	int limit = 5;
+	int limit = 10;
   for (i = 0; i < loop; i ++) {
 		buf_start = buf;
 
