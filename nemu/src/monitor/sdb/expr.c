@@ -77,7 +77,7 @@ typedef struct token {
   char str[512];
 } Token; // token buffer
 
-static Token tokens[512] __attribute__((used)) = {};
+static Token tokens[1024] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0; // means that could be not used.
 
 static bool make_token(char *e) {
@@ -223,7 +223,7 @@ word_t expr(char *e, bool *success) {
 }
 
 void test_expr() {
-  FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r");
+  FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r"); // read mode
   if (fp == NULL) perror("test_expr error");
 
   char *e = NULL;
@@ -242,8 +242,12 @@ void test_expr() {
 
     if (result == correct_res) {
       puts(e);
-      printf("expected: %u, got: %u\n", correct_res, result);
-    }
+      printf("PASS: Test result is correct.\n");
+    } else {
+			puts(e);
+			printf("expected: %u, while got: %u\n", correct_res, result);
+			assert(0);
+		}
   }
 
   fclose(fp);
