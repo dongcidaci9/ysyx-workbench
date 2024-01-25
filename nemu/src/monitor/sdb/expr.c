@@ -230,16 +230,16 @@ void test_expr() {
   word_t correct_res;
   size_t len = 0;
   ssize_t read;
-  bool success = false;
+  bool *success = false;
 
   while (true) {
     if(fscanf(fp, "%u ", &correct_res) == -1) break;
     read = getline(&e, &len, fp);
-    e[read-1] = '\0';
+    e[read+1] = '\0';
     
-    word_t res = expr(e, &success);
-    
+    word_t res = expr(e, success);
     assert(success);
+
     if (res != correct_res) {
       puts(e);
       printf("expected: %u, got: %u\n", correct_res, res);
