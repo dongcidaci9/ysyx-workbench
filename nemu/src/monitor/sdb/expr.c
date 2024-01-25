@@ -125,11 +125,12 @@ static bool make_token(char *e) {
 
   return true;
 }
-
+/*
 bool check_parentheses(int p, int q) {
 	if (tokens[p].type == '(' && tokens[q].type == ')') return true; 
 	return false;
 }
+*/
 
 int find_op(int p, int q) {
 	int ret = -1, par = 0, op = 0;
@@ -178,12 +179,12 @@ word_t eval(int p, int q, bool *success) {
 		}
 		word_t ret = strtol(tokens[p].str, NULL, 10);
 		return ret;
-  } else if (check_parentheses(p, q) == true) {
-    /* The expression is surrounded by a matched pair of parentheses.
+  } // else if (check_parentheses(p, q) == true) {
+     /* The expression is surrounded by a matched pair of parentheses.
      * If that is the case, just throw away the parentheses.
      */
-    return eval(p + 1, q - 1, success);
-  } else {
+    //return eval(p + 1, q - 1, success); 
+		else {
     int op = find_op(p, q);
 		if (op < 0) {
 			*success = false;
