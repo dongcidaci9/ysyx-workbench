@@ -223,7 +223,7 @@ word_t expr(char *e, bool *success) {
 }
 
 void test_expr() {
-  FILE *fp = fopen("~/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r");
+  FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r");
   if (fp == NULL) perror("test_expr error");
 
   char *e = NULL;
