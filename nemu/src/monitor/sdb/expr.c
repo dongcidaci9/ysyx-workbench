@@ -235,7 +235,7 @@ void test_expr() {
   while (true) {
     if(fscanf(fp, "%u ", &correct_res) == -1) break;
     read = getline(&e, &len, fp);
-    e[read+1] = '\0';
+    e[read] = '\0';
     
     word_t res = expr(e, success);
     assert(success);
