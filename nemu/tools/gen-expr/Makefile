@@ -12,7 +12,34 @@
 #
 # See the Mulan PSL v2 for more details.
 #**************************************************************************************/
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra -g
 
-NAME = gen-expr
 SRCS = gen-expr.c
-include $(NEMU_HOME)/scripts/build.mk
+OBJS = $(patsubst %.c,build/%.o,$(SRCS))
+
+TARGET = gen-expr
+
+all: build/$(TARGET)
+
+# Rule to compile
+build/%.o: %.c | build
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Rule to link
+build/$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $@
+
+build:
+	mkdir -p $@
+
+run:all
+	./build/gen-expr 100 > input
+
+clean:
+	rm -rf build input
+
+.PHONY:
+	all clean
+
+
