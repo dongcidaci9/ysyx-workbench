@@ -51,7 +51,7 @@ static uint32_t choose(uint32_t n) {
 }
 */
 static void gen_num() {
-	int num = choose(8) + 1;	// INT8_MAX = 127 
+	int num = choose(INT8_MAX) + 1;	// INT8_MAX = 127 
 	if (buf_start < buf_end) {
 		int writes = snprintf(buf_start, buf_end-buf_start, "%d", num);
 		if (writes > 0) {
@@ -121,10 +121,10 @@ int main(int argc, char *argv[]) {
     assert(fp != NULL);
 
 // scanf the result
-    uint32_t result;
-    ret = fscanf(fp, "%u", &result);
+    int result;
+    ret = fscanf(fp, "%d", &result);
     pclose(fp);
-    printf("%u %s\n", result, buf);
+    printf("%d %s\n", result, buf);
   }
 
   return 0;
