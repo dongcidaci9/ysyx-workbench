@@ -69,7 +69,6 @@ static struct {
   int (*handler) (char *);
 } cmd_table [] = {
   { "help", "Display information about all supported commands", cmd_help },
-  { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
   { "info", "Print registers/ watchpoints status", cmd_info },
@@ -161,7 +160,7 @@ static int cmd_help(char *args) {
   if (arg == NULL) {
     /* no argument given */
     for (i = 0; i < NR_CMD; i ++) {
-      printf("%s - %s\n", cmd_table[i].name, cmd_table[i].description);
+      printf("%s\n%s\n", cmd_table[i].name, cmd_table[i].description);
     }
   }
   else {
