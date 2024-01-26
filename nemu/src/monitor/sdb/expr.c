@@ -249,7 +249,7 @@ void test_expr() {
 
     if (result == correct_res) {
       puts(e); 
-      printf("PASS: Test result is correct.\n");
+      printf("PASS: Test result is correct. Result: %d\n", result);
     } else {
 			puts(e);
 			printf("expected: %d, while got: %d\n", correct_res, result);
