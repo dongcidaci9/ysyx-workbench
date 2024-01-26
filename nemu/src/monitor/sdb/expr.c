@@ -240,7 +240,7 @@ void test_expr() {
   bool success = false;
 
   while (true) {
-    if (fscanf(fp, "%u ", &correct_res) == -1) break;
+    if (fscanf(fp, "%d ", &correct_res) == -1) break;
     read = getline(&e, &len, fp);
     if (e[read-1] == '\n') e[read-1] = '\0';
     
@@ -248,11 +248,11 @@ void test_expr() {
     assert(success);
 
     if (result == correct_res) {
-      puts(e);
+      puts(e); 
       printf("PASS: Test result is correct.\n");
     } else {
 			puts(e);
-			printf("expected: %u, while got: %u\n", correct_res, result);
+			printf("expected: %d, while got: %d\n", correct_res, result);
 			assert(0);
 		}
   }
