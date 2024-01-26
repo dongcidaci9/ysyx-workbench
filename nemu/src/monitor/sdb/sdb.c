@@ -68,12 +68,12 @@ static struct {
   const char *description;
   int (*handler) (char *);
 } cmd_table [] = {
-  { "help", "\033[1;33mDisplay information about all supported commands", cmd_help },
-  { "q", "\033[1;33mExit NEMU", cmd_q },
-  { "si", "\033[1;33mProgram pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
-  { "info", "\033[1;33mPrint registers/ watchpoints status", cmd_info },
-  { "x", "\033[1;33mAs starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
-  { "p", "\033[1;33mFind the value of the expression EXPR/ press \"test\" can do the testing", cmd_p }
+  { "help", "Display information about all supported commands", cmd_help },
+  { "q", "Exit NEMU", cmd_q },
+  { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
+  { "info", "Print registers/ watchpoints status", cmd_info },
+  { "x", "As starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
+  { "p", "Find the value of the expression EXPR/ press \"test\" can do the testing", cmd_p }
 
   /* TODO: Add more commands */
 
@@ -160,7 +160,7 @@ static int cmd_help(char *args) {
   if (arg == NULL) {
     /* no argument given */
     for (i = 0; i < NR_CMD; i ++) {
-      printf("Rule - %s:\n%s\n", cmd_table[i].name, cmd_table[i].description);
+      printf("\033[1;31mRule - %s:\033[0m\n%s\n", cmd_table[i].name, cmd_table[i].description);
     }
   }
   else {
