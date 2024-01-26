@@ -142,6 +142,7 @@ static int cmd_p(char *args) {
 	if (strcmp(arg, "test") == 0) {
 	/* Test mathmatic expression calculations. */
 		test_expr();
+		return 0;
 	} 
 
 	word_t res = expr(args, &success);
