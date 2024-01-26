@@ -82,9 +82,8 @@ static struct {
 #define NR_CMD ARRLEN(cmd_table)
 
 static int cmd_x(char *args) {
-	char *arg = strtok(NULL, " ");
 
-	if (arg == NULL) {
+	if (args == NULL) {
 		printf("Usage:\nx N EXPR\n");
 		return 0;
 	}
@@ -93,7 +92,7 @@ static int cmd_x(char *args) {
 
 	int len = 0;
 	paddr_t addr = 0;
-	sscanf(arg, "%d", &len);
+	sscanf(args, "%d", &len);
 	sscanf(baseaddr, "%x", &addr);
 
 	int i = 0;
@@ -105,14 +104,13 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_info(char *args) {
-	char *arg = strtok(NULL, " ");
 	
-	if (arg == NULL) {
+	if (args == NULL) {
 		printf("Usage:\nr - Print register status\nw- Print watchpoints status\n");	
 	} else {
-		if (strcmp(arg, "r") == 0) { 
+		if (strcmp(args, "r") == 0) { 
 			isa_reg_display(); 
-		} else if (strcmp(arg, "w") == 0) {
+		} else if (strcmp(args, "w") == 0) {
 			//undefined	
 		} else { 
 			printf("ERROR: undefined command.\n"); 
@@ -123,11 +121,10 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_si(char *args) {
-	char *arg = strtok(NULL, " ");
 	int step;
 	
-	if (arg == NULL) step = 1;
-	else sscanf(arg, "%d", &step);
+	if (args == NULL) step = 1;
+	else sscanf(args, "%d", &step);
 	
 	cpu_exec(step);
 
