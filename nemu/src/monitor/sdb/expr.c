@@ -147,8 +147,11 @@ int find_op(int p, int q) {
 		} else if (tokens[i].type == '(') {
 			par ++;
 		} else if (tokens[i].type == ')') {
+			if (par == 0) {
+				return -1;
+			}
 			par --;
-		} if (par > 0) {
+		} else if (par > 0) {
 			continue;
 		} else {
 			int tmp = 0;
