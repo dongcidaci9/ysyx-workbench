@@ -39,7 +39,7 @@ static struct rule {
    */
 
 	{" +", TK_NOTYPE},										// spaces
-	{"(0x)?[0-9,a-f]+", TK_NUM},					// one number
+	{"[0-9,a-f]+", TK_NUM},					// one number
 	{"\\+", '+'},													// plus
 	{"\\-", '-'},													// minus
 	{"\\*", '*'},													// multiply 
