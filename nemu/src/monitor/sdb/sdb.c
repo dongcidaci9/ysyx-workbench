@@ -139,7 +139,7 @@ static int cmd_p(char *args) {
 	char *arg = strtok(NULL, " ");
 	bool success = true;
 
-	if (strcmp(arg, "test")) {
+	if (strcmp(arg, "test") == 0) {
 	/* Test mathmatic expression calculations. */
 		test_expr();
 	} 
