@@ -72,9 +72,9 @@ static struct {
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
-  { "info", "Print registers/watchpoints status", cmd_info },
+  { "info", "Print registers/ watchpoints status", cmd_info },
   { "x", "As starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
-  { "p", "Find the value of the expression EXPR", cmd_p }
+  { "p", "Find the value of the expression EXPR/ press \"test\" can do the testing", cmd_p }
 
   /* TODO: Add more commands */
 
@@ -136,7 +136,14 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_p(char *args) {
+	char *arg = strtok(NULL, " ");
 	bool success = true;
+
+	if (strcmp(arg, "test")) {
+	/* Test mathmatic expression calculations. */
+		test_expr();
+	} 
+
 	word_t res = expr(args, &success);
 	if (!success) {
 		printf("Invalid expression\n");
@@ -213,8 +220,6 @@ void sdb_mainloop() {
 void init_sdb() {
   /* Compile the regular expressions. */
   init_regex();
-	/* Test mathmatic expression calculations. */
-	test_expr();
   /* Initialize the watchpoint pool. */
   init_wp_pool();
 }
