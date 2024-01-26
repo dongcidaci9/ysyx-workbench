@@ -203,6 +203,8 @@ word_t eval(int p, int q, bool *success) {
 		if (!*success) return 0;
 
     switch (tokens[op].type) {
+			case TK_EQ: return val1 == val2; 
+			case TK_NEQ: return val1 != val2; 
       case '+': return val1 + val2;
       case '-': return val1 - val2;
       case '*': return val1 * val2;
