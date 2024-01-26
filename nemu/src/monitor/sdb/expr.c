@@ -23,7 +23,7 @@
 
 word_t eval(int p, int q, bool *success); 
 enum {
-  TK_NOTYPE = 256, TK_NUM, TK_HEXNUM, TK_EQ, TK_NEQ, 
+  TK_NOTYPE = 256, TK_NUM, TK_EQ, TK_NEQ, 
 
   /* TODO: Add more token types */
 
