@@ -153,8 +153,9 @@ int find_op(int p, int q) {
 		} else {
 			int tmp = 0;
 			switch (tokens[i].type) {
-				case '*' : case '/': tmp = 1; break;
-				case '+' : case '-': tmp = 2; break;
+				case '*': case '/': tmp = 1; break;
+				case '+': case '-': tmp = 2; break;
+				case TK_EQ: case TK_NEQ: tmp = 3; break;
 				default: assert(0);
 			}
 			if (tmp >= op) {
