@@ -39,7 +39,7 @@ static struct rule {
    */
 
 	{" +", TK_NOTYPE},										// spaces
-	{"[0-9]+", TK_NUM},										// one decimal number
+	{"(0x)?[0-9,a-f]+", TK_NUM},										// one decimal number
 	{"(0x)?[0-9,a-f]+", TK_HEXNUM},				// one hexadecimal number 
 	{"\\+", '+'},													// plus
 	{"\\-", '-'},													// minus
