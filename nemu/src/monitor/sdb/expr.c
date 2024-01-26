@@ -39,8 +39,7 @@ static struct rule {
    */
 
 	{" +", TK_NOTYPE},										// spaces
-	{"(0x)?[0-9,a-f]+", TK_NUM},										// one decimal number
-	{"(0x)?[0-9,a-f]+", TK_HEXNUM},				// one hexadecimal number 
+	{"(0x)?[0-9,a-f]+", TK_NUM},					// one number
 	{"\\+", '+'},													// plus
 	{"\\-", '-'},													// minus
 	{"\\*", '*'},													// multiply 
@@ -75,10 +74,10 @@ void init_regex() {
 
 typedef struct token {
   int type;
-  char str[1024];
+  char str[128];
 } Token; // token buffer
 
-static Token tokens[1024] __attribute__((used)) = {};
+static Token tokens[2048] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0; // means that could be not used.
 
 static bool make_token(char *e) {
@@ -143,7 +142,7 @@ bool check_parentheses(int p, int q) {
 int find_op(int p, int q) {
 	int ret = -1, par = 0, op = 0;
 	for (int i = p; i <= q; i ++) {
-		if (tokens[i].type == TK_NUM || tokens[i].type == TK_HEXNUM) {
+		if (tokens[i].type == TK_NUM) {
 			continue;	
 		} else if (tokens[i].type == '(') {
 			par ++;
@@ -180,11 +179,11 @@ word_t eval(int p, int q, bool *success) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-		if (tokens[p].type != TK_NUM && tokens[p].type != TK_HEXNUM) {
+		if (tokens[p].type != TK_NUM) {
 			*success = false;
 			return 0;
 		}
-		word_t ret = strtol(tokens[p].str, NULL, 10);
+		word_t ret = strtol(tokens[p].str, NULL, 0);
 		return ret;
   } else if (check_parentheses(p, q) == true) {
      /* The expression is surrounded by a matched pair of parentheses.
@@ -225,7 +224,6 @@ word_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-
   return eval(0, nr_token-1, success);
 	
 }
@@ -261,5 +259,5 @@ void test_expr() {
   fclose(fp);
   if (e) free(e);
 
-  Log("expr test pass");
+  Log("Expression test pass");
 }
