@@ -163,8 +163,8 @@ int find_op(int p, int q) {
 			}
 		}
 	}
-	if (par != 0) return -1;
 	printf("op: %d\n", ret);
+	if (par != 0) return -1;
 	return ret;
 }
 
