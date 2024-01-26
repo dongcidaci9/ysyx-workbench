@@ -250,7 +250,7 @@ void test_expr() {
 
     if (result == correct_res) {
       puts(e); 
-      printf("PASS: Test result is correct. Result: ANSI_BG_RED %d\n", result);
+      printf("PASS: Test result is correct. Result: ANSI_FMT(Result, ANSI_BG_RED)%d\n", result);
     } else {
 			puts(e);
 			printf("expected: %d, while got: %d\n", correct_res, result);
