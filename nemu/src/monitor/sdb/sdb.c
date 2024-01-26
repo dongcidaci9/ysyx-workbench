@@ -160,7 +160,7 @@ static int cmd_help(char *args) {
   if (arg == NULL) {
     /* no argument given */
     for (i = 0; i < NR_CMD; i ++) {
-      printf("\033[1;32mRule - %s:\033[0m\n%s\n", cmd_table[i].name, cmd_table[i].description);
+      printf("\033[1;33mRule - %s:\033[0m\n%s\n", cmd_table[i].name, cmd_table[i].description);
     }
   }
   else {
