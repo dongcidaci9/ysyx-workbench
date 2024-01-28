@@ -177,7 +177,6 @@ int find_op(int p, int q) {
 				case '*': case '/': tmp = 2; break;
 				case '+': case '-': tmp = 3; break;
 				case TK_EQ: case TK_NEQ: tmp = 4; break;
-				default: assert(0);
 			}
 			if (tmp >= op) {
 				op = tmp;
