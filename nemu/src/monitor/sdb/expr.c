@@ -256,7 +256,7 @@ word_t eval(int p, int q, bool *success) {
 			word_t ret = calc1(val1, tokens[op].type, val2, success);
 			return ret;
 		} else {
-			word_t ret = calc2(tokens[op].type, val1, success);
+			word_t ret = calc2(tokens[op].type, val2, success);
 			return ret;
 		}
 	}
