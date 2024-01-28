@@ -173,7 +173,7 @@ int find_op(int p, int q) {
 		} else {
 			int tmp = 0;
 			switch (tokens[i].type) {
-				//case TK_NEG : case TK_POS: tmp = 1; break;
+				case TK_NEG : case TK_POS: tmp = 1; break;
 				case '*': case '/': tmp = 2; break;
 				case '+': case '-': tmp = 3; break;
 				case TK_EQ: case TK_NEQ: tmp = 4; break;
