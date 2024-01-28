@@ -228,7 +228,7 @@ word_t eval(int p, int q, bool *success) {
 		if (tokens[p].type != TK_NUM) {
 			*success = false;
 			return 0;
-		}
+		}// maybe TK_NEG or TK_POS.
 		word_t ret = strtol(tokens[p].str, NULL, 0);
 		return ret;
 	} else if (check_parentheses(p, q) == true) {
@@ -256,7 +256,7 @@ word_t eval(int p, int q, bool *success) {
 			word_t ret = calc1(val1, tokens[op].type, val2, success);
 			return ret;
 		} else {
-			word_t ret = calc2(tokens[op].type, val2, success);
+			word_t ret = calc2(tokens[op].type, val1, success);
 			return ret;
 		}
 	}
