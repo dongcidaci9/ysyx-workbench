@@ -23,7 +23,9 @@
 
 word_t eval(int p, int q, bool *success); 
 enum {
-  TK_NOTYPE = 256, TK_NUM, TK_EQ, TK_NEQ, 
+  TK_NOTYPE = 256, TK_NUM, TK_EQ, TK_NEQ,
+	TK_NEG, TK_POS,
+	TK_OR, TK_AND, 
 
   /* TODO: Add more token types */
 
@@ -39,18 +41,27 @@ static struct rule {
    */
 
 	{" +", TK_NOTYPE},										// spaces
-	{"(0x)?[0-9,a-f]+", TK_NUM},					// one number
-	{"\\+", '+'},													// plus
-	{"\\-", '-'},													// minus
-	{"\\*", '*'},													// multiply 
-	{"\\/", '/'},													// divide
-	{"\\(", '('},													// left parentthesis 
-	{"\\)", ')'},													// right parentthesis 
-	{"==", TK_EQ},												// equal
-	{"!=", TK_NEQ}												// nonequal
+	{"(0x)?[0-9,a-f]+", TK_NUM},					// number
+	{"\\+", '+'},	{"\\-", '-'},	{"\\*", '*'},	{"\\/", '/'},													
+	{"\\(", '('},	{"\\)", ')'},
+
+	{"==", TK_EQ}, {"!=", TK_NEQ},											
+	{"\\|\\|", TK_OR},	{"&&", TK_AND}			
+
 };
 
 #define NR_REGEX ARRLEN(rules)
+
+#define CHECK_TYPES(type, types) check_types(type, types, ARRLEN(types))
+
+static int bibound_types[] = {')', TK_NUM};
+
+static bool check_types(int type, int types[], int size) {
+	for (int i = 0; i < size ; i++) {
+		if (type == types[i]) return true;
+	}
+	return false;
+}
 
 static regex_t re[NR_REGEX] = {};
 
@@ -78,14 +89,15 @@ typedef struct token {
 } Token; // token buffer
 
 static Token tokens[2048] __attribute__((used)) = {};
-static int nr_token __attribute__((used))  = 0; // means that could be not used.
+static int nr_tokens __attribute__((used))  = 0; // means that could be not used.
 
+// Write down the tokens and define its type:
 static bool make_token(char *e) {
   int position = 0;
   int i;
   regmatch_t pmatch;
 
-  nr_token = 0;
+  nr_tokens = 0;
 
   while (e[position] != '\0') {
     /* Try all rules one by one. */
@@ -105,14 +117,22 @@ static bool make_token(char *e) {
          */
 				if (rules[i].token_type == TK_NOTYPE) break;
 
-				tokens[nr_token].type = rules[i].token_type;
+				tokens[nr_tokens].type = rules[i].token_type;
 
 				switch (rules[i].token_type) {
 					case TK_NUM:
-						strncpy(tokens[nr_token].str, substr_start, substr_len);
-						tokens[nr_token].str[substr_len] = '\0';
-					}
-				nr_token ++;
+						strncpy(tokens[nr_tokens].str, substr_start, substr_len);
+						tokens[nr_tokens].str[substr_len] = '\0';
+						break;
+					case '-': case '+':
+						if (i == 0 || !CHECK_TYPES(tokens[nr_tokens - 1].type, bibound_types)) {
+							switch (rules[i].token_type) {
+								case '-': tokens[nr_tokens].type = TK_NEG; break;
+								case '+': tokens[nr_tokens].type = TK_POS; break;
+							}
+						}
+				}
+				nr_tokens ++;
 				break;
 			}
     }
@@ -153,9 +173,10 @@ int find_op(int p, int q) {
 		} else {
 			int tmp = 0;
 			switch (tokens[i].type) {
-				case '*': case '/': tmp = 1; break;
-				case '+': case '-': tmp = 2; break;
-				case TK_EQ: case TK_NEQ: tmp = 3; break;
+				//case TK_NEG : case TK_POS: tmp = 1; break;
+				case '*': case '/': tmp = 2; break;
+				case '+': case '-': tmp = 3; break;
+				case TK_EQ: case TK_NEQ: tmp = 4; break;
 				default: assert(0);
 			}
 			if (tmp >= op) {
@@ -167,6 +188,31 @@ int find_op(int p, int q) {
 	printf("op: %d\n", ret);
 	if (par != 0) return -1;
 	return ret;
+}
+
+static word_t calc1(word_t val1, int operator, word_t val2, bool *success) {
+	switch(operator) {
+      case '+': return val1 + val2;
+      case '-': return val1 - val2;
+      case '*': return val1 * val2;
+      case '/': if (val2 == 0) {
+									*success = false;
+									return 0;
+								} else {
+									return (sword_t)val1 / (sword_t)val2;
+								}
+			default: assert(0);
+	}
+	return 0;
+}
+
+static word_t calc2(int operator, word_t val, bool *success) {
+    switch (operator) {
+			case TK_NEG: return -val; 
+			case TK_POS: return val;
+			default: assert(0);
+		}
+		return 0;
 }
 
 word_t eval(int p, int q, bool *success) {
@@ -186,7 +232,7 @@ word_t eval(int p, int q, bool *success) {
 		}
 		word_t ret = strtol(tokens[p].str, NULL, 0);
 		return ret;
-  } else if (check_parentheses(p, q) == true) {
+	} else if (check_parentheses(p, q) == true) {
      /* The expression is surrounded by a matched pair of parentheses.
      * If that is the case, just throw away the parentheses.
      */
@@ -198,27 +244,25 @@ word_t eval(int p, int q, bool *success) {
 			return 0;
 		}
 
-    word_t val1 = eval(p, op - 1, success);
-		if (!*success) return 0;
-    word_t val2 = eval(op + 1, q, success);
-		if (!*success) return 0;
+		bool success1, success2;
+    word_t val1 = eval(p, op - 1, &success1);
+    word_t val2 = eval(op + 1, q, &success2);
 
-    switch (tokens[op].type) {
-			case TK_EQ: return val1 == val2; 
-			case TK_NEQ: return val1 != val2; 
-      case '+': return val1 + val2;
-      case '-': return val1 - val2;
-      case '*': return val1 * val2;
-      case '/': if (val2 == 0) {
-									*success = false;
-									return 0;
-								} else {
-									return (sword_t)val1 / (sword_t)val2;
-								}
-      default: assert(0);
-    }
-  }
+		if (!success2) {
+			*success = false;
+			return 0;
+		}
+
+		if (success1 == true) {
+			word_t ret = calc1(val1, tokens[op].type, val2, success);
+			return ret;
+		} else {
+			word_t ret = calc2(tokens[op].type, val2, success);
+			return ret;
+		}
+	}
 }
+
 
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
@@ -227,40 +271,6 @@ word_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-  return eval(0, nr_token-1, success);
-	
+	return eval(0, nr_tokens - 1, success);
 }
 
-void test_expr() {
-  FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r"); // read mode
-  if (fp == NULL) perror("test_expr error");
-
-  char *e = NULL;
-  word_t correct_res;
-  size_t len = 0;
-  ssize_t read;
-  bool success = false;
-
-  while (true) {
-    if (fscanf(fp, "%d ", &correct_res) == -1) break;
-    read = getline(&e, &len, fp);
-    if (e[read-1] == '\n') e[read-1] = '\0';
-    
-    word_t result = expr(e, &success);
-    assert(success);
-
-    if (result == correct_res) {
-      puts(e); 
-      printf("PASS: Test result is correct. \033[1;32mResult: %d\n", result);
-    } else {
-			puts(e);
-			printf("expected: %d, while got: %d\n", correct_res, result);
-			assert(0);
-		}
-  }
-
-  fclose(fp);
-  if (e) free(e);
-
-  Log("Expression test pass");
-}

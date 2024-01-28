@@ -22,7 +22,39 @@
 static int is_batch_mode = false;
 
 void init_regex();
-void test_expr();
+void test_expr() {
+  FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r"); // read mode
+  if (fp == NULL) perror("test_expr error");
+
+  char *e = NULL;
+  word_t correct_res;
+  size_t len = 0;
+  ssize_t read;
+  bool success = false;
+
+  while (true) {
+    if (fscanf(fp, "%d ", &correct_res) == -1) break;
+    read = getline(&e, &len, fp);
+    if (e[read-1] == '\n') e[read-1] = '\0';
+    
+    word_t result = expr(e, &success);
+    assert(success);
+
+    if (result == correct_res) {
+      puts(e); 
+      printf("PASS: Test result is correct. \033[1;32mResult: %d\n", result);
+    } else {
+			puts(e);
+			printf("expected: %d, while got: %d\n", correct_res, result);
+			assert(0);
+		}
+  }
+
+  fclose(fp);
+  if (e) free(e);
+
+  Log("Expression test pass");
+}
 void init_wp_pool();
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
