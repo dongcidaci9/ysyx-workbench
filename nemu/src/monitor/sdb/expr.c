@@ -89,7 +89,7 @@ typedef struct token {
 } Token; // token buffer
 
 static Token tokens[2048] __attribute__((used)) = {};
-static int nr_tokens __attribute__((used))  = 0; // means that could be not used.
+static int nr_token __attribute__((used))  = 0; // means that could be not used.
 
 // Write down the tokens and define its type:
 static bool make_token(char *e) {
@@ -97,7 +97,7 @@ static bool make_token(char *e) {
   int i;
   regmatch_t pmatch;
 
-  nr_tokens = 0;
+  nr_token = 0;
 
   while (e[position] != '\0') {
     /* Try all rules one by one. */
@@ -117,22 +117,22 @@ static bool make_token(char *e) {
          */
 				if (rules[i].token_type == TK_NOTYPE) break;
 
-				tokens[nr_tokens].type = rules[i].token_type;
+				tokens[nr_token].type = rules[i].token_type;
 
 				switch (rules[i].token_type) {
 					case TK_NUM:
-						strncpy(tokens[nr_tokens].str, substr_start, substr_len);
-						tokens[nr_tokens].str[substr_len] = '\0';
+						strncpy(tokens[nr_token].str, substr_start, substr_len);
+						tokens[nr_token].str[substr_len] = '\0';
 						break;
 					case '-': case '+':
-						if (i == 0 || !CHECK_TYPES(tokens[nr_tokens - 1].type, bibound_types)) {
+						if (nr_token == 0 || !CHECK_TYPES(tokens[nr_token - 1].type, bibound_types)) {
 							switch (rules[i].token_type) {
-								case '-': tokens[nr_tokens].type = TK_NEG; break;
-								case '+': tokens[nr_tokens].type = TK_POS; break;
+								case '-': tokens[nr_token].type = TK_NEG; break;
+								case '+': tokens[nr_token].type = TK_POS; break;
 							}
 						}
 				}
-				nr_tokens ++;
+				nr_token ++;
 				break;
 			}
     }
@@ -271,6 +271,6 @@ word_t expr(char *e, bool *success) {
   }
 
   /* TODO: Insert codes to evaluate the expression. */
-	return eval(0, nr_tokens - 1, success);
+	return eval(0, nr_token - 1, success);
 }
 
