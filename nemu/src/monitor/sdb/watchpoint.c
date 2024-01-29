@@ -50,15 +50,16 @@ void free_wp(WP *wp) {
 
 	WP* Node_ = head;
 	WP* Node2_ = head;
-	while (Node2_->next != idle_) Node2_ = Node_->next;
+	while (Node2_->next != idle_) Node2_ = Node2_->next;
+	while (Node_->next != wp) Node_ = Node_->next;
 
 	if (wp == head && head->next != idle_) head = wp->next;
-	else while (Node_->next != wp) {
-		Node_ = Node_->next;
+	if (wp == head && head->next == idle_) head = NULL;
+
 		Node_->next = wp->next;
-	}
 		wp->next = idle_;
 		Node2_->next = wp;
+
 		idle_ = wp;
 }
 
