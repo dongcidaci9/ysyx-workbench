@@ -55,14 +55,16 @@ WP* new_wp() {
 }
 
 void free_wp(WP *wp) {
+
+	WP *Node2_ = head;
+	if (!head) printf("Watchpoints are empty\n");
+	else while (Node2_->next != idle_) Node2_ = Node2_->next;
 	memset(wp->expr, '\0', sizeof(wp->expr));	
 	wp->old = 0;
 	wp->new = 0;
 
 	WP *Node1_ = head;
-	WP *Node2_ = head;
-	while (Node2_->next != idle_) Node2_ = Node2_->next;
-	while (Node1_->next != wp) Node1_ = Node1_->next;
+	if (wp != head) while (Node1_->next != wp) Node1_ = Node1_->next;
 
 	if (wp->next == idle_) {
 		if (wp == head) {
