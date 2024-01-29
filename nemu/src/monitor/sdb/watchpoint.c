@@ -22,8 +22,7 @@ static WP wp_pool[NR_WP] = {}; // Total 32 include 0-31
 static WP *head = NULL, *idle_ = NULL;
 
 void init_wp_pool() {
-  int i;
-  for (i = 0; i < NR_WP; i ++) {
+  for (int i = 0; i < NR_WP; i ++) {
     wp_pool[i].NO = i;
     wp_pool[i].next = (i == NR_WP - 1 ? NULL : &wp_pool[i + 1]);
   }
@@ -32,6 +31,18 @@ void init_wp_pool() {
   idle_ = wp_pool; // pointor "idle_" point towards wp_pool 
 											 // eg. = wp_pool + 0, = &wp_pool[0]
 }
+
+void wp_update() {
+	WP *Node_ = NULL;
+	if (head) Node_ = head;
+	else Node_ = idle_;
+	while (Node_) {
+		for (int i = 0; i < NR_WP; i ++) {
+		Node_->NO = i;
+		}
+		Node_ = Node_->next;
+	}
+} 
 
 /* TODO: Implement the functionality of watchpoint */
 WP* new_wp() {
@@ -48,8 +59,8 @@ void free_wp(WP *wp) {
 	wp->old = 0;
 	wp->new = 0;
 
-	WP* Node_ = head;
-	WP* Node2_ = head;
+	WP *Node_ = head;
+	WP *Node2_ = head;
 	while (Node2_->next != idle_) Node2_ = Node2_->next;
 	while (Node_->next != wp) Node_ = Node_->next;
 
@@ -61,10 +72,11 @@ void free_wp(WP *wp) {
 		Node2_->next = wp;
 
 		idle_ = wp;
+		wp_update();
 }
 
 void wp_watch(char *expr, word_t res) {
-	WP* wp = new_wp();
+	WP *wp = new_wp();
 	strcpy(wp->expr, expr);
 	wp->old = res;
 	printf("Watchpoint %d: %s\n", wp->NO, wp->expr);
