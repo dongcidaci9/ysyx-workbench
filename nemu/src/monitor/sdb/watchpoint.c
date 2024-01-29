@@ -18,15 +18,15 @@
 #define NR_WP 32
 
 typedef struct watchpoint {
-  int NO;
+  int NO; // Serial number
   struct watchpoint *next;
 
   /* TODO: Add more members if necessary */
 
 } WP;
 
-static WP wp_pool[NR_WP] = {};
-static WP *head = NULL, *free_ = NULL;
+static WP wp_pool[NR_WP] = {}; // Total 32 include 0-31 
+static WP *used = NULL, *idle_ = NULL;
 
 void init_wp_pool() {
   int i;
@@ -35,8 +35,8 @@ void init_wp_pool() {
     wp_pool[i].next = (i == NR_WP - 1 ? NULL : &wp_pool[i + 1]);
   }
 
-  head = NULL;
-  free_ = wp_pool;
+  used = NULL;
+  idle_ = wp_pool;
 }
 
 /* TODO: Implement the functionality of watchpoint */

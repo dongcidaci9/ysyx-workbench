@@ -21,6 +21,7 @@
  */
 #include <regex.h>
 
+// Define regex rules:
 enum {
   TK_NOTYPE = 256,
 	TK_NUM, TK_REG,
@@ -54,6 +55,7 @@ static struct rule {
 
 #define NR_REGEX ARRLEN(rules)
 
+// Check unary calculation environment:
 #define CHECK_TYPES(type, types) check_types(type, types, ARRLEN(types))
 
 static int bibound_types[] = {')', TK_NUM};
@@ -65,6 +67,7 @@ static bool check_types(int type, int types[], int size) {
 	return false;
 }
 
+// Initialize regex:
 static regex_t re[NR_REGEX] = {};
 
 /* Rules are used for many times.
@@ -84,11 +87,11 @@ void init_regex() {
   }
 }
 
-
+// Define calculation tokens:
 typedef struct token {
   int type;
   char str[128];
-} Token; // token buffer
+} Token;
 
 static Token tokens[2048] __attribute__((used)) = {};
 static int nr_token __attribute__((used))  = 0; // means that could be not used.
@@ -148,6 +151,7 @@ static bool make_token(char *e) {
   return true;
 }
 
+// Check parentheses:
 bool check_parentheses(int p, int q) {
 	int par = 0, i = 0;
 	if (tokens[p].type == '(' && tokens[q].type == ')') {
@@ -161,6 +165,7 @@ bool check_parentheses(int p, int q) {
 	return false;
 }
 
+// Find main operator:
 int find_op(int p, int q) {
 	int ret = -1, par = 0, op = 0;
 	for (int i = p; i <= q; i ++) {
@@ -191,6 +196,7 @@ int find_op(int p, int q) {
 	return ret;
 }
 
+// Handle single operand:
 static word_t operand(int i, bool *success) {
 	char *endptr;
 	switch (tokens[i].type) {
@@ -208,6 +214,7 @@ static word_t operand(int i, bool *success) {
 	}
 }
 
+// Calculate normal affair:
 static word_t calc1(word_t val1, int operator, word_t val2, bool *success) {
 	switch(operator) {
       case '+': return val1 + val2;
@@ -224,6 +231,7 @@ static word_t calc1(word_t val1, int operator, word_t val2, bool *success) {
 	return 0;
 }
 
+// Calculate unary operand:
 static word_t calc2(int operator, word_t val, bool *success) {
     switch (operator) {
 			case TK_NEG: return -val; 
@@ -233,6 +241,7 @@ static word_t calc2(int operator, word_t val, bool *success) {
 		return 0;
 }
 
+// Main evaluation:
 word_t eval(int p, int q, bool *success) {
 	*success = true;
 	if (p > q) {
@@ -278,7 +287,7 @@ word_t eval(int p, int q, bool *success) {
 	}
 }
 
-
+// Main expression:
 word_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
@@ -288,6 +297,7 @@ word_t expr(char *e, bool *success) {
 	return eval(0, nr_token - 1, success);
 }
 
+// Expression test:
 void expr_test () {
 	FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r"); // read mode
   if (fp == NULL) perror("test_expr error");
