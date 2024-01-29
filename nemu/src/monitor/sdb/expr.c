@@ -21,7 +21,6 @@
  */
 #include <regex.h>
 
-word_t eval(int p, int q, bool *success); 
 enum {
   TK_NOTYPE = 256,
 	TK_NUM, TK_REG,
