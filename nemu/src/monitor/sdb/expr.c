@@ -23,7 +23,9 @@
 
 word_t eval(int p, int q, bool *success); 
 enum {
-  TK_NOTYPE = 256, TK_NUM, TK_EQ, TK_NEQ,
+  TK_NOTYPE = 256,
+	TK_NUM, TK_REG,
+	TK_EQ, TK_NEQ,
 	TK_NEG, TK_POS,
 	TK_OR, TK_AND, 
 
@@ -40,8 +42,9 @@ static struct rule {
    * Pay attention to the precedence level of different rules.
    */
 
-	{" +", TK_NOTYPE},										// spaces
-	{"(0x)?[0-9,a-f]+", TK_NUM},					// number
+	{" +", TK_NOTYPE},										
+	{"(0x)?[0-9,a-f]+", TK_NUM},
+	{"($)?(a-zA-z)?[0-9]*", TK_REG},
 	{"\\+", '+'},	{"\\-", '-'},	{"\\*", '*'},	{"\\/", '/'},													
 	{"\\(", '('},	{"\\)", ')'},
 
@@ -120,7 +123,7 @@ static bool make_token(char *e) {
 				tokens[nr_token].type = rules[i].token_type;
 
 				switch (rules[i].token_type) {
-					case TK_NUM:
+					case TK_NUM: case TK_REG:
 						strncpy(tokens[nr_token].str, substr_start, substr_len);
 						tokens[nr_token].str[substr_len] = '\0';
 						break;
@@ -189,6 +192,23 @@ int find_op(int p, int q) {
 	return ret;
 }
 
+static word_t operand(int i, bool *success) {
+	char *endptr;
+	switch (tokens[i].type) {
+		case TK_NUM:
+			return strtol(tokens[i].str, &endptr, 10); break;
+		case TK_REG:
+			return isa_reg_str2val(tokens[i].str, success); break;
+		default:
+			*success = false;
+			return 0;
+	}
+	if (*endptr != '\0') {
+		*success = false;	
+		return 0;
+	}
+}
+
 static word_t calc1(word_t val1, int operator, word_t val2, bool *success) {
 	switch(operator) {
       case '+': return val1 + val2;
@@ -226,11 +246,7 @@ word_t eval(int p, int q, bool *success) {
      * For now this token should be a number.
      * Return the value of the number.
      */
-		if (tokens[p].type != TK_NUM) {
-			*success = false;
-			return 0;
-		}// maybe TK_NEG or TK_POS.
-		word_t ret = strtol(tokens[p].str, NULL, 0);
+		word_t ret = operand(p, success);
 		return ret;
 	} else if (check_parentheses(p, q) == true) {
      /* The expression is surrounded by a matched pair of parentheses.
