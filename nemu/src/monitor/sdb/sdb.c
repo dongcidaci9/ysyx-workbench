@@ -95,6 +95,7 @@ static int cmd_p(char *args);
 
 static int cmd_help(char *args);
 
+// Order register table:
 static struct {
   const char *name;
   const char *description;
@@ -103,7 +104,7 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "q", "Exit NEMU", cmd_q },
   { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
-  { "info", "Print registers/ watchpoints status", cmd_info },
+  { "info", "press \"r\" can print registers status/ press \"w\" can print watchpoints status", cmd_info },
   { "x", "As starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
   { "p", "Find the value of the expression EXPR/ press \"test\" can do the testing", cmd_p }
 
