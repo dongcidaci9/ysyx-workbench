@@ -285,9 +285,11 @@ word_t expr(char *e, bool *success) {
     *success = false;
     return 0;
   }
-
   /* TODO: Insert codes to evaluate the expression. */
-	return eval(0, nr_token - 1, success);
+	word_t res = eval(0, nr_token - 1, success);
+	printf("%d\n", res);
+
+	return res;
 }
 
 void expr_test () {
