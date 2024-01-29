@@ -218,6 +218,7 @@ word_t eval(int p, int q, bool *success) {
 	*success = true;
 	if (p > q) {
     /* Bad expression */
+		/* Handle over like -1*/
 		*success = false;
 		return 0;
   } else if (p == q) {
@@ -271,5 +272,39 @@ word_t expr(char *e, bool *success) {
 
   /* TODO: Insert codes to evaluate the expression. */
 	return eval(0, nr_token - 1, success);
+}
+
+void expr_test () {
+	FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r"); // read mode
+  if (fp == NULL) perror("test_expr error");
+
+  char *e = NULL;
+  word_t correct_res;
+  size_t len = 0;
+  ssize_t read;
+  bool success = false;
+
+  while (true) {
+    if (fscanf(fp, "%d ", &correct_res) == -1) break;
+    read = getline(&e, &len, fp);
+    if (e[read-1] == '\n') e[read-1] = '\0';
+    
+    word_t result = expr(e, &success);
+    assert(success);
+
+    if (result == correct_res) {
+      puts(e); 
+      printf("PASS: Test result is correct. \033[1;32mResult: %d\n", result);
+    } else {
+			puts(e);
+			printf("expected: %d, while got: %d\n", correct_res, result);
+			assert(0);
+		}
+  }
+
+  fclose(fp);
+  if (e) free(e);
+
+  Log("Expression test pass");
 }
 
