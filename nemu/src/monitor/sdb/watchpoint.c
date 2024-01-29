@@ -18,6 +18,7 @@
 #define NR_WP 32
 
 static WP wp_pool[NR_WP] = {}; // Total 32 include 0-31 
+															 // Visable only in this file
 static WP *head = NULL, *idle_ = NULL;
 
 void init_wp_pool() {
