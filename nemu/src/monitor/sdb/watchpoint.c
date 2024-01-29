@@ -43,6 +43,7 @@ WP* new_wp() {
 }
 
 void free_wp(WP *wp) {
+
 	memset(wp->expr, '\0', sizeof(wp->expr));	
 	wp->old = 0;
 	wp->new = 0;
