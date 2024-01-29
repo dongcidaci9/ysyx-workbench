@@ -39,8 +39,8 @@ void wp_update() {
 	while (Node_) {
 		for (int i = 0; i < NR_WP; i ++) {
 		Node_->NO = i;
-		}
 		Node_ = Node_->next;
+		}
 	}
 } 
 
