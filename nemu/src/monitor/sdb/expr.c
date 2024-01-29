@@ -217,16 +217,19 @@ static word_t operand(int i, bool *success) {
 // Calculate normal affair:
 static word_t calc1(word_t val1, int operator, word_t val2, bool *success) {
 	switch(operator) {
-      case '+': return val1 + val2;
-      case '-': return val1 - val2;
-      case '*': return val1 * val2;
-      case '/': if (val2 == 0) {
-									*success = false;
-									return 0;
-								} else {
-									return (sword_t)val1 / (sword_t)val2;
-								}
-			default: assert(0);
+		case TK_EQ: return val1 == val2;
+		case TK_NEQ: return val1 != val2;
+    case '+': return val1 + val2;
+    case '-': return val1 - val2;
+    case '*': return val1 * val2;
+    case '/': 
+			if (val2 == 0) {
+				*success = false;
+				return 0;
+			} else {
+				return (sword_t)val1 / (sword_t)val2;
+			}
+		default: assert(0);
 	}
 	return 0;
 }
