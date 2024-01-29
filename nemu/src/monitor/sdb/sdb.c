@@ -172,11 +172,11 @@ static int cmd_p(char *args) {
 		return 0;
 	} 
 
-	expr(args, &success);
+	word_t res = expr(args, &success);
 	if (!success) {
 		printf("Invalid expression.\n");
 	} else {
-		printf("Correct expression.\n");
+		printf("%u\n", res);
 	}
 	return 0;
 }

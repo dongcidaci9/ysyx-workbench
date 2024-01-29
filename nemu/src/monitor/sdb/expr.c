@@ -196,7 +196,7 @@ static word_t operand(int i, bool *success) {
 	char *endptr;
 	switch (tokens[i].type) {
 		case TK_NUM:
-			return strtol(tokens[i].str, &endptr, 10); break;
+			return strtol(tokens[i].str, &endptr, 0); break;
 		case TK_REG:
 			return isa_reg_str2val(tokens[i].str, success); break;
 		default:
@@ -286,10 +286,7 @@ word_t expr(char *e, bool *success) {
     return 0;
   }
   /* TODO: Insert codes to evaluate the expression. */
-	word_t res = eval(0, nr_token - 1, success);
-	printf("%d\n", res);
-
-	return res;
+	return eval(0, nr_token - 1, success);
 }
 
 void expr_test () {

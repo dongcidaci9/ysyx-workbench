@@ -27,9 +27,14 @@ void isa_reg_display() {
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
-	int i;	
+	int ret;
+	
+	int i;
 	for (i = 0; i < REG_NUM; i ++) {
-		if (strcmp(s, regs[i]) == 0) printf("Reg - %s: %#-20x\n", regs[i], cpu.gpr[i]);
+		if (strcmp(s, regs[i]) == 0) {
+			ret = cpu.gpr[i];
+			return ret; 
+		}
 	}
-  return 0;
+	return 0;
 }
