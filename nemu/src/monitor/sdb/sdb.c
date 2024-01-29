@@ -22,39 +22,7 @@
 static int is_batch_mode = false;
 
 void init_regex();
-void test_expr() {
-  FILE *fp = fopen("/home/liangzhongqi/Desktop/ysyx-workbench/nemu/tools/gen-expr/input", "r"); // read mode
-  if (fp == NULL) perror("test_expr error");
-
-  char *e = NULL;
-  word_t correct_res;
-  size_t len = 0;
-  ssize_t read;
-  bool success = false;
-
-  while (true) {
-    if (fscanf(fp, "%d ", &correct_res) == -1) break;
-    read = getline(&e, &len, fp);
-    if (e[read-1] == '\n') e[read-1] = '\0';
-    
-    word_t result = expr(e, &success);
-    assert(success);
-
-    if (result == correct_res) {
-      puts(e); 
-      printf("PASS: Test result is correct. \033[1;32mResult: %d\n", result);
-    } else {
-			puts(e);
-			printf("expected: %d, while got: %d\n", correct_res, result);
-			assert(0);
-		}
-  }
-
-  fclose(fp);
-  if (e) free(e);
-
-  Log("Expression test pass");
-}
+void expr_test();
 void init_wp_pool();
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
@@ -93,6 +61,10 @@ static int cmd_si(char *args);
 
 static int cmd_p(char *args);
 
+static int cmd_w(char *args);
+
+static int cmd_d(char *args);
+
 static int cmd_help(char *args);
 
 // Order register table:
@@ -101,12 +73,14 @@ static struct {
   const char *description;
   int (*handler) (char *);
 } cmd_table [] = {
-  { "help", "Display information about all supported commands", cmd_help },
-  { "q", "Exit NEMU", cmd_q },
-  { "si", "Program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
-  { "info", "Press \"r\" can print registers status/ Press \"w\" can print watchpoints status", cmd_info },
-  { "x", "As starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
-  { "p", "Find the value of the expression EXPR/ Press \"test\" can do the testing", cmd_p }
+  { "help", "Usage: help: display information about all supported commands", cmd_help },
+	{ "q", "Usage: q: Exit NEMU", cmd_q},
+  { "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
+  { "info", "Usage: info SUBCMD: press \"r\" can print registers status/ Press \"w\" can print watchpoints status", cmd_info },
+  { "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
+  { "p", "Usage: p EXPR: find the value of the expression EXPR/ Press \"test\" can do the testing", cmd_p },
+	{ "w", "Usage: w EXPR: When the value of the expression EXPR changes, program execution is suspended", cmd_w },
+	{ "d", "Usage: d N: Delete the watch point with serial number N", cmd_d }
 
   /* TODO: Add more commands */
 
@@ -137,19 +111,17 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_info(char *args) {
-	
 	if (args == NULL) {
-		printf("Usage:\nr - Print register status\nw- Print watchpoints status\n");	
+		printf("Usage: info r or info w\n");	
 	} else {
 		if (strcmp(args, "r") == 0) { 
 			isa_reg_display(); 
 		} else if (strcmp(args, "w") == 0) {
-			//undefined	
+			wp_iterate();	
 		} else { 
-			printf("ERROR: undefined command.\n"); 
+			printf("Usage: info r or info w\n"); 
 		}
 	}
-	
 	return 0;
 }
 
@@ -169,7 +141,7 @@ static int cmd_p(char *args) {
 
 	if (strcmp(args, "test") == 0) {
 	/* Test mathmatic expression calculations. */
-		test_expr();
+		expr_test();
 		return 0;
 	} 
 
@@ -182,24 +154,46 @@ static int cmd_p(char *args) {
 	return 0;
 }
 
-static int cmd_help(char *args) {
-	char *arg = strtok(NULL, " ");
-  int i;
+static int cmd_w(char *args) {
+	if (!args) {
+		printf("Usage: w EXPR\n");
+		return 0;
+	}
+	bool success;
+	word_t res = expr(args, &success);
+	if (!success) {
+		printf("Invalid expression");
+	} else {
+		wp_watch(args, res);
+	}
+	return 0;
+}
 
-  if (arg == NULL) {
+static int cmd_d(char *args) {
+	if (!args) {
+		printf("Usage: d N\n");
+		return 0;
+	}
+	int no = strtol(args, NULL, 10);
+	wp_remove(no);
+	return 0;
+}
+
+static int cmd_help(char *args) {
+  if (args == NULL) {
     /* no argument given */
-    for (i = 0; i < NR_CMD; i ++) {
+    for (int i = 0; i < NR_CMD; i ++) {
       printf("\033[1;33mRule - %s:\033[0m\n%s\n", cmd_table[i].name, cmd_table[i].description);
     }
   }
   else {
-    for (i = 0; i < NR_CMD; i ++) {
-      if (strcmp(arg, cmd_table[i].name) == 0) {
+    for (int i = 0; i < NR_CMD; i ++) {
+      if (strcmp(args, cmd_table[i].name) == 0) {
         printf("Rule - %s:\n  %s\n", cmd_table[i].name, cmd_table[i].description);
         return 0;
       }
     }
-    printf("Unknown command '%s'\n", arg);
+    printf("Unknown command '%s'\n", args);
   }
   return 0;
 }
