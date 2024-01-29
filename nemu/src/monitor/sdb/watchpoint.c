@@ -55,26 +55,30 @@ WP* new_wp() {
 }
 
 void free_wp(WP *wp) {
-
 	memset(wp->expr, '\0', sizeof(wp->expr));	
 	wp->old = 0;
 	wp->new = 0;
 
-	WP *Node_ = head;
+	WP *Node1_ = head;
 	WP *Node2_ = head;
 	while (Node2_->next != idle_) Node2_ = Node2_->next;
-	while (Node_->next != wp) Node_ = Node_->next;
+	while (Node1_->next != wp) Node1_ = Node1_->next;
 
-	if (wp == head && head->next != idle_) head = wp->next;
-	if (wp == head && head->next == idle_) head = NULL;
-
-	if (Node_->next != wp) Node_->next = wp->next;
-	wp->next = idle_;
-	if (wp != Node2_) Node2_->next = wp;
-
+	if (wp->next == idle_) {
+		if (wp == head) {
+			head = NULL;
+		}  
+	} else {
+		head = head->next;
+		wp->next = idle_;
+		Node2_->next = wp;
+		if (wp != head) {
+			Node1_->next = wp->next;	
+		}
+	}
 	idle_ = wp;
-		//wp_update();
 }
+		//wp_update();
 
 void wp_watch(char *expr, word_t res) {
 	WP *wp = new_wp();
