@@ -77,7 +77,9 @@ void wp_remove(int no) {
 }
 
 void wp_iterate() {
-	WP* Node_ = head;
+	WP *Node_ = NULL;
+	if (head) Node_ = head;
+	else Node_ = idle_;
 	while (Node_) {
 		printf("Watchpoint %d: %s\n", Node_->NO, Node_->expr);
 		Node_ = Node_->next;
