@@ -24,7 +24,6 @@ typedef struct watchpoint {
 	int NO;
 	struct watchpoint *next;
 
-	bool flag;
 	char expr[100];
 	int new, old;
 } WP;

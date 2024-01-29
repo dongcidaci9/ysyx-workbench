@@ -38,22 +38,27 @@ WP* new_wp() {
 	assert(idle_);
 	if (!head) head = wp_pool;  
 	WP *ret = idle_;
-	ret->flag = true;
 	idle_ = idle_->next;
 	return ret;
 }
 
 void free_wp(WP *wp) {
-	WP* Node_ = head;	
-	if (wp == head) head = NULL;
-	else {
-		while (Node_->next != wp) Node_ = Node_->next;
-		assert(Node_);
+	memset(wp->expr, '\0', sizeof(wp->expr));	
+	wp->old = 0;
+	wp->new = 0;
+
+	WP* Node_ = head;
+	WP* Node2_ = NULL;
+	while (Node2_->next != idle_) Node2_ = Node_->next;
+
+	if (wp == head) head = wp->next;
+	else while (Node_->next != wp) {
+		Node_ = Node_->next;
 		Node_->next = wp->next;
 	}
-	wp->flag = false;
-	wp->next = idle_;
-	idle_ = wp;
+		wp->next = idle_;
+		Node2_->next = wp;
+		idle_ = wp;
 }
 
 void wp_watch(char *expr, word_t res) {
