@@ -69,6 +69,8 @@ void free_wp(WP *wp) {
 	if (wp->next == idle_) {
 		if (wp == head) {
 			head = NULL;
+		} else {
+			head = head->next;
 		}  
 	} else {
 		head = head->next;
