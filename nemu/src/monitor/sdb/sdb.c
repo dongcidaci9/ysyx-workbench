@@ -176,7 +176,7 @@ static int cmd_p(char *args) {
 	if (!success) {
 		printf("Invalid expression.\n");
 	} else {
-		printf("%u\n", res);
+		printf("%d\n", res);
 	}
 	return 0;
 }
