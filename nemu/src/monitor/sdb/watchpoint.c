@@ -54,33 +54,34 @@ WP* new_wp() {
 }
 
 void free_wp(WP *wp) {
+    memset(wp->expr, '\0', sizeof(wp->expr));
+    wp->new = 0;
+    wp->old = 0;
 
-	WP *Node2_ = head;
-	if (!head) printf("Watchpoints are empty\n"); 
-	else while (Node2_->next != idle_) Node2_ = Node2_->next;
-	memset(wp->expr, '\0', sizeof(wp->expr));	
-	wp->old = 0;
-	wp->new = 0;
+    WP *Node2_ = NULL;
+    while (idle_ != NULL && Node2_->next != idle_) {
+      Node2_ = Node2_->next;
+    }
 
-	WP *Node1_ = head;
-	if (wp != head) while (Node1_->next != wp) Node1_ = Node1_->next;
+    // 将节点插入到空闲链表
+    wp->next = idle_;
+    idle_ = wp;
 
-	if (wp->next == idle_) {
-		if (wp == head) {
-			head = NULL;
-		} else {
-			head = head->next;
-		}  
-	} else {
-		head = head->next;
-		wp->next = idle_;
-		Node2_->next = wp;
-		if (wp != head) {
-			Node1_->next = wp->next;	
-		}
-	}
-	idle_ = wp;
-	wp_update();
+    // 从占用链表中移除节点
+    if (wp == head) {
+        head = wp->next;
+    } else {
+        WP *Node1_ = head;
+        while (Node1_->next != wp) {
+            Node1_ = Node1_->next;
+        }
+        Node1_->next = wp->next;
+    }
+
+    // 更新空闲链表的前一个节点，确保它指向 wp
+    if (Node2_ != NULL) {
+        Node2_->next = wp;
+    }
 }
 
 void wp_watch(char *expr, word_t res) {
