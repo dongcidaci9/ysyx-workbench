@@ -60,14 +60,7 @@ void free_wp(WP *wp) {
   wp->old = 0;
 
 	if (wp->next == idle_) {
-		printf("aaa\n");
-		if (wp == head) {
-			head = NULL;
-			printf("bbb\n");
-		} else {
-			head = head->next;
-			printf("ccc\n");
-		}
+		if (wp == head) head = NULL;
 	} else {
 			WP *Node2_ = head;
 			while (Node2_->next != idle_) Node2_ = Node2_->next;
