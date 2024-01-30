@@ -58,30 +58,25 @@ void free_wp(WP *wp) {
     wp->new = 0;
     wp->old = 0;
 
-    WP *Node2_ = NULL;
-    while (idle_ != NULL && Node2_->next != idle_) {
-      Node2_ = Node2_->next;
-    }
-
-    // 将节点插入到空闲链表
+		if (wp->next == idle_) {
+			if (wp == head) head = NULL;
+			else head = head->next;
+		} else {
+			if (wp == head) {
+				head = head->next;
+			} else {
+				WP *Node2_ = head;
+				while (Node2_->next != idle_) Node2_ = Node2_->next;
+				WP *Node1_ = head;
+				while (Node1_->next != wp) Node1_ = Node1_->next;
+				Node1_->next = wp->next;
+				Node2_->next = wp;
+			}
+		}
     wp->next = idle_;
     idle_ = wp;
 
-    // 从占用链表中移除节点
-    if (wp == head) {
-        head = wp->next;
-    } else {
-        WP *Node1_ = head;
-        while (Node1_->next != wp) {
-            Node1_ = Node1_->next;
-        }
-        Node1_->next = wp->next;
-    }
-
-    // 更新空闲链表的前一个节点，确保它指向 wp
-    if (Node2_ != NULL) {
-        Node2_->next = wp;
-    }
+		wp_update();
 }
 
 void wp_watch(char *expr, word_t res) {
