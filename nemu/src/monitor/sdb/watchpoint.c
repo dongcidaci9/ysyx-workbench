@@ -72,10 +72,10 @@ void free_wp(WP *wp) {
 				Node1_->next = wp->next;
 			}
 			Node2_->next = wp;
+				wp->next = idle_;
 		}
-    wp->next = idle_;
-    idle_ = wp;
 
+    idle_ = wp;
 		wp_update();
 }
 
