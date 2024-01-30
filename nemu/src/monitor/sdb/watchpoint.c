@@ -60,8 +60,11 @@ void free_wp(WP *wp) {
   wp->old = 0;
 
 	if (wp->next == idle_) {
-		if (wp == head) head = NULL;
-		else head = head->next;
+		if (wp == head) {
+			head = NULL;
+		} else {
+			head = head->next;
+		}
 	} else {
 			WP *Node2_ = head;
 			while (Node2_->next != idle_) Node2_ = Node2_->next;
@@ -73,8 +76,8 @@ void free_wp(WP *wp) {
 			Node1_->next = wp->next;
 		}
 			Node2_->next = wp;
-			wp->next = idle_;
 	}
+	wp->next = idle_;
 	idle_ = wp;
 	wp_update();
 }
