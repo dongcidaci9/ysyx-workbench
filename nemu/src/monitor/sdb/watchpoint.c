@@ -31,7 +31,8 @@ void init_wp_pool() {
   idle_ = wp_pool; // pointor "idle_" point towards wp_pool 
 											 // eg. = wp_pool + 0, = &wp_pool[0]
 }
-
+/*
+ * not finished
 void wp_update() {
 	WP *Node_ = NULL;
 	if (head) Node_ = head;
@@ -43,6 +44,7 @@ void wp_update() {
 		}
 	}
 } 
+*/
 
 /* TODO: Implement the functionality of watchpoint */
 WP* new_wp() {
@@ -75,7 +77,6 @@ void free_wp(WP *wp) {
 	}
 	wp->next = idle_;
 	idle_ = wp;
-	wp_update();
 }
 
 void wp_watch(char *expr, word_t res) {
