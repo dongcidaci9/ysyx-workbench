@@ -13,6 +13,11 @@
 # See the Mulan PSL v2 for more details.
 #**************************************************************************************/
 
+SRC_DIR = .
+
+count:
+	find $(SRC_DIR) -type f \( -name "*.c" -o -name "*.h" \) -exec cat {} + | grep -v '^$$' | wc -l
+	
 # Sanity check
 ifeq ($(wildcard $(NEMU_HOME)/src/nemu-main.c),)
   $(error NEMU_HOME=$(NEMU_HOME) is not a NEMU repo)
