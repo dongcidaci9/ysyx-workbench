@@ -27,7 +27,8 @@ enum {
 	TK_NUM, TK_REG,
 	TK_EQ, TK_NEQ,
 	TK_NEG, TK_POS,
-	TK_OR, TK_AND, 
+	TK_DEREF,
+	TK_OR, TK_AND 
 
   /* TODO: Add more token types */
 
@@ -45,7 +46,8 @@ static struct rule {
 	{" +", TK_NOTYPE},										
 	{"(0x)?[0-9,a-f]+", TK_NUM},
 	{"[$rsgta]+[0-9,a-z]+", TK_REG},
-	{"\\+", '+'},	{"\\-", '-'},	{"\\*", '*'},	{"\\/", '/'},													
+	{"\\+", '+'},	{"\\-", '-'},	{"\\*", '*'},	{"\\/", '/'},
+
 	{"\\(", '('},	{"\\)", ')'},
 
 	{"==", TK_EQ}, {"!=", TK_NEQ},											
@@ -129,11 +131,12 @@ static bool make_token(char *e) {
 						strncpy(tokens[nr_token].str, substr_start, substr_len);
 						tokens[nr_token].str[substr_len] = '\0';
 						break;
-					case '-': case '+':
+					case '-': case '+': case '*':
 						if (nr_token == 0 || !CHECK_TYPES(tokens[nr_token - 1].type, bibound_types)) {
 							switch (rules[i].token_type) {
 								case '-': tokens[nr_token].type = TK_NEG; break;
 								case '+': tokens[nr_token].type = TK_POS; break;
+								case '*': tokens[nr_token].type = TK_DEREF; break;
 							}
 						}
 				}
@@ -180,7 +183,7 @@ int find_op(int p, int q) {
 		} else {
 			int tmp = 0;
 			switch (tokens[i].type) {
-				case TK_NEG : case TK_POS: tmp = 1; break;
+				case TK_NEG : case TK_POS: case TK_DEREF: tmp = 1; break;
 				case '*': case '/': tmp = 2; break;
 				case '+': case '-': tmp = 3; break;
 				case TK_EQ: case TK_NEQ: tmp = 4; break;
@@ -196,7 +199,7 @@ int find_op(int p, int q) {
 	return ret;
 }
 
-// Handle single operand:
+// Handle single token(operand):
 static word_t operand(int i, bool *success) {
 	char *endptr;
 	switch (tokens[i].type) {
@@ -239,6 +242,7 @@ static word_t calc2(int operator, word_t val, bool *success) {
     switch (operator) {
 			case TK_NEG: return -val; 
 			case TK_POS: return val;
+			case TK_DEREF : return (uintptr_t)&val;
 			default: assert(0);
 		}
 		return 0;
