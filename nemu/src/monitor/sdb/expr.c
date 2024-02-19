@@ -47,7 +47,7 @@ static struct rule {
 	{" +", TK_NOTYPE},										
 	{"(0x)?[0-9,a-f]+", TK_NUM},
 	{"[$rsgta]+[0-9,a-z]+", TK_REG},
-	{"xxx", TK_PC},
+	{"pc", TK_PC},
 	{"\\+", '+'},	{"\\-", '-'},	{"\\*", '*'},	{"\\/", '/'},
 
 	{"\\(", '('},	{"\\)", ')'},
@@ -129,7 +129,7 @@ static bool make_token(char *e) {
 				tokens[nr_token].type = rules[i].token_type;
 
 				switch (rules[i].token_type) {
-					case TK_NUM: case TK_REG:
+					case TK_NUM: case TK_REG: case TK_PC:
 						strncpy(tokens[nr_token].str, substr_start, substr_len);
 						tokens[nr_token].str[substr_len] = '\0';
 						break;
@@ -244,8 +244,7 @@ static word_t calc2(int operator, word_t val, bool *success) {
     switch (operator) {
 			case TK_NEG: return -val; 
 			case TK_POS: return val;
-			case TK_DEREF : if (val == 999) return 999;
-											else return (uintptr_t)&val;
+			case TK_DEREF : return (uintptr_t)&val;
 			default: assert(0);
 		}
 		return 0;
