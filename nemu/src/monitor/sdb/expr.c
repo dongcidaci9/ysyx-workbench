@@ -25,6 +25,7 @@
 enum {
   TK_NOTYPE = 256,
 	TK_NUM, TK_REG,
+	TK_PC,
 	TK_EQ, TK_NEQ,
 	TK_NEG, TK_POS,
 	TK_DEREF,
@@ -46,6 +47,7 @@ static struct rule {
 	{" +", TK_NOTYPE},										
 	{"(0x)?[0-9,a-f]+", TK_NUM},
 	{"[$rsgta]+[0-9,a-z]+", TK_REG},
+	{"pc", TK_PC},
 	{"\\+", '+'},	{"\\-", '-'},	{"\\*", '*'},	{"\\/", '/'},
 
 	{"\\(", '('},	{"\\)", ')'},
@@ -242,7 +244,7 @@ static word_t calc2(int operator, word_t val, bool *success) {
     switch (operator) {
 			case TK_NEG: return -val; 
 			case TK_POS: return val;
-			case TK_DEREF : return (uintptr_t)&val;
+			case TK_DEREF : return (val == TK_PC ? nemu_state.halt_pc: (uintptr_t)&val);
 			default: assert(0);
 		}
 		return 0;
