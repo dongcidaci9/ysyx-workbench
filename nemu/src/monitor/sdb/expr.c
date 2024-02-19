@@ -244,7 +244,7 @@ static word_t calc2(int operator, word_t val, bool *success) {
     switch (operator) {
 			case TK_NEG: return -val; 
 			case TK_POS: return val;
-			case TK_DEREF : return (val == TK_PC ? nemu_state.halt_pc: (uintptr_t)&val);
+			case TK_DEREF : return (val == TK_PC ? 100: (uintptr_t)&val);
 			default: assert(0);
 		}
 		return 0;
