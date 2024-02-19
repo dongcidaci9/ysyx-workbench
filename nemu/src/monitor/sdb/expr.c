@@ -227,7 +227,7 @@ static word_t calc1(word_t val1, int operator, word_t val2, bool *success) {
     case '+': return val1 + val2;
     case '-': return val1 - val2;
     case '*': return val1 * val2;
-    case '/': 
+		case '/': 
 			if (val2 == 0) {
 				*success = false;
 				return 0;
@@ -244,7 +244,7 @@ static word_t calc2(int operator, word_t val, bool *success) {
     switch (operator) {
 			case TK_NEG: return -val; 
 			case TK_POS: return val;
-			case TK_DEREF : if (val == TK_REG) return 999;
+			case TK_DEREF : if (val == 999) return 999;
 											else return (uintptr_t)&val;
 			default: assert(0);
 		}
