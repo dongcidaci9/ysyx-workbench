@@ -244,7 +244,7 @@ static word_t calc2(int operator, word_t val, bool *success) {
     switch (operator) {
 			case TK_NEG: return -val; 
 			case TK_POS: return val;
-			case TK_DEREF : if (val == TK_PC) return 999;
+			case TK_DEREF : if (val == TK_PC) return val;
 											else return (uintptr_t)&val;
 			default: assert(0);
 		}
