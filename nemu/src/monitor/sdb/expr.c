@@ -209,6 +209,8 @@ static word_t operand(int i, bool *success) {
 			return strtol(tokens[i].str, &endptr, 0); break;
 		case TK_REG:
 			return isa_reg_str2val(tokens[i].str, success); break;
+		case TK_PC:
+			return nemu_state.halt_pc; break;
 		default:
 			*success = false;
 			return 0;
