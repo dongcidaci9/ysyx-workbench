@@ -22,7 +22,7 @@ const char *regs[] = {
 void isa_reg_display() {
 	int i;
 	for (i = 0; i < REG_NUM; i ++) {
-		printf("Reg - %s: %d - %#-20x\n", regs[i], cpu.gpr[i], cpu.gpr[i]);
+		printf("Reg - %s: %ld - %#-20lx\n", regs[i], cpu.gpr[i], cpu.gpr[i]);
 	}
 }
 

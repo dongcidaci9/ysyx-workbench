@@ -104,7 +104,7 @@ static int cmd_x(char *args) {
 
 	int i = 0;
 	for (i = 0; i < len ; i ++) {
-		printf("%#x\n", paddr_read(addr, 4));
+		printf("%#lx\n", paddr_read(addr, 4));
 		addr = addr + 4;
 	}
 	return 0;
@@ -149,7 +149,7 @@ static int cmd_p(char *args) {
 	if (!success) {
 		printf("Invalid expression.\n");
 	} else {
-		printf("%d - %#-20x\n", res, res);
+		printf("%ld - %#-20lx\n", res, res);
 	}
 	return 0;
 }
