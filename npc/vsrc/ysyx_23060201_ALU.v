@@ -19,7 +19,7 @@ module ysyx_23060201_ALU(
 	assign res_and = a & b;
 	assign res_or = a | b;
 
-	Muxkey #(4, 3, 32) alu(res, ctrl, {
+	MuxKey #(4, 3, 32) alu(res, ctrl, {
 		3'b000, res_addsub,
 		3'b001, res_addsub,
 		3'b010, res_and,
