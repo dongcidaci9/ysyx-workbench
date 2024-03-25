@@ -1,0 +1,230 @@
+// Verilated -*- C++ -*-
+// DESCRIPTION: Verilator output: Design implementation internals
+// See VMuxKeyInternal.h for the primary calling header
+
+#include "verilated.h"
+#include "verilated_dpi.h"
+
+#include "VMuxKeyInternal___024root.h"
+
+void VMuxKeyInternal___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP();
+
+VL_INLINE_OPT void VMuxKeyInternal___024root___ico_sequent__TOP__0(VMuxKeyInternal___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___ico_sequent__TOP__0\n"); );
+    // Body
+    if ((0x73U == ((0x380U & (vlSelf->inst_in >> 7U)) 
+                   | (0x7fU & vlSelf->inst_in)))) {
+        VMuxKeyInternal___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP();
+    }
+    vlSelf->inst_out = vlSelf->inst_in;
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit 
+        = ((7U & (vlSelf->inst_in >> 0xeU)) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+           [0U]);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit 
+        = ((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit) 
+           | ((7U & (vlSelf->inst_in >> 0xeU)) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+              [1U]));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit 
+        = ((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit) 
+           | ((7U & (vlSelf->inst_in >> 0xeU)) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+              [2U]));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit 
+        = ((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit) 
+           | ((7U & (vlSelf->inst_in >> 0xeU)) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+              [3U]));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext 
+        = ((0x7ffff800U & ((- (IData)((vlSelf->inst_in 
+                                       >> 0x1fU))) 
+                           << 0xbU)) | (0x7ffU & vlSelf->inst_in));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[0U] 
+        = (0x300000000ULL | (QData)((IData)(((IData)(vlSelf->inst_rd_val_in) 
+                                             | vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext))));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[1U] 
+        = (0x200000000ULL | (QData)((IData)(((IData)(vlSelf->inst_rd_val_in) 
+                                             & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext))));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[0U] 
+        = ((IData)(vlSelf->inst_rd_val_in) | vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[1U] 
+        = ((IData)(vlSelf->inst_rd_val_in) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2 
+        = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext 
+           ^ (- (IData)((1U & (vlSelf->inst_in >> 0xeU)))));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
+        = ((IData)(vlSelf->inst_rd_val_in) + (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2 
+                                              + (1U 
+                                                 & (vlSelf->inst_in 
+                                                    >> 0xeU))));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[2U] 
+        = ((IData)(vlSelf->inst_rd_val_in) + (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2 
+                                              + (1U 
+                                                 & (vlSelf->inst_in 
+                                                    >> 0xeU))));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[3U] 
+        = ((IData)(vlSelf->inst_rd_val_in) + (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2 
+                                              + (1U 
+                                                 & (vlSelf->inst_in 
+                                                    >> 0xeU))));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[2U] 
+        = (0x100000000ULL | (QData)((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub)));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[3U] 
+        = (QData)((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out 
+        = ((- (IData)(((7U & (vlSelf->inst_in >> 0xeU)) 
+                       == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+                       [0U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list
+           [0U]);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out 
+        = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out 
+           | ((- (IData)(((7U & (vlSelf->inst_in >> 0xeU)) 
+                          == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+                          [1U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list
+              [1U]));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out 
+        = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out 
+           | ((- (IData)(((7U & (vlSelf->inst_in >> 0xeU)) 
+                          == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+                          [2U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list
+              [2U]));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out 
+        = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out 
+           | ((- (IData)(((7U & (vlSelf->inst_in >> 0xeU)) 
+                          == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
+                          [3U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list
+              [3U]));
+    vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_EXU__inst_rd_val_out 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out;
+    vlSelf->inst_rd_val_out = (1U & vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_EXU__inst_rd_val_out);
+}
+
+void VMuxKeyInternal___024root___eval_ico(VMuxKeyInternal___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___eval_ico\n"); );
+    // Body
+    if (vlSelf->__VicoTriggered.at(0U)) {
+        VMuxKeyInternal___024root___ico_sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[1U] = 1U;
+    }
+}
+
+void VMuxKeyInternal___024root___eval_act(VMuxKeyInternal___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___eval_act\n"); );
+}
+
+VL_INLINE_OPT void VMuxKeyInternal___024root___nba_sequent__TOP__0(VMuxKeyInternal___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___nba_sequent__TOP__0\n"); );
+    // Body
+    vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc 
+        = ((IData)(vlSelf->rst) ? 0x80000000U : (IData)(vlSelf->pc));
+    vlSelf->pc = (1U & vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc);
+}
+
+void VMuxKeyInternal___024root___eval_nba(VMuxKeyInternal___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___eval_nba\n"); );
+    // Body
+    if (vlSelf->__VnbaTriggered.at(0U)) {
+        VMuxKeyInternal___024root___nba_sequent__TOP__0(vlSelf);
+    }
+}
+
+void VMuxKeyInternal___024root___eval_triggers__ico(VMuxKeyInternal___024root* vlSelf);
+#ifdef VL_DEBUG
+VL_ATTR_COLD void VMuxKeyInternal___024root___dump_triggers__ico(VMuxKeyInternal___024root* vlSelf);
+#endif  // VL_DEBUG
+void VMuxKeyInternal___024root___eval_triggers__act(VMuxKeyInternal___024root* vlSelf);
+#ifdef VL_DEBUG
+VL_ATTR_COLD void VMuxKeyInternal___024root___dump_triggers__act(VMuxKeyInternal___024root* vlSelf);
+#endif  // VL_DEBUG
+#ifdef VL_DEBUG
+VL_ATTR_COLD void VMuxKeyInternal___024root___dump_triggers__nba(VMuxKeyInternal___024root* vlSelf);
+#endif  // VL_DEBUG
+
+void VMuxKeyInternal___024root___eval(VMuxKeyInternal___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___eval\n"); );
+    // Init
+    CData/*0:0*/ __VicoContinue;
+    VlTriggerVec<1> __VpreTriggered;
+    IData/*31:0*/ __VnbaIterCount;
+    CData/*0:0*/ __VnbaContinue;
+    // Body
+    vlSelf->__VicoIterCount = 0U;
+    __VicoContinue = 1U;
+    while (__VicoContinue) {
+        __VicoContinue = 0U;
+        VMuxKeyInternal___024root___eval_triggers__ico(vlSelf);
+        if (vlSelf->__VicoTriggered.any()) {
+            __VicoContinue = 1U;
+            if (VL_UNLIKELY((0x64U < vlSelf->__VicoIterCount))) {
+#ifdef VL_DEBUG
+                VMuxKeyInternal___024root___dump_triggers__ico(vlSelf);
+#endif
+                VL_FATAL_MT("vsrc/ysyx_23060201_TOP.v", 1, "", "Input combinational region did not converge.");
+            }
+            vlSelf->__VicoIterCount = ((IData)(1U) 
+                                       + vlSelf->__VicoIterCount);
+            VMuxKeyInternal___024root___eval_ico(vlSelf);
+        }
+    }
+    __VnbaIterCount = 0U;
+    __VnbaContinue = 1U;
+    while (__VnbaContinue) {
+        __VnbaContinue = 0U;
+        vlSelf->__VnbaTriggered.clear();
+        vlSelf->__VactIterCount = 0U;
+        vlSelf->__VactContinue = 1U;
+        while (vlSelf->__VactContinue) {
+            vlSelf->__VactContinue = 0U;
+            VMuxKeyInternal___024root___eval_triggers__act(vlSelf);
+            if (vlSelf->__VactTriggered.any()) {
+                vlSelf->__VactContinue = 1U;
+                if (VL_UNLIKELY((0x64U < vlSelf->__VactIterCount))) {
+#ifdef VL_DEBUG
+                    VMuxKeyInternal___024root___dump_triggers__act(vlSelf);
+#endif
+                    VL_FATAL_MT("vsrc/ysyx_23060201_TOP.v", 1, "", "Active region did not converge.");
+                }
+                vlSelf->__VactIterCount = ((IData)(1U) 
+                                           + vlSelf->__VactIterCount);
+                __VpreTriggered.andNot(vlSelf->__VactTriggered, vlSelf->__VnbaTriggered);
+                vlSelf->__VnbaTriggered.set(vlSelf->__VactTriggered);
+                VMuxKeyInternal___024root___eval_act(vlSelf);
+            }
+        }
+        if (vlSelf->__VnbaTriggered.any()) {
+            __VnbaContinue = 1U;
+            if (VL_UNLIKELY((0x64U < __VnbaIterCount))) {
+#ifdef VL_DEBUG
+                VMuxKeyInternal___024root___dump_triggers__nba(vlSelf);
+#endif
+                VL_FATAL_MT("vsrc/ysyx_23060201_TOP.v", 1, "", "NBA region did not converge.");
+            }
+            __VnbaIterCount = ((IData)(1U) + __VnbaIterCount);
+            VMuxKeyInternal___024root___eval_nba(vlSelf);
+        }
+    }
+}
+
+#ifdef VL_DEBUG
+void VMuxKeyInternal___024root___eval_debug_assertions(VMuxKeyInternal___024root* vlSelf) {
+    if (false && vlSelf) {}  // Prevent unused
+    VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
+    VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___eval_debug_assertions\n"); );
+    // Body
+    if (VL_UNLIKELY((vlSelf->clk & 0xfeU))) {
+        Verilated::overWidthError("clk");}
+    if (VL_UNLIKELY((vlSelf->rst & 0xfeU))) {
+        Verilated::overWidthError("rst");}
+    if (VL_UNLIKELY((vlSelf->inst_rd_val_in & 0xfeU))) {
+        Verilated::overWidthError("inst_rd_val_in");}
+}
+#endif  // VL_DEBUG
