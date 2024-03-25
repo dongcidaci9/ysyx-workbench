@@ -13,7 +13,11 @@ module ysyx_23060201_EXU(
 		.a(inst_rd_val_in),
 		.b(inst_imm),
 		.ctrl(ctrl),
-		.res(inst_rd_val_out)
+		.res(inst_rd_val_out),
+		.nf()),
+		.zf()),
+		.cf()),
+		.vf())
 	);
 
 endmodule
