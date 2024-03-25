@@ -3,10 +3,7 @@ module ysyx_23060201_ALU(
 	input [31:0] b,
 	input [2:0] ctrl,
 	output [31:0] res,
-	output nf,
-	output zf,
-	output cf,
-	output vf // Verflow
+	output nf, zf, cf, vf
 );
 
 	wire [31:0] res_addsub;
