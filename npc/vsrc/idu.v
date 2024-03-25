@@ -25,6 +25,7 @@ module ysyx_23060201_IDU(
 	assign inst_rs1 = rs1;
 	assign inst_rs2 = rs2;
 	assign inst_rd = rd;
+
 	// sign extension
 	wire [31:0] imm_ext;
 	assign imm_ext = {{20{imm[11]}}, inst[10:0]};
@@ -39,7 +40,4 @@ module ysyx_23060201_IDU(
 	end
 	
 endmodule
-
-	
-
 
