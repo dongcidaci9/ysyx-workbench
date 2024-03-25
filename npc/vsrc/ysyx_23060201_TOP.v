@@ -1,7 +1,7 @@
 module ysyx_23060201_TOP(
 	input clk,
 	input rst,
-	input inst_rd_val_in,
+	input inst_rd_val_sfin,
 	input [31:0] inst_in,
 	output [31:0] inst_out,
 	output inst_rd_val_out,
@@ -33,7 +33,7 @@ module ysyx_23060201_TOP(
 		.inst_type(inst_type), 
 		.inst_rs1(inst_rs1), .inst_rs2(inst_rs2), .inst_rd(inst_rd),
 		.inst_imm(inst_imm),
-		.inst_rd_val_in(inst_rd_val_in),
+		.inst_rd_val_sfin(inst_rd_val_sfin),
 		.inst_rd_val_out(inst_rd_val_out)
 	);
 
