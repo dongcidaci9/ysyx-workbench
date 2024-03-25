@@ -14,10 +14,10 @@ module ysyx_23060201_EXU(
 		.b(inst_imm),
 		.ctrl(ctrl),
 		.res(inst_rd_val_out),
-		.nf()),
-		.zf()),
-		.cf()),
-		.vf())
+		.nf(),
+		.zf(),
+		.cf(),
+		.vf()
 	);
 
 endmodule
