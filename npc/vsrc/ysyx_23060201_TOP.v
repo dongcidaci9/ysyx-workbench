@@ -3,7 +3,7 @@ module ysyx_23060201_TOP(
 	input rst,
 	input [31:0] inst,
 	output [31:0] inst_rd_val_res,
-	output pc
+	output [31:0] pc
 );// pc -> ifu -> idu -> exu
 	
 	// pc
