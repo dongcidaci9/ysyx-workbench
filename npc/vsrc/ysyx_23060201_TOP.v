@@ -14,13 +14,15 @@ module ysyx_23060201_TOP(
 	);
 
 	// idu
-	wire [9:0] inst_type;
+	wire [6:0] inst_op;
+	wire [2:0] inst_func3;
 	wire [4:0] inst_rs1, inst_rd;
 	wire [31:0] inst_imm;
 
 	ysyx_23060201_IDU ysyx_23060201_IDU(
 		.inst(inst),
-		.inst_type(inst_type),
+		.inst_op(inst_type),
+		.inst_func3(inst_func3),
 		.inst_rs1(inst_rs1),
 		.inst_rd(inst_rd),
 		.inst_imm(inst_imm)
@@ -29,7 +31,8 @@ module ysyx_23060201_TOP(
 	// exu
 	ysyx_23060201_EXU ysyx_23060201_EXU(
 		.rst(rst),
-		.inst_type(inst_type),
+		.inst_op(inst_op),
+		.inst_func3(inst_func3),
 		.inst_rs1(inst_rs1),
 		.inst_rd(inst_rd),
 		.inst_imm(inst_imm),
@@ -38,6 +41,3 @@ module ysyx_23060201_TOP(
 
 endmodule
 	
-
-
-
