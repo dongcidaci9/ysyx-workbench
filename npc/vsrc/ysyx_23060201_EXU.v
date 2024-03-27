@@ -1,6 +1,7 @@
 module ysyx_23060201_EXU(
 	input rst,
-	input [9:0] inst_type,
+	input [6:0] inst_op,
+	input [2:0] inst_func3,
 	input [4:0] inst_rs1, inst_rd,
 	input [31:0] inst_imm,
 	output [31:0] inst_rd_val_res
@@ -19,13 +20,10 @@ module ysyx_23060201_EXU(
 		.inst_rd_val_in(inst_rd_val_alu_out)
 	);
 
-	wire [2:0] ctrl;
-	assign ctrl = inst_type[9:7];
-
 	ysyx_23060201_ALU ysyx_23060201_ALU(
 		.a(inst_rs1_val_alu_in),
 		.b(inst_imm),
-		.ctrl(ctrl),
+		.ctrl(inst_func3),
 		.res(inst_rd_val_alu_out),
 		.nf(),
 		.zf(),
@@ -34,8 +32,5 @@ module ysyx_23060201_EXU(
 	);
 	
 	assign inst_rd_val_res = inst_rd_val_alu_out;
-
-	// Not used: GND
-	assign inst_type[6:0] = 7'b0;
 
 endmodule
