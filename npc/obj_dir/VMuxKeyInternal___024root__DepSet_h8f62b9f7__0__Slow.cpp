@@ -132,7 +132,7 @@ VL_ATTR_COLD void VMuxKeyInternal___024root___stl_sequent__TOP__0(VMuxKeyInterna
               [3U]));
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext 
         = (((- (IData)((vlSelf->inst >> 0x1fU))) << 0xcU) 
-           | (0xfffU & vlSelf->inst));
+           | (vlSelf->inst >> 0x14U));
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT__inst_reg_val_out[0U] 
         = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT____Vcellout__x0____pinNumber4;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT__inst_reg_val_out[1U] 

@@ -48,7 +48,7 @@ VL_INLINE_OPT void VMuxKeyInternal___024root___ico_sequent__TOP__0(VMuxKeyIntern
         [(0x1fU & (vlSelf->inst >> 0xfU))];
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext 
         = (((- (IData)((vlSelf->inst >> 0x1fU))) << 0xcU) 
-           | (0xfffU & vlSelf->inst));
+           | (vlSelf->inst >> 0x14U));
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[0U] 
         = (0x300000000ULL | (QData)((IData)((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
                                              | vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext))));
