@@ -21,7 +21,7 @@ module ysyx_23060201_TOP(
 
 	ysyx_23060201_IDU ysyx_23060201_IDU(
 		.inst(inst),
-		.inst_op(inst_type),
+		.inst_op(inst_op),
 		.inst_func3(inst_func3),
 		.inst_rs1(inst_rs1),
 		.inst_rd(inst_rd),
