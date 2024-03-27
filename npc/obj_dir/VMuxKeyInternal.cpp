@@ -14,9 +14,9 @@ VMuxKeyInternal::VMuxKeyInternal(VerilatedContext* _vcontextp__, const char* _vc
     , vlSymsp{new VMuxKeyInternal__Syms(contextp(), _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
-    , pc{vlSymsp->TOP.pc}
     , inst{vlSymsp->TOP.inst}
     , inst_rd_val_res{vlSymsp->TOP.inst_rd_val_res}
+    , pc{vlSymsp->TOP.pc}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context

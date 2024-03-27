@@ -103,9 +103,8 @@ VL_ATTR_COLD void VMuxKeyInternal___024root___stl_sequent__TOP__0(VMuxKeyInterna
                    | (0x7fU & vlSelf->inst)))) {
         VMuxKeyInternal___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP();
     }
-    vlSelf->pc = (1U & vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc 
-        = ((IData)(4U) + vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc);
+        = ((IData)(4U) + vlSelf->pc);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT__sel 
         = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT__sel 
            | (0xffffffffULL & ((IData)(1U) << (0x1fU 
@@ -330,8 +329,7 @@ VL_ATTR_COLD void VMuxKeyInternal___024root___ctor_var_reset(VMuxKeyInternal___0
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->inst = VL_RAND_RESET_I(32);
     vlSelf->inst_rd_val_res = VL_RAND_RESET_I(32);
-    vlSelf->pc = VL_RAND_RESET_I(1);
-    vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc = VL_RAND_RESET_I(32);
+    vlSelf->pc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in = VL_RAND_RESET_I(32);

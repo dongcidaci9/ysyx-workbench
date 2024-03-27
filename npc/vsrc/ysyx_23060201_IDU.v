@@ -26,7 +26,7 @@ module ysyx_23060201_IDU(
 
 	// sign extension
 	wire [31:0] imm_ext;
-	assign imm_ext = {{20{imm[11]}}, inst[11:0]};
+	assign imm_ext = {{20{imm[11]}}, imm[11:0]};
 	assign inst_imm = imm_ext;
 
 	// DPI-C
