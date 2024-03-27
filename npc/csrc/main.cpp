@@ -1,11 +1,42 @@
 #include <stdlib.h>
 #include <stdint.h>
 
-static Vysyx_23060201_TOP dut;
+#include "Vysyx_23060201_TOP.h"
+#include "verilated.h"
+#include "verilated_vcd_c.h"
+
 uint32_t *init_mem(size_t size);
 uint32_t guest_to_host(uint32_t addr);
 uint32_t pmem_read(uint32_t *memory, uint32_t vaddr);
-void single_cycle() {
+
+VerilatedContext* contextp = NULL;
+VerilatedVcdC* tfp = NULL;
+
+static Vysyx_23060201_TOP top;
+
+static void step_and_dump_wave(){
+	top->eval();
+	contextp->timeInc(1);
+	tfp->dump(contextp->time());
+}
+
+// Initialize
+static void sim_init(){
+	contextp = new VerilatedContext;
+	tfp = new VerilatedVcdC;
+	top = new Vysyx_23060201_TOP;
+	contextp->traceEverOn(true);
+	top->trace(tfp, 0);
+	tfp->open("wave.vcd");
+}
+
+// Exit
+static void sim_exit(){
+	step_and_dump_wave();
+	tfp->close();
+}
+
+static void single_cycle() {
 	dut.clk = 0; dut.eval();
 	dut.clk = 1; dut.eval();
 }
@@ -19,19 +50,15 @@ static void rst(int n) {
 int main() {
 	uint32_t *memory;
 	memory = init_mem(5);
-
-	Verilated::traceEverOn(true);
-	VerilatedContext *contextp = new VerilatedContext;
-	VerilatedVcdC *m_trace = new VerilatedVcdC;
-	dut.trace(m_trace, 5);
-	m_trace->open("builds/wave.vcd");
+	
+	sim_init();
 
 	rst(10);
 	for (int i=0; i<4; i++) {
 		dut.inst = pmem_read(memory, dut.pc);
 		single_cycle();
-		m_trace->dump(contextp -> time());
-		contextp -> timeInc(1);
+		step_and_dump_wave()
 	}
-	m_trace -> close();
+
+	sim_exit();
 }
