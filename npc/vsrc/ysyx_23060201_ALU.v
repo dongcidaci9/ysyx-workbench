@@ -13,7 +13,7 @@ module ysyx_23060201_ALU(
 	wire [31:0] b2;
 	assign b2 = b ^ {32{ctrl[0]}};
 	
-	assign {cf, res_addsub} = a + b2 + ctrl[0];
+	assign {cf, res_addsub} = a + b2 + {31'b0, ctrl[0]};
 	assign vf = (~(a[31] ^ b2[31] ^ ctrl[0])) & (a[31] ^ res_addsub[31]) & ctrl[1];
 
 	assign res_and = a & b;

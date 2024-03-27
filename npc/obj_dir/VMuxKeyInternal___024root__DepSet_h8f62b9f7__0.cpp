@@ -135,8 +135,10 @@ VL_INLINE_OPT void VMuxKeyInternal___024root___nba_sequent__TOP__0(VMuxKeyIntern
     VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___nba_sequent__TOP__0\n"); );
     // Body
     vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc 
-        = ((IData)(vlSelf->rst) ? 0x80000000U : (IData)(vlSelf->pc));
+        = ((IData)(vlSelf->rst) ? 0x80000000U : vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc);
     vlSelf->pc = (1U & vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc 
+        = ((IData)(4U) + vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc);
 }
 
 void VMuxKeyInternal___024root___eval_nba(VMuxKeyInternal___024root* vlSelf) {

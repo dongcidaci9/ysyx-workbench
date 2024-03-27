@@ -397,8 +397,8 @@ VL_ATTR_COLD void VMuxKeyInternal___024root__trace_init_sub__TOP__0(VMuxKeyInter
     tracep->declBit(c+129,"clk", false,-1);
     tracep->declBit(c+130,"rst", false,-1);
     tracep->declBus(c+142,"pc", false,-1, 31,0);
-    tracep->declBit(c+133,"add_in", false,-1);
-    tracep->declBit(c+133,"npc", false,-1);
+    tracep->declBus(c+142,"add_in", false,-1, 31,0);
+    tracep->declBus(c+143,"npc", false,-1, 31,0);
     tracep->pushNamePrefix("pc_reg ");
     tracep->declBus(c+146,"WIDTH", false,-1, 31,0);
     tracep->declBus(c+185,"RESET_VAL", false,-1, 31,0);
@@ -665,7 +665,7 @@ VL_ATTR_COLD void VMuxKeyInternal___024root__trace_full_sub_0(VMuxKeyInternal___
     bufp->fullCData(oldp+140,((0x7fU & vlSelf->inst)),7);
     bufp->fullSData(oldp+141,((vlSelf->inst >> 0x14U)),12);
     bufp->fullIData(oldp+142,(vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc),32);
-    bufp->fullIData(oldp+143,(vlSelf->pc),32);
+    bufp->fullIData(oldp+143,(((IData)(4U) + vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc)),32);
     bufp->fullIData(oldp+144,(4U),32);
     bufp->fullIData(oldp+145,(3U),32);
     bufp->fullIData(oldp+146,(0x20U),32);
