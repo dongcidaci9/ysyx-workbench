@@ -30,8 +30,6 @@ class VMuxKeyInternal VL_NOT_FINAL : public VerilatedModel {
     VL_IN8(&rst,0,0);
     VL_OUT8(&pc,0,0);
     VL_IN(&inst,31,0);
-    VL_IN(&inst_rs1_val_sfin,31,0);
-    VL_IN(&inst_rd_val_sfin,31,0);
     VL_OUT(&inst_rd_val_res,31,0);
 
     // CELLS

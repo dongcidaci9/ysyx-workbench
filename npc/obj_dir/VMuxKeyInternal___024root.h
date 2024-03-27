@@ -20,8 +20,6 @@ class VMuxKeyInternal___024root final : public VerilatedModule {
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
     CData/*0:0*/ __VactContinue;
     VL_IN(inst,31,0);
-    VL_IN(inst_rs1_val_sfin,31,0);
-    VL_IN(inst_rd_val_sfin,31,0);
     VL_OUT(inst_rd_val_res,31,0);
     IData/*31:0*/ ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc;
     IData/*31:0*/ ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext;

@@ -13,7 +13,7 @@ module ysyx_23060201_IDU(
 
 	// inst_split_type
 	assign op = inst[6:0];
-	assign func3 = inst[12:14];
+	assign func3 = inst[14:12];
 	assign inst_type = {func3, op};
 
 	// rs1, rs2, rd, imm
@@ -26,7 +26,7 @@ module ysyx_23060201_IDU(
 
 	// sign extension
 	wire [31:0] imm_ext;
-	assign imm_ext = {{20{imm[11]}}, inst[10:0]};
+	assign imm_ext = {{20{imm[11]}}, inst[11:0]};
 	assign inst_imm = imm_ext;
 
 	// DPI-C

@@ -16,8 +16,6 @@ VMuxKeyInternal::VMuxKeyInternal(VerilatedContext* _vcontextp__, const char* _vc
     , rst{vlSymsp->TOP.rst}
     , pc{vlSymsp->TOP.pc}
     , inst{vlSymsp->TOP.inst}
-    , inst_rs1_val_sfin{vlSymsp->TOP.inst_rs1_val_sfin}
-    , inst_rd_val_sfin{vlSymsp->TOP.inst_rd_val_sfin}
     , inst_rd_val_res{vlSymsp->TOP.inst_rd_val_res}
     , rootp{&(vlSymsp->TOP)}
 {
