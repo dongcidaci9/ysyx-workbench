@@ -9,7 +9,7 @@ module ysyx_23060201_EXU(
 	// reg: sel -> fetch -> execute -> rewrite
 	
 	wire [31:0] inst_rs1_val_alu_in;
-	wire [31:0] inst_rd_val_alu_in;
+	wire [31:0] inst_rd_val_alu_out;
 
 	ysyx_23060201_REG ysyx_23060201_REG(
 		.rst(rst),

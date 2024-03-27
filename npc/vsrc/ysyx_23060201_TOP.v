@@ -15,7 +15,6 @@ module ysyx_23060201_TOP(
 	);
 
 	// idu
-	assign inst_out = inst_in;
 	wire [9:0] inst_type;
 	wire [4:0] inst_rs1, inst_rd;
 	wire [31:0] inst_imm;
@@ -23,6 +22,7 @@ module ysyx_23060201_TOP(
 	ysyx_23060201_IDU ysyx_23060201_IDU(
 		.inst(inst),
 		.inst_type(inst_type),
+		.inst_rs1(inst_rs1),
 		.inst_rd(inst_rd),
 		.inst_imm(inst_imm)
 	);
