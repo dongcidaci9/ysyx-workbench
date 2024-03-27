@@ -4,7 +4,7 @@ module ysyx_23060201_PC(
 	output [31:0] pc
 );
 
-	wire add_in, npc; // intern signal
+	wire [31:0] add_in, npc; // intern signal
 	assign add_in = pc;
 
 	assign npc = add_in  + 32'h4; // pc + 4

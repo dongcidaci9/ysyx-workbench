@@ -213,31 +213,31 @@ void VMuxKeyInternal___024root__trace_chg_sub_0(VMuxKeyInternal___024root* vlSel
     bufp->chgIData(oldp+131,(vlSelf->inst_rd_val_res),32);
     bufp->chgBit(oldp+132,(vlSelf->pc));
     bufp->chgSData(oldp+133,(((0x380U & (vlSelf->inst 
-                                         >> 7U)) | 
+                                         >> 5U)) | 
                               (0x7fU & vlSelf->inst))),10);
     bufp->chgCData(oldp+134,((0x1fU & (vlSelf->inst 
                                        >> 0xfU))),5);
     bufp->chgCData(oldp+135,((0x1fU & (vlSelf->inst 
                                        >> 7U))),5);
-    bufp->chgCData(oldp+136,((7U & (vlSelf->inst >> 0xeU))),3);
+    bufp->chgCData(oldp+136,((7U & (vlSelf->inst >> 0xcU))),3);
     bufp->chgBit(oldp+137,((1U & (IData)((1ULL & (((QData)((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in)) 
                                                    + 
                                                    ((QData)((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2)) 
                                                     + (QData)((IData)(
                                                                       (1U 
                                                                        & (vlSelf->inst 
-                                                                          >> 0xeU)))))) 
+                                                                          >> 0xcU)))))) 
                                                   >> 0x20U))))));
     bufp->chgBit(oldp+138,((1U & ((~ ((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
                                        >> 0x1fU) ^ 
                                       ((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2 
                                         >> 0x1fU) ^ 
                                        (vlSelf->inst 
-                                        >> 0xeU)))) 
+                                        >> 0xcU)))) 
                                   & (((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
                                        ^ vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub) 
                                       >> 0x1fU) & (vlSelf->inst 
-                                                   >> 0xfU))))));
+                                                   >> 0xdU))))));
     bufp->chgCData(oldp+139,((0x7fU & vlSelf->inst)),7);
     bufp->chgSData(oldp+140,((vlSelf->inst >> 0x14U)),12);
     bufp->chgIData(oldp+141,(vlSelf->ysyx_23060201_TOP__DOT____Vcellout__ysyx_23060201_PC__pc),32);
