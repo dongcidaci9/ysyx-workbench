@@ -99,8 +99,7 @@ VL_ATTR_COLD void VMuxKeyInternal___024root___stl_sequent__TOP__0(VMuxKeyInterna
     VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___stl_sequent__TOP__0\n"); );
     // Body
-    if ((0x73U == ((0x380U & (vlSelf->inst >> 5U)) 
-                   | (0x7fU & vlSelf->inst)))) {
+    if ((IData)((0x73U == (0x707fU & vlSelf->inst)))) {
         VMuxKeyInternal___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP();
     }
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc 
@@ -331,6 +330,8 @@ VL_ATTR_COLD void VMuxKeyInternal___024root___ctor_var_reset(VMuxKeyInternal___0
     vlSelf->inst_rd_val_res = VL_RAND_RESET_I(32);
     vlSelf->pc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rs1 = VL_RAND_RESET_I(5);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rd = VL_RAND_RESET_I(5);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rd_val_alu_out = VL_RAND_RESET_I(32);

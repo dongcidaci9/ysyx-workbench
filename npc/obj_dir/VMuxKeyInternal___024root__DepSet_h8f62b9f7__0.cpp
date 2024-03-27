@@ -14,8 +14,7 @@ VL_INLINE_OPT void VMuxKeyInternal___024root___ico_sequent__TOP__0(VMuxKeyIntern
     VMuxKeyInternal__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    VMuxKeyInternal___024root___ico_sequent__TOP__0\n"); );
     // Body
-    if ((0x73U == ((0x380U & (vlSelf->inst >> 5U)) 
-                   | (0x7fU & vlSelf->inst)))) {
+    if ((IData)((0x73U == (0x707fU & vlSelf->inst)))) {
         VMuxKeyInternal___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP();
     }
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT__sel 

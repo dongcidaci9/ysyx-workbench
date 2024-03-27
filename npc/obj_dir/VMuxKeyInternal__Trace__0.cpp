@@ -212,14 +212,12 @@ void VMuxKeyInternal___024root__trace_chg_sub_0(VMuxKeyInternal___024root* vlSel
     bufp->chgIData(oldp+130,(vlSelf->inst),32);
     bufp->chgIData(oldp+131,(vlSelf->inst_rd_val_res),32);
     bufp->chgIData(oldp+132,(vlSelf->pc),32);
-    bufp->chgSData(oldp+133,(((0x380U & (vlSelf->inst 
-                                         >> 5U)) | 
-                              (0x7fU & vlSelf->inst))),10);
-    bufp->chgCData(oldp+134,((0x1fU & (vlSelf->inst 
-                                       >> 0xfU))),5);
+    bufp->chgCData(oldp+133,((0x7fU & vlSelf->inst)),7);
+    bufp->chgCData(oldp+134,((7U & (vlSelf->inst >> 0xcU))),3);
     bufp->chgCData(oldp+135,((0x1fU & (vlSelf->inst 
+                                       >> 0xfU))),5);
+    bufp->chgCData(oldp+136,((0x1fU & (vlSelf->inst 
                                        >> 7U))),5);
-    bufp->chgCData(oldp+136,((7U & (vlSelf->inst >> 0xcU))),3);
     bufp->chgBit(oldp+137,((1U & (IData)((1ULL & (((QData)((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in)) 
                                                    + 
                                                    ((QData)((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2)) 
@@ -238,9 +236,8 @@ void VMuxKeyInternal___024root__trace_chg_sub_0(VMuxKeyInternal___024root* vlSel
                                        ^ vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub) 
                                       >> 0x1fU) & (vlSelf->inst 
                                                    >> 0xdU))))));
-    bufp->chgCData(oldp+139,((0x7fU & vlSelf->inst)),7);
-    bufp->chgSData(oldp+140,((vlSelf->inst >> 0x14U)),12);
-    bufp->chgIData(oldp+141,(((IData)(4U) + vlSelf->pc)),32);
+    bufp->chgSData(oldp+139,((vlSelf->inst >> 0x14U)),12);
+    bufp->chgIData(oldp+140,(((IData)(4U) + vlSelf->pc)),32);
 }
 
 void VMuxKeyInternal___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {

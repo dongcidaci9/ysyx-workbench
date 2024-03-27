@@ -6,11 +6,10 @@ module ysyx_23060201_IDU(
 	output [31:0] inst_imm // RV64
 ); // inst -> type_judge -> inst_split_type(op, func3) -> rs1, rs2, rd, imm
 
-	// type_judge // addi
-	wire [4:0] rs1, rd;
-	wire [11:0] imm;
 
 	// inst_split_type
+	wire [11:0] imm;
+
 	assign inst_op = inst[6:0];
 	assign inst_func3 = inst[14:12];
 	assign inst_rs1 = inst[19:15];
