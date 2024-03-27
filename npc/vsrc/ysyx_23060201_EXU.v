@@ -29,11 +29,7 @@ module ysyx_23060201_EXU(
 		.a(inst_rs1_val_alu_in),
 		.b(inst_imm),
 		.ctrl(ctrl),
-		.res(inst_rd_val_alu_out),
-		.nf(),
-		.zf(),
-		.cf(),
-		.vf()
+		.res(inst_rd_val_alu_out)
 	);
 	
 	assign inst_rd_val_res = inst_rd_val_alu_out;

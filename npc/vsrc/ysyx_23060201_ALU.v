@@ -3,12 +3,13 @@ module ysyx_23060201_ALU(
 	input [31:0] b,
 	input [2:0] ctrl,
 	output [31:0] res,
-	output nf, zf, cf, vf
 );
 
 	wire [31:0] res_addsub;
 	wire [31:0] res_and;
 	wire [31:0] res_or;
+
+	wire cf, vf;
 
 	wire [31:0] b2;
 	assign b2 = b ^ {32{ctrl[0]}};
@@ -25,8 +26,5 @@ module ysyx_23060201_ALU(
 		3'b010, res_and,
 		3'b011, res_or
 	});
-
-	assign zf = ~(|res);
-	assign nf = res[31];
 
 endmodule
