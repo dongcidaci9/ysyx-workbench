@@ -15,8 +15,6 @@ class VMuxKeyInternal___024root final : public VerilatedModule {
     // DESIGN SPECIFIC STATE
     VL_IN8(clk,0,0);
     VL_IN8(rst,0,0);
-    CData/*4:0*/ ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rs1;
-    CData/*4:0*/ ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rd;
     CData/*0:0*/ ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit;
     CData/*0:0*/ __Vtrigrprev__TOP__clk;
     CData/*0:0*/ __VactContinue;

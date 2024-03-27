@@ -330,8 +330,6 @@ VL_ATTR_COLD void VMuxKeyInternal___024root___ctor_var_reset(VMuxKeyInternal___0
     vlSelf->inst_rd_val_res = VL_RAND_RESET_I(32);
     vlSelf->pc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rs1 = VL_RAND_RESET_I(5);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rd = VL_RAND_RESET_I(5);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rd_val_alu_out = VL_RAND_RESET_I(32);

@@ -388,8 +388,6 @@ VL_ATTR_COLD void VMuxKeyInternal___024root__trace_init_sub__TOP__0(VMuxKeyInter
     tracep->declBus(c+136,"inst_rs1", false,-1, 4,0);
     tracep->declBus(c+137,"inst_rd", false,-1, 4,0);
     tracep->declBus(c+37,"inst_imm", false,-1, 31,0);
-    tracep->declBus(c+183,"rs1", false,-1, 4,0);
-    tracep->declBus(c+184,"rd", false,-1, 4,0);
     tracep->declBus(c+140,"imm", false,-1, 11,0);
     tracep->declBus(c+37,"imm_ext", false,-1, 31,0);
     tracep->popNamePrefix(1);
@@ -401,7 +399,7 @@ VL_ATTR_COLD void VMuxKeyInternal___024root__trace_init_sub__TOP__0(VMuxKeyInter
     tracep->declBus(c+141,"npc", false,-1, 31,0);
     tracep->pushNamePrefix("pc_reg ");
     tracep->declBus(c+144,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+185,"RESET_VAL", false,-1, 31,0);
+    tracep->declBus(c+183,"RESET_VAL", false,-1, 31,0);
     tracep->declBit(c+129,"clk", false,-1);
     tracep->declBit(c+130,"rst", false,-1);
     tracep->declBus(c+141,"din", false,-1, 31,0);
@@ -703,7 +701,5 @@ VL_ATTR_COLD void VMuxKeyInternal___024root__trace_full_sub_0(VMuxKeyInternal___
     bufp->fullIData(oldp+180,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT____Vcellout__x7____pinNumber4),32);
     bufp->fullIData(oldp+181,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT____Vcellout__x8____pinNumber4),32);
     bufp->fullIData(oldp+182,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_REG__DOT____Vcellout__x9____pinNumber4),32);
-    bufp->fullCData(oldp+183,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rs1),5);
-    bufp->fullCData(oldp+184,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__rd),5);
-    bufp->fullIData(oldp+185,(0x80000000U),32);
+    bufp->fullIData(oldp+183,(0x80000000U),32);
 }
