@@ -25,7 +25,7 @@ module ysyx_23060201_IDU(
 	// DPI-C
 	import "DPI-C" function void npc_trap();
 	always @(*) begin
-		if (inst_type == 10'b0001110011) begin
+		if (inst_op == 7'b1110011 && inst_func3 = 3'b000) begin
 			npc_trap();
 		end
 	end
