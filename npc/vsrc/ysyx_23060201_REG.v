@@ -46,7 +46,7 @@ module ysyx_23060201_REG(
 	Reg #(32, 32'b0) x31 (sel[31], rst, inst_reg_val_in[31], inst_reg_val_out[31], 1'b1);
 
 	// Get the value
-	assign inst_rs1_val_out = inst_rs1_val_out[inst_rs1];
+	assign inst_rs1_val_out = inst_reg_val_out[inst_rs1];
 	
 	assign sel[inst_rs1] = 1'b1;
 	assign sel[inst_rd] = 1'b1;

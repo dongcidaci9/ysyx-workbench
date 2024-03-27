@@ -28,11 +28,11 @@ class VMuxKeyInternal VL_NOT_FINAL : public VerilatedModel {
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clk,0,0);
     VL_IN8(&rst,0,0);
-    VL_IN8(&inst_rd_val_in,0,0);
-    VL_OUT8(&inst_rd_val_out,0,0);
     VL_OUT8(&pc,0,0);
-    VL_IN(&inst_in,31,0);
-    VL_OUT(&inst_out,31,0);
+    VL_IN(&inst,31,0);
+    VL_IN(&inst_rs1_val_sfin,31,0);
+    VL_IN(&inst_rd_val_sfin,31,0);
+    VL_OUT(&inst_rd_val_res,31,0);
 
     // CELLS
     // Public to allow access to /* verilator public */ items.

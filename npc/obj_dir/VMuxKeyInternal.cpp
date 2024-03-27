@@ -14,11 +14,11 @@ VMuxKeyInternal::VMuxKeyInternal(VerilatedContext* _vcontextp__, const char* _vc
     , vlSymsp{new VMuxKeyInternal__Syms(contextp(), _vcname__, this)}
     , clk{vlSymsp->TOP.clk}
     , rst{vlSymsp->TOP.rst}
-    , inst_rd_val_in{vlSymsp->TOP.inst_rd_val_in}
-    , inst_rd_val_out{vlSymsp->TOP.inst_rd_val_out}
     , pc{vlSymsp->TOP.pc}
-    , inst_in{vlSymsp->TOP.inst_in}
-    , inst_out{vlSymsp->TOP.inst_out}
+    , inst{vlSymsp->TOP.inst}
+    , inst_rs1_val_sfin{vlSymsp->TOP.inst_rs1_val_sfin}
+    , inst_rd_val_sfin{vlSymsp->TOP.inst_rd_val_sfin}
+    , inst_rd_val_res{vlSymsp->TOP.inst_rd_val_res}
     , rootp{&(vlSymsp->TOP)}
 {
     // Register model with the context
