@@ -35,4 +35,7 @@ module ysyx_23060201_EXU(
 	
 	assign inst_rd_val_res = inst_rd_val_alu_out;
 
+	// Not used: GND
+	assign inst_type[6:0] = 7'b0;
+
 endmodule
