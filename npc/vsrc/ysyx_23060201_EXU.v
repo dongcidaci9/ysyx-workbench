@@ -28,7 +28,7 @@ module ysyx_23060201_EXU(
 	ysyx_23060201_ALU ysyx_23060201_ALU(
 		.a(inst_rs1_val_alu_in),
 		.b(inst_imm),
-		.ctrl(ctrl),
+		.ctrl(inst_addi && ctrl),
 		.res(inst_rd_val_alu_out),
 		.nf(),
 		.zf(),
