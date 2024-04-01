@@ -42,29 +42,29 @@ int main() {
 	one_cycle();
 	top->rst = 1;
 	one_cycle();
-	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 
 	top->rst = 0;
 	// rd = 0
 	top->inst = 0b00000000000100000000000010010011; // x1 = x0 + 1
 	one_cycle();
-	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 1
 	top->inst = 0b00000000001000000000000010010011; // x1 = x0 + 2
 	one_cycle();
-	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 2
 	top->inst = 0b00000000000100001000000100010011; // x2 = x1 + 1
 	one_cycle();
-	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 3
 	top->inst = 0b00000000001100010000000100010011; // x2 = x2 + 3
 	one_cycle();
-	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 6
 	top->inst = 0b00000000000100010000000100010011; // x2 = x2 + 1
 	one_cycle();
-	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 7
 	
 	sim_exit();

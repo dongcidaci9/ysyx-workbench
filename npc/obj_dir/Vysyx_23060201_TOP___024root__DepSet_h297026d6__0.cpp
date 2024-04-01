@@ -92,11 +92,11 @@ VL_INLINE_OPT void Vysyx_23060201_TOP___024root___ico_sequent__TOP__0(Vysyx_2306
                             ? 0U : 7U) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
                           [3U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list
               [3U]));
-    vlSelf->inst_rd_val_res = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out;
+    vlSelf->inst_rd_val = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[(0x1fU 
                                                                           & (vlSelf->inst 
                                                                              >> 7U))] 
-        = vlSelf->inst_rd_val_res;
+        = vlSelf->inst_rd_val;
 }
 
 void Vysyx_23060201_TOP___024root___eval_ico(Vysyx_23060201_TOP___024root* vlSelf) {
@@ -381,11 +381,11 @@ VL_INLINE_OPT void Vysyx_23060201_TOP___024root___nba_sequent__TOP__1(Vysyx_2306
                             ? 0U : 7U) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
                           [3U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list
               [3U]));
-    vlSelf->inst_rd_val_res = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out;
+    vlSelf->inst_rd_val = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[(0x1fU 
                                                                           & (vlSelf->inst 
                                                                              >> 7U))] 
-        = vlSelf->inst_rd_val_res;
+        = vlSelf->inst_rd_val;
 }
 
 void Vysyx_23060201_TOP___024root___eval_nba(Vysyx_23060201_TOP___024root* vlSelf) {

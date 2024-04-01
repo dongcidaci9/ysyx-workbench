@@ -35,6 +35,7 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_initial__TOP(Vysyx_2306020
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[1U] = 2U;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[2U] = 1U;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[3U] = 0U;
+    vlSelf->inst_rd_val = 0U;
 }
 
 VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_final(Vysyx_23060201_TOP___024root* vlSelf) {
@@ -243,11 +244,11 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___stl_sequent__TOP__0(Vysyx_23060
                             ? 0U : 7U) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
                           [3U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list
               [3U]));
-    vlSelf->inst_rd_val_res = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out;
+    vlSelf->inst_rd_val = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[(0x1fU 
                                                                           & (vlSelf->inst 
                                                                              >> 7U))] 
-        = vlSelf->inst_rd_val_res;
+        = vlSelf->inst_rd_val;
 }
 
 VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_stl(Vysyx_23060201_TOP___024root* vlSelf) {
@@ -316,7 +317,7 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___ctor_var_reset(Vysyx_23060201_T
     vlSelf->clk = VL_RAND_RESET_I(1);
     vlSelf->rst = VL_RAND_RESET_I(1);
     vlSelf->inst = VL_RAND_RESET_I(32);
-    vlSelf->inst_rd_val_res = VL_RAND_RESET_I(32);
+    vlSelf->inst_rd_val = VL_RAND_RESET_I(32);
     vlSelf->pc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext = VL_RAND_RESET_I(32);
