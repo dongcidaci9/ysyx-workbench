@@ -53,7 +53,7 @@ int main() {
 
 	rst(10);
 	for (int i=0; i<4; i++) {
-		dut.inst = pmem_read(memory, dut.pc);
+		top.inst = pmem_read(memory, dut.pc);
 		single_cycle();
 		step_and_dump_wave();
 	}
