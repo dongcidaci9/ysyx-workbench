@@ -38,21 +38,17 @@ static void single_cycle() {
 	top->clk = 1; top->eval();
 }
 
-static void rst(int n) {
-	top->rst = 1;
-	while(n-->0) single_cycle();
-	top->rst = 0;
-}
-
 int main() {
 	uint32_t *memory;
 	memory = init_mem(5);
 	
 	sim_init();
 
-	rst(10);
-	for (int i=0; i<4; i++) {
-		top.inst = pmem_read(memory, dut.pc);
+	top->rst = 1;
+	top->rst = 0;
+
+	for (int i=0; i<5; i++) {
+		top->inst = pmem_read(memory, top->pc);
 		single_cycle();
 		step_and_dump_wave();
 	}
