@@ -25,7 +25,7 @@ static void sim_init(){
 	top = new Vysyx_23060201_TOP;
 	contextp->traceEverOn(true);
 	top->trace(vcd, 99);
-	tfp->open("wave.vcd");
+	vcd->open("wave.vcd");
 }
 
 // Exit
