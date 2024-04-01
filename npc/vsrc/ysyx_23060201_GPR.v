@@ -2,13 +2,12 @@ module ysyx_23060201_GPR(
 	input clk,
 	input rst,
 	input [4:0] inst_rs1, inst_rd,
+	input [31:0] inst_rd_val_res,
 	output [31:0] inst_rs1_val_out,
-	input [31:0] inst_rd_val_res
 );
 		
 	wire [31:0] inst_reg_val [31:0];
 	wire [31:0] inst_reg_val_out [31:0];
-
 	Reg #(32, 32'b0) x0 (clk, rst, inst_reg_val[0], inst_reg_val_out[0], 1'b1);
 	Reg #(32, 32'b0) x1 (clk, rst, inst_reg_val[1], inst_reg_val_out[1], 1'b1);
 	Reg #(32, 32'b0) x2 (clk, rst, inst_reg_val[2], inst_reg_val_out[2], 1'b1);
@@ -43,7 +42,7 @@ module ysyx_23060201_GPR(
 	Reg #(32, 32'b0) x31 (clk, rst, inst_reg_val[31], inst_reg_val_out[31], 1'b1);
 	
 	// Get the value
-	assign inst_rs1_val_out = inst_reg_val_out[inst_rs1];
+	assign inst_rs1_val_out = inst_reg_val[inst_rs1];
 
 	// Save the changed value
 	assign inst_reg_val[inst_rd] = inst_rd_val_res;
