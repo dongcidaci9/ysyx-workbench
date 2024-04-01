@@ -38,19 +38,19 @@ int main() {
 	top->rst = 1;
 	top->rst = 0;
 
-	top->inst = 0b000000000001 00000 000 00001 0010011; // x1 = x0 + 1
+	top->inst = 0b00000000000100000000000010010011; // x1 = x0 + 1
 	step_and_dump_wave;
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 
-	top->inst = 0b000000000010 00000 000 00001 0010011; // x1 = x0 + 2
+	top->inst = 0b00000000001000000000000010010011; // x1 = x0 + 2
 	step_and_dump_wave;
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 
-	top->inst = 0b000000000001 00001 000 00010 0010011; // x2 = x1 + 1
+	top->inst = 0b00000000000100001000000100010011; // x2 = x1 + 1
 	step_and_dump_wave;
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 
-	top->inst = 0b000000000011 00010 000 00010 0010011; // x2 = x2 + 3
+	top->inst = 0b00000000001100010000000100010011; // x2 = x2 + 3
 	step_and_dump_wave;
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 
