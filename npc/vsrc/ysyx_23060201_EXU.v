@@ -5,7 +5,7 @@ module ysyx_23060201_EXU(
 	input [2:0] inst_func3,
 	input [4:0] inst_rs1, inst_rd,
 	input [31:0] inst_imm,
-	output [31:0] inst_rd_val_res
+	output [31:0] inst_rd_val
 );	// GPR fetch -> Execute -> Rewrite
 	
 	wire [31:0] inst_reg_val [31:0];
@@ -55,10 +55,12 @@ module ysyx_23060201_EXU(
 		.a(inst_rs1_val),
 		.b(inst_imm),
 		.ctrl(ctrl),
-		.res(inst_rd_val_res)
+		.res(inst_rd_val)
 	);
 	
 	// Save the changed value
-	assign inst_reg_val[inst_rd] = inst_rd_val_res;
+	assign inst_reg_val[inst_rd] = inst_rd_val;
+	// Clear the inst_rd_val
+	assign inst_rd_val = 32'b0;
 	
 endmodule
