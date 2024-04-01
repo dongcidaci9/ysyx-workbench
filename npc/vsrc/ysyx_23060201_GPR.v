@@ -42,7 +42,7 @@ module ysyx_23060201_GPR(
 	Reg #(32, 32'b0) x31 (clk, rst, inst_reg_val[31], inst_reg_val_out[31], 1'b1);
 	
 	// Get the value
-	assign inst_rs1_val_out = inst_reg_val_out[inst_rs1];
+	assign inst_rs1_val_out = inst_reg_val[inst_rs1];
 
 	// Save the changed value
 	assign inst_reg_val[inst_rd] = inst_rd_val_res;
