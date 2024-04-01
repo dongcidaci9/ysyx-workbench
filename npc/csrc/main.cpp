@@ -58,7 +58,7 @@ int main() {
 	one_cycle();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 	// rd = 3
-	top->inst = 0b00000000011000010000000100010011; // x2 = x2 + 6
+	top->inst = 0b00000000000100010000000100010011; // x2 = x2 + 1
 	one_cycle();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 	// rd = 9
