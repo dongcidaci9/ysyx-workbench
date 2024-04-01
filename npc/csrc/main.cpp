@@ -1,6 +1,6 @@
 #include "Vysyx_23060201_TOP.h"
-#include "verilated.h"
-#include "verilated_vcd_c.h"
+#include "../obj_dir/verilated.h"
+#include "../obj_dir/verilated_vcd_c.h"
 
 static Vysyx_23060201_TOP* top;
 
