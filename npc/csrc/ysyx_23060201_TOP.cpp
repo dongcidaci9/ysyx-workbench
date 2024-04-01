@@ -1,3 +1,4 @@
+#include "Vysyx_23060201_TOP.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include "verilated.h"
