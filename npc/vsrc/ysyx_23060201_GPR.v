@@ -11,13 +11,10 @@ module ysyx_23060201_GPR(
 
 	wire [31:0] sel;
 
-	assign sel[inst_rs1] = 1'b1;
-	assign sel[inst_rd] = 1'b1;
-
-	Reg #(32, 32'b0) x0 (sel[0], rst, inst_reg_val_in[0], inst_reg_val_out[0], 1'b1);
-	Reg #(32, 32'b0) x1 (sel[1], rst, inst_reg_val_in[1], inst_reg_val_out[1], 1'b1);
-	Reg #(32, 32'b0) x2 (sel[2], rst, inst_reg_val_in[2], inst_reg_val_out[2], 1'b1);
-	Reg #(32, 32'b0) x3 (sel[3], rst, inst_reg_val_in[3], inst_reg_val_out[3], 1'b1);
+	Reg #(32, 32'b0) x0 (clk, rst, inst_reg_val_in[0], inst_reg_val_out[0], 1'b1);
+	Reg #(32, 32'b0) x1 (clk, rst, inst_reg_val_in[1], inst_reg_val_out[1], 1'b1);
+	Reg #(32, 32'b0) x2 (clk, rst, inst_reg_val_in[2], inst_reg_val_out[2], 1'b1);
+	Reg #(32, 32'b0) x3 (clk, rst, inst_reg_val_in[3], inst_reg_val_out[3], 1'b1);
 	Reg #(32, 32'b0) x4 (sel[4], rst, inst_reg_val_in[4], inst_reg_val_out[4], 1'b1);
 	Reg #(32, 32'b0) x5 (sel[5], rst, inst_reg_val_in[5], inst_reg_val_out[5], 1'b1);
 	Reg #(32, 32'b0) x6 (sel[6], rst, inst_reg_val_in[6], inst_reg_val_out[6], 1'b1);

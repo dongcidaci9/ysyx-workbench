@@ -20,9 +20,74 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_initial(Vysyx_23060201_TOP
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_23060201_TOP___024root___eval_initial\n"); );
     // Body
     Vysyx_23060201_TOP___024root___eval_initial__TOP(vlSelf);
+    vlSelf->__Vm_traceActivity[2U] = 1U;
     vlSelf->__Vm_traceActivity[1U] = 1U;
     vlSelf->__Vm_traceActivity[0U] = 1U;
     vlSelf->__Vtrigrprev__TOP__clk = vlSelf->clk;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x0____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x0____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x1____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x1____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x2____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x2____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x3____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x3____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x4____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x4____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x5____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x5____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x6____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x6____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x7____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x7____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x8____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x8____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x9____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x9____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x10____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x10____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x11____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x11____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x12____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x12____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x13____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x13____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x14____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x14____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x15____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x15____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x16____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x16____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x17____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x17____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x18____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x18____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x19____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x19____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x20____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x20____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x21____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x21____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x22____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x22____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x23____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x23____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x24____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x24____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x25____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x25____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x26____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x26____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x27____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x27____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x28____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x28____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x29____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x29____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x30____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x30____pinNumber1;
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x31____pinNumber1 
+        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x31____pinNumber1;
 }
 
 VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_initial__TOP(Vysyx_23060201_TOP___024root* vlSelf) {
@@ -34,7 +99,6 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_initial__TOP(Vysyx_2306020
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[1U] = 2U;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[2U] = 1U;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[3U] = 0U;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel = 0U;
 }
 
 VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_final(Vysyx_23060201_TOP___024root* vlSelf) {
@@ -177,6 +241,101 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___stl_sequent__TOP__0(Vysyx_23060
         = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x30____pinNumber4;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[0x1fU] 
         = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x31____pinNumber4;
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x0____pinNumber1 
+        = (1U & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x1____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 1U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x2____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 2U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x3____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 3U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x4____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 4U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x5____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 5U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x6____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 6U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x7____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 7U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x8____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 8U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x9____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 9U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x10____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0xaU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x11____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0xbU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x12____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0xcU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x13____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0xdU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x14____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0xeU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x15____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0xfU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x16____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x10U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x17____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x11U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x18____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x12U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x19____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x13U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x20____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x14U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x21____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x15U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x22____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x16U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x23____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x17U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x24____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x18U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x25____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x19U));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x26____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x1aU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x27____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x1bU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x28____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x1cU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x29____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x1dU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x30____pinNumber1 
+        = (1U & (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+                 >> 0x1eU));
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x31____pinNumber1 
+        = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel 
+           >> 0x1fU);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit 
         = (((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_addi)
              ? 0U : 7U) == vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list
@@ -269,6 +428,7 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___eval_stl(Vysyx_23060201_TOP___0
     // Body
     if (vlSelf->__VstlTriggered.at(0U)) {
         Vysyx_23060201_TOP___024root___stl_sequent__TOP__0(vlSelf);
+        vlSelf->__Vm_traceActivity[2U] = 1U;
         vlSelf->__Vm_traceActivity[1U] = 1U;
         vlSelf->__Vm_traceActivity[0U] = 1U;
     }
@@ -301,6 +461,102 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___dump_triggers__act(Vysyx_230602
     if (vlSelf->__VactTriggered.at(0U)) {
         VL_DBG_MSGF("         'act' region trigger index 0 is active: @(posedge clk)\n");
     }
+    if (vlSelf->__VactTriggered.at(1U)) {
+        VL_DBG_MSGF("         'act' region trigger index 1 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x0____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(2U)) {
+        VL_DBG_MSGF("         'act' region trigger index 2 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x1____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(3U)) {
+        VL_DBG_MSGF("         'act' region trigger index 3 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x2____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(4U)) {
+        VL_DBG_MSGF("         'act' region trigger index 4 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x3____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(5U)) {
+        VL_DBG_MSGF("         'act' region trigger index 5 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x4____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(6U)) {
+        VL_DBG_MSGF("         'act' region trigger index 6 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x5____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(7U)) {
+        VL_DBG_MSGF("         'act' region trigger index 7 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x6____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(8U)) {
+        VL_DBG_MSGF("         'act' region trigger index 8 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x7____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(9U)) {
+        VL_DBG_MSGF("         'act' region trigger index 9 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x8____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0xaU)) {
+        VL_DBG_MSGF("         'act' region trigger index 10 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x9____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0xbU)) {
+        VL_DBG_MSGF("         'act' region trigger index 11 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x10____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0xcU)) {
+        VL_DBG_MSGF("         'act' region trigger index 12 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x11____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0xdU)) {
+        VL_DBG_MSGF("         'act' region trigger index 13 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x12____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0xeU)) {
+        VL_DBG_MSGF("         'act' region trigger index 14 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x13____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0xfU)) {
+        VL_DBG_MSGF("         'act' region trigger index 15 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x14____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x10U)) {
+        VL_DBG_MSGF("         'act' region trigger index 16 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x15____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x11U)) {
+        VL_DBG_MSGF("         'act' region trigger index 17 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x16____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x12U)) {
+        VL_DBG_MSGF("         'act' region trigger index 18 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x17____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x13U)) {
+        VL_DBG_MSGF("         'act' region trigger index 19 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x18____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x14U)) {
+        VL_DBG_MSGF("         'act' region trigger index 20 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x19____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x15U)) {
+        VL_DBG_MSGF("         'act' region trigger index 21 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x20____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x16U)) {
+        VL_DBG_MSGF("         'act' region trigger index 22 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x21____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x17U)) {
+        VL_DBG_MSGF("         'act' region trigger index 23 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x22____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x18U)) {
+        VL_DBG_MSGF("         'act' region trigger index 24 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x23____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x19U)) {
+        VL_DBG_MSGF("         'act' region trigger index 25 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x24____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x1aU)) {
+        VL_DBG_MSGF("         'act' region trigger index 26 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x25____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x1bU)) {
+        VL_DBG_MSGF("         'act' region trigger index 27 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x26____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x1cU)) {
+        VL_DBG_MSGF("         'act' region trigger index 28 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x27____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x1dU)) {
+        VL_DBG_MSGF("         'act' region trigger index 29 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x28____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x1eU)) {
+        VL_DBG_MSGF("         'act' region trigger index 30 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x29____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x1fU)) {
+        VL_DBG_MSGF("         'act' region trigger index 31 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x30____pinNumber1)\n");
+    }
+    if (vlSelf->__VactTriggered.at(0x20U)) {
+        VL_DBG_MSGF("         'act' region trigger index 32 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x31____pinNumber1)\n");
+    }
 }
 #endif  // VL_DEBUG
 
@@ -315,6 +571,102 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___dump_triggers__nba(Vysyx_230602
     }
     if (vlSelf->__VnbaTriggered.at(0U)) {
         VL_DBG_MSGF("         'nba' region trigger index 0 is active: @(posedge clk)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(1U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 1 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x0____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(2U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 2 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x1____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(3U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 3 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x2____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(4U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 4 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x3____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(5U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 5 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x4____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(6U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 6 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x5____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(7U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 7 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x6____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(8U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 8 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x7____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(9U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 9 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x8____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0xaU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 10 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x9____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0xbU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 11 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x10____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0xcU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 12 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x11____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0xdU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 13 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x12____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0xeU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 14 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x13____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0xfU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 15 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x14____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x10U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 16 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x15____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x11U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 17 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x16____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x12U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 18 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x17____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x13U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 19 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x18____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x14U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 20 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x19____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x15U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 21 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x20____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x16U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 22 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x21____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x17U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 23 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x22____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x18U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 24 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x23____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x19U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 25 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x24____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x1aU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 26 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x25____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x1bU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 27 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x26____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x1cU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 28 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x27____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x1dU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 29 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x28____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x1eU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 30 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x29____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x1fU)) {
+        VL_DBG_MSGF("         'nba' region trigger index 31 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x30____pinNumber1)\n");
+    }
+    if (vlSelf->__VnbaTriggered.at(0x20U)) {
+        VL_DBG_MSGF("         'nba' region trigger index 32 is active: @(posedge ysyx_23060201_TOP.ysyx_23060201_EXU.ysyx_23060201_GPR.__Vcellinp__x31____pinNumber1)\n");
     }
 }
 #endif  // VL_DEBUG
@@ -342,37 +694,69 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___ctor_var_reset(Vysyx_23060201_T
     }
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__sel = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x0____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x0____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x1____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x1____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x2____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x2____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x3____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x3____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x4____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x4____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x5____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x5____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x6____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x6____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x7____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x7____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x8____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x8____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x9____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x9____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x10____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x10____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x11____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x11____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x12____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x12____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x13____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x13____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x14____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x14____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x15____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x15____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x16____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x16____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x17____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x17____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x18____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x18____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x19____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x19____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x20____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x20____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x21____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x21____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x22____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x22____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x23____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x23____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x24____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x24____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x25____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x25____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x26____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x26____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x27____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x27____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x28____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x28____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x29____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x29____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x30____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x30____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x31____pinNumber4 = VL_RAND_RESET_I(32);
+    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x31____pinNumber1 = VL_RAND_RESET_I(1);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2 = VL_RAND_RESET_I(32);
     for (int __Vi0 = 0; __Vi0 < 4; ++__Vi0) {
@@ -387,7 +771,39 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___ctor_var_reset(Vysyx_23060201_T
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out = VL_RAND_RESET_I(32);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit = VL_RAND_RESET_I(1);
     vlSelf->__Vtrigrprev__TOP__clk = VL_RAND_RESET_I(1);
-    for (int __Vi0 = 0; __Vi0 < 2; ++__Vi0) {
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x0____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x1____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x2____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x3____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x4____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x5____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x6____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x7____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x8____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x9____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x10____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x11____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x12____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x13____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x14____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x15____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x16____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x17____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x18____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x19____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x20____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x21____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x22____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x23____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x24____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x25____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x26____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x27____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x28____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x29____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x30____pinNumber1 = VL_RAND_RESET_I(1);
+    vlSelf->__Vtrigrprev__TOP__ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellinp__x31____pinNumber1 = VL_RAND_RESET_I(1);
+    for (int __Vi0 = 0; __Vi0 < 3; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;
     }
 }
