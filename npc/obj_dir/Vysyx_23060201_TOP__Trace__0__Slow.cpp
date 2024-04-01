@@ -36,350 +36,342 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root__trace_init_sub__TOP__0(Vysyx_230
     tracep->declBus(c+169,"inst_rd", false,-1, 4,0);
     tracep->declBus(c+5,"inst_imm", false,-1, 31,0);
     tracep->declBus(c+164,"inst_rd_val_res", false,-1, 31,0);
-    tracep->declBus(c+10,"inst_rs1_val_alu_in", false,-1, 31,0);
-    tracep->declBus(c+11,"inst_rd_val_alu_out", false,-1, 31,0);
+    for (int i = 0; i < 32; ++i) {
+        tracep->declBus(c+10+i*1,"inst_reg_val", true,(i+0), 31,0);
+    }
+    for (int i = 0; i < 32; ++i) {
+        tracep->declBus(c+97+i*1,"inst_reg_val_out", true,(i+0), 31,0);
+    }
+    tracep->declBit(c+42,"inst_rs1_val", false,-1);
     tracep->declBit(c+6,"inst_addi", false,-1);
     tracep->declBus(c+7,"ctrl", false,-1, 2,0);
+    tracep->pushNamePrefix("x0 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+43,"din", false,-1, 31,0);
+    tracep->declBus(c+129,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x1 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+44,"din", false,-1, 31,0);
+    tracep->declBus(c+130,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x10 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+45,"din", false,-1, 31,0);
+    tracep->declBus(c+131,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x11 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+46,"din", false,-1, 31,0);
+    tracep->declBus(c+132,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x12 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+47,"din", false,-1, 31,0);
+    tracep->declBus(c+133,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x13 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+48,"din", false,-1, 31,0);
+    tracep->declBus(c+134,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x14 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+49,"din", false,-1, 31,0);
+    tracep->declBus(c+135,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x15 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+50,"din", false,-1, 31,0);
+    tracep->declBus(c+136,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x16 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+51,"din", false,-1, 31,0);
+    tracep->declBus(c+137,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x17 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+52,"din", false,-1, 31,0);
+    tracep->declBus(c+138,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x18 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+53,"din", false,-1, 31,0);
+    tracep->declBus(c+139,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x19 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+54,"din", false,-1, 31,0);
+    tracep->declBus(c+140,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x2 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+55,"din", false,-1, 31,0);
+    tracep->declBus(c+141,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x20 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+56,"din", false,-1, 31,0);
+    tracep->declBus(c+142,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x21 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+57,"din", false,-1, 31,0);
+    tracep->declBus(c+143,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x22 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+58,"din", false,-1, 31,0);
+    tracep->declBus(c+144,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x23 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+59,"din", false,-1, 31,0);
+    tracep->declBus(c+145,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x24 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+60,"din", false,-1, 31,0);
+    tracep->declBus(c+146,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x25 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+61,"din", false,-1, 31,0);
+    tracep->declBus(c+147,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x26 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+62,"din", false,-1, 31,0);
+    tracep->declBus(c+148,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x27 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+63,"din", false,-1, 31,0);
+    tracep->declBus(c+149,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x28 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+64,"din", false,-1, 31,0);
+    tracep->declBus(c+150,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x29 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+65,"din", false,-1, 31,0);
+    tracep->declBus(c+151,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x3 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+66,"din", false,-1, 31,0);
+    tracep->declBus(c+152,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x30 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+67,"din", false,-1, 31,0);
+    tracep->declBus(c+153,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x31 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+68,"din", false,-1, 31,0);
+    tracep->declBus(c+154,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x4 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+69,"din", false,-1, 31,0);
+    tracep->declBus(c+155,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x5 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+70,"din", false,-1, 31,0);
+    tracep->declBus(c+156,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x6 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+71,"din", false,-1, 31,0);
+    tracep->declBus(c+157,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x7 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+72,"din", false,-1, 31,0);
+    tracep->declBus(c+158,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x8 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+73,"din", false,-1, 31,0);
+    tracep->declBus(c+159,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
+    tracep->pushNamePrefix("x9 ");
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+173,"RESET_VAL", false,-1, 31,0);
+    tracep->declBit(c+161,"clk", false,-1);
+    tracep->declBit(c+162,"rst", false,-1);
+    tracep->declBus(c+74,"din", false,-1, 31,0);
+    tracep->declBus(c+160,"dout", false,-1, 31,0);
+    tracep->declBit(c+174,"wen", false,-1);
+    tracep->popNamePrefix(1);
     tracep->pushNamePrefix("ysyx_23060201_ALU ");
-    tracep->declBus(c+10,"a", false,-1, 31,0);
+    tracep->declBus(c+75,"a", false,-1, 31,0);
     tracep->declBus(c+5,"b", false,-1, 31,0);
     tracep->declBus(c+7,"ctrl", false,-1, 2,0);
-    tracep->declBus(c+11,"res", false,-1, 31,0);
-    tracep->declBus(c+12,"res_addsub", false,-1, 31,0);
-    tracep->declBus(c+13,"res_and", false,-1, 31,0);
-    tracep->declBus(c+14,"res_or", false,-1, 31,0);
+    tracep->declBus(c+164,"res", false,-1, 31,0);
+    tracep->declBus(c+76,"res_addsub", false,-1, 31,0);
+    tracep->declBus(c+77,"res_and", false,-1, 31,0);
+    tracep->declBus(c+78,"res_or", false,-1, 31,0);
     tracep->declBus(c+8,"b2", false,-1, 31,0);
     tracep->pushNamePrefix("alu ");
-    tracep->declBus(c+172,"NR_KEY", false,-1, 31,0);
-    tracep->declBus(c+173,"KEY_LEN", false,-1, 31,0);
-    tracep->declBus(c+174,"DATA_LEN", false,-1, 31,0);
-    tracep->declBus(c+11,"out", false,-1, 31,0);
+    tracep->declBus(c+175,"NR_KEY", false,-1, 31,0);
+    tracep->declBus(c+176,"KEY_LEN", false,-1, 31,0);
+    tracep->declBus(c+172,"DATA_LEN", false,-1, 31,0);
+    tracep->declBus(c+164,"out", false,-1, 31,0);
     tracep->declBus(c+7,"key", false,-1, 2,0);
-    tracep->declArray(c+15,"lut", false,-1, 139,0);
+    tracep->declArray(c+79,"lut", false,-1, 139,0);
     tracep->pushNamePrefix("i0 ");
-    tracep->declBus(c+172,"NR_KEY", false,-1, 31,0);
-    tracep->declBus(c+173,"KEY_LEN", false,-1, 31,0);
-    tracep->declBus(c+174,"DATA_LEN", false,-1, 31,0);
-    tracep->declBus(c+175,"HAS_DEFAULT", false,-1, 31,0);
-    tracep->declBus(c+11,"out", false,-1, 31,0);
+    tracep->declBus(c+175,"NR_KEY", false,-1, 31,0);
+    tracep->declBus(c+176,"KEY_LEN", false,-1, 31,0);
+    tracep->declBus(c+172,"DATA_LEN", false,-1, 31,0);
+    tracep->declBus(c+177,"HAS_DEFAULT", false,-1, 31,0);
+    tracep->declBus(c+164,"out", false,-1, 31,0);
     tracep->declBus(c+7,"key", false,-1, 2,0);
-    tracep->declBus(c+176,"default_out", false,-1, 31,0);
-    tracep->declArray(c+15,"lut", false,-1, 139,0);
-    tracep->declBus(c+177,"PAIR_LEN", false,-1, 31,0);
+    tracep->declBus(c+173,"default_out", false,-1, 31,0);
+    tracep->declArray(c+79,"lut", false,-1, 139,0);
+    tracep->declBus(c+178,"PAIR_LEN", false,-1, 31,0);
     for (int i = 0; i < 4; ++i) {
-        tracep->declQuad(c+20+i*2,"pair_list", true,(i+0), 34,0);
+        tracep->declQuad(c+84+i*2,"pair_list", true,(i+0), 34,0);
     }
     for (int i = 0; i < 4; ++i) {
         tracep->declBus(c+1+i*1,"key_list", true,(i+0), 2,0);
     }
     for (int i = 0; i < 4; ++i) {
-        tracep->declBus(c+28+i*1,"data_list", true,(i+0), 31,0);
+        tracep->declBus(c+92+i*1,"data_list", true,(i+0), 31,0);
     }
-    tracep->declBus(c+32,"lut_out", false,-1, 31,0);
+    tracep->declBus(c+96,"lut_out", false,-1, 31,0);
     tracep->declBit(c+9,"hit", false,-1);
-    tracep->declBus(c+178,"i", false,-1, 31,0);
-    tracep->popNamePrefix(3);
-    tracep->pushNamePrefix("ysyx_23060201_GPR ");
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+168,"inst_rs1", false,-1, 4,0);
-    tracep->declBus(c+169,"inst_rd", false,-1, 4,0);
-    tracep->declBus(c+11,"inst_rd_val_res", false,-1, 31,0);
-    tracep->declBus(c+10,"inst_rs1_val_out", false,-1, 31,0);
-    for (int i = 0; i < 32; ++i) {
-        tracep->declBus(c+33+i*1,"inst_reg_val", true,(i+0), 31,0);
-    }
-    for (int i = 0; i < 32; ++i) {
-        tracep->declBus(c+97+i*1,"inst_reg_val_out", true,(i+0), 31,0);
-    }
-    tracep->pushNamePrefix("x0 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+65,"din", false,-1, 31,0);
-    tracep->declBus(c+129,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x1 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+66,"din", false,-1, 31,0);
-    tracep->declBus(c+130,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x10 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+67,"din", false,-1, 31,0);
-    tracep->declBus(c+131,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x11 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+68,"din", false,-1, 31,0);
-    tracep->declBus(c+132,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x12 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+69,"din", false,-1, 31,0);
-    tracep->declBus(c+133,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x13 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+70,"din", false,-1, 31,0);
-    tracep->declBus(c+134,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x14 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+71,"din", false,-1, 31,0);
-    tracep->declBus(c+135,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x15 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+72,"din", false,-1, 31,0);
-    tracep->declBus(c+136,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x16 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+73,"din", false,-1, 31,0);
-    tracep->declBus(c+137,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x17 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+74,"din", false,-1, 31,0);
-    tracep->declBus(c+138,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x18 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+75,"din", false,-1, 31,0);
-    tracep->declBus(c+139,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x19 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+76,"din", false,-1, 31,0);
-    tracep->declBus(c+140,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x2 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+77,"din", false,-1, 31,0);
-    tracep->declBus(c+141,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x20 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+78,"din", false,-1, 31,0);
-    tracep->declBus(c+142,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x21 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+79,"din", false,-1, 31,0);
-    tracep->declBus(c+143,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x22 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+80,"din", false,-1, 31,0);
-    tracep->declBus(c+144,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x23 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+81,"din", false,-1, 31,0);
-    tracep->declBus(c+145,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x24 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+82,"din", false,-1, 31,0);
-    tracep->declBus(c+146,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x25 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+83,"din", false,-1, 31,0);
-    tracep->declBus(c+147,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x26 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+84,"din", false,-1, 31,0);
-    tracep->declBus(c+148,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x27 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+85,"din", false,-1, 31,0);
-    tracep->declBus(c+149,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x28 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+86,"din", false,-1, 31,0);
-    tracep->declBus(c+150,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x29 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+87,"din", false,-1, 31,0);
-    tracep->declBus(c+151,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x3 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+88,"din", false,-1, 31,0);
-    tracep->declBus(c+152,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x30 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+89,"din", false,-1, 31,0);
-    tracep->declBus(c+153,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x31 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+90,"din", false,-1, 31,0);
-    tracep->declBus(c+154,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x4 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+91,"din", false,-1, 31,0);
-    tracep->declBus(c+155,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x5 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+92,"din", false,-1, 31,0);
-    tracep->declBus(c+156,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x6 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+93,"din", false,-1, 31,0);
-    tracep->declBus(c+157,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x7 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+94,"din", false,-1, 31,0);
-    tracep->declBus(c+158,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x8 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+95,"din", false,-1, 31,0);
-    tracep->declBus(c+159,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(1);
-    tracep->pushNamePrefix("x9 ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
-    tracep->declBus(c+176,"RESET_VAL", false,-1, 31,0);
-    tracep->declBit(c+161,"clk", false,-1);
-    tracep->declBit(c+162,"rst", false,-1);
-    tracep->declBus(c+96,"din", false,-1, 31,0);
-    tracep->declBus(c+160,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
-    tracep->popNamePrefix(3);
+    tracep->declBus(c+179,"i", false,-1, 31,0);
+    tracep->popNamePrefix(4);
     tracep->pushNamePrefix("ysyx_23060201_IDU ");
     tracep->declBus(c+163,"inst", false,-1, 31,0);
     tracep->declBus(c+166,"inst_op", false,-1, 6,0);
@@ -397,13 +389,13 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root__trace_init_sub__TOP__0(Vysyx_230
     tracep->declBus(c+165,"add_in", false,-1, 31,0);
     tracep->declBus(c+171,"npc", false,-1, 31,0);
     tracep->pushNamePrefix("pc_reg ");
-    tracep->declBus(c+174,"WIDTH", false,-1, 31,0);
+    tracep->declBus(c+172,"WIDTH", false,-1, 31,0);
     tracep->declBus(c+180,"RESET_VAL", false,-1, 31,0);
     tracep->declBit(c+161,"clk", false,-1);
     tracep->declBit(c+162,"rst", false,-1);
     tracep->declBus(c+171,"din", false,-1, 31,0);
     tracep->declBus(c+165,"dout", false,-1, 31,0);
-    tracep->declBit(c+179,"wen", false,-1);
+    tracep->declBit(c+174,"wen", false,-1);
     tracep->popNamePrefix(3);
 }
 
@@ -446,7 +438,7 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root__trace_full_sub_0(Vysyx_23060201_
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_23060201_TOP___024root__trace_full_sub_0\n"); );
     // Init
     uint32_t* const oldp VL_ATTR_UNUSED = bufp->oldp(vlSymsp->__Vm_baseCode);
-    VlWide<5>/*159:0*/ __Vtemp_h9b629cca__0;
+    VlWide<5>/*159:0*/ __Vtemp_h281acedc__0;
     // Body
     bufp->fullCData(oldp+1,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[0]),3);
     bufp->fullCData(oldp+2,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__key_list[1]),3);
@@ -458,206 +450,206 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root__trace_full_sub_0(Vysyx_23060201_
                               ? 0U : 7U)),3);
     bufp->fullIData(oldp+8,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__b2),32);
     bufp->fullBit(oldp+9,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__hit));
-    bufp->fullIData(oldp+10,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in),32);
-    bufp->fullIData(oldp+11,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rd_val_alu_out),32);
-    bufp->fullIData(oldp+12,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub),32);
-    bufp->fullIData(oldp+13,((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
+    bufp->fullIData(oldp+10,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[0]),32);
+    bufp->fullIData(oldp+11,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[1]),32);
+    bufp->fullIData(oldp+12,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[2]),32);
+    bufp->fullIData(oldp+13,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[3]),32);
+    bufp->fullIData(oldp+14,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[4]),32);
+    bufp->fullIData(oldp+15,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[5]),32);
+    bufp->fullIData(oldp+16,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[6]),32);
+    bufp->fullIData(oldp+17,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[7]),32);
+    bufp->fullIData(oldp+18,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[8]),32);
+    bufp->fullIData(oldp+19,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[9]),32);
+    bufp->fullIData(oldp+20,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[10]),32);
+    bufp->fullIData(oldp+21,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[11]),32);
+    bufp->fullIData(oldp+22,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[12]),32);
+    bufp->fullIData(oldp+23,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[13]),32);
+    bufp->fullIData(oldp+24,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[14]),32);
+    bufp->fullIData(oldp+25,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[15]),32);
+    bufp->fullIData(oldp+26,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[16]),32);
+    bufp->fullIData(oldp+27,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[17]),32);
+    bufp->fullIData(oldp+28,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[18]),32);
+    bufp->fullIData(oldp+29,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[19]),32);
+    bufp->fullIData(oldp+30,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[20]),32);
+    bufp->fullIData(oldp+31,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[21]),32);
+    bufp->fullIData(oldp+32,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[22]),32);
+    bufp->fullIData(oldp+33,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[23]),32);
+    bufp->fullIData(oldp+34,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[24]),32);
+    bufp->fullIData(oldp+35,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[25]),32);
+    bufp->fullIData(oldp+36,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[26]),32);
+    bufp->fullIData(oldp+37,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[27]),32);
+    bufp->fullIData(oldp+38,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[28]),32);
+    bufp->fullIData(oldp+39,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[29]),32);
+    bufp->fullIData(oldp+40,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[30]),32);
+    bufp->fullIData(oldp+41,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val[31]),32);
+    bufp->fullBit(oldp+42,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val));
+    bufp->fullIData(oldp+43,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0U]),32);
+    bufp->fullIData(oldp+44,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [1U]),32);
+    bufp->fullIData(oldp+45,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0xaU]),32);
+    bufp->fullIData(oldp+46,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0xbU]),32);
+    bufp->fullIData(oldp+47,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0xcU]),32);
+    bufp->fullIData(oldp+48,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0xdU]),32);
+    bufp->fullIData(oldp+49,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0xeU]),32);
+    bufp->fullIData(oldp+50,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0xfU]),32);
+    bufp->fullIData(oldp+51,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x10U]),32);
+    bufp->fullIData(oldp+52,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x11U]),32);
+    bufp->fullIData(oldp+53,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x12U]),32);
+    bufp->fullIData(oldp+54,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x13U]),32);
+    bufp->fullIData(oldp+55,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [2U]),32);
+    bufp->fullIData(oldp+56,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x14U]),32);
+    bufp->fullIData(oldp+57,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x15U]),32);
+    bufp->fullIData(oldp+58,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x16U]),32);
+    bufp->fullIData(oldp+59,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x17U]),32);
+    bufp->fullIData(oldp+60,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x18U]),32);
+    bufp->fullIData(oldp+61,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x19U]),32);
+    bufp->fullIData(oldp+62,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x1aU]),32);
+    bufp->fullIData(oldp+63,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x1bU]),32);
+    bufp->fullIData(oldp+64,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x1cU]),32);
+    bufp->fullIData(oldp+65,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x1dU]),32);
+    bufp->fullIData(oldp+66,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [3U]),32);
+    bufp->fullIData(oldp+67,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x1eU]),32);
+    bufp->fullIData(oldp+68,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [0x1fU]),32);
+    bufp->fullIData(oldp+69,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [4U]),32);
+    bufp->fullIData(oldp+70,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [5U]),32);
+    bufp->fullIData(oldp+71,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [6U]),32);
+    bufp->fullIData(oldp+72,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [7U]),32);
+    bufp->fullIData(oldp+73,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [8U]),32);
+    bufp->fullIData(oldp+74,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val
+                             [9U]),32);
+    bufp->fullIData(oldp+75,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val),32);
+    bufp->fullIData(oldp+76,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub),32);
+    bufp->fullIData(oldp+77,(((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val) 
                               & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext)),32);
-    bufp->fullIData(oldp+14,((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
+    bufp->fullIData(oldp+78,(((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val) 
                               | vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext)),32);
-    __Vtemp_h9b629cca__0[0U] = (IData)((0x300000000ULL 
+    __Vtemp_h281acedc__0[0U] = (IData)((0x300000000ULL 
                                         | (QData)((IData)(
-                                                          (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
+                                                          ((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val) 
                                                            | vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext)))));
-    __Vtemp_h9b629cca__0[1U] = (((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
+    __Vtemp_h281acedc__0[1U] = ((((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val) 
                                   & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext) 
                                  << 3U) | (IData)((
                                                    (0x300000000ULL 
                                                     | (QData)((IData)(
-                                                                      (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
+                                                                      ((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val) 
                                                                        | vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext)))) 
                                                    >> 0x20U)));
-    __Vtemp_h9b629cca__0[2U] = (0x10U | ((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
+    __Vtemp_h281acedc__0[2U] = (0x10U | ((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
                                           << 6U) | 
-                                         ((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val_alu_in 
+                                         (((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_rs1_val) 
                                            & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext) 
                                           >> 0x1dU)));
-    __Vtemp_h9b629cca__0[3U] = (0x40U | ((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
+    __Vtemp_h281acedc__0[3U] = (0x40U | ((vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
                                           << 9U) | 
                                          (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
                                           >> 0x1aU)));
-    __Vtemp_h9b629cca__0[4U] = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
+    __Vtemp_h281acedc__0[4U] = (vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__res_addsub 
                                 >> 0x17U);
-    bufp->fullWData(oldp+15,(__Vtemp_h9b629cca__0),140);
-    bufp->fullQData(oldp+20,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[0]),35);
-    bufp->fullQData(oldp+22,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[1]),35);
-    bufp->fullQData(oldp+24,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[2]),35);
-    bufp->fullQData(oldp+26,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[3]),35);
-    bufp->fullIData(oldp+28,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[0]),32);
-    bufp->fullIData(oldp+29,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[1]),32);
-    bufp->fullIData(oldp+30,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[2]),32);
-    bufp->fullIData(oldp+31,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[3]),32);
-    bufp->fullIData(oldp+32,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out),32);
-    bufp->fullIData(oldp+33,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[0]),32);
-    bufp->fullIData(oldp+34,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[1]),32);
-    bufp->fullIData(oldp+35,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[2]),32);
-    bufp->fullIData(oldp+36,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[3]),32);
-    bufp->fullIData(oldp+37,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[4]),32);
-    bufp->fullIData(oldp+38,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[5]),32);
-    bufp->fullIData(oldp+39,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[6]),32);
-    bufp->fullIData(oldp+40,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[7]),32);
-    bufp->fullIData(oldp+41,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[8]),32);
-    bufp->fullIData(oldp+42,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[9]),32);
-    bufp->fullIData(oldp+43,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[10]),32);
-    bufp->fullIData(oldp+44,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[11]),32);
-    bufp->fullIData(oldp+45,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[12]),32);
-    bufp->fullIData(oldp+46,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[13]),32);
-    bufp->fullIData(oldp+47,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[14]),32);
-    bufp->fullIData(oldp+48,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[15]),32);
-    bufp->fullIData(oldp+49,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[16]),32);
-    bufp->fullIData(oldp+50,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[17]),32);
-    bufp->fullIData(oldp+51,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[18]),32);
-    bufp->fullIData(oldp+52,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[19]),32);
-    bufp->fullIData(oldp+53,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[20]),32);
-    bufp->fullIData(oldp+54,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[21]),32);
-    bufp->fullIData(oldp+55,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[22]),32);
-    bufp->fullIData(oldp+56,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[23]),32);
-    bufp->fullIData(oldp+57,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[24]),32);
-    bufp->fullIData(oldp+58,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[25]),32);
-    bufp->fullIData(oldp+59,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[26]),32);
-    bufp->fullIData(oldp+60,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[27]),32);
-    bufp->fullIData(oldp+61,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[28]),32);
-    bufp->fullIData(oldp+62,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[29]),32);
-    bufp->fullIData(oldp+63,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[30]),32);
-    bufp->fullIData(oldp+64,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val[31]),32);
-    bufp->fullIData(oldp+65,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0U]),32);
-    bufp->fullIData(oldp+66,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [1U]),32);
-    bufp->fullIData(oldp+67,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0xaU]),32);
-    bufp->fullIData(oldp+68,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0xbU]),32);
-    bufp->fullIData(oldp+69,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0xcU]),32);
-    bufp->fullIData(oldp+70,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0xdU]),32);
-    bufp->fullIData(oldp+71,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0xeU]),32);
-    bufp->fullIData(oldp+72,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0xfU]),32);
-    bufp->fullIData(oldp+73,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x10U]),32);
-    bufp->fullIData(oldp+74,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x11U]),32);
-    bufp->fullIData(oldp+75,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x12U]),32);
-    bufp->fullIData(oldp+76,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x13U]),32);
-    bufp->fullIData(oldp+77,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [2U]),32);
-    bufp->fullIData(oldp+78,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x14U]),32);
-    bufp->fullIData(oldp+79,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x15U]),32);
-    bufp->fullIData(oldp+80,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x16U]),32);
-    bufp->fullIData(oldp+81,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x17U]),32);
-    bufp->fullIData(oldp+82,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x18U]),32);
-    bufp->fullIData(oldp+83,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x19U]),32);
-    bufp->fullIData(oldp+84,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x1aU]),32);
-    bufp->fullIData(oldp+85,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x1bU]),32);
-    bufp->fullIData(oldp+86,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x1cU]),32);
-    bufp->fullIData(oldp+87,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x1dU]),32);
-    bufp->fullIData(oldp+88,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [3U]),32);
-    bufp->fullIData(oldp+89,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x1eU]),32);
-    bufp->fullIData(oldp+90,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [0x1fU]),32);
-    bufp->fullIData(oldp+91,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [4U]),32);
-    bufp->fullIData(oldp+92,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [5U]),32);
-    bufp->fullIData(oldp+93,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [6U]),32);
-    bufp->fullIData(oldp+94,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [7U]),32);
-    bufp->fullIData(oldp+95,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [8U]),32);
-    bufp->fullIData(oldp+96,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val
-                             [9U]),32);
-    bufp->fullIData(oldp+97,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[0]),32);
-    bufp->fullIData(oldp+98,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[1]),32);
-    bufp->fullIData(oldp+99,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[2]),32);
-    bufp->fullIData(oldp+100,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[3]),32);
-    bufp->fullIData(oldp+101,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[4]),32);
-    bufp->fullIData(oldp+102,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[5]),32);
-    bufp->fullIData(oldp+103,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[6]),32);
-    bufp->fullIData(oldp+104,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[7]),32);
-    bufp->fullIData(oldp+105,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[8]),32);
-    bufp->fullIData(oldp+106,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[9]),32);
-    bufp->fullIData(oldp+107,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[10]),32);
-    bufp->fullIData(oldp+108,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[11]),32);
-    bufp->fullIData(oldp+109,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[12]),32);
-    bufp->fullIData(oldp+110,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[13]),32);
-    bufp->fullIData(oldp+111,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[14]),32);
-    bufp->fullIData(oldp+112,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[15]),32);
-    bufp->fullIData(oldp+113,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[16]),32);
-    bufp->fullIData(oldp+114,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[17]),32);
-    bufp->fullIData(oldp+115,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[18]),32);
-    bufp->fullIData(oldp+116,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[19]),32);
-    bufp->fullIData(oldp+117,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[20]),32);
-    bufp->fullIData(oldp+118,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[21]),32);
-    bufp->fullIData(oldp+119,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[22]),32);
-    bufp->fullIData(oldp+120,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[23]),32);
-    bufp->fullIData(oldp+121,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[24]),32);
-    bufp->fullIData(oldp+122,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[25]),32);
-    bufp->fullIData(oldp+123,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[26]),32);
-    bufp->fullIData(oldp+124,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[27]),32);
-    bufp->fullIData(oldp+125,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[28]),32);
-    bufp->fullIData(oldp+126,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[29]),32);
-    bufp->fullIData(oldp+127,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[30]),32);
-    bufp->fullIData(oldp+128,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT__inst_reg_val_out[31]),32);
-    bufp->fullIData(oldp+129,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x0____pinNumber4),32);
-    bufp->fullIData(oldp+130,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x1____pinNumber4),32);
-    bufp->fullIData(oldp+131,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x10____pinNumber4),32);
-    bufp->fullIData(oldp+132,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x11____pinNumber4),32);
-    bufp->fullIData(oldp+133,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x12____pinNumber4),32);
-    bufp->fullIData(oldp+134,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x13____pinNumber4),32);
-    bufp->fullIData(oldp+135,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x14____pinNumber4),32);
-    bufp->fullIData(oldp+136,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x15____pinNumber4),32);
-    bufp->fullIData(oldp+137,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x16____pinNumber4),32);
-    bufp->fullIData(oldp+138,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x17____pinNumber4),32);
-    bufp->fullIData(oldp+139,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x18____pinNumber4),32);
-    bufp->fullIData(oldp+140,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x19____pinNumber4),32);
-    bufp->fullIData(oldp+141,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x2____pinNumber4),32);
-    bufp->fullIData(oldp+142,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x20____pinNumber4),32);
-    bufp->fullIData(oldp+143,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x21____pinNumber4),32);
-    bufp->fullIData(oldp+144,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x22____pinNumber4),32);
-    bufp->fullIData(oldp+145,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x23____pinNumber4),32);
-    bufp->fullIData(oldp+146,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x24____pinNumber4),32);
-    bufp->fullIData(oldp+147,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x25____pinNumber4),32);
-    bufp->fullIData(oldp+148,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x26____pinNumber4),32);
-    bufp->fullIData(oldp+149,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x27____pinNumber4),32);
-    bufp->fullIData(oldp+150,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x28____pinNumber4),32);
-    bufp->fullIData(oldp+151,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x29____pinNumber4),32);
-    bufp->fullIData(oldp+152,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x3____pinNumber4),32);
-    bufp->fullIData(oldp+153,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x30____pinNumber4),32);
-    bufp->fullIData(oldp+154,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x31____pinNumber4),32);
-    bufp->fullIData(oldp+155,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x4____pinNumber4),32);
-    bufp->fullIData(oldp+156,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x5____pinNumber4),32);
-    bufp->fullIData(oldp+157,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x6____pinNumber4),32);
-    bufp->fullIData(oldp+158,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x7____pinNumber4),32);
-    bufp->fullIData(oldp+159,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x8____pinNumber4),32);
-    bufp->fullIData(oldp+160,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__x9____pinNumber4),32);
+    bufp->fullWData(oldp+79,(__Vtemp_h281acedc__0),140);
+    bufp->fullQData(oldp+84,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[0]),35);
+    bufp->fullQData(oldp+86,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[1]),35);
+    bufp->fullQData(oldp+88,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[2]),35);
+    bufp->fullQData(oldp+90,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__pair_list[3]),35);
+    bufp->fullIData(oldp+92,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[0]),32);
+    bufp->fullIData(oldp+93,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[1]),32);
+    bufp->fullIData(oldp+94,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[2]),32);
+    bufp->fullIData(oldp+95,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__data_list[3]),32);
+    bufp->fullIData(oldp+96,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_ALU__DOT__alu__DOT__i0__DOT__lut_out),32);
+    bufp->fullIData(oldp+97,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[0]),32);
+    bufp->fullIData(oldp+98,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[1]),32);
+    bufp->fullIData(oldp+99,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[2]),32);
+    bufp->fullIData(oldp+100,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[3]),32);
+    bufp->fullIData(oldp+101,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[4]),32);
+    bufp->fullIData(oldp+102,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[5]),32);
+    bufp->fullIData(oldp+103,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[6]),32);
+    bufp->fullIData(oldp+104,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[7]),32);
+    bufp->fullIData(oldp+105,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[8]),32);
+    bufp->fullIData(oldp+106,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[9]),32);
+    bufp->fullIData(oldp+107,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[10]),32);
+    bufp->fullIData(oldp+108,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[11]),32);
+    bufp->fullIData(oldp+109,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[12]),32);
+    bufp->fullIData(oldp+110,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[13]),32);
+    bufp->fullIData(oldp+111,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[14]),32);
+    bufp->fullIData(oldp+112,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[15]),32);
+    bufp->fullIData(oldp+113,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[16]),32);
+    bufp->fullIData(oldp+114,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[17]),32);
+    bufp->fullIData(oldp+115,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[18]),32);
+    bufp->fullIData(oldp+116,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[19]),32);
+    bufp->fullIData(oldp+117,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[20]),32);
+    bufp->fullIData(oldp+118,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[21]),32);
+    bufp->fullIData(oldp+119,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[22]),32);
+    bufp->fullIData(oldp+120,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[23]),32);
+    bufp->fullIData(oldp+121,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[24]),32);
+    bufp->fullIData(oldp+122,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[25]),32);
+    bufp->fullIData(oldp+123,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[26]),32);
+    bufp->fullIData(oldp+124,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[27]),32);
+    bufp->fullIData(oldp+125,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[28]),32);
+    bufp->fullIData(oldp+126,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[29]),32);
+    bufp->fullIData(oldp+127,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[30]),32);
+    bufp->fullIData(oldp+128,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__inst_reg_val_out[31]),32);
+    bufp->fullIData(oldp+129,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x0____pinNumber4),32);
+    bufp->fullIData(oldp+130,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x1____pinNumber4),32);
+    bufp->fullIData(oldp+131,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x10____pinNumber4),32);
+    bufp->fullIData(oldp+132,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x11____pinNumber4),32);
+    bufp->fullIData(oldp+133,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x12____pinNumber4),32);
+    bufp->fullIData(oldp+134,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x13____pinNumber4),32);
+    bufp->fullIData(oldp+135,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x14____pinNumber4),32);
+    bufp->fullIData(oldp+136,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x15____pinNumber4),32);
+    bufp->fullIData(oldp+137,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x16____pinNumber4),32);
+    bufp->fullIData(oldp+138,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x17____pinNumber4),32);
+    bufp->fullIData(oldp+139,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x18____pinNumber4),32);
+    bufp->fullIData(oldp+140,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x19____pinNumber4),32);
+    bufp->fullIData(oldp+141,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x2____pinNumber4),32);
+    bufp->fullIData(oldp+142,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x20____pinNumber4),32);
+    bufp->fullIData(oldp+143,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x21____pinNumber4),32);
+    bufp->fullIData(oldp+144,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x22____pinNumber4),32);
+    bufp->fullIData(oldp+145,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x23____pinNumber4),32);
+    bufp->fullIData(oldp+146,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x24____pinNumber4),32);
+    bufp->fullIData(oldp+147,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x25____pinNumber4),32);
+    bufp->fullIData(oldp+148,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x26____pinNumber4),32);
+    bufp->fullIData(oldp+149,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x27____pinNumber4),32);
+    bufp->fullIData(oldp+150,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x28____pinNumber4),32);
+    bufp->fullIData(oldp+151,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x29____pinNumber4),32);
+    bufp->fullIData(oldp+152,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x3____pinNumber4),32);
+    bufp->fullIData(oldp+153,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x30____pinNumber4),32);
+    bufp->fullIData(oldp+154,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x31____pinNumber4),32);
+    bufp->fullIData(oldp+155,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x4____pinNumber4),32);
+    bufp->fullIData(oldp+156,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x5____pinNumber4),32);
+    bufp->fullIData(oldp+157,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x6____pinNumber4),32);
+    bufp->fullIData(oldp+158,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x7____pinNumber4),32);
+    bufp->fullIData(oldp+159,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x8____pinNumber4),32);
+    bufp->fullIData(oldp+160,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT____Vcellout__x9____pinNumber4),32);
     bufp->fullBit(oldp+161,(vlSelf->clk));
     bufp->fullBit(oldp+162,(vlSelf->rst));
     bufp->fullIData(oldp+163,(vlSelf->inst),32);
@@ -671,13 +663,13 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root__trace_full_sub_0(Vysyx_23060201_
                                         >> 7U))),5);
     bufp->fullSData(oldp+170,((vlSelf->inst >> 0x14U)),12);
     bufp->fullIData(oldp+171,(((IData)(4U) + vlSelf->pc)),32);
-    bufp->fullIData(oldp+172,(4U),32);
-    bufp->fullIData(oldp+173,(3U),32);
-    bufp->fullIData(oldp+174,(0x20U),32);
-    bufp->fullIData(oldp+175,(0U),32);
-    bufp->fullIData(oldp+176,(0U),32);
-    bufp->fullIData(oldp+177,(0x23U),32);
-    bufp->fullIData(oldp+178,(4U),32);
-    bufp->fullBit(oldp+179,(1U));
+    bufp->fullIData(oldp+172,(0x20U),32);
+    bufp->fullIData(oldp+173,(0U),32);
+    bufp->fullBit(oldp+174,(1U));
+    bufp->fullIData(oldp+175,(4U),32);
+    bufp->fullIData(oldp+176,(3U),32);
+    bufp->fullIData(oldp+177,(0U),32);
+    bufp->fullIData(oldp+178,(0x23U),32);
+    bufp->fullIData(oldp+179,(4U),32);
     bufp->fullIData(oldp+180,(0x80000000U),32);
 }

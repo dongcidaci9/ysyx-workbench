@@ -44,6 +44,7 @@ module ysyx_23060201_EXU(
 	Reg #(32, 32'b0) x31 (clk, rst, inst_reg_val[31], inst_reg_val_out[31], 1'b1);
 	
 	// Get the value
+	wire [31:0] inst_rs1_val;
 	assign inst_rs1_val = inst_reg_val_out[inst_rs1];
 	
 	wire inst_addi;
