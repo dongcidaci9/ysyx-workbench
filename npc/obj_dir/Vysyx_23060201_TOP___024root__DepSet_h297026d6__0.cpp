@@ -133,7 +133,7 @@ VL_INLINE_OPT void Vysyx_23060201_TOP___024root___nba_sequent__TOP__0(Vysyx_2306
     Vysyx_23060201_TOP__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_23060201_TOP___024root___nba_sequent__TOP__0\n"); );
     // Body
-    vlSelf->pc = ((IData)(vlSelf->rst) ? 0x80000000U
+    vlSelf->pc = ((IData)(vlSelf->rst) ? 0x10000000U
                    : vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc 
         = ((IData)(4U) + vlSelf->pc);

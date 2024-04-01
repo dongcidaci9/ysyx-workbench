@@ -39,6 +39,7 @@ static void one_cycle(){
 int main() {
 	sim_init();
 
+	one_cycle();
 	top->rst = 1;
 	one_cycle();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
