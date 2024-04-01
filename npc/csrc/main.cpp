@@ -34,14 +34,14 @@ static void sim_exit(){
 }
 
 static void single_cycle() {
-	top.clk = 0; top.eval();
-	top.clk = 1; top.eval();
+	top->clk = 0; top->eval();
+	top->clk = 1; top->eval();
 }
 
 static void rst(int n) {
-	top.rst = 1;
+	top->rst = 1;
 	while(n-->0) single_cycle();
-	top.rst = 0;
+	top->rst = 0;
 }
 
 int main() {
