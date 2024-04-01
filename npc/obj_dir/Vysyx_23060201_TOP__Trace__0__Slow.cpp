@@ -82,8 +82,8 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root__trace_init_sub__TOP__0(Vysyx_230
     tracep->declBit(c+130,"rst", false,-1);
     tracep->declBus(c+136,"inst_rs1", false,-1, 4,0);
     tracep->declBus(c+137,"inst_rd", false,-1, 4,0);
-    tracep->declBus(c+38,"inst_rs1_val_out", false,-1, 31,0);
     tracep->declBus(c+39,"inst_rd_val_in", false,-1, 31,0);
+    tracep->declBus(c+38,"inst_rs1_val_out", false,-1, 31,0);
     for (int i = 0; i < 32; ++i) {
         tracep->declBus(c+65+i*1,"inst_reg_val_in", true,(i+0), 31,0);
     }

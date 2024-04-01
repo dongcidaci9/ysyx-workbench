@@ -50,7 +50,7 @@ int main() {
 	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 	// rd = 3
-	top->inst = 0b000000000011 00010 000 00010 0010011; // x2 = x2 + 3
+	top->inst = 0b00000000001100010000000100010011; // x2 = x2 + 3
 	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 	// rd = 6
