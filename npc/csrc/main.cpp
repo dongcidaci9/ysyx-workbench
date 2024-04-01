@@ -30,9 +30,6 @@ static void sim_exit(){
 }
 
 int main() {
-	uint32_t *memory;
-	memory = init_mem(5);
-	
 	sim_init();
 
 	top->rst = 1;
