@@ -1,19 +1,15 @@
-#include "Vysyx_23060201_TOP.h"
-#include "verilated.h"
-#include "verilated_vcd_c.h"
 #include <stdlib.h>
 #include <stdint.h>
 
 
+static Vysyx_23060201_TOP* top;
+
 uint32_t *init_mem(size_t size);
 uint32_t guest_to_host(uint32_t addr);
 uint32_t pmem_read(uint32_t *memory, uint32_t vaddr);
-
 // 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* vcd = NULL;
-
-static Vysyx_23060201_TOP* top;
 
 static void step_and_dump_wave(){
 	top->eval();
