@@ -30,6 +30,7 @@ module ysyx_23060201_TOP(
 	
 	// exu
 	ysyx_23060201_EXU ysyx_23060201_EXU(
+		.clk(clk),
 		.rst(rst),
 		.inst_op(inst_op),
 		.inst_func3(inst_func3),
@@ -40,4 +41,3 @@ module ysyx_23060201_TOP(
 	);
 
 endmodule
-	

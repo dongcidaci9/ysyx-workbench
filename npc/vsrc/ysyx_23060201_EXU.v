@@ -1,4 +1,5 @@
 module ysyx_23060201_EXU(
+	input clk,
 	input rst,
 	input [6:0] inst_op,
 	input [2:0] inst_func3,
@@ -17,6 +18,7 @@ module ysyx_23060201_EXU(
 	assign ctrl = inst_addi ? 3'b000 : 3'b111;
 
 	ysyx_23060201_GPR ysyx_23060201_GPR(
+		.clk(clk),
 		.rst(rst),
 		.inst_rs1(inst_rs1),
 		.inst_rd(inst_rd),
