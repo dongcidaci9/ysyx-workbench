@@ -1,4 +1,5 @@
 module ysyx_23060201_GPR(
+	input clk,
 	input rst,
 	input [4:0] inst_rs1, inst_rd,
 	output [31:0] inst_rs1_val_out,
