@@ -9,8 +9,8 @@ module ysyx_23060201_EXU(
 );
 
 	// reg: sel -> fetch -> execute -> rewrite
-	wire [31:0] inst_rs1_val_alu_in;
-	wire [31:0] inst_rd_val_alu_out;
+	wire [31:0] inst_rs1_val_alu_in = 32'b0;
+	wire [31:0] inst_rd_val_alu_out = 32'b0;
 	wire inst_addi;
 	wire [2:0] ctrl;
 
