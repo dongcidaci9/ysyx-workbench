@@ -34,6 +34,10 @@ int main() {
 
 	top->rst = 1;
 	step_and_dump_wave();
+	top->rst = 0;
+	step_and_dump_wave();
+	top->rst = 1;
+	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 
 	top->rst = 0;
