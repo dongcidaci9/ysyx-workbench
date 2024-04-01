@@ -61,6 +61,9 @@ int main() {
 	top->inst = 0b00000000011100010000000100010011; // x2 = x2 + 7
 	one_cycle();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
-	// rd = 6
+	// rd = 10
+	top->inst = 0b00000000000100010000000100010011; // x2 = x2 + 1
+	one_cycle();
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 	sim_exit();
 }
