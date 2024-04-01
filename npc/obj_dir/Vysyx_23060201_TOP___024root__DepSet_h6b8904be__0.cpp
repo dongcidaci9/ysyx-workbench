@@ -3,18 +3,9 @@
 // See Vysyx_23060201_TOP.h for the primary calling header
 
 #include "verilated.h"
-#include "verilated_dpi.h"
 
 #include "Vysyx_23060201_TOP__Syms.h"
 #include "Vysyx_23060201_TOP___024root.h"
-
-extern "C" void npc_trap();
-
-VL_INLINE_OPT void Vysyx_23060201_TOP___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP() {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_23060201_TOP___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP\n"); );
-    // Body
-    npc_trap();
-}
 
 #ifdef VL_DEBUG
 VL_ATTR_COLD void Vysyx_23060201_TOP___024root___dump_triggers__ico(Vysyx_23060201_TOP___024root* vlSelf);

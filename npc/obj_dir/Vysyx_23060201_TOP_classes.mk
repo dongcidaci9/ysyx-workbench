@@ -35,7 +35,6 @@ VM_CLASSES_SLOW += \
 
 # Generated support classes, fast-path, compile with highest optimization
 VM_SUPPORT_FAST += \
-	Vysyx_23060201_TOP__Dpi \
 	Vysyx_23060201_TOP__Trace__0 \
 
 # Generated support classes, non-fast-path, compile with low/medium optimization
@@ -46,7 +45,6 @@ VM_SUPPORT_SLOW += \
 # Global classes, need linked once per executable, fast-path, compile with highest optimization
 VM_GLOBAL_FAST += \
 	verilated \
-	verilated_dpi \
 	verilated_vcd_c \
 	verilated_threads \
 
