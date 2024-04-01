@@ -46,7 +46,6 @@ module ysyx_23060201_EXU(
 	// Get the value
 	assign inst_rs1_val = inst_reg_val_out[inst_rs1];
 	
-	wire [31:0] inst_rd_val_alu
 	wire inst_addi;
 	wire [2:0] ctrl;
 	assign inst_addi = (inst_func3 == 3'b000 && inst_op == 7'b0010011) ? 1'b1 : 1'b0;
