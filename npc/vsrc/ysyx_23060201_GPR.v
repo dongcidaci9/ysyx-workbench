@@ -10,7 +10,9 @@ module ysyx_23060201_GPR(
 	wire [31:0] inst_reg_val_out [31:0];
 
 	wire [31:0] sel;
-	assign sel[31:0] = 32'b0;
+
+	assign sel[inst_rs1] = 1'b1;
+	assign sel[inst_rd] = 1'b1;
 
 	Reg #(32, 32'b0) x0 (sel[0], rst, inst_reg_val_in[0], inst_reg_val_out[0], 1'b1);
 	Reg #(32, 32'b0) x1 (sel[1], rst, inst_reg_val_in[1], inst_reg_val_out[1], 1'b1);
@@ -48,9 +50,6 @@ module ysyx_23060201_GPR(
 	// Get the value
 	assign inst_rs1_val_out = inst_reg_val_out[inst_rs1];
 	
-	assign sel[inst_rs1] = 1'b1;
-	assign sel[inst_rd] = 1'b1;
-
 	// Save the changed value
 	assign inst_reg_val_in[inst_rd] = inst_rd_val_in;
 
