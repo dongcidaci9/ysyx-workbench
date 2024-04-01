@@ -1,4 +1,4 @@
-module ysyx_23060201_REG(
+module ysyx_23060201_GPR(
 	input rst,
 	input [4:0] inst_rs1, inst_rd,
 	input [31:0] inst_rd_val_in,

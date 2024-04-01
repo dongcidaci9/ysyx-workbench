@@ -33,8 +33,8 @@ int main() {
 	sim_init();
 
 	top->rst = 1;
-	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 	step_and_dump_wave();
+	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 
 	top->rst = 0;
 	// rd = 0

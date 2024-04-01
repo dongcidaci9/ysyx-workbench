@@ -8,7 +8,6 @@ module ysyx_23060201_EXU(
 );
 
 	// reg: sel -> fetch -> execute -> rewrite
-	
 	wire [31:0] inst_rs1_val_alu_in;
 	wire [31:0] inst_rd_val_alu_out;
 	wire inst_addi;
@@ -17,7 +16,7 @@ module ysyx_23060201_EXU(
 	assign inst_addi = (inst_func3 == 3'b000 && inst_op == 7'b0010011) ? 1'b1 : 1'b0;
 	assign ctrl = inst_addi ? 3'b000 : 3'b111;
 
-	ysyx_23060201_REG ysyx_23060201_REG(
+	ysyx_23060201_GPR ysyx_23060201_GPR(
 		.rst(rst),
 		.inst_rs1(inst_rs1),
 		.inst_rd(inst_rd),
