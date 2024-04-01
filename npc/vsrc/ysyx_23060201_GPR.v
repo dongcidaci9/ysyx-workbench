@@ -10,7 +10,7 @@ module ysyx_23060201_GPR(
 	wire [31:0] inst_reg_val_in [31:0];
 	wire [31:0] inst_reg_val_out [31:0];
 
-	wire [31:0] sel;
+	wire [31:0] sel = 32'b0;
 
 	Reg #(32, 32'b0) x0 (clk, rst, inst_reg_val_in[0], inst_reg_val_out[0], 1'b1);
 	Reg #(32, 32'b0) x1 (clk, rst, inst_reg_val_in[1], inst_reg_val_out[1], 1'b1);
