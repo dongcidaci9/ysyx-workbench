@@ -23,7 +23,7 @@ module ysyx_23060201_EXU(
 		.inst_rs1(inst_rs1),
 		.inst_rd(inst_rd),
 		.inst_rs1_val_out(inst_rs1_val_alu_in),
-		.inst_rd_val_res(inst_rd_val_alu_out)
+		.inst_rd_val(inst_rd_val_alu_out)
 	);
 
 	ysyx_23060201_ALU ysyx_23060201_ALU(

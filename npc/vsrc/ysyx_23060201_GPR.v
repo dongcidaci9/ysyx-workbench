@@ -3,7 +3,7 @@ module ysyx_23060201_GPR(
 	input rst,
 	input [4:0] inst_rs1, inst_rd,
 	input [31:0] inst_rd_val_res,
-	output [31:0] inst_rs1_val_out,
+	output [31:0] inst_rs1_val_out
 );
 		
 	wire [31:0] inst_reg_val [31:0];
