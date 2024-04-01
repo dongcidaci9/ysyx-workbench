@@ -11,7 +11,7 @@ all:
 sim:
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
-	verilator -t ysyx_23060201_TOP --timing -Wall -cc -build -exe -j 0 -trace $(VERILOG_SRC) $(SIM_MAIN_SRC)
+	verilator --top-module ysyx_23060201_TOP --timing -Wall -cc -build -exe -j 0 -trace $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	./obj_dir/Vysyx_23060201_TOP
 
 run:sim wave
