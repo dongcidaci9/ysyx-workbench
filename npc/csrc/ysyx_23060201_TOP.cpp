@@ -54,7 +54,7 @@ int main() {
 	for (int i=0; i<4; i++) {
 		dut.inst = pmem_read(memory, dut.pc);
 		single_cycle();
-		step_and_dump_wave()
+		step_and_dump_wave();
 	}
 
 	sim_exit();
