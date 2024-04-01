@@ -58,12 +58,14 @@ int main() {
 	one_cycle();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
 	// rd = 3
-	top->inst = 0b00000000011100010000000100010011; // x2 = x2 + 7
+	top->inst = 0b00000000011000010000000100010011; // x2 = x2 + 6
 	one_cycle();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
-	// rd = 10
+	// rd = 9
 	top->inst = 0b00000000000100010000000100010011; // x2 = x2 + 1
 	one_cycle();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val_res);
+	// rd = 10
+	
 	sim_exit();
 }
