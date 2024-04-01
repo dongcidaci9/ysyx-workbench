@@ -45,6 +45,6 @@ module ysyx_23060201_GPR(
 	assign inst_rs1_val = inst_reg_val_out[inst_rs1];
 	
 	// Save the changed value
-	assign inst_reg_val[inst_rd] = inst_rd_val_res;
+	assign inst_reg_val[inst_rd] = inst_rd_val;
 
 endmodule
