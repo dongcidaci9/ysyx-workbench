@@ -78,7 +78,7 @@ int main() {
 
 // DPI-C
 extern "C" void npc_trap(){
-	prtinf("<ebreak>\n");
-		sim_exit();
+	printf("<ebreak>\n");
+	sim_exit();
 }
 
