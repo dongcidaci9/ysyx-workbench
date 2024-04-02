@@ -82,6 +82,6 @@ int main() {
 extern "C" void npc_trap(){
 	sim_exit();	
 	printf("<ebreak>\n");
-	exit();
+	exit(0);
 }
 
