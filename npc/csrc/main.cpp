@@ -74,6 +74,7 @@ int main() {
 	// rd = 7
 	
 	sim_exit();
+	return 0;
 }
 
 // DPI-C
