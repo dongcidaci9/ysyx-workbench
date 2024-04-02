@@ -21,14 +21,12 @@ module ysyx_23060201_IDU(
 	assign inst_imm = imm_ext;
 
 	// DPI-C
-	/*
 	import "DPI-C" function void npc_trap();
 	always @(*) begin
 		if (inst_op == 7'b1110011 && inst_func3 == 3'b000) begin
 			npc_trap();
 		end
 	end
-	*/
 	
 endmodule
 

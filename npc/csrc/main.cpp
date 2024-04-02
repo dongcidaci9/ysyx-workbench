@@ -8,9 +8,9 @@ VerilatedContext* contextp = NULL;
 VerilatedVcdC* vcd = NULL;
 
 static void step_and_dump_wave(){
-	top->eval();
-	contextp->timeInc(1);
-	vcd->dump(contextp->time());
+	top->eval(); // State update
+	contextp->timeInc(1); // Time step
+	vcd->dump(contextp->time()); // Dump wave
 }
 
 // Initialize
@@ -31,7 +31,6 @@ static void sim_exit(){
 
 int main() {
 	sim_init();
-
 
 	top->clk = 1; step_and_dump_wave();
 	top->clk = 0; step_and_dump_wave();
@@ -67,3 +66,8 @@ int main() {
 	
 	sim_exit();
 }
+
+void npc_trap(){
+	sim_exit();
+}
+

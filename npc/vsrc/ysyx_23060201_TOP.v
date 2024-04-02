@@ -5,7 +5,6 @@ module ysyx_23060201_TOP(
 	output [31:0] inst_rd_val,
 	output [31:0] pc
 );// pc -> ifu -> idu -> exu
-	
 	// pc
 	ysyx_23060201_PC ysyx_23060201_PC(
 		.clk(clk),
