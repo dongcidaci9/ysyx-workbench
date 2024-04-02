@@ -26,7 +26,6 @@ static void sim_init(){
 
 // Exit
 static void sim_exit(){
-	step_and_dump_wave();
 	vcd->close();
 	printf("Simulation finished. Total simulation time: %ld\n", contextp->time());
 	delete top;
@@ -59,9 +58,9 @@ int main() {
 	printf("pc = 0x%x, inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 3
 
-	top->clk = 1; step_and_dump_wave();
-	top->inst = 0b00000000000100000000000001110011; // ebreak
-	top->clk = 0; step_and_dump_wave();
+	// top->clk = 1; step_and_dump_wave();
+	// top->inst = 0b00000000000100000000000001110011; // ebreak
+	// top->clk = 0; step_and_dump_wave();
 
 	// ebreak
 	top->clk = 1; step_and_dump_wave();
@@ -80,7 +79,6 @@ int main() {
 
 // DPI-C
 extern "C" void npc_trap(){
-	sim_exit();
 	printf("<ebreak>\n");
 	exit(0);
 }
