@@ -123,10 +123,9 @@ void Vysyx_23060201_TOP___024root__trace_chg_sub_0(Vysyx_23060201_TOP___024root*
                                       >> 0xfU))),5);
     bufp->chgCData(oldp+71,((0x1fU & (vlSelf->inst 
                                       >> 7U))),5);
-    bufp->chgBit(oldp+72,((1U & (~ (IData)(vlSelf->clk)))));
-    bufp->chgIData(oldp+73,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__rs1_saved____pinNumber4),32);
-    bufp->chgSData(oldp+74,((vlSelf->inst >> 0x14U)),12);
-    bufp->chgIData(oldp+75,(((IData)(4U) + vlSelf->pc)),32);
+    bufp->chgIData(oldp+72,(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_EXU__DOT__ysyx_23060201_GPR__DOT____Vcellout__rs1_saved____pinNumber4),32);
+    bufp->chgSData(oldp+73,((vlSelf->inst >> 0x14U)),12);
+    bufp->chgIData(oldp+74,(((IData)(4U) + vlSelf->pc)),32);
 }
 
 void Vysyx_23060201_TOP___024root__trace_cleanup(void* voidSelf, VerilatedVcd* /*unused*/) {
