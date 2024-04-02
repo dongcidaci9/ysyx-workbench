@@ -78,8 +78,8 @@ int main() {
 
 // DPI-C
 extern "C" void npc_trap(){
-	
-	printf("<ebreak>\n");
+	printf("pc: %x <ebreak>\n", top->pc);
 	sim_exit();
+	exit(0);
 }
 
