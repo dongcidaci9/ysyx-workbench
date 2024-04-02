@@ -1,7 +1,7 @@
 #include "Vysyx_23060201_TOP.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
-#include "Vysyx_23060201_IDU__Dpi.h"
+#include "Vysyx_23060201_TOP__Dpi.h"
 
 static Vysyx_23060201_TOP* top;
 
