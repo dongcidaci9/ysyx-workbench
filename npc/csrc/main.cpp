@@ -29,6 +29,8 @@ static void sim_exit(){
 	step_and_dump_wave();
 	vcd->close();
 	printf("Simulation finished. Total simulation time: %ld\n", contextp->time());
+	delete top;
+	delete vcd;
 }
 
 int main() {
@@ -74,13 +76,12 @@ int main() {
 	// rd = 7
 	
 	sim_exit();
-	return 0;
 }
 
 // DPI-C
 extern "C" void npc_trap(){
+	sim_exit();	
 	printf("<ebreak>\n");
-	sim_exit();
-	exit(0);
+	exit();
 }
 
