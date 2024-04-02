@@ -12,6 +12,6 @@ module ysyx_23060201_GPR(
 	assign inst_rs1_val = reg_file[inst_rs1]; 
 
 	// Save the changed value
-	Reg #(32, 32'b0) rs1_saved (~clk, rst, inst_rd_val, reg_file[inst_rd], 1'b1);
+	Reg #(32, 32'b0) rs1_saved (clk, rst, inst_rd_val, reg_file[inst_rd], 1'b1);
 
 endmodule
