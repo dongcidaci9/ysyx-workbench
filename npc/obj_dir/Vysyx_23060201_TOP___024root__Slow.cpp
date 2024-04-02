@@ -3,6 +3,7 @@
 // See Vysyx_23060201_TOP.h for the primary calling header
 
 #include "verilated.h"
+#include "verilated_dpi.h"
 
 #include "Vysyx_23060201_TOP__Syms.h"
 #include "Vysyx_23060201_TOP___024root.h"

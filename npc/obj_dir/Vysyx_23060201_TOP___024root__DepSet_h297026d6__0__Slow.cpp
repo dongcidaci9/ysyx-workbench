@@ -3,6 +3,7 @@
 // See Vysyx_23060201_TOP.h for the primary calling header
 
 #include "verilated.h"
+#include "verilated_dpi.h"
 
 #include "Vysyx_23060201_TOP___024root.h"
 
@@ -91,11 +92,16 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___dump_triggers__stl(Vysyx_230602
 }
 #endif  // VL_DEBUG
 
+void Vysyx_23060201_TOP___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP();
+
 VL_ATTR_COLD void Vysyx_23060201_TOP___024root___stl_sequent__TOP__0(Vysyx_23060201_TOP___024root* vlSelf) {
     if (false && vlSelf) {}  // Prevent unused
     Vysyx_23060201_TOP__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vysyx_23060201_TOP___024root___stl_sequent__TOP__0\n"); );
     // Body
+    if ((IData)((0x73U == (0x707fU & vlSelf->inst)))) {
+        Vysyx_23060201_TOP___024root____Vdpiimwrap_ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__npc_trap_TOP();
+    }
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_PC__DOT__npc 
         = ((IData)(4U) + vlSelf->pc);
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_ext 

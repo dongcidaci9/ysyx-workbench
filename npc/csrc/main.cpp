@@ -1,6 +1,7 @@
 #include "Vysyx_23060201_TOP.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h"
+#include "Vysyx_23060201_IDU__Dpi.h"
 
 static Vysyx_23060201_TOP* top;
 
@@ -67,6 +68,7 @@ int main() {
 	sim_exit();
 }
 
+// DPI-Ck
 void npc_trap(){
 	sim_exit();
 }
