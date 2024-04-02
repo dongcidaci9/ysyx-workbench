@@ -29,41 +29,49 @@ static void sim_exit(){
 	vcd->close();
 }
 
-static void one_cycle(){
-	top->clk = 1;
-	step_and_dump_wave();
-	top->clk = 0;
-	step_and_dump_wave();
-}
-
 int main() {
 	sim_init();
 
-	one_cycle();
 	top->rst = 1;
-	one_cycle();
+	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 
 	top->rst = 0;
+	step_and_dump_wave();
 	// rd = 0
+	top->clk = 1;
+	step_and_dump_wave();
 	top->inst = 0b00000000000100000000000010010011; // x1 = x0 + 1
-	one_cycle();
+	top->clk = 0;
+	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 1
+	top->clk = 1;
+	step_and_dump_wave();
 	top->inst = 0b00000000001000000000000010010011; // x1 = x0 + 2
-	one_cycle();
+	top->clk = 0;
+	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 2
+	top->clk = 1;
+	step_and_dump_wave();
 	top->inst = 0b00000000000100001000000100010011; // x2 = x1 + 1
-	one_cycle();
+	top->clk = 0;
+	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 3
+	top->clk = 1;
+	step_and_dump_wave();
 	top->inst = 0b00000000001100010000000100010011; // x2 = x2 + 3
-	one_cycle();
+	top->clk = 0;
+	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 6
+	top->clk = 1;
+	step_and_dump_wave();
 	top->inst = 0b00000000000100010000000100010011; // x2 = x2 + 1
-	one_cycle();
+	top->clk = 0;
+	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 7
 	
