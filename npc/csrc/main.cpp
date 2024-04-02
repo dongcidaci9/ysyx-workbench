@@ -32,11 +32,10 @@ static void sim_exit(){
 int main() {
 	sim_init();
 
-	top->rst = 1;
+	top->clk = 1; top->rst = 1;
 	step_and_dump_wave();
 	printf("pc = %d, inst_rd_val_res = %d\n", top->pc ,top->inst_rd_val);
-
-	top->rst = 0;
+	top->clk = 0; top->rst = 0;
 	step_and_dump_wave();
 	// rd = 0
 	top->clk = 1;
