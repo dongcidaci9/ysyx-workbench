@@ -76,7 +76,7 @@ int main() {
 	sim_exit();
 }
 
-// DPI-Ck
+// DPI-C
 void npc_trap(){
 	sim_exit();
 }
