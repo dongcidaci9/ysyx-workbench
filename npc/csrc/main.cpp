@@ -28,7 +28,7 @@ static void sim_init(){
 static void sim_exit(){
 	step_and_dump_wave();
 	vcd->close();
-	printf("Simulation finished. Total simulation time: %lld\n", contextp->time());
+	printf("Simulation finished. Total simulation time: %ld\n", contextp->time());
 }
 
 int main() {
