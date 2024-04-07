@@ -68,7 +68,8 @@ int main() {
 	top->clk = 0; step_and_dump_wave();
 	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 6
-	top->clk = 1; step_and_dump_wave(); top->inst = 0b00000000000100010000000100010011; // addi x2 = x2 + 1
+	top->clk = 1; step_and_dump_wave();
+	top->inst = 0b00000000000100010000000100010011; // addi x2 = x2 + 1
 	top->clk = 0; step_and_dump_wave();
 	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
 	// rd = 7
