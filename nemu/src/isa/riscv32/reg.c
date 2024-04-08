@@ -21,6 +21,7 @@ const char *regs[] = {
 
 void isa_reg_display() {
 	int i;
+	printf("\033[0;31m`GPR info:\33[0m`\n");
 	for (i = 0; i < REG_NUM; i ++) {
 		printf("%d %s: %#-10lx\t", i, regs[i], cpu.gpr[i]);
 		if((i + 1) % 3 == 0) {
