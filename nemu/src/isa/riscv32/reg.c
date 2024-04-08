@@ -23,6 +23,9 @@ void isa_reg_display() {
 	int i;
 	for (i = 0; i < REG_NUM; i ++) {
 		printf("%d %s: %#-20lx\n", i, regs[i], cpu.gpr[i]);
+		if((i + 1) % 4 == 0) {
+			printf("\n");
+		}
 	}
 }
 
