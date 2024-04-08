@@ -100,9 +100,9 @@ void wp_iterate() {
 	int i = 0;
 	while (Node_) {
 		i ++;
-		printf("\33[0;32mWP%02d: %s\33[0m\t", Node_->NO, Node_->expr);
+		printf("\33[0;32mWP%02d: %-10s\33[0m\t", Node_->NO, Node_->expr);
 		Node_ = Node_->next;
-		if (i % 3 == 0) printf("\n");
+		if (i % 2 == 0) printf("\n");
 	} 
 	printf("\n");
 }
