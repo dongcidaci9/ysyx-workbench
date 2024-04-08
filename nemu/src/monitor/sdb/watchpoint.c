@@ -89,7 +89,7 @@ void wp_watch(char *expr, word_t res) {
 void wp_remove(int no) {
 	assert(no < NR_WP);
 	WP* wp = &wp_pool[no];
-	printf("Deleted watchpoint %d: %s\n", wp->NO, wp->expr);
+	printf("Deleted watchpoint %d: %-20s\n", wp->NO, wp->expr);
 	free_wp(wp);
 }
 
@@ -100,10 +100,11 @@ void wp_iterate() {
 	int i = 0;
 	while (Node_) {
 		i ++;
-		printf("\33[0;32mWP%02d: %s\33[0m\t", Node_->NO, Node_->expr);
+		printf("\33[0;32mWP%02d: %-20s\33[0m\t", Node_->NO, Node_->expr);
 		Node_ = Node_->next;
 		if (i % 3 == 0) printf("\n");
 	}
+	printf("\n");
 }
 
 void wp_difftest() {
