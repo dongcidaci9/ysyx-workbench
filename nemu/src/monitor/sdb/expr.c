@@ -24,7 +24,7 @@
 // Define regex rules:
 enum {
   TK_NOTYPE = 256,
-	TK_NUM, TK_REG,
+	TK_REG, TK_NUM,
 	TK_PC,
 	TK_EQ, TK_NEQ,
 	TK_NEG, TK_POS,
@@ -45,8 +45,8 @@ static struct rule {
    */
 
 	{" +", TK_NOTYPE},										
-	{"[0-9, a-f]+", TK_NUM},
 	{"[$rsgta]+[0-9,a-z]+", TK_REG},
+	{"(0x)?[0-9, a-f]+", TK_NUM},
 	{"pc", TK_PC},
 	{"\\+", '+'},	{"\\-", '-'},	{"\\*", '*'},	{"\\/", '/'},
 
