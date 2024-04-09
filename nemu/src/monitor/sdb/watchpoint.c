@@ -83,7 +83,7 @@ void wp_watch(char *expr, word_t res) {
 	WP *wp = new_wp();
 	strcpy(wp->expr, expr);
 	wp->old = res;
-	printf("\33[0;34mCreated watchpoint WP%02d: %-s\33[0m\n", wp->NO, wp->expr);
+	printf("\33[0;35mCreated watchpoint WP%02d: %-s\33[0m\n", wp->NO, wp->expr);
 }	
 
 void wp_remove(int no) {
