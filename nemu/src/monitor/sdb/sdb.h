@@ -25,7 +25,7 @@ typedef struct watchpoint {
 	struct watchpoint *next;
 
 	char expr[100];
-	int new, old;
+	word_t new, old;
 } WP;
 
 void int_wp_pool();
