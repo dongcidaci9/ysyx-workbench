@@ -117,7 +117,7 @@ void wp_difftest() {
 			printf("\33[0;33mWatchpoint %d: %s\nOld value = %#x\nNew value = %#x\33[0m\n"
 					, Node_->NO, Node_->expr, Node_->old, new);
 			Node_->old = new;
-			nemu_state.state = NEMU_ABORT;
+			nemu_state.state = NEMU_STOP;
 		}
 		Node_ = Node_->next;
 	}
