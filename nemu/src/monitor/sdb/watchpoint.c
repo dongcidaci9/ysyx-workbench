@@ -112,9 +112,9 @@ void wp_difftest() {
 	WP *Node_ = head;
 	while (Node_) {
 		bool success;
-		word_t new = expr(Node_->expr, &success);
+		int32_t new = expr(Node_->expr, &success);
 		if (Node_->old != new) {
-			printf("Watchpoint %d: %s\nOld value = %#lx\nNew value = %#lx\n"
+			printf("Watchpoint %d: %s\nOld value = %#x\nNew value = %#x\n"
 					, Node_->NO, Node_->expr, Node_->old, new);
 			Node_->old = new;
 			nemu_state.state = NEMU_STOP;
