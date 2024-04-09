@@ -113,7 +113,6 @@ void wp_difftest() {
 	while (Node_) {
 	bool success;
 	word_t new = expr(Node_->expr, &success);
-	assert(success);
 	if (Node_->old != new) {
 		printf("Watchpoint %d: %s\n"
 				"Old value = %d\n"
