@@ -100,10 +100,10 @@ void wp_iterate() {
 	int i = 0;
 	printf("\33[0;32mWatchpoint info:\33[0m\n");
 	while (Node_) {
-		i ++;
 		printf("\33[0;32mWP%02d: %-10s\33[0m\t", Node_->NO, Node_->expr);
 		Node_ = Node_->next;
 		if (i % 2 == 0) printf("\n");
+		i ++;
 	} 
 	printf("\n");
 }
