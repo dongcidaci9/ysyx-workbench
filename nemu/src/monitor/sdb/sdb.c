@@ -73,7 +73,8 @@ static struct {
   int (*handler) (char *);
 } cmd_table [] = {
   { "help", "Usage: help: display information about all supported commands", cmd_help },
-	{ "q", "Usage: q: Exit NEMU", cmd_q},
+	{ "c", "Usage: c: continue running the suspended program", cmd_c },
+	{ "q", "Usage: q: Exit NEMU", cmd_q },
   { "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
   { "info", "Usage: info SUBCMD: press \"r\" can print registers status/ Press \"w\" can print watchpoints status", cmd_info },
   { "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
