@@ -111,17 +111,15 @@ void wp_iterate() {
 void wp_difftest() {
 	WP *Node_ = head;
 	while (Node_) {
-	bool success;
-	// assert(success);
-	word_t new = expr(Node_->expr, &success);
-	if (Node_->old != new) {
-		printf("Watchpoint %d: %s\n"
-				"Old value = %d\n"
-				"New value = %d\n"
-				, Node_->NO, Node_->expr, Node_->old, Node_->new);
-		Node_->old = new;
-	}
-	Node_ = Node_->next;
+		bool success;
+		word_t new = expr(Node_->expr, &success);
+		if (Node_->old != new) {
+			printf("Watchpoint %d: %s\nOld value = %d\nNew value = %d\n"
+					, Node_->NO, Node_->expr, Node_->old, Node_->new);
+			Node_->old = new;
+			nemu_state.state = NEMU_STOP;
+		}
+		Node_ = Node_->next;
 	}
 }
 
