@@ -23,7 +23,7 @@ void isa_reg_display() {
 	int i;
 	printf("\033[0;32mGPR info:\33[0m\n");
 	for (i = 0; i < REG_NUM; i ++) {
-		printf("\033[0;32m%02d %s: %#-20lx\033[0m\t\t", i, regs[i], cpu.gpr[i]);
+		printf("\033[0;32m%02d %s: %#-20lx\033[0m\t", i, regs[i], cpu.gpr[i]);
 		if(i % 2 == 0) {
 			printf("\n");
 		}
