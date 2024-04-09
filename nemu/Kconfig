@@ -215,4 +215,3 @@ config RT_CHECK
   default y
 
 endmenu
-
