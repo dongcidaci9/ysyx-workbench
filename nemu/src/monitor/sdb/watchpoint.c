@@ -105,7 +105,6 @@ void wp_iterate() {
 		if ((i+1) % 2 == 0) printf("\n");
 		i ++;
 	} 
-	printf("\n");
 }
 
 void wp_difftest() {
