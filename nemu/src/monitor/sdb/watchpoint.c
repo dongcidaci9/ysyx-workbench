@@ -102,7 +102,7 @@ void wp_iterate() {
 	while (Node_) {
 		printf("\33[0;32mWP%02d: %-10s\33[0m\t\t\t", Node_->NO, Node_->expr);
 		Node_ = Node_->next;
-		if (i % 3 == 1) printf("\n");
+		if ((i+1) % 2 == 0) printf("\n");
 		i ++;
 	} 
 	printf("\n");
