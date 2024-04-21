@@ -198,7 +198,6 @@ source "src/memory/Kconfig"
 source "src/device/Kconfig"
 endif
 
-
 menu "Miscellaneous"
 choice
   depends on !TARGET_AM
@@ -216,7 +215,6 @@ config RT_CHECK
 
 endmenu
 
-
 config WATCHPOINT 
   depends on TARGET_NATIVE_ELF
   bool "Enable watchpoint"
@@ -225,3 +223,11 @@ config WATCHPOINT
     Enable watchpoint with a reference design.
     Note that this will significantly reduce the performance of NEMU.
 
+
+config ITRACE 
+  depends on TARGET_NATIVE_ELF
+  bool "Enable itrace"
+  default n
+  help
+    Enable itrace with a reference design.
+    Note that this will significantly reduce the performance of NEMU.
