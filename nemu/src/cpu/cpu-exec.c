@@ -16,6 +16,7 @@
 #include <cpu/cpu.h>
 #include <cpu/decode.h>
 #include <cpu/difftest.h>
+#include <cpu/itrace.h>
 #include <locale.h>
 
 /* The assembly code of instructions executed is only output to the screen
@@ -95,6 +96,7 @@ static void statistic() {
 }
 
 void assert_fail_msg() {
+	display_inst();
   isa_reg_display();
   statistic();
 }
