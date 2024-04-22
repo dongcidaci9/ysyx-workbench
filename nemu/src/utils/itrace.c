@@ -27,15 +27,15 @@ void display_inst() {
 	void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
 	char buf[128];
 	char *p;
-	printf("Most rencently executed instructions:\n");
+	printf("\tMost rencently executed instructions:\n");
 	do {
 		p = buf;
 		p += sprintf(buf, "%s" FMT_WORD ": %08x ", (i+1) % MAX_IRINGBUF == end ? " --> " : "     ", iringbuf[i].pc, iringbuf[i].inst); 
 		disassemble(p, buf+sizeof(buf)-p, iringbuf[i].pc, (uint8_t *)&iringbuf[i].inst, 4);
 
-		if ( (i+1) % MAX_IRINGBUF == end) printf(ANSI_FG_RED);
+		if ((i+1) % MAX_IRINGBUF == end) printf(ANSI_FG_RED);
 		puts(buf);
-	} while ( (i = (i+1) % MAX_IRINGBUF) != end);
+	} while ((i = (i+1) % MAX_IRINGBUF) != end);
 	puts(ANSI_NONE);
 }
 
