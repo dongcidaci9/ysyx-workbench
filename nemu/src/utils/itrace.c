@@ -27,7 +27,7 @@ void display_inst() {
 	void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
 	char buf[128];
 	char *p;
-	// Statement("Most rencently executed instructions");
+	printf("Most rencently executed instructions:\n");
 	do {
 		p = buf;
 		p += sprintf(buf, "%s" FMT_WORD ": %08x ", (i+1) % MAX_IRINGBUF == end ? " --> " : "     ", iringbuf[i].pc, iringbuf[i].inst); 
@@ -38,3 +38,12 @@ void display_inst() {
 	} while ( (i = (i+1) % MAX_IRINGBUF) != end);
 	puts(ANSI_NONE);
 }
+
+void display_pread(paddr_t addr, int len) {
+	printf("pread at " FMT_PADDR " len = %d\n", addr, len);
+}
+
+void display_pwrite(paddr_t addr, int len, word_t data) {
+	printf("pwrite at " FMT_PADDR " len = %d, data = " FMT_WORD "\n", addr, len, data);
+}
+
