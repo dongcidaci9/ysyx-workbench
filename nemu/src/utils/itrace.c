@@ -39,4 +39,35 @@ void display_inst() {
 	puts(ANSI_NONE);
 }
 
+/*
+void trace_func_call(paddr_t pc, paddr_t target) {
+	if (symbol_tbl == NULL) return;
 
+	++call_depth;
+
+	if (call_depth <= 2) return;
+	
+	int i = find_symbol_func(target, true);
+	ftrace_write(FMT_PADDR ": %*scall [%s@" FMT_PADDR "]\n",
+		pc,
+		(call_depth - 3) * 2, "",
+		i >= 0 ? symbol_tbl[i].name : "???",
+		target
+	);
+}
+
+void trace_func_ret(paddr_t pc) {
+	if (symbol_tbl == NULL) return;
+
+	if (call_depth <= 2) return;
+
+	int i = find_symbol_func(pc, false);
+	ftrace_write(FMT_PADDR ": %*sret [%s]\n",
+		pc,
+		(call_depth - 3) * 2, "",
+		i >= 0 ? symboll_tbl[i].name : "???"
+		);
+
+	--call_depth;
+}
+*/
