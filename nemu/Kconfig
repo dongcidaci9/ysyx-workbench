@@ -239,4 +239,13 @@ config MTRACE
   default n
   help
     Enable mtrace with a reference design.
+		Note that this will significantly reduce the performance of NEMU.
+
+
+config FTRACE 
+  depends on TARGET_NATIVE_ELF
+  bool "Enable ftrace"
+  default n
+  help
+    Enable ftrace with a reference design.
     Note that this will significantly reduce the performance of NEMU.

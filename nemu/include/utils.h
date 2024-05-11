@@ -67,11 +67,17 @@ uint64_t get_time();
   } while (0) \
 )
 
+#define ftrace_write(...) IFDEF(CONFIG_FTRACE, \
+	do { \
+		printf(__VA_ARGS__); \
+		log_write(__VA_ARGS__); \
+	} while(0) \
+)
+
 #define _Log(...) \
   do { \
     printf(__VA_ARGS__); \
     log_write(__VA_ARGS__); \
   } while (0)
-
 
 #endif
