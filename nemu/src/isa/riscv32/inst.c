@@ -18,6 +18,7 @@
 #include <cpu/ifetch.h>
 #include <cpu/decode.h>
 #include <cpu/itrace.h>
+#include <cpu/ftrace.h>
 
 #define R(i) gpr(i)
 #define Mr vaddr_read
