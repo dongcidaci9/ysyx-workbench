@@ -23,7 +23,7 @@ void init_difftest(char *ref_so_file, long img_size, int port);
 void init_device();
 void init_sdb();
 void init_disasm(const char *triple);
-void init_elf(const char *elf_file);
+// void init_elf(const char *elf_file);
 
 static void welcome() {
   Log("Trace: %s", MUXDEF(CONFIG_TRACE, ANSI_FMT("ON", ANSI_FG_GREEN), ANSI_FMT("OFF", ANSI_FG_RED)));
@@ -70,6 +70,8 @@ static long load_img() {
   fclose(fp);
   return size;
 }
+
+void parse_elf(const char *elf_file);
 
 static int parse_args(int argc, char *argv[]) {
   const struct option table[] = {
