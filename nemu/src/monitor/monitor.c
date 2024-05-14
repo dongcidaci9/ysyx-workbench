@@ -74,7 +74,7 @@ static long load_img() {
 static int parse_args(int argc, char *argv[]) {
   const struct option table[] = {
     {"batch"    , no_argument      , NULL, 'b'},
-		{"elf"      , required_argument, NULL, 'E'},
+		{"elf"      , required_argument, NULL, 'e'},
     {"log"      , required_argument, NULL, 'l'},
     {"diff"     , required_argument, NULL, 'd'},
     {"port"     , required_argument, NULL, 'p'},
@@ -121,6 +121,9 @@ void init_monitor(int argc, char *argv[]) {
 
   /* Initialize devices. */
   IFDEF(CONFIG_DEVICE, init_device());
+
+  /* Initialize memory trace. */
+	//IFDEF(CONFIG_MTRACE, init_elf(*elf_file));
 
   /* Perform ISA dependent initialization. */
   init_isa();

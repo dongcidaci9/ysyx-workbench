@@ -16,11 +16,12 @@ int call_depth = 0;
 
 typedef struct tail_rec_node {
 	paddr_t pc;
-	paddr_t depend;
+	paddr_t depth;
 	struct tail_rec_node *next;
 } TailRecNode;
 TailRecNode *tail_rec_head = NULL; // linklist with head, dynamic allocated
 
+// header
 static void read_elf_header(int fd, Elf64_Ehdr *eh) {
 	assert(lseek(fd, 0, SEEK_SET) == 0);
   assert(read(fd, (void *)eh, sizeof(Elf64_Ehdr)) == sizeof(Elf64_Ehdr));
@@ -343,6 +344,7 @@ static void read_symbols(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[]) {
   }
 }
 
+// tail_rec_init
 static void init_tail_rec_list() {
 	tail_rec_head = (TailRecNode *)malloc(sizeof(TailRecNode));
 	tail_rec_head->pc = 0;
@@ -372,6 +374,7 @@ void init_elf(const char *elf_file) {
 	close(fd);
 }
 
+//
 static int find_symbol_func(paddr_t target, bool is_call) {
 	int i;
 	for (i = 0; i < symbol_tbl_size; i++) {
@@ -386,10 +389,11 @@ static int find_symbol_func(paddr_t target, bool is_call) {
 	return i<symbol_tbl_size?i:-1;
 }
 
-static void insert_tail_rec(paddr_t pc, paddr_t depend) {
+// tail_rec_insert & remove
+static void insert_tail_rec(paddr_t pc, paddr_t depth) {
 	TailRecNode *node = (TailRecNode *)malloc(sizeof(TailRecNode));
 	node->pc = pc;
-	node->depend = depend;
+	node->depth = depth;
 	node->next = tail_rec_head->next;
 	tail_rec_head->next = node;
 }
@@ -400,6 +404,7 @@ static void remove_tail_rec() {
 	free(node);
 }
 
+// trace_func_call & ret
 void trace_func_call(paddr_t pc, paddr_t target, bool is_tail) {
 	if (symbol_tbl == NULL) return;
 
@@ -437,8 +442,8 @@ void trace_func_ret(paddr_t pc) {
 
 	TailRecNode *node = tail_rec_head->next;
 	if (node != NULL) {
-		int depend_i = find_symbol_func(node->depend, true);
-		if (depend_i == i) {
+		int depth_i = find_symbol_func(node->depth, true);
+		if (depth_i == i) {
 			paddr_t ret_target = node->pc;
 			remove_tail_rec();
 			trace_func_ret(ret_target);
