@@ -412,7 +412,7 @@ void trace_func_call(paddr_t pc, paddr_t target, bool is_tail) {
 
 	if (call_depth <= 2) return; // ignore _trm_init & main
 	
-	int i;
+	int i __attribute__((unused));
 	i = find_symbol_func(target, true);
 	ftrace_write(FMT_PADDR ": %*scall [%s@" FMT_PADDR "]\n",
 		pc,
