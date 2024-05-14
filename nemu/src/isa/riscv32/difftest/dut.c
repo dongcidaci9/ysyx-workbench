@@ -21,12 +21,12 @@ bool isa_difftest_checkregs(CPU_state *ref_r, vaddr_t pc) {
 	int reg_num = ARRLEN(cpu.gpr);
 	for (int i = 0; i < reg_num; i ++) {
 		if (ref_r -> gpr[i] != cpu.gpr[i]) {
-		printf("\ngpr[%d]@pc%#x:\nShould: %d\t Not: %d\n", i, ref_r -> pc, ref_r -> gpr[i], cpu.gpr[i]);
+		printf("\ngpr[%d]@pc%#x:\nShould: %#x\t Not: %#x\n", i, ref_r -> pc, ref_r -> gpr[i], cpu.gpr[i]);
 		return false;
 	 }
 	}
 	if (ref_r -> pc != cpu.pc) {
-		printf("\npc:\nShould: %d\t Not: %d\n", ref_r -> pc, cpu.pc);
+		printf("\npc:\nShould: %#x\t Not: %#x\n", ref_r -> pc, cpu.pc);
 		return false;
 	}
 	return true;
