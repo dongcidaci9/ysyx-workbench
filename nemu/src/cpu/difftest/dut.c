@@ -21,7 +21,6 @@
 #include <utils.h>
 #include <difftest-def.h>
 
-bool isa_difftest_checkregs(CPU_state *ref, vaddr_t pc); 
 void (*ref_difftest_memcpy)(paddr_t addr, void *buf, size_t n, bool direction) = NULL;
 void (*ref_difftest_regcpy)(void *dut, bool direction) = NULL;
 void (*ref_difftest_exec)(uint64_t n) = NULL;
@@ -90,19 +89,6 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
   ref_difftest_init(port);
   ref_difftest_memcpy(RESET_VECTOR, guest_to_host(RESET_VECTOR), img_size, DIFFTEST_TO_REF);
   ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
-}
-
-bool isa_difftest_checkregs(CPU_state *ref, vaddr_t pc) {
-	int reg_num = ARRLEN(cpu.gpr);
-	for (int i = 0; i < reg_num; i++) {
-		if (ref -> gpr[i] != cpu.gpr[i]) {
-			return false;
-		}
-	}
-	if (ref -> pc != cpu.pc) {
-		return false;
-	}
-	return true;
 }
 
 static void checkregs(CPU_state *ref, vaddr_t pc) {
