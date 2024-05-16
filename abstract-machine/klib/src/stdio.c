@@ -13,30 +13,16 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
-static void reverse(char *s, int len) {
-	char *start = s;	
-	char *end = s + len - 1;
-	char tmp;
-
-	while (start < end) {
-		tmp = *start;
-		*start = *end;
-		*end = tmp;
-	}
-}
-
-static int itoa(int n, char *s) {
-	char *ptr = s;
-
+static int itoa(int num, char *s) {
+	int divisor = 100;
+	
 	int i = 0;
-	do {
-		int bit = n % 10;
-		ptr[i ++] = bit;
-	} while ((n /= 10) > 0);
-
-	ptr[i] = '\0';
-	reverse(s, i);
-
+	while (divisor > 0) {
+		int digit = num / divisor;
+		if (digit != 0 || divisor == 1) s[i++] = '0' + digit;
+		num %= divisor;
+		divisor /= 10;
+	}
 	return i;
 }
 
