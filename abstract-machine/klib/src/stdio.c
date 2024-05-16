@@ -52,7 +52,7 @@ int sprintf(char *out, const char *fmt, ...) {
 					out += itoa(va_arg(pArgs, int), out);
 					break;
 				case 's': 
-					char *s = va_arg(pArgs, char *);
+					char *s = va_arg(pArgs, char*);
 					strcpy(out, s);
 					out += strlen(out);
 					break;
