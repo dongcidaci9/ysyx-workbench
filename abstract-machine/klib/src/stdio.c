@@ -15,9 +15,9 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 static void reverse(char *s, int len) {
 	char *start = s;	
-
 	char *end = s + len - 1;
 	char tmp;
+
 	while (start < end) {
 		tmp = *start;
 		*start = *end;
