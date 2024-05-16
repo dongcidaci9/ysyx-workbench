@@ -13,6 +13,19 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
+static int itoa(uint32_t n, char *s, int base) {
+	assert(base <= 16);
+
+	int i = 0;
+	do {
+		int bit = n % base;
+		if (bit >= 10) s[i ++] = 'a' + bit - 10;
+		else s[i ++] = '0' + bit;
+	} while ((n /= base) > 0);
+	
+	return i;
+}
+
 int sprintf(char *out, const char *fmt, ...) {	
 	int written = 0; // record number of written character
 
@@ -26,22 +39,7 @@ int sprintf(char *out, const char *fmt, ...) {
 		} else {
 			fmt ++;
 			switch (*fmt) {
-				case 'd': 
-					{
-						int num = va_arg(pArgs, int);
-            int divisor = 1000000000;
-            int leading_zero = 1; 
-						while (divisor > 0) {
-							int digit = num / divisor;
-							if (digit != 0 || !leading_zero || divisor == 1) {
-								*out ++ = '0' + digit;
-								written++;
-								leading_zero = 0;
-							}
-							num %= divisor;
-							divisor /= 10;
-						}
-					}
+				case 'd': out += itoa(va_arg(pArgs, int), out, 10); break;
 					break;
 				case 's':
 					{	
