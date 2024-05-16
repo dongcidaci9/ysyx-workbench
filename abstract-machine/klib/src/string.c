@@ -55,8 +55,8 @@ void *memset(void *s, int c, size_t n) {
 	char *ptr = (char *)s;
 	int val = c;
 
-	for (size_t i = 0; i < n; ++ i) {
-		*ptr++ = val; // *(ptr + i) = val
+	for (size_t i = 0; i < n; i ++) {
+		*ptr ++ = val; // *(ptr + i) = val // ptr[i] = val; 
 	}
 
 	return s;
