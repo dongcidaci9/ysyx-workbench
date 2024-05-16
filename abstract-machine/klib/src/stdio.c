@@ -34,7 +34,7 @@ static int itoa(int n, char *s, int base) {
 	} while ((n /= base) > 0);
 
 	reverse(s, i);
-	return i;
+	return ++i;
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
