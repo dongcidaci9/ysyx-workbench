@@ -46,13 +46,13 @@ int sprintf(char *out, const char *fmt, ...) {
 		if (*fmt != '%') {
 			*out ++ = *fmt ++;
 		} else {
-			fmt ++;
+			*out ++ = *fmt ++;
 			switch (*fmt) {
 				case 'd': 
 					out += itoa(va_arg(pArgs, int), out);
 					break;
 				case 's': 
-					char *s = va_arg(pArgs, char*);
+					char *s = va_arg(pArgs, char *);
 					strcpy(out, s);
 					out += strlen(out);
 					break;
@@ -61,7 +61,6 @@ int sprintf(char *out, const char *fmt, ...) {
 	}
 
 	*out = '\0';
-
 	va_end(pArgs); // finisth visit va_list
 
 	return out - start; 
