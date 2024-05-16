@@ -39,8 +39,9 @@ int sprintf(char *out, const char *fmt, ...) {
 		} else {
 			++ fmt;
 			switch (*fmt) {
-				case 'd': 
-					itoa(va_arg(pArgs, int), out);
+				case 'd':
+					int num = va_arg(pArgs, int);
+					itoa(num, out);
 					break;
 				case 's': 
 					char *s = va_arg(pArgs, char *);
