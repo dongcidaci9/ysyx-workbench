@@ -44,7 +44,7 @@ int strcmp(const char *s1, const char *s2) {
 		s1 ++;
 		s2 ++;
 	}
-	return (unsigned char*)s1 - (unsigned char*)s2;
+	return *s1 - *s2;
 }
 
 int strncmp(const char *s1, const char *s2, size_t n) {
@@ -67,13 +67,12 @@ void *memmove(void *dst, const void *src, size_t n) {
 }
 
 void *memcpy(void *out, const void *in, size_t n) {
-	void *ret = out;
-	char *dest = (char *)out;
+	char *dst = (char *)out;
 	const char *src = (const char *)in;
-	for (int i = 0; i < n; ++i) {
-		dest[i] = src[i];
+	for (int i = 0; i < n; i ++) {
+		dst[i] = src[i];
 	}
-	return ret;
+	return out;
 }
 
 int memcmp(const void *s1, const void *s2, size_t n) {
