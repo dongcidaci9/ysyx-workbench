@@ -15,10 +15,14 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 static void itoa(int num, char *s) {
 	int divisor = 100;
-	
+	int leading_zero = 1;
+
 	while (divisor > 0) {
 		int digit = num / divisor;
-		if (digit != 0 || divisor == 1) *s ++ = '0' + digit;
+		if (digit != 0 || divisor == 1 || !leading_zero) {
+			leading_zero = 0;
+			*s ++ = '0' + digit;
+		}
 		num %= divisor;
 		divisor /= 10;
 	}
