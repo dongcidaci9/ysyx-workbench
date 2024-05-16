@@ -45,12 +45,10 @@ int sprintf(char *out, const char *fmt, ...) {
 
 	while (*fmt != '\0') {
 		if (*fmt != '%') {
-			*out = *fmt;
-			++ out;
-			++ fmt;
+			*out ++ = *fmt ++;
 			written ++;
 		} else {
-			++ fmt;
+			fmt ++;
 			switch (*fmt) {
 				case 'd': 
 					out += itoa(va_arg(pArgs, int), out, 10);
