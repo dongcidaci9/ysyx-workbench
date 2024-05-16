@@ -13,7 +13,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
-static int itoa(uint32_t n, char *s, int base) {
+static int itoa(int n, char *s, int base) {
 	assert(base <= 16);
 
 	int i = 0;
@@ -39,16 +39,13 @@ int sprintf(char *out, const char *fmt, ...) {
 		} else {
 			fmt ++;
 			switch (*fmt) {
-				case 'd': out += itoa(va_arg(pArgs, int), out, 10); break;
+				case 'd': 
+					out += itoa(va_arg(pArgs, int), out, 10);
 					break;
-				case 's':
-					{	
-						char *s = va_arg(pArgs, char*);
-						while (*s != '\0') {
-							*out ++ = *s;
-							written ++;
-						}
-					}
+				case 's': 
+					char *s = va_arg(pArgs, char *);
+					strcpy(out, s);
+					out += strlen(out);
 					break;
 			}
 		}
