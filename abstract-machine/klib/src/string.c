@@ -9,7 +9,15 @@ size_t strlen(const char *s) {
 }
 
 char *strcpy(char *dst, const char *src) {
-  panic("Not implemented");
+	char *ptr = dst;
+
+	while (*src != '\0') {
+		*ptr ++ = *src ++;
+	}
+
+	*ptr = '\0';
+	
+	return dst;
 }
 
 char *strncpy(char *dst, const char *src, size_t n) {
@@ -23,9 +31,7 @@ char *strcat(char *dst, const char *src) {
 	}
 
 	while (*src != '\0') {
-		*dst_ptr = *src;
-		dst_ptr ++;
-		src ++;
+		*dst_ptr ++ = *src ++;
 	}
 	
 	*dst_ptr = '\0';
