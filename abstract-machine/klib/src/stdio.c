@@ -27,7 +27,6 @@ static char *itoa(int num, char *s) {
 		num %= divisor;
 		divisor /= 10;
 	}
-	*ptr = '\0';
 
 	return s;
 }
