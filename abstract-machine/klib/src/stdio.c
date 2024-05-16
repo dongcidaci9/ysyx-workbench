@@ -14,24 +14,27 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 }
 
 static void reverse(char *s, int len) {
+	char *start = s;	
 	char *end = s + len - 1;
 	char tmp;
-	while (s < end) {
-		tmp = *s;
-		*s = *end;
+	while (start < end) {
+		tmp = *start;
+		*start = *end;
 		*end = tmp;
 	}
 }
 
 static int itoa(int n, char *s) {
+	char *ptr = s;
+
 	int i = 0;
 	do {
 		int bit = n % 10;
-		s[i ++] = bit;
+		ptr[i ++] = bit;
 	} while ((n /= 10) > 0);
 
-	s[i] = '\0';
-	reverse(s, i);
+	ptr[i] = '\0';
+	reverse(ptr, i);
 
 	return i;
 }
