@@ -22,7 +22,7 @@ static void itoa(int num, char *s) {
 		num %= divisor;
 		divisor /= 10;
 	}
-
+	*s = '\0';
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
