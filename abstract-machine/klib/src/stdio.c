@@ -45,7 +45,9 @@ int sprintf(char *out, const char *fmt, ...) {
 
 	while (*fmt != '\0') {
 		if (*fmt != '%') {
-			*out ++ = *fmt ++;
+			*out = *fmt;
+			++ out;
+			++ fmt;
 			written ++;
 		} else {
 			++ fmt;
