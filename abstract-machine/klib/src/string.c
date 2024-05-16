@@ -52,11 +52,11 @@ int strncmp(const char *s1, const char *s2, size_t n) {
 }
 
 void *memset(void *s, int c, size_t n) {
-	int *ptr = s;
-	int val = c;
+	char *ptr = (char *)s;
+	char val = (char)c;
 
-	for (int i = 0; i < n; ++ i) {
-		ptr[i] = val; // *(ptr + i) = val
+	for (size_t i = 0; i < n; ++ i) {
+		*ptr++ = val; // *(ptr + i) = val
 	}
 
 	return s;
