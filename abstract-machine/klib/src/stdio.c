@@ -51,7 +51,7 @@ int sprintf(char *out, const char *fmt, ...) {
 					out += itoa(va_arg(pArgs, int), out);
 					break;
 				case 's': 
-					char *s = va_arg(pArgs, char *);
+					const char *s = va_arg(pArgs, char *);
 					strcpy(out, s);
 					out += strlen(out);
 					break;
@@ -63,7 +63,7 @@ int sprintf(char *out, const char *fmt, ...) {
 	*out = '\0';
 	va_end(pArgs); // finisth visit va_list
 
-	return out - start + 1; 
+	return out - start; 
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
