@@ -15,6 +15,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 
 static void reverse(char *s, int len) {
 	char *start = s;	
+
 	char *end = s + len - 1;
 	char tmp;
 	while (start < end) {
@@ -34,7 +35,7 @@ static int itoa(int n, char *s) {
 	} while ((n /= 10) > 0);
 
 	ptr[i] = '\0';
-	reverse(ptr, i);
+	reverse(s, i);
 
 	return i;
 }
@@ -55,7 +56,7 @@ int sprintf(char *out, const char *fmt, ...) {
 					out += itoa(va_arg(pArgs, int), out);
 					break;
 				case 's': 
-					char *s = va_arg(pArgs, char *);
+					const char *s = va_arg(pArgs, const char *);
 					strcpy(out, s);
 					out += strlen(out);
 					break;
