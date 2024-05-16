@@ -71,8 +71,8 @@ void *memcpy(void *out, const void *in, size_t n) {
 }
 
 int memcmp(const void *s1, const void *s2, size_t n) {
-	const char *ptr1 = s1;
-	const char *ptr2 = s2;
+	const char *ptr1 = (const char*)s1;
+	const char *ptr2 = (const char*)s2;
 	while(n --) {
 		if (*ptr1 != *ptr2) {
 			return *ptr1 - *ptr2;
