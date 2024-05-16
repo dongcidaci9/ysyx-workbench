@@ -27,7 +27,7 @@ static int itoa(int n, char *s) {
 	int i = 0;
 	do {
 		int bit = n % 10;
-		s[i ++] = '0' + bit;
+		s[i ++] = bit;
 	} while ((n /= 10) > 0);
 
 	s[i] = '\0';
