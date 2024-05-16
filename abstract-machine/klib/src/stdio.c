@@ -13,20 +13,23 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
-static void itoa(int num, char *s) {
+static int itoa(int num, char *s) {
 	int divisor = 100;
 	int leading_zero = 1;
-
+	
+	int i = 0;
 	while (divisor > 0) {
 		int digit = num / divisor;
 		if (digit != 0 || divisor == 1 || !leading_zero) {
+			s[i++] = '0' + digit;
 			leading_zero = 0;
-			*s ++ = '0' + digit;
 		}
 		num %= divisor;
 		divisor /= 10;
 	}
 	*s = '\0';
+
+	return i;
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
@@ -42,7 +45,7 @@ int sprintf(char *out, const char *fmt, ...) {
 			++ fmt;
 			switch (*fmt) {
 				case 'd': 
-					itoa(va_arg(pArgs, int), out);
+					out += itoa(va_arg(pArgs, int), out);
 					break;
 				case 's': 
 					char *s = va_arg(pArgs, char *);
