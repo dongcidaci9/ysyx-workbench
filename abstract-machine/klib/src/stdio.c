@@ -13,6 +13,16 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
+static void reverse(char *s, int len) {
+	char *end = s + len - 1;
+	char tmp;
+	while (s < end) {
+		tmp = *s;
+		*s = *end;
+		*end = tmp;
+	}
+}
+
 static int itoa(int n, char *s, int base) {
 	assert(base <= 16);
 
@@ -22,7 +32,8 @@ static int itoa(int n, char *s, int base) {
 		if (bit >= 10) s[i ++] = 'a' + bit - 10;
 		else s[i ++] = '0' + bit;
 	} while ((n /= base) > 0);
-	
+
+	reverse(s, i);
 	return i;
 }
 
