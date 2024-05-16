@@ -58,6 +58,7 @@ int sprintf(char *out, const char *fmt, ...) {
 					break;
 			}
 		}
+		++ fmt;
 	}
 
 	*out = '\0';
