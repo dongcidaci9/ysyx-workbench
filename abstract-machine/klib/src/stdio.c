@@ -38,7 +38,7 @@ static int itoa(int n, char *s, int base) {
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
-	int written = 0; // record number of written character
+	char *start = out; // record number of written character
 
 	va_list pArgs; // pointor towards variable parameter list
 	va_start(pArgs, fmt); // initialize it towards fmt, no matter what variable parameter type it is
@@ -46,7 +46,6 @@ int sprintf(char *out, const char *fmt, ...) {
 	while (*fmt != '\0') {
 		if (*fmt != '%') {
 			*out ++ = *fmt ++;
-			written ++;
 		} else {
 			fmt ++;
 			switch (*fmt) {
@@ -66,7 +65,7 @@ int sprintf(char *out, const char *fmt, ...) {
 
 	va_end(pArgs); // finisth visit va_list
 
-	return written;
+	return out - start; 
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
