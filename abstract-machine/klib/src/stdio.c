@@ -16,18 +16,19 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 static int itoa(int num, char *s) {
 	int divisor = 100;
 	int leading_zero = 1;
-	
+
+	char *ptr = s;	
 	int i = 0;
 	while (divisor > 0) {
 		int digit = num / divisor;
 		if (digit != 0 || divisor == 1 || !leading_zero) {
-			s[i++] = '0' + digit;
+			ptr[i++] = '0' + digit;
 			leading_zero = 0;
 		}
 		num %= divisor;
 		divisor /= 10;
 	}
-	*s = '\0';
+	*ptr = '\0';
 
 	return i;
 }
