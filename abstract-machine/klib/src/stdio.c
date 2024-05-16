@@ -52,9 +52,8 @@ int sprintf(char *out, const char *fmt, ...) {
 					break;
 				case 's': 
 					char *s = va_arg(pArgs, char *);
-					while (*s != '\0') {
-						*out ++ = *s ++;
-					}
+					strcpy(out, s);
+					out += strlen(out);
 					break;
 			}
 		}
