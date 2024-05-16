@@ -23,17 +23,16 @@ static void reverse(char *s, int len) {
 	}
 }
 
-static int itoa(int n, char *s, int base) {
-	assert(base <= 16);
-
+static int itoa(int n, char *s) {
 	int i = 0;
 	do {
-		int bit = n % base;
-		if (bit >= 10) s[i ++] = 'a' + bit - 10;
-		else s[i ++] = '0' + bit;
-	} while ((n /= base) > 0);
+		int bit = n % 10;
+		s[i ++] = '0' + bit;
+	} while ((n /= 10) > 0);
 
+	s[i] = '\0';
 	reverse(s, i);
+
 	return i;
 }
 
@@ -50,7 +49,7 @@ int sprintf(char *out, const char *fmt, ...) {
 			fmt ++;
 			switch (*fmt) {
 				case 'd': 
-					out += itoa(va_arg(pArgs, int), out, 10);
+					out += itoa(va_arg(pArgs, int), out);
 					break;
 				case 's': 
 					char *s = va_arg(pArgs, char *);
