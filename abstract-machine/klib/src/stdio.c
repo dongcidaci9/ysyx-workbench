@@ -46,7 +46,8 @@ int sprintf(char *out, const char *fmt, ...) {
 		if (*fmt != '%') {
 			*out ++ = *fmt ++;
 		} else {
-			switch (*(++fmt)) {
+			++ fmt;
+			switch (*fmt) {
 				case 'd': 
 					out += itoa(va_arg(pArgs, int), out);
 					break;
