@@ -13,17 +13,31 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
-static void itoa(int n, char *s, int base) {
-	int sign = n, bit = 0;
+static int ilen(int n) {
+	int ret = 0;
+	do {
+		n /= 10;
+		ret ++;
+	} while (n > 0);
+	
+	return ret;
+}
+
+static int itoa(int n, char *s, int base) {
+	int len = ilen(n);
+	char *end = s + len - 1;
+	*end = '\0';
+
+	int sign = n, digit = 0;
 	if (sign < 0) n = -n;
 	do {
-		bit = n % base;
-		if (bit >= 10) *s ++ = 'a' + bit - 10;
-		else *s ++ = '0' + bit;
+		digit = n % base;
+		if (digit >= 10) *end -- = 'a' + digit - 10;
+		else *end --  = '0' + digit;
 	} while ((n /= base) > 0);
-	if (sign < 0) *s ++ = '-';
-	*s = '\0';
+	if (sign < 0) *s -- = '-';
 
+	return len;
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
@@ -40,7 +54,7 @@ int sprintf(char *out, const char *fmt, ...) {
 			switch (*fmt) {
 				case 'd':
 					int num = va_arg(ap, int);
-					itoa(num, out, 10);
+					out += itoa(num, out, 10);
 					break;
 				case 's': 
 					char *s = va_arg(ap, char *);
