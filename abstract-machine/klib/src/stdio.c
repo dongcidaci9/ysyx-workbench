@@ -13,29 +13,28 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
-static int ilen(int n) {
-	int ret = 0;
-	do {
-		n /= 10;
-		ret ++;
-	} while (n > 0);
-	
-	return ret;
+static void reverse(char *s, int len) {
+	char *end = s + len - 1;
+	char tmp;
+	while (s < end) {
+		tmp = *s;
+		*s ++ = *end;
+		*end ++ = tmp;
+	}
 }
 
 static int itoa(int n, char *s, int base) {
-	int len = ilen(n);
-	char *end = s + len;
-	*end = '\0';
 
-	int digit = 0;
+	int i = 0, digit = 0;
 	do {
 		digit = n % base;
-		if (digit >= 10) *end -- = 'a' + digit - 10;
-		else *end --  = '0' + digit;
+		if (digit >= 10) s[i++] = 'a' + digit - 10;
+		else s[i++] = '0' + digit;
 	} while ((n /= base) > 0);
+	s[i] = '\0';
 
-	return len;
+	reverse(s - i, i);
+	return i;
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
