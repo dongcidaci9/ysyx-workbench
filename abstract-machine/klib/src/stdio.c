@@ -20,8 +20,10 @@ static void reverse(char *s, int len) {
 
 	while (ptr < end) {
 		tmp = *ptr;
-		*ptr ++ = *end;
-		*end -- = tmp;
+		*ptr  = *end;
+		*end  = tmp;
+		ptr ++;
+		end --;
 	}
 }
 
