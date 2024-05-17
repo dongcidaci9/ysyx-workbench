@@ -13,7 +13,7 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
-static int itoa(int num, char *s) {
+static int intcpy(char *s, int num) {
 	int divisor = 100;
 	
 	char *ptr = s;
@@ -42,7 +42,7 @@ int sprintf(char *out, const char *fmt, ...) {
 			switch (*fmt) {
 				case 'd':
 					int num = va_arg(pArgs, int);
-					itoa(num, out);
+					out += intcpy(out, num);
 					break;
 				case 's': 
 					char *s = va_arg(pArgs, char *);
