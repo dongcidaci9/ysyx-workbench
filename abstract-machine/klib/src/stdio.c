@@ -19,7 +19,7 @@ static void reverse(char *s, int len) {
 	while (s < end) {
 		tmp = *s;
 		*s ++ = *end;
-		*end ++ = tmp;
+		*end -- = tmp;
 	}
 }
 
@@ -34,7 +34,7 @@ static int itoa(int n, char *s, int base) {
 	} while ((n /= base) > 0);
 	ptr[i] = '\0';
 
-	reverse(ptr, i);
+	reverse(ptr - i, i);
 	return i;
 }
 
