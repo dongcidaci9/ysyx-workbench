@@ -17,6 +17,7 @@ static void reverse(char *s, int len) {
 	char *ptr = s;
 	char *end = s + len - 1;
 	char tmp;
+
 	while (ptr < end) {
 		tmp = *ptr;
 		*ptr ++ = *end;
@@ -35,7 +36,7 @@ static int itoa(int n, char *s, int base) {
 	s[i] = '\0';
 
 	reverse(s, i);
-	return i;
+	return i - 1;
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
