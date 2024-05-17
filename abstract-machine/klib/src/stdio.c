@@ -13,29 +13,18 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
   panic("Not implemented");
 }
 
-static void itoa(unsigned int n, char *buf) {
-	int i = 0;
-	if (n < 10) {
-		buf[0] = '0' + n;
-		buf[1] = '\0';
-		return;
-	}
+static void itoa(int n, char *s, int base) {
+	int sign = n, bit = 0;
+	if (sign < 0) n = -n;
+	do {
+		bit = n % base;
+		if (bit >= 10) *s ++ = 'a' + bit - 10;
+		else *s ++ = '0' + bit;
+	} while ((n /= base) > 0);
+	if (sign < 0) *s ++ = '-';
+	*s = '\0';
 
-	itoa(n / 10, buf);
-
-	for(i = 0; buf[i] != '\0'; i++);
-	buf[i] = (n % 10) + '0';
-	buf[i + 1] = '\0';
 }
-/*
-	while (divisor > 0) {
-		int digit = num / divisor;
-		if (digit != 0 || divisor == 1 ) ptr[i ++] = '0' + digit;
-		num %= divisor;
-		divisor /= 10;
-	}
-}
-*/
 
 int sprintf(char *out, const char *fmt, ...) {	
 	char *start = out; // record number of written character
@@ -50,8 +39,8 @@ int sprintf(char *out, const char *fmt, ...) {
 			++ fmt;
 			switch (*fmt) {
 				case 'd':
-					unsigned int num = va_arg(ap, unsigned int);
-					itoa(num, out);
+					int num = va_arg(ap, int);
+					itoa(num, out, 10);
 					break;
 				case 's': 
 					char *s = va_arg(ap, char *);
