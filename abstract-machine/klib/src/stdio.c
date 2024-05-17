@@ -14,27 +14,27 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 }
 
 static void reverse(char *s, int len) {
+	char *ptr = s;
 	char *end = s + len - 1;
 	char tmp;
-	while (s < end) {
-		tmp = *s;
-		*s ++ = *end;
+	while (ptr < end) {
+		tmp = *ptr;
+		*ptr ++ = *end;
 		*end -- = tmp;
 	}
 }
 
 static int itoa(int n, char *s, int base) {
-	char *ptr = s;
-
 	int i = 0, digit = 0;
+
 	do {
 		digit = n % base;
-		if (digit >= 10) ptr[i++] = 'a' + digit - 10;
-		else ptr[i++] = '0' + digit;
+		if (digit >= 10) s[i++] = 'a' + digit - 10;
+		else s[i++] = '0' + digit;
 	} while ((n /= base) > 0);
-	ptr[i] = '\0';
+	s[i] = '\0';
 
-	reverse(ptr - i, i);
+	reverse(s, i);
 	return i;
 }
 
