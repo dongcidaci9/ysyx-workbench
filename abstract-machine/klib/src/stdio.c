@@ -25,17 +25,15 @@ static int ilen(int n) {
 
 static int itoa(int n, char *s, int base) {
 	int len = ilen(n);
-	char *end = s + len - 1;
+	char *end = s + len;
 	*end = '\0';
 
-	int sign = n, digit = 0;
-	if (sign < 0) n = -n;
+	int digit = 0;
 	do {
 		digit = n % base;
 		if (digit >= 10) *end -- = 'a' + digit - 10;
 		else *end --  = '0' + digit;
 	} while ((n /= base) > 0);
-	if (sign < 0) *s -- = '-';
 
 	return len;
 }
