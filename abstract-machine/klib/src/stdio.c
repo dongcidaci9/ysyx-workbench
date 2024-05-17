@@ -30,13 +30,14 @@ static int itoa(int n, char *s, int base) {
 
 	do {
 		digit = n % base;
-		if (digit >= 10) s[i++] = 'a' + digit - 10;
+		if (digit > 10) s[i++] = 'a' + digit - 10;
 		else s[i++] = '0' + digit;
 	} while ((n /= base) > 0);
-	s[i] = '\0';
 
+	s[i] = '\0';
 	reverse(s, i);
-	return i - 1;
+
+	return i;
 }
 
 int sprintf(char *out, const char *fmt, ...) {	
