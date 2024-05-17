@@ -34,7 +34,7 @@ static int itoa(int n, char *s, int base) {
 	} while ((n /= base) > 0);
 	ptr[i] = '\0';
 
-	reverse(ptr - i, i);
+	reverse(ptr, i);
 	return i;
 }
 
