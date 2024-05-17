@@ -55,6 +55,7 @@ int sprintf(char *out, const char *fmt, ...) {
 				case 'd':
 					int num = va_arg(ap, int);
 					out += itoa(num, out, 10);
+					fmt ++;
 					break;
 				case 's': 
 					char *s = va_arg(ap, char *);
@@ -63,7 +64,6 @@ int sprintf(char *out, const char *fmt, ...) {
 					break;
 			}
 		}
-		++ fmt;
 	}
 
 	*out = '\0';
