@@ -61,6 +61,7 @@ int sprintf(char *out, const char *fmt, ...) {
 					char *s = va_arg(ap, char *);
 					strcpy(out, s);
 					out += strlen(out);
+					fmt ++;
 					break;
 			}
 		}
