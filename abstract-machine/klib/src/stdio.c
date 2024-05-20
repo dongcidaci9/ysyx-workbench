@@ -43,13 +43,17 @@ int vsprintf(char *out, const char *fmt, va_list ap) {
 			++ fmt;
 			switch (*fmt ++) {
 				case 'd':
-					int num = va_arg(ap, int);
-					out += itoa(num, out, 10);
+					int d = va_arg(ap, int);
+					out += itoa(d, out, 10);
 					break;
 				case 's': 
 					char *s = va_arg(ap, char *);
 					strcpy(out, s);
 					out += strlen(out);
+					break;
+				case 'c':
+					char c = (char) va_arg(ap, int);
+					*out ++ = c;
 					break;
 			}
 		}
