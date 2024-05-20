@@ -51,17 +51,15 @@ int sprintf(char *out, const char *fmt, ...) {
 			*out ++ = *fmt ++;
 		} else {
 			++ fmt;
-			switch (*fmt) {
+			switch (*fmt ++) {
 				case 'd':
 					int num = va_arg(ap, int);
 					out += itoa(num, out, 10);
-					fmt ++;
 					break;
 				case 's': 
 					char *s = va_arg(ap, char *);
 					strcpy(out, s);
 					out += strlen(out);
-					fmt ++;
 					break;
 			}
 		}
