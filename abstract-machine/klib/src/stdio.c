@@ -5,13 +5,6 @@
 
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 
-int printf(const char *fmt, ...) {
-  panic("Not implemented");
-}
-
-int vsprintf(char *out, const char *fmt, va_list ap) {
-  panic("Not implemented");
-}
 
 static void reverse(char *s, int len) {
 	char *ptr = s;
@@ -40,11 +33,8 @@ static int itoa(int n, char *s, int base) {
 	return i;
 }
 
-int sprintf(char *out, const char *fmt, ...) {	
+int vsprintf(char *out, const char *fmt, va_list ap) {	
 	char *start = out; // record number of written character
-
-	va_list ap; // pointor towards variable parameter list
-	va_start(ap, fmt); // initialize it towards fmt, no matter what variable parameter type it is
 
 	while (*fmt != '\0') {
 		if (*fmt != '%') {
@@ -66,16 +56,29 @@ int sprintf(char *out, const char *fmt, ...) {
 	}
 
 	*out = '\0';
-	va_end(ap); // finisth visit va_list
 
 	return out - start; 
+}
+
+int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
+  panic("Not implemented");
+}
+
+int sprintf(char *out, const char *fmt, ...) {
+	va_list ap;
+
+	va_start(ap, fmt);
+	int ret = vsprintf(out, fmt, ap);
+	va_end(ap);
+
+	return ret;
 }
 
 int snprintf(char *out, size_t n, const char *fmt, ...) {
   panic("Not implemented");
 }
 
-int vsnprintf(char *out, size_t n, const char *fmt, va_list ap) {
+int printf(const char *fmt, ...) {
   panic("Not implemented");
 }
 
