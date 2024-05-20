@@ -17,6 +17,7 @@
 #include <cpu/decode.h>
 #include <cpu/difftest.h>
 #include <cpu/itrace.h>
+#include <cpu/ftrace.h>
 #include <locale.h>
 
 /* The assembly code of instructions executed is only output to the screen
@@ -38,7 +39,9 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
 #ifdef CONFIG_ITRACE_COND
   if (ITRACE_COND) { log_write("%s\n", _this->logbuf); }
 #endif
-  if (g_print_step) { IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
+  if (g_print_step) 
+	{ 
+		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
 	}
   IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc, dnpc));
 
@@ -98,7 +101,7 @@ static void statistic() {
 
 void assert_fail_msg() {
 	display_inst();
-  isa_reg_display();
+  IFDEF(CONFIG_ITRACE, isa_reg_display());
   statistic();
 }
 

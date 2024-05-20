@@ -415,8 +415,9 @@ void trace_func_call(paddr_t pc, paddr_t target, bool is_tail) {
 	int i = find_symbol_func(target, true);
 	ftrace_write(FMT_PADDR ": %*scall [%s@" FMT_PADDR "]\n",
 		pc,
-		(call_depth-3)*2, "",
-		i>=0?symbol_tbl[i].name:"???",
+		(call_depth - 3) * 2, 
+		"",
+		i >= 0 ? symbol_tbl[i].name : "???",
 		target
 	);
 
@@ -433,8 +434,9 @@ void trace_func_ret(paddr_t pc) {
 	int i = find_symbol_func(pc, false);
 	ftrace_write(FMT_PADDR ": %*sret [%s]\n",
 		pc,
-		(call_depth-3)*2, "",
-		i>=0?symbol_tbl[i].name:"???"
+		(call_depth - 3) * 2,
+		"",
+		i >= 0 ? symbol_tbl[i].name : "???"
 	);
 	
 	--call_depth;
