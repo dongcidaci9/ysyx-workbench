@@ -83,9 +83,9 @@ static int decode_exec(Decode *s) {
   INSTPAT("0000001 ????? ????? 101 ????? 01100 11", divu   , R, R(rd) = (word_t)src1 / (word_t)src2);
 
 	INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, R(rd) = s->snpc; s->dnpc = s->pc + imm; 
-			IFDEF(CONFIG_ITRACE, if (rd == 1) trace_func_call(s->pc, s->dnpc, false)));
+			IFDEF(CONFIG_FTRACE, if (rd == 1) trace_func_call(s->pc, s->dnpc, false)));
 	INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, R(rd) = s->snpc; s->dnpc = (src1 +imm) & ~1; 
-			IFDEF(CONFIG_ITRACE, 
+			IFDEF(CONFIG_FTRACE, 
 				if (s->isa.inst.val == 0x0008067) trace_func_ret(s->pc);
 				else if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
 				else if (rd == 0 && imm == 0) trace_func_call(s->pc, s->dnpc, true);
