@@ -11,6 +11,7 @@ ItraceNode iringbuf[MAX_IRINGBUF];
 int p_cur = 0;
 bool full = false;
 
+#ifdef CONFIG_ITRACE
 void trace_inst(word_t pc, uint32_t inst) {
   iringbuf[p_cur].pc = pc;
   iringbuf[p_cur].inst = inst;
@@ -34,8 +35,9 @@ void display_inst() {
 
     disassemble(p, buf + sizeof(buf)-p, iringbuf[i].pc, (uint8_t *) &iringbuf[i].inst, 4);
 
-    if ((i+1)%MAX_IRINGBUF==end) printf(ANSI_FG_RED);
+    if ((i+1) % MAX_IRINGBUF == end) printf(ANSI_FG_RED);
     puts(buf);
-  } while ((i = (i+1)%MAX_IRINGBUF) != end);
+  } while ((i = (i+1) % MAX_IRINGBUF) != end);
   puts(ANSI_NONE);
 }
+#endif
