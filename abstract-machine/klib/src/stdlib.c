@@ -38,8 +38,8 @@ void *malloc(size_t size) {
   //   panic() -> putchar() -> (glibc) -> malloc() -> panic()
 #if !(defined(__ISA_NATIVE__) && defined(__NATIVE_USE_KLIB__))
 	if (!flag) {
-	addr = (void *)ROUNDUP(heap.start, 8);
-	flag = true;
+		addr = (void *)ROUNDUP(heap.start, 8);
+		flag = true;
 	}
 	size = (size_t)ROUNDUP(size, 8);
 
