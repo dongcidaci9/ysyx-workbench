@@ -43,7 +43,7 @@ void *malloc(size_t size) {
 	}
 	size = (size_t)ROUNDUP(size, 8);
 
-	char *old = addr;
+	void *old = addr;
 	addr += size;
 	assert((uintptr_t)heap.start <= (uintptr_t) addr && (uintptr_t) addr < (uintptr_t)heap.end);
 
