@@ -1,6 +1,6 @@
 #include <common.h>
 
-#ifdef CONFIG_MTRACE
+#ifdef CONFIG_MTRACE_COND
 void display_pread(paddr_t addr, int len) {
 	printf("pread @" FMT_PADDR ", len = %d\n", addr, len);
 }
