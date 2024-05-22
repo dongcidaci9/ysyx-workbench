@@ -47,6 +47,7 @@ void *malloc(size_t size) {
 	}
 	return old;
 //#endif
+ // return NULL;
 }
 
 void free(void *ptr) {
