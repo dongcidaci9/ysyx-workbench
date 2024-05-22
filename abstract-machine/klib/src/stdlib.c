@@ -42,12 +42,9 @@ void *malloc(size_t size) {
 	addr += size;
 	assert((uintptr_t)heap.start <= (uintptr_t) addr && (uintptr_t) addr < (uintptr_t)heap.end);
 
-	for (uint64_t *p = (uint64_t *)old; p != (uint64_t *)addr; p ++){
-		*p = 0;
-	}
 	return old;
 #endif
-  //return NULL;
+  return NULL;
 }
 
 void free(void *ptr) {
