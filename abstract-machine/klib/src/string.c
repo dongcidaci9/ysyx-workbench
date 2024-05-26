@@ -76,8 +76,8 @@ void *memmove(void *dst, const void *src, size_t n) {
 	} else {
 		d += n; // dst_end
 		s += n; // src_end
-		while (n -- ) {
-			*(-- d) = *(-- s);
+		while (n --) {
+			*(d --) = *(s --);
 		}
 	}
 	return dst;
