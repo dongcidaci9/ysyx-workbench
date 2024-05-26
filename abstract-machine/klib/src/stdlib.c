@@ -45,10 +45,11 @@ void *malloc(size_t size) {
 	char *old = addr;
 	addr += size;
 
+	printf("a\n");
 	return old;
 
 #endif
-	return old;
+	printf("a\n");
 }
 
 void free(void *ptr) {
