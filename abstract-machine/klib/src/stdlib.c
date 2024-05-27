@@ -5,7 +5,7 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 static unsigned long int next = 1;
 
-static char *addr = NULL;
+static void *addr = NULL;
 static bool init_flag = 0;
 
 int rand(void) {
@@ -38,7 +38,7 @@ void *malloc(size_t size) {
   //   panic() -> putchar() -> (glibc) -> malloc() -> panic()
   #if !(defined(__ISA_NATIVE__) && defined(__NATIVE_USE_KLIB__))
 	if (!init_flag) {
-		addr = (char *)ROUNDUP(heap.start, 8);
+		addr = (void *)ROUNDUP(heap.start, 8);
 		init_flag = true;
 	}
 	size = (size_t)ROUNDUP(size, 8);
