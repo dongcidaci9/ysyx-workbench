@@ -5,7 +5,7 @@
 #if !defined(__ISA_NATIVE__) || defined(__NATIVE_USE_KLIB__)
 static unsigned long int next = 1;
 
-static void *addr = NULL;
+static char *addr = NULL;
 static bool init_flag = 0;
 
 int rand(void) {
