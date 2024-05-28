@@ -4,6 +4,7 @@
 #define SYNC_ADDR (VGACTL_ADDR + 4)
 
 void __am_gpu_init() {
+	/*
 	uint32_t screen_wh = inl(VGACTL_ADDR);
 	uint32_t w = screen_wh >> 16;
 	uint32_t h = screen_wh & 0xffff;
@@ -11,6 +12,7 @@ void __am_gpu_init() {
 	uint32_t *fb = (uint32_t *)(uintptr_t)FB_ADDR;
 	for (int i = 0; i < w * h;i ++) fb[i] = i;
 	outl(SYNC_ADDR, 1);
+	*/
 }
 
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
