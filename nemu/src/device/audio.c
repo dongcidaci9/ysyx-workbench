@@ -18,13 +18,13 @@
 #include <SDL2/SDL.h>
 
 enum {
-  reg_freq,
-  reg_channels,
-  reg_samples,
+  reg_freq,				// frequency
+  reg_channels,		// channels
+  reg_samples,   
   reg_sbuf_size,
   reg_init,
-  reg_count,
-  nr_reg
+  reg_count,			// already used size of sbuf
+  nr_reg					// nr_reg = 6
 };
 
 static uint8_t *sbuf = NULL;
@@ -41,7 +41,7 @@ void init_audio() {
 #else
   add_mmio_map("audio", CONFIG_AUDIO_CTL_MMIO, audio_base, space_size, audio_io_handler);
 #endif
-
+	// string buffer
   sbuf = (uint8_t *)new_space(CONFIG_SB_SIZE);
   add_mmio_map("audio-sbuf", CONFIG_SB_ADDR, sbuf, CONFIG_SB_SIZE, NULL);
 }
