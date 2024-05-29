@@ -22,6 +22,7 @@
 #include <SDL2/SDL.h>
 
 // Note that this is not the standard
+// Usage: NEMU_KEYS(NEMU_KEY_NAME)
 #define NEMU_KEYS(f) \
   f(ESCAPE) f(F1) f(F2) f(F3) f(F4) f(F5) f(F6) f(F7) f(F8) f(F9) f(F10) f(F11) f(F12) \
 f(GRAVE) f(1) f(2) f(3) f(4) f(5) f(6) f(7) f(8) f(9) f(0) f(MINUS) f(EQUALS) f(BACKSPACE) \
@@ -35,7 +36,7 @@ f(UP) f(DOWN) f(LEFT) f(RIGHT) f(INSERT) f(DELETE) f(HOME) f(END) f(PAGEUP) f(PA
 
 enum {
   NEMU_KEY_NONE = 0,
-  MAP(NEMU_KEYS, NEMU_KEY_NAME)
+  MAP(NEMU_KEYS, NEMU_KEY_NAME) // MAP(c, f) c(f)
 };
 
 #define SDL_KEYMAP(k) keymap[SDL_SCANCODE_ ## k] = NEMU_KEY_ ## k;
@@ -47,11 +48,11 @@ static void init_keymap() {
 
 #define KEY_QUEUE_LEN 1024
 static int key_queue[KEY_QUEUE_LEN] = {};
-static int key_f = 0, key_r = 0;
+static int key_f = 0, key_r = 0; // front and rear
 
 static void key_enqueue(uint32_t am_scancode) {
   key_queue[key_r] = am_scancode;
-  key_r = (key_r + 1) % KEY_QUEUE_LEN;
+  key_r = (key_r + 1) % KEY_QUEUE_LEN; // ring queue // key_r = 0 ~ 1023
   Assert(key_r != key_f, "key queue overflow!");
 }
 
