@@ -34,12 +34,13 @@ static uint32_t *audio_base = NULL; // including 4 bytes, but 4 * 6
 																		
 static void sdl_audio_callback(void *userdata, uint8_t *stream, int len) {
 	// len = samples * channels * format/8 = 2048, stream = malloc(sizeof(len))
+	// source buffer to drain stream
 	SDL_memset(stream, 0, len);
 
-  uint32_t sbuf_size = audio_base[reg_sbuf_size];
-
-  uint32_t remain = sbuf_size - audio_base[reg_count];
-  uint32_t mix_len = (len > remain) ? remain : len;
+  uint32_t sbuf_size = audio_base[reg_sbuf_size]; // buffer_total_size
+  uint32_t sbuf_used_size = audio_base[reg_count]; // buffer_used_size
+  
+	uint32_t mix_len = (len > sbuf_used_size) ? sbuf_used_size : len;
   
   if ((sbuf_pos + mix_len) > sbuf_size) {
 		uint32_t first_len = sbuf_size - sbuf_pos;
@@ -70,7 +71,6 @@ static void sdl_init_audio() {
   SDL_PauseAudio(0);
 }
                         
-
 static void audio_io_handler(uint32_t offset, int len, bool is_write) {
 	if (audio_base[reg_init]==1) {
     sdl_init_audio();
