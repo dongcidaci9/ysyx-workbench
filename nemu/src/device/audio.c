@@ -33,18 +33,20 @@ static uint32_t sbuf_pos = 0;
 static uint32_t *audio_base = NULL; // including 4 bytes, but 4 * 6
 																		
 static void sdl_audio_callback(void *userdata, uint8_t *stream, int len) {
-  SDL_memset(stream, 0, len);
+	// len = samples * channels * format/8 = 2048, stream = malloc(sizeof(len))
+	SDL_memset(stream, 0, len);
 
   uint32_t sbuf_size = audio_base[reg_sbuf_size];
 
-  uint32_t used_cnt = audio_base[reg_count];
-  len = (len > used_cnt) ? used_cnt : len;
+  uint32_t remain = sbuf_size - audio_base[reg_count];
+  uint32_t mix_len = (len > remain) ? remain : len;
   
-  if ((sbuf_pos + len) > sbuf_size) {
-    SDL_MixAudio(stream, sbuf + sbuf_pos, sbuf_size - sbuf_pos, SDL_MIX_MAXVOLUME);
-    SDL_MixAudio(stream + (sbuf_size - sbuf_pos), 
-                    sbuf + (sbuf_size - sbuf_pos), 
-                    len - (sbuf_size - sbuf_pos), 
+  if ((sbuf_pos + mix_len) > sbuf_size) {
+		uint32_t first_len = sbuf_size - sbuf_pos;
+    SDL_MixAudio(stream, sbuf + sbuf_pos, first_len, SDL_MIX_MAXVOLUME);
+    SDL_MixAudio(stream + first_len, 
+                    sbuf + first_len, 
+                    mix_len - first_len, 
                     SDL_MIX_MAXVOLUME);
   } else {
     SDL_MixAudio(stream, sbuf + sbuf_pos, len , SDL_MIX_MAXVOLUME);
