@@ -25,7 +25,7 @@ AM_DEVREG(13, GPU_RENDER,   WR, uint32_t root);
 AM_DEVREG(14, AUDIO_CONFIG, RD, bool present; int bufsize);														// size of sbuf
 AM_DEVREG(15, AUDIO_CTRL,   WR, int freq, channels, samples);
 AM_DEVREG(16, AUDIO_STATUS, RD, int count);																						// used size of sbuf
-AM_DEVREG(17, AUDIO_PLAY,   WR, Area buf);																						// buffer waiting into sbuf
+AM_DEVREG(17, AUDIO_PLAY,   WR, Area buf);																						// stream buffer
 
 AM_DEVREG(18, DISK_CONFIG,  RD, bool present; int blksz, blkcnt);
 AM_DEVREG(19, DISK_STATUS,  RD, bool ready);

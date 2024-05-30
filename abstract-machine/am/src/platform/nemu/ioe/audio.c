@@ -29,14 +29,14 @@ void __am_audio_status(AM_AUDIO_STATUS_T *stat) {
 }
 
 void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
-  uint32_t sbuf_size = inl(AUDIO_SBUF_SIZE_ADDR);
+  uint32_t sbuf_size = inl(AUDIO_SBUF_SIZE_ADDR); // size of stream buffer
 	uint8_t *audio_data = (ctl->buf).start;
 
 	uint32_t len = (ctl->buf).end - (ctl->buf).start;
 	
-	uint8_t *ab = (uint8_t *)(uintptr_t)AUDIO_SBUF_ADDR;
-		for (int i = 0; i < len; i ++) {
-			ab[sbuf_pos] = audio_data[i];
+	uint8_t *asb = (uint8_t *)(uintptr_t)AUDIO_SBUF_ADDR;
+		for (int i = 0; i < 8; i ++) {
+			asb[sbuf_pos] = audio_data[i];
 			sbuf_pos = (sbuf_pos + 1) % sbuf_size;  
     }
 		outl(AUDIO_COUNT_ADDR, inl(AUDIO_COUNT_ADDR) + len);

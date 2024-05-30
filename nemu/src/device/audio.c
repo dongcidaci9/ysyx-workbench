@@ -28,16 +28,18 @@ enum {
 };
 
 static uint8_t *sbuf = NULL;
-static uint32_t *audio_base = NULL; // including 4 bytes, but 4 * 6
-																		
 static uint32_t sbuf_pos = 0; 
 
-void sdl_audio_callback(void *userdata, uint8_t *stream, int len) {
+static uint32_t *audio_base = NULL; // including 4 bytes, but 4 * 6
+																		
+static void sdl_audio_callback(void *userdata, uint8_t *stream, int len) {
   SDL_memset(stream, 0, len);
+
+  uint32_t sbuf_size = audio_base[reg_sbuf_size];
+
   uint32_t used_cnt = audio_base[reg_count];
   len = (len > used_cnt) ? used_cnt : len;
   
-  uint32_t sbuf_size = audio_base[reg_sbuf_size];
   if ((sbuf_pos + len) > sbuf_size) {
     SDL_MixAudio(stream, sbuf + sbuf_pos, sbuf_size - sbuf_pos, SDL_MIX_MAXVOLUME);
     SDL_MixAudio(stream + (sbuf_size - sbuf_pos), 
@@ -51,7 +53,7 @@ void sdl_audio_callback(void *userdata, uint8_t *stream, int len) {
 	}
 }
 
-void sdl_init_audio() {
+static void sdl_init_audio() {
   SDL_AudioSpec s = {};
   s.format = AUDIO_S16SYS;
   s.userdata = NULL;  
