@@ -16,6 +16,7 @@
 #include <common.h>
 #include <device/map.h>
 #include <SDL2/SDL.h>
+#include <stdio.h>
 
 enum {
   reg_freq,				// frequency
@@ -66,11 +67,11 @@ static void sdl_init_audio() {
   s.samples = audio_base[reg_samples];
   s.callback = sdl_audio_callback;
 
+	printf("a\n");
+
   SDL_InitSubSystem(SDL_INIT_AUDIO);
   SDL_OpenAudio(&s, NULL);
   SDL_PauseAudio(0);
-
-	SDL_Delay(5000);
 }
                         
 static void audio_io_handler(uint32_t offset, int len, bool is_write) {
