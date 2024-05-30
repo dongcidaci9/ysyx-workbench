@@ -39,9 +39,9 @@ static void sdl_audio_callback(void *userdata, uint8_t *stream, int len) {
 	SDL_memset(stream, 0, len);
 
   uint32_t sbuf_size = audio_base[reg_sbuf_size]; // buffer_total_size
-  uint32_t sbuf_used_size = audio_base[reg_count]; // buffer_used_size
+  uint32_t sbuf_used_cnt = audio_base[reg_count]; // buffer_used_size
   
-	uint32_t mix_len = (len > sbuf_used_size) ? sbuf_used_size : len;
+	uint32_t mix_len = (len > sbuf_used_cnt) ? sbuf_used_cnt : len;
   
   if ((sbuf_pos + mix_len) > sbuf_size) {
 		uint32_t first_len = sbuf_size - sbuf_pos;
