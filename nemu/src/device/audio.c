@@ -67,8 +67,6 @@ static void sdl_init_audio() {
   s.samples = audio_base[reg_samples];
   s.callback = sdl_audio_callback;
 
-	printf("a\n");
-
   SDL_InitSubSystem(SDL_INIT_AUDIO);
   SDL_OpenAudio(&s, NULL);
   SDL_PauseAudio(0);
