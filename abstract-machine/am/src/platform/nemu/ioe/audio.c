@@ -32,6 +32,8 @@ void __am_audio_status(AM_AUDIO_STATUS_T *stat) {
 void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
   uint32_t sbuf_size = inl(AUDIO_SBUF_SIZE_ADDR); // size of stream buffer
 	uint8_t *audio_data = (ctl->buf).start;
+	// wait until have enough space
+	while (sbuf_size - inl(AUDIO_COUNT_ADDR) > 4096);
 
 	uint32_t len = (ctl->buf).end - (ctl->buf).start;
 	printf("%d\n", len);
