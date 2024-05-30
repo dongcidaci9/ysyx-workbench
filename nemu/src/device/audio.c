@@ -49,7 +49,7 @@ static void sdl_audio_callback(void *userdata, uint8_t *stream, int len) {
                     mix_len - first_len, 
                     SDL_MIX_MAXVOLUME);
   } else {
-    SDL_MixAudio(stream, sbuf + sbuf_pos, len , SDL_MIX_MAXVOLUME);
+    SDL_MixAudio(stream, sbuf + sbuf_pos, mix_len, SDL_MIX_MAXVOLUME);
 	}
 		sbuf_pos = (sbuf_pos + len) % sbuf_size;
 		audio_base[reg_count] -= len;
