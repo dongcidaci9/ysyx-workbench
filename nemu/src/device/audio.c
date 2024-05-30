@@ -69,6 +69,8 @@ static void sdl_init_audio() {
   SDL_InitSubSystem(SDL_INIT_AUDIO);
   SDL_OpenAudio(&s, NULL);
   SDL_PauseAudio(0);
+
+	SDL_Delay(5000);
 }
                         
 static void audio_io_handler(uint32_t offset, int len, bool is_write) {
