@@ -37,7 +37,7 @@ void __am_audio_play(AM_AUDIO_PLAY_T *ctl) {
 	uint8_t *asb = (uint8_t *)(uintptr_t)AUDIO_SBUF_ADDR;
 		for (int i = 0; i < len; i ++) {
 			asb[sbuf_pos] = audio_data[i];
-			if (i % 8 == 0) sbuf_pos = (sbuf_pos + 1) % sbuf_size;  
+			sbuf_pos = (sbuf_pos + 1) % sbuf_size;  
     }
 		outl(AUDIO_COUNT_ADDR, inl(AUDIO_COUNT_ADDR) + len);
 }
