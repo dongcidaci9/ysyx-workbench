@@ -16,7 +16,7 @@ void __am_gpu_init() {
 }
 
 void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
-	uint32_t screen_wh = inl(VGACTL_ADDR);
+	uint32_t screen_wh = inl(VGACTL_ADDR); // from nemu
 	uint32_t h = screen_wh & 0xffff;
 	uint32_t w = screen_wh >> 16;
 
@@ -28,7 +28,7 @@ void __am_gpu_config(AM_GPU_CONFIG_T *cfg) {
 }
 
 void __am_gpu_fbdraw(AM_GPU_FBDRAW_T *ctl) { 
-	int x = ctl->x, y = ctl->y, w = ctl->w, h = ctl->h;
+	int x = ctl->x, y = ctl->y, w = ctl->w, h = ctl->h; // from amdev
  
 	if (!ctl->sync && (w == 0 || h == 0)) return;
 
