@@ -11,9 +11,17 @@ module ysyx_23060201_TOP(
 		.rst(rst),
 		.pc(pc)
 	);
+	// inst_split
+	wire [6:0] inst_op;
+	assign inst_op = inst[6:0];
+	// Type Define
+	
+	// ifu
+
+	initial begin
+		if ()
 
 	// idu
-	wire [6:0] inst_op;
 	wire [2:0] inst_func3;
 	wire [4:0] inst_rs1, inst_rd;
 	wire [31:0] inst_imm;
