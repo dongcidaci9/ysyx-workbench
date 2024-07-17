@@ -28,6 +28,7 @@ override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 
 # Command to execute NEMU
+# := means simple variable
 IMG ?=
 NEMU_EXEC := $(BINARY) $(ARGS) $(IMG)
 

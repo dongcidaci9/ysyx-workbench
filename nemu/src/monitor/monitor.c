@@ -35,6 +35,7 @@ static void welcome() {
   printf("For help, type \"help\"\n");
 }
 
+// define CONFIG_TARGET_AM or not is different
 #ifndef CONFIG_TARGET_AM
 #include <getopt.h>
 
@@ -71,6 +72,14 @@ static long load_img() {
 // void parse_elf(const char *elf_file);
 
 static int parse_args(int argc, char *argv[]) {
+  /* array of structures in <getopt.h>
+  struct option {
+  const char *name;       // 长选项名
+  int has_arg;            // 参数类型：no_argument, required_argument, optional_argument
+  int *flag;              // 如果不为NULL，则设置此指针指向的值为val
+  int val;                // 如果flag为NULL，则返回此值
+};
+  */
   const struct option table[] = {
     {"batch"    , no_argument      , NULL, 'b'},
 		{"elf"      , required_argument, NULL, 'e'},

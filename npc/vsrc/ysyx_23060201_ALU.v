@@ -5,21 +5,14 @@ module ysyx_23060201_ALU(
 	output [31:0] res
 );
 
-	wire [31:0] res_addsub;
-	wire [31:0] res_and;
-	wire [31:0] res_or;
-
-	wire [31:0] b2;
-	assign b2 = b ^ {32{ctrl[0]}};
+	wire [31:0] res_addsub = a + b2 + {31'b0, ctrl[0]};
+	wire [31:0] res_and = a & b;
+	wire [31:0] res_or = a | b;
+	wire [31:0] b2 = b ^ {32{ctrl[0]}};
 	
-	assign res_addsub = a + b2 + {31'b0, ctrl[0]};
-	
-	// wire cf, vf;
-	// assign {cf, res_addsub} = a + b2 + {31'b0, ctrl[0]};
-	// assign vf = (~(a[31] ^ b2[31] ^ ctrl[0])) & (a[31] ^ res_addsub[31]) & ctrl[1];
-
-	assign res_and = a & b;
-	assign res_or = a | b;
+	//wire cf, vf;
+	//assign {cf, res_addsub} = a + b2 + {31'b0, ctrl[0]};
+	//assign vf = (~(a[31] ^ b2[31] ^ ctrl[0])) & (a[31] ^ res_addsub[31]) & ctrl[1];
 
 	MuxKey #(4, 3, 32) alu(res, ctrl, {
 		3'b000, res_addsub,

@@ -67,6 +67,7 @@ static int cmd_d(char *args);
 static int cmd_help(char *args);
 
 // Order register table:
+// (*handler): a pointer to a func
 static struct {
   const char *name;
   const char *description;
@@ -199,17 +200,18 @@ static int cmd_help(char *args) {
 }
 
 void sdb_set_batch_mode() {
-  is_batch_mode = true;
+  	is_batch_mode = true;
 }
 
 void sdb_mainloop() {
-  if (is_batch_mode) {
-    cmd_c(NULL);
-    return;
-  }
+	// loop call func cmd_c
+  	if (is_batch_mode) {
+    	cmd_c(NULL);
+    	return;
+  	}
 
-  for (char *str; (str = rl_gets()) != NULL; ) {
-    char *str_end = str + strlen(str);
+  	for (char *str; (str = rl_gets()) != NULL; ) {
+    	char *str_end = str + strlen(str);
 
     /* extract the first token as the command */
     char *cmd = strtok(str, " ");
