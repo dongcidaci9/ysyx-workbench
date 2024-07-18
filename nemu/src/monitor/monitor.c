@@ -74,10 +74,10 @@ static long load_img() {
 static int parse_args(int argc, char *argv[]) {
   /* array of structures in <getopt.h>
   struct option {
-  const char *name;       // 长选项名
-  int has_arg;            // 参数类型：no_argument, required_argument, optional_argument
-  int *flag;              // 如果不为NULL，则设置此指针指向的值为val
-  int val;                // 如果flag为NULL，则返回此值
+  const char *name;       // long name 
+  int has_arg;            // choice: no_argument, required_argument, optional_argument
+  int *flag;              // can be set NULL, then getopt_long
+  int val;                // short name 
 };
   */
   const struct option table[] = {
@@ -92,6 +92,7 @@ static int parse_args(int argc, char *argv[]) {
   int o;
   while ( (o = getopt_long(argc, argv, "-bhl:d:p:e:", table, NULL)) != -1) {
     switch (o) {
+      // optarg: used to store parameter values for the current option
       case 'b': sdb_set_batch_mode(); break;
 			case 'e': elf_file = optarg; break;
       case 'p': sscanf(optarg, "%d", &difftest_port); break;

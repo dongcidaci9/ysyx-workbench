@@ -14,7 +14,9 @@ sim:
 	verilator --top-module ysyx_23060201_TOP --timing -Wall -cc -build -exe -j 0 -trace $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	./obj_dir/Vysyx_23060201_TOP
 
-run: sim wave
+run: sim 
+	$(call git_commit, "run NPC")
+	$(NEMU_EXEC)
 
 wave:
 	gtkwave wave.vcd
