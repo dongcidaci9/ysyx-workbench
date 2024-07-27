@@ -24,7 +24,7 @@ BUILD_DIR = $(WORK_DIR)/build
 OBJ_DIR = $(BUILD_DIR)/obj-dir
 
 # Include directory
-INC_DIR = $(WORK_DIR)/include
+VINC_DIR = $(WORK_DIR)/include/verilog
 
 # --- 2. Simulation flags ---
 VERILATOR := verilator

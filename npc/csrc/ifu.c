@@ -110,9 +110,26 @@ static long load_img() {
 static int parse_args(int argc, char *argv[]) {
 	const struct option table[] = {
 		{"log"   , required_argument, NULL, 'l'},
+		{0       , 0                , NULL,  0 },
+	};
+	int o;
+	while ( (o = getopt_long(argc, argv, "l:", table, NULL)) != -1) {
+		switch (o) {
+			case 'l': log_file = optarg; break;
+			case  1 : img_file = optarg; return 0; // non-option argument
+			default:
+ 				printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
+        		printf("\t-l,--log=FILE           output log to FILE\n");
+        		printf("\n");
+        		exit(0);
+		}
 	}
+	return 0;
 }
 
 void init_monitor(int argc, char *argv[]) {
 	parse_args(argc, argv);
+	// init_log(log_file);
+	init_mem();
+	long img_size = load_img();
 }
