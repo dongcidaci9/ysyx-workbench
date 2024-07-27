@@ -1,17 +1,59 @@
-module ysyx_23060201_GPR(
+module ysyx_23060201_GPR #(ADDR_WIDTH = 5, DATA_WIDTH = 32) (
 	input clk,
 	input rst,
-	input [4:0] inst_rs1, inst_rd,
-	input [31:0] inst_rd_val,
-	output [31:0] inst_rs1_val
+	input [1:0] ren, // R(rs2), R(rs1)
+	input wen, // R(rd)
+	input [ADDR_WIDTH-1:0] raddr1, 
+	input [ADDR_WIDTH-1:0] raddr2, 
+	input [ADDR_WIDTH-1:0] waddr, 
+	input [DATA_WIDTH-1:0] wdata,
+	output [DATA_WIDTH-1:0] rdata1,
+	output [DATA_WIDTH-1:0] rdata2 
 );
 		
-	reg [31:0] reg_file [31:0];
+	reg [DATA_WIDTH-1:0] reg_file [2**ADDR_WIDTH-1:0]; 
+	
+	// Write back the changed value
+	always @(posedge clk) begin
+    	if (wen) reg_file[waddr] <= wdata;
+  	end
 
 	// Get the value
-	assign inst_rs1_val = reg_file[inst_rs1]; 
+	assign rdata1 = (ren[0] != 1'b0) ? reg_file[raddr1] : 32'b0; 
+	assign rdata2 = (ren[1] != 1'b0) ? reg_file[raddr2] : 32'b0;
 
-	// Save the changed value
-	Reg #(32, 32'b0) rs1_saved (clk, rst, inst_rd_val, reg_file[inst_rd], 1'b1);
+	// Reset
+	Reg #(32, 1'b1) rst0(clk, rst, 32'b0, reg_file[0], 1'b1); 
+	Reg #(32, 1'b1) rst1(clk, rst, 32'b0, reg_file[1], 1'b1); 
+	Reg #(32, 1'b1) rst2(clk, rst, 32'b0, reg_file[2], 1'b1); 
+	Reg #(32, 1'b1) rst3(clk, rst, 32'b0, reg_file[3], 1'b1); 
+	Reg #(32, 1'b1) rst4(clk, rst, 32'b0, reg_file[4], 1'b1); 
+	Reg #(32, 1'b1) rst5(clk, rst, 32'b0, reg_file[5], 1'b1); 
+	Reg #(32, 1'b1) rst6(clk, rst, 32'b0, reg_file[6], 1'b1); 
+	Reg #(32, 1'b1) rst7(clk, rst, 32'b0, reg_file[7], 1'b1); 
+	Reg #(32, 1'b1) rst8(clk, rst, 32'b0, reg_file[8], 1'b1); 
+	Reg #(32, 1'b1) rst9(clk, rst, 32'b0, reg_file[9], 1'b1); 
+	Reg #(32, 1'b1) rst10(clk, rst, 32'b0, reg_file[10], 1'b1); 
+	Reg #(32, 1'b1) rst11(clk, rst, 32'b0, reg_file[11], 1'b1); 
+	Reg #(32, 1'b1) rst12(clk, rst, 32'b0, reg_file[12], 1'b1); 
+	Reg #(32, 1'b1) rst13(clk, rst, 32'b0, reg_file[13], 1'b1); 
+	Reg #(32, 1'b1) rst14(clk, rst, 32'b0, reg_file[14], 1'b1); 
+	Reg #(32, 1'b1) rst15(clk, rst, 32'b0, reg_file[15], 1'b1); 
+	Reg #(32, 1'b1) rst16(clk, rst, 32'b0, reg_file[16], 1'b1); 
+	Reg #(32, 1'b1) rst17(clk, rst, 32'b0, reg_file[17], 1'b1); 
+	Reg #(32, 1'b1) rst18(clk, rst, 32'b0, reg_file[18], 1'b1); 
+	Reg #(32, 1'b1) rst19(clk, rst, 32'b0, reg_file[19], 1'b1); 
+	Reg #(32, 1'b1) rst20(clk, rst, 32'b0, reg_file[20], 1'b1); 
+	Reg #(32, 1'b1) rst21(clk, rst, 32'b0, reg_file[21], 1'b1); 
+	Reg #(32, 1'b1) rst22(clk, rst, 32'b0, reg_file[22], 1'b1); 
+	Reg #(32, 1'b1) rst23(clk, rst, 32'b0, reg_file[23], 1'b1); 
+	Reg #(32, 1'b1) rst24(clk, rst, 32'b0, reg_file[24], 1'b1); 
+	Reg #(32, 1'b1) rst25(clk, rst, 32'b0, reg_file[25], 1'b1); 
+	Reg #(32, 1'b1) rst26(clk, rst, 32'b0, reg_file[26], 1'b1); 
+	Reg #(32, 1'b1) rst27(clk, rst, 32'b0, reg_file[27], 1'b1); 
+	Reg #(32, 1'b1) rst28(clk, rst, 32'b0, reg_file[28], 1'b1); 
+	Reg #(32, 1'b1) rst29(clk, rst, 32'b0, reg_file[29], 1'b1); 
+	Reg #(32, 1'b1) rst30(clk, rst, 32'b0, reg_file[30], 1'b1); 
+	Reg #(32, 1'b1) rst31(clk, rst, 32'b0, reg_file[31], 1'b1);
 
 endmodule

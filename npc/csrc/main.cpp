@@ -1,8 +1,27 @@
 #include "Vysyx_23060201_TOP.h"
 #include "verilated.h"
-#include "verilated_vcd_c.h"
+#include "verilated_vcd_c.h" // generate wave.vcd
+ 
+// dpi-c
 #include "Vysyx_23060201_TOP__Dpi.h"
+#include <verilated_dpi.h>
+// glibc
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
+// readline
+#include <readline/readline.h>
+#include <readline/history.h>
+// system time
+#include <sys/time.h>
 
+	/////////////////////////////////////////
+	/*              Memory Init            */	
+	/////////////////////////////////////////
+
+	/////////////////////////////////////////
+	/*                C P U                */	
+	/////////////////////////////////////////
 static Vysyx_23060201_TOP* top;
 
 VerilatedContext* contextp = NULL;
@@ -10,7 +29,7 @@ VerilatedVcdC* vcd = NULL;
 
 static void step_and_dump_wave(){
 	top->eval(); // State update
-	contextp->timeInc(1); // Time step
+	contextp->timeInc(1); // Time step in
 	vcd->dump(contextp->time()); // Dump wave
 }
 
@@ -34,47 +53,8 @@ static void sim_exit(){
 
 int main() {
 	sim_init();
-
-	top->clk = 1; step_and_dump_wave();
-	top->clk = 0; step_and_dump_wave();
-
-	top->clk = 1; top->rst = 1; step_and_dump_wave();
-	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
-	top->clk = 0; top->rst = 0; step_and_dump_wave();
-	// rd = 0
-	top->clk = 1; step_and_dump_wave();
-	top->inst = 0b00000000000100000000000010010011; // addi x1 = x0 + 1
-	top->clk = 0; step_and_dump_wave();
-	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
-	// rd = 1
-	top->clk = 1; step_and_dump_wave();
-	top->inst = 0b00000000001000000000000010010011; // addi x1 = x0 + 2
-	top->clk = 0; step_and_dump_wave();
-	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
-	// rd = 2
-	top->clk = 1; step_and_dump_wave();
-	top->inst = 0b00000000000100001000000100010011; // addi x2 = x1 + 1
-	top->clk = 0; step_and_dump_wave();
-	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
-	// rd = 3
-
-	top->clk = 1; step_and_dump_wave();
-	top->inst = 0b00000000000100000000000001110011; // ebreak
-	top->clk = 0; step_and_dump_wave();
-
+	
 	// ebreak
-	/*	
-	top->clk = 1; step_and_dump_wave();
-	top->inst = 0b00000000001100010000000100010011; // addi x2 = x2 + 3
-	top->clk = 0; step_and_dump_wave();
-	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
-	// rd = 6
-	top->clk = 1; step_and_dump_wave();
-	top->inst = 0b00000000000100010000000100010011; // addi x2 = x2 + 1
-	top->clk = 0; step_and_dump_wave();
-	printf("0x%x <addi> inst_rd_val = %d\n", top->pc ,top->inst_rd_val);
-	// rd = 7
-	*/	
 	sim_exit();
 }
 

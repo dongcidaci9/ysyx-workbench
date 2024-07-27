@@ -1,34 +1,92 @@
+`include "define.vh"
+
 module ysyx_23060201_EXU(
-	input clk,
-	input rst,
-	input [6:0] inst_op,
-	input [2:0] inst_func3,
-	input [4:0] inst_rs1, inst_rd,
-	input [31:0] inst_imm,
-	output [31:0] inst_rd_val
-);	// GPR fetch -> Execute -> Rewrite
+	input clk_a,
+	input [31:0] pc,
 
-	// GPR fetch
-	wire [31:0] inst_rs1_val;
-	ysyx_23060201_GPR ysyx_23060201_GPR(
-		.clk(clk),
-		.rst(rst),
-		.inst_rs1(inst_rs1),
-		.inst_rd(inst_rd),
-		.inst_rd_val(inst_rd_val),
-		.inst_rs1_val(inst_rs1_val)
-	);
+	input [31:0] imm,
+	input [6:0] op,
+	input [4:0] rd,
+	input [2:0] func3,
+	// input [6:0] func7,
+	input [4:0] raddr1, raddr2,
+	input [31:0] rdata1, rdata2, // read from gpr from ifu
 
-	// Execute
-	wire inst_addi;
-	wire [2:0] ctrl;
-	assign inst_addi = (inst_func3 == 3'b000 && inst_op == 7'b0010011) ? 1'b1 : 1'b0;
-	assign ctrl = inst_addi ? 3'b000 : 3'b111;
+	output clk_b,
+	output wen,
+	output [4:0] waddr,
+	output [31:0] wdata,
+	output [31:0] npc
+);
+
+	/////////////////////////////////////////////////////
+	/*                    A L U                        */ 
+	/////////////////////////////////////////////////////
+
+	// dnpc, snpc
+	wire [31:0] snpc = pc + 4;
+
+	// alu signal
+	wire [31:0] alu_a, alu_b;
+	wire [3:0] alu_ctl;
+
+	// alu_a_sel
+	MuxKeyWithDefault #(7, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
+		`ysyx_23060201_OP_TYPE_R,   rdata1,
+		`ysyx_23060201_OP_TYPE_I,   rdata1,
+		`ysyx_23060201_OP_TYPE_S,   rdata1,
+		`ysyx_23060201_OP_TYPE_U,   imm,
+		`ysyx_23060201_OP_TYPE_UPC, pc,
+		`ysyx_23060201_OP_TYPE_J,   snpc,
+		`ysyx_23060201_OP_TYPE_JR,  snpc
+	});
+
+	// alu_b_sel
+	MuxKeyWithDefault #(3, 7, 32) alu_b_sel(alu_b, op, 32'b0, {
+		`ysyx_23060201_OP_TYPE_R,   rdata2,
+		`ysyx_23060201_OP_TYPE_I,   imm,
+		`ysyx_23060201_OP_TYPE_UPC, imm
+	});
+
+	// alu_ctl_sel
+	MuxKey #(4, 3, 4) alu_ctl_sel(alu_ctl, func3, {
+		`ysyx_23060201_FUNC3_ADDSUB, 4'b0000,
+		`ysyx_23060201_FUNC3_XOR,    4'b0100,
+		`ysyx_23060201_FUNC3_AND,    4'b0110,
+		`ysyx_23060201_FUNC3_OR,     4'b0111
+	});
+
+	// ALU work
 	ysyx_23060201_ALU ysyx_23060201_ALU(
-		.a(inst_rs1_val),
-		.b(inst_imm),
-		.ctrl(ctrl),
-		.res(inst_rd_val)
+		.a(alu_a),
+		.b(alu_b),
+		.ctl(alu_ctl),
+		.res(wdata)
 	);
-	
+
+	/////////////////////////////////////////////////////
+	/*                     gpr write                   */ 
+	/////////////////////////////////////////////////////
+
+	// gpr_clk
+	assign clk_b = clk_a;
+
+	// waddr_sel
+	MuxKeyWithDefault #(1, 7, 5) waddr_sel(waddr, op, rd, {
+		`ysyx_23060201_OP_TYPE_S, raddr1 + imm[4:0]
+	});
+
+	// wen
+	assign wen = 1'b1;
+
+	/////////////////////////////////////////////////////
+	/*                     npc select                  */ 
+	/////////////////////////////////////////////////////
+
+	// dnpc
+	MuxKeyWithDefault #(2, 7, 32) npc_sel(npc, op, snpc, {
+		`ysyx_23060201_OP_TYPE_J,  pc + imm, 
+		`ysyx_23060201_OP_TYPE_JR, (rdata1 + imm) & (~1)
+	});
+
 endmodule
