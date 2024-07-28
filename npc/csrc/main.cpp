@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <assert.h>
 // readline
 #include <readline/readline.h>
 #include <readline/history.h>
@@ -16,24 +15,34 @@
 /*               Memory Init               */	
 /////////////////////////////////////////////
 #include <getopt.h>
+#include <cassert>
 
 // some defines
 typedef uint32_t word_t;
-typedef int32_t  sword_t;
-typedef word_t   vaddr_t;  
-typedef uint32_t paddr_t;
+typedef uint32_t addr_t; 
 
 #define MBASE  0x80000000
 #define MSIZE  0x8000000
-#define	MLEFT  (paddr_t)MBASE
-#define	MRIGHT (paddr_t)MBASE + MSIZE - 1;
+#define	MLEFT  (addr_t)MBASE
+#define	MRIGHT (addr_t)MBASE + MSIZE - 1;
 
-static uint8_t *pmem = NULL;
+static uint8_t *mem = NULL;
 void init_mem() {
-	pmem = malloc(MSIZE);
+	mem = (uint8_t*)malloc(MSIZE);
 }
 
-uint8_t* guest_to_host(paddr_t paddr) { return pmem + paddr - MBASE; }
+uint8_t* pc_handler(addr_t paddr) { return mem + paddr - MBASE; }
+
+static inline word_t mem_read(void *addr) {
+	return *(addr_t *)addr;
+}
+
+static word_t inst_fetch(addr_t *pc) {
+	int len = 4;
+	uint32_t inst = mem_read(pc_handler(*pc));
+	(*pc) += len;
+	return inst;
+} 
 
 static char *log_file = NULL;
 static char *img_file = NULL;
@@ -66,7 +75,7 @@ static long load_img() {
 	}
 
 	FILE *fp = fopen(img_file, "rb");
-	Assert(fp, "Can not open '%s'", img_file);
+	// assert(fp, "Can not open '%s'", img_file);
 
 	fseek(fp, 0, SEEK_END); // *fp seek to the end of this file
 	long size = ftell(fp);
@@ -74,16 +83,16 @@ static long load_img() {
 	printf("The image is %s, size = %ld\n", img_file, size);
 
 	fseek(fp, 0, SEEK_SET); // *fp seek to the start of this file
-	int ret = fread(guest_to_host(MLEFT), size, 1, fp); // *fp read the data and save it to host
+	int ret = fread(pc_handler(MLEFT), size, 1, fp); // *fp read the data and save it to host
 	assert(ret == 1);
 
 	fclose(fp);
 	return size;
 }
 
-	/////////////////////////////////////////
-	/*                C P U                */	
-	/////////////////////////////////////////
+/////////////////////////////////////////////
+/*                Simulation               */	
+/////////////////////////////////////////////
 
 static Vysyx_23060201_TOP* top;
 
@@ -120,26 +129,26 @@ void init_monitor(int argc, char *argv[]) {
 	long img_size = load_img();
 }
 
-
-static void exec_once(vaddr_t pc) {
-
-}
-
-int main() {
+int main(int argc, char *argv[]) {
 	sim_init();
-	init_monitor();
+	init_monitor(argc, argv);
 
-	top->clk = 1; top->rst = 1;
+	top->clk = 0; top->rst = 1;
 	step_and_dump_wave();
-	top->clk = 0;
+	top->clk = 1;
 	step_and_dump_wave();
 
-	top->clk = 1; 
-	step_and_dump_wave();
 	top->clk = 0; 
 	step_and_dump_wave();
+	top->clk = 1; 
+	step_and_dump_wave();
 
-	top->inst = inst_fetch();
+	uint64_t n = 999;
+	for (;n > 0; n --) {
+		top->clk = 0; step_and_dump_wave();
+		top->inst = inst_fetch((addr_t*)top->pc);
+		top->clk = 1; step_and_dump_wave();
+	}
 	// ebreak
 	sim_exit();
 }

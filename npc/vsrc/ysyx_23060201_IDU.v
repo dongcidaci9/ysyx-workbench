@@ -1,4 +1,4 @@
-`include "define.vh"
+`include "defines.vh"
 
 module ysyx_23060201_IDU(
 	input [31:0] inst,
@@ -15,7 +15,6 @@ module ysyx_23060201_IDU(
  
 	assign inst_op = inst[6:0];
 	assign inst_rd = inst[11:7];
-	assign inst_func3 = inst[14:12];
 
 	MuxKeyWithDefault #(1, 7, 3) func3_aupic(inst_func3, inst_op, inst[14:12], {
 		`ysyx_23060201_OP_TYPE_UPC, 3'b000

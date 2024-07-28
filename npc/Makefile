@@ -21,7 +21,7 @@ SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 # Object file directory
 WORK_DIR = $(shell pwd)
 BUILD_DIR = $(WORK_DIR)/build
-OBJ_DIR = $(BUILD_DIR)/obj-dir
+VOBJ_DIR = $(WORK_DIR)/obj-dir # Verilog object file
 
 # Include directory
 VINC_DIR = $(WORK_DIR)/include/verilog
@@ -29,14 +29,14 @@ VINC_DIR = $(WORK_DIR)/include/verilog
 # --- 2. Simulation flags ---
 VERILATOR := verilator
 TOP_FLAGS := --top-module $(TOP_NAME)
-V_FLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
-OBJ_FLAGS := --Mdir $(OBJ_DIR)
-INC_FLAGS := -I$(INC_DIR)
+VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
+VOBJ_FLAGS := --Mdir $(VOBJ_DIR)
+VINC_FLAGS := -I$(VINC_DIR)
 
 # --- 3. Generate target file --- 
 TARGET = $(OBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
-	$(VERILATOR) $(TOP_FLAGS) $(INC_FLAGS) $(V_FLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(OBJ_FLAGS)
+	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGS)
 
 sim: $(TARGET)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
@@ -66,7 +66,7 @@ wave:
 	gtkwave wave.vcd
 
 clean:
-	rm -rf $(BUILD_DIR) wave.vcd
+	rm -rf $(VOBJ_DIR) wave.vcd
 
 .PHONY:
 	all sim run wave clean

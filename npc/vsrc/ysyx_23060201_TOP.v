@@ -1,9 +1,11 @@
-module ysyx_23060201_TOP(clk, rst);
+module ysyx_23060201_TOP(clk, rst, inst, pc);
 	input clk;
 	input rst;
+	input [31:0] inst;
+	output [31:0] pc;
 
-	wire [31:0] wire_pc;
-	wire [31:0] wire_inst;
+	wire [31:0] wire_inst = inst;
+
 	wire [31:0] wire_npc;
 	wire [6:0] wire_op;
 	wire [2:0] wire_func3;
@@ -11,19 +13,15 @@ module ysyx_23060201_TOP(clk, rst);
 	wire [31:0] wire_imm;
 
 	// ifu
-	ysyx_23060201_IFU ysyx_23060201_IFU(
-		.pc(wire_pc),
-		.inst(wire_inst)	
-	);
 
 	// pc
 	ysyx_23060201_PC ysyx_23060201_PC(
 		.clk(clk),
 		.rst(rst),
 		.npc(wire_npc),
-		.pc(wire_pc)
+		.pc(pc)
 	);
-	
+
 	wire gpr_clk;	
 	wire wire_wen;
 	wire [4:0] wire_waddr;
@@ -49,14 +47,14 @@ module ysyx_23060201_TOP(clk, rst);
 	// exu
 	ysyx_23060201_EXU ysyx_23060201_EXU(
 		.clk_a(clk),
-		.pc(wire_pc),
+		.pc(pc),
 
 		.imm(wire_imm),
 		.op(wire_op),
 		.rd(wire_rd),
 		.func3(wire_func3),
 		.raddr1(wire_raddr1),
-		.raddr2(),
+		// .raddr2(5'bz),
 		.rdata1(wire_rdata1),
 		.rdata2(wire_rdata2),
 
