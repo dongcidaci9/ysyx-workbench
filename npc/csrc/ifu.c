@@ -7,8 +7,8 @@ static void welcome() {
 
 // common.h : vaddr_t & paddr_t => int32_t
 typedef uint32_t word_t;
-typedef int32_t sword_t;
-typedef word_t vaddr_t;  
+typedef int32_t  sword_t;
+typedef word_t   vaddr_t;  
 typedef uint32_t paddr_t;
 
 #define MBASE  0x80000000
@@ -17,10 +17,12 @@ typedef uint32_t paddr_t;
 #define	MRIGHT (paddr_t)MBASE + MSIZE - 1;
 
 // CPU_state
+/*
 typedef struct {
 	word_t gpr[32];
 	vaddr_t pc;
 } CPU_state;
+*/
 
 CPU_state cpu = {};
 
@@ -69,16 +71,7 @@ static inline uint32_t inst_fetch(vaddr_t *pc, int len) {
 	return inst;
 }
 
-static int isa_exec_once(Decode *s) {
-	s->isa.inst.val = inst_fetch(&s->snpc, 4);
-}
 
-static void exec_once(Decode *s, vaddr_t pc) {
-	s->pc = pc;
-	s->snpc = pc;
-	isa_exec_once(s);
-	cpu.pc = s->dnpc;
-}
 
 #include <getopt.h>
 // Loading img
