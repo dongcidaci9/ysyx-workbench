@@ -120,19 +120,7 @@ void init_monitor(int argc, char *argv[]) {
 	long img_size = load_img();
 }
 
-/*
-static int isa_exec_once(Decode *s) {
-	top->clk = 
-	top->inst = inst_fetch(&s->snpc, 4);
-}
 
-static void exec_once(Decode *s, vaddr_t pc) {
-	s->pc = pc;
-	s->snpc = pc;
-	isa_exec_once(s);
-	cpu.pc = s->dnpc;
-}
-*/
 static void exec_once(vaddr_t pc) {
 
 }
@@ -143,10 +131,13 @@ int main() {
 
 	top->clk = 1; top->rst = 1;
 	step_and_dump_wave();
-	top->clk = 0; step_and_dump_wave();
+	top->clk = 0;
+	step_and_dump_wave();
 
-	top->clk = 1; step_and_dump_wave();
-	top->clk = 0; step_and_dump_wave();
+	top->clk = 1; 
+	step_and_dump_wave();
+	top->clk = 0; 
+	step_and_dump_wave();
 
 	top->inst = inst_fetch();
 	// ebreak
