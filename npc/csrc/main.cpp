@@ -146,7 +146,8 @@ int main(int argc, char *argv[]) {
 	uint64_t n = 999;
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
-		top->inst = inst_fetch((addr_t*)top->pc);
+		addr_t* pc = (addr_t*)top->pc;
+		top->inst = inst_fetch(pc);
 		top->clk = 1; step_and_dump_wave();
 	}
 	// ebreak
