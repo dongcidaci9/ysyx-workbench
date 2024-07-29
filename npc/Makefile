@@ -62,6 +62,7 @@ wave: $(WAVEFILE)
 
 run: sim
 	$(call git_commit, "run NPC")
+	@echo $(ARGS)
 	$(NPC_EXEC) 
 
 clean:
