@@ -20,7 +20,6 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root__trace_init_sub__TOP__0(Vysyx_230
     tracep->declBit(c+259,"rst", false,-1);
     tracep->declBus(c+260,"inst", false,-1, 31,0);
     tracep->declBus(c+261,"pc", false,-1, 31,0);
-    tracep->declBus(c+260,"wire_inst", false,-1, 31,0);
     tracep->declBus(c+113,"wire_npc", false,-1, 31,0);
     tracep->declBus(c+262,"wire_op", false,-1, 6,0);
     tracep->declBus(c+69,"wire_func3", false,-1, 2,0);
