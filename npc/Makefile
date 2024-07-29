@@ -34,10 +34,11 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
 # --- 4. Compilation flags ---
-NAME = riscv32e-npc-interpreter
+NAME = riscv32-npc-interpreter
 BUILD_DIR = $(WORK_DIR)/build
 INC_PATH := $(WORK_DIR)/include $(INC_PATH)
-OBJ_DIR = $(BUILD_DIR)/obj-$(NAME)$(SO)
+OBJ_DIR = $(BUILD_DIR)/obj-$(NAME)
+BINARY = $(BUILD_DIR)/$(NAME)
 
 CXX := g++
 LD := $(CXX)
@@ -59,6 +60,9 @@ $(OBJ_DIR)/%.o: %.cc
 	@mkdir -p $(dir $@)
 	@$(CXX) $(CFLAGS) $(CXXFLAGS) -c -o $@ $<
 	$(call call_fixdep, $(@:.o=.d), $@)
+	
+# Depencies
+-include $(OBJS:.o=.d)
 
 # --- 5. Link and bin file ---  
 $(BINARY):: $(OBJS) $(ARCHIVES)
@@ -69,6 +73,9 @@ IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 6. Target command ---
+app: $(BINARY)
+	@echo $(BINARY)
+
 sim: $(TARGET)
 	$(VOBJ_DIR)/V$(TOP_MODULE) 
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
