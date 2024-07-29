@@ -21,7 +21,7 @@ SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 # Object file directory
 WORK_DIR = $(shell pwd)
 BUILD_DIR = $(WORK_DIR)/build
-VOBJ_DIR = $(WORK_DIR)/obj-dir
+VOBJ_DIR = $(WORK_DIR)/obj_dir
 
 # Include directory
 VINC_DIR = $(WORK_DIR)/include/verilog
@@ -42,7 +42,6 @@ TARRUN = $(VOBJ_DIR)/V$(TOP_MODULE)
 sim: $(TARGET)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
-	$(TARRUN)
 
 # --- 4. Compilation flags ---
 CXX := g++
