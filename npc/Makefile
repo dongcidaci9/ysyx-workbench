@@ -26,9 +26,6 @@ VOBJ_DIR = $(WORK_DIR)/obj_dir
 # Include directory
 VINC_DIR = $(WORK_DIR)/include/verilog
 
-# Wave file
-WAVEFILE = $(WORK_DIR)/wave.vcd
-
 # --- 2. Simulation flags ---
 VERILATOR := verilator
 TOP_FLAGS := --top-module $(TOP_MODULE)
@@ -36,18 +33,13 @@ VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace
 VOBJ_FLAGS := --Mdir $(VOBJ_DIR)
 VINC_FLAGS := -I$(VINC_DIR)
 
-# --- 3. Generate target file --- 
+# --- 3. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGS)
 
-sim: $(TARGET)
-	$(VOBJ_DIR)/V$(TOP_MODULE) 
-	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	@echo "Write this Makefile by your self."
+WAVEFILE = $(WORK_DIR)/wave.vcd
 
-wave: $(WAVEFILE)
-	gtkwave $(WAVEFILE)
 # --- 4. Compilation flags ---
 CXX := g++
 LD := $(CXX)
@@ -64,11 +56,16 @@ IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 6. Target command ---
+sim: $(TARGET)
+	$(VOBJ_DIR)/V$(TOP_MODULE) 
+	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
+	@echo "Write this Makefile by your self."
+
+wave: $(WAVEFILE)
+	gtkwave $(WAVEFILE)
+
 run: sim
 	$(call git_commit, "run NPC")
-
-wave:
-	gtkwave wave.vcd
 
 clean:
 	rm -rf $(VOBJ_DIR) wave.vcd
