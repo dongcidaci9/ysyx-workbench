@@ -35,7 +35,7 @@ VINC_FLAGS := -I$(VINC_DIR)
 
 # --- 3. Generate target file --- 
 TARGET: $(VERILOG_SRC) $(SIM_MAIN_SRC)
-	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGSanyi)
+	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAG)
 
 sim: $(TARGET)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
