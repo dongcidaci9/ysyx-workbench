@@ -98,6 +98,7 @@ static Vysyx_23060201_TOP* top;
 
 VerilatedContext* contextp = NULL;
 VerilatedVcdC* vcd = NULL;
+
 static void step_and_dump_wave() {
 	top->eval(); // State update
 	contextp->timeInc(1); // Time step in
@@ -139,6 +140,11 @@ int main(int argc, char *argv[]) {
 	step_and_dump_wave();
 
 	top->clk = 0; top->inst = 0x00000000;
+	step_and_dump_wave();
+	top->clk = 1; 
+	step_and_dump_wave();
+
+	top->clk = 0; top->inst = 0x00000001;
 	step_and_dump_wave();
 	top->clk = 1; 
 	step_and_dump_wave();
