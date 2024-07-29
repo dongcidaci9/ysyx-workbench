@@ -43,17 +43,11 @@ LD := $(CXX)
 CFLAGS := -O2 -MMD -Wall -Werror $(INCLUDES) $(CFLAGS)
 LDFLAGS := -O2 $(LDFLAGS)
 SO = -so
-# --- Extract variables from menuconfig
-GUEST_ISA ?= riscv32e
-ENGINE ?= interpreter 
-NAME = $(GUEST_ISA)-npc-$(ENGINE)
-BINARY   = $(BUILD_DIR)/$(NAME)$(SO)
 # --- 5. Generate bin file ---  
 $(BINARY):: $(OBJS) $(ARCHIVES)
 	@echo +LD $@
 	@$(LD) -o $@ $(OBJS) $(LDFLAGS) $(ARCHIVES) $(LIBS)
 
-# override ARGS ?= --log=$(BUILD_DIR)/npc-log.txt
 IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
@@ -68,7 +62,6 @@ wave: $(WAVEFILE)
 
 run: sim
 	$(call git_commit, "run NPC")
-	$(NPC_EXEC)
 
 clean:
 	rm -rf $(VOBJ_DIR) wave.vcd
