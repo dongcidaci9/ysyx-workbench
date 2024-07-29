@@ -49,7 +49,7 @@ $(BINARY):: $(OBJS) $(ARCHIVES)
 	@$(LD) -o $@ $(OBJS) $(LDFLAGS) $(ARCHIVES) $(LIBS)
 
 IMG ?=
-NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
+NPC_EXEC := $(ARGS) $(IMG)
 
 # --- 6. Target command ---
 sim: $(TARGET)
@@ -62,7 +62,7 @@ wave: $(WAVEFILE)
 
 run: sim
 	$(call git_commit, "run NPC")
-	$(IMG) 
+	$(NPC_EXEC) 
 
 clean:
 	rm -rf $(VOBJ_DIR) wave.vcd
