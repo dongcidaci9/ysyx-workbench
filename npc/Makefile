@@ -38,7 +38,7 @@ TARGET: $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGSanyi)
 
 sim: $(TARGET)
-	$(VOBJ_DIR)/V$(TOP_MODULE)
+	$(VOBJ_DIR)/V$(TOP_MODULE) $(WORK_DIR)/wave.vcd
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
 
