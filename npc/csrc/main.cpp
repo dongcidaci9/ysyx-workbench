@@ -11,20 +11,14 @@
 // readline
 #include <readline/readline.h>
 #include <readline/history.h>
+// include
+#include <debug.h>
 /////////////////////////////////////////////
 /*               Memory Init               */	
 /////////////////////////////////////////////
 #include <getopt.h>
 #include <cassert>
 
-// some defines
-typedef uint32_t word_t;
-typedef uint32_t addr_t; 
-
-#define MBASE  0x80000000
-#define MSIZE  0x8000000
-#define	MLEFT  (addr_t)MBASE
-#define	MRIGHT (addr_t)MBASE + MSIZE - 1;
 
 static uint8_t *mem = NULL;
 void mem_init() {
@@ -70,7 +64,7 @@ static int parse_args(int argc, char *argv[]) {
 
 static long load_img() {
 	if (img_file == NULL) {
-		printf("No image is given. Use the default build-in image\n");
+		Log("No image is given. Use the default build-in image");
 		return 4096;
 	}
 
@@ -80,7 +74,7 @@ static long load_img() {
 	fseek(fp, 0, SEEK_END); // *fp seek to the end of this file
 	long size = ftell(fp);
 
-	printf("The image is %s, size = %ld\n", img_file, size);
+	Log("The image is %s, size = %ld", img_file, size);
 
 	fseek(fp, 0, SEEK_SET); // *fp seek to the start of this file
 	int ret = fread(pc_handler(MLEFT), size, 1, fp); // *fp read the data and save it to host
