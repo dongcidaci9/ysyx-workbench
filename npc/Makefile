@@ -64,7 +64,7 @@ IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 6. Target command ---
-run: $(NPC_EXEC) sim
+run: sim
 	$(call git_commit, "run NPC")
 
 wave:
