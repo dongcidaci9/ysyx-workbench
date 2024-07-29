@@ -62,7 +62,7 @@ wave: $(WAVEFILE)
 
 run: sim
 	@echo $(IMG) 
-	@echo $(NPCFLAGS)
+	@echo $(ARGS)
 	$(call git_commit, "run NPC")
 
 clean:
