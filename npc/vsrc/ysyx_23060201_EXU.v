@@ -1,4 +1,4 @@
-`include "defines.vh"
+`include "defines.v"
 
 module ysyx_23060201_EXU(
 	input clk_a,
