@@ -43,9 +43,10 @@ LD := $(CXX)
 CFLAGS := -O2 -MMD -Wall -Werror $(INCLUDES) $(CFLAGS)
 LDFLAGS := -O2 $(LDFLAGS)
 SO = -so
-
-INC_PATH := $(WORK_DIR)/include $(INC_PATH)
-OBJ_DIR  = $(BUILD_DIR)/obj-$(NAME)$(SO)
+# --- Extract variables from menuconfig
+GUEST_ISA ?= riscv32e
+ENGINE ?= interpreter 
+NAME = $(GUEST_ISA)-npc-$(ENGINE)
 BINARY   = $(BUILD_DIR)/$(NAME)$(SO)
 # --- 5. Generate bin file ---  
 $(BINARY):: $(OBJS) $(ARCHIVES)
