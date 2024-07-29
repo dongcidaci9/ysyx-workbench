@@ -41,7 +41,6 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 sim: $(TARGET)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
-	$(TARGET)
 
 # --- 4. Compilation flags ---
 CXX := g++
