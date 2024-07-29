@@ -39,6 +39,7 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGS)
 
 sim: $(TARGET)
+	$(VOBJ_DIR)/V$(TOP_MODULE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
 
