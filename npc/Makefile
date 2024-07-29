@@ -61,6 +61,7 @@ wave: $(WAVEFILE)
 	gtkwave $(WAVEFILE)
 
 run: sim
+	@echo $(IMAGE)
 	$(call git_commit, "run NPC")
 
 clean:
