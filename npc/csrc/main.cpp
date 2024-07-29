@@ -51,10 +51,11 @@ static char *img_file = NULL;
 static int parse_args(int argc, char *argv[]) {
 	const struct option table[] = {
 		{"log"   , required_argument, NULL, 'l'},
+    	{"help"  , no_argument      , NULL, 'h'},
 		{0       , 0                , NULL,  0 },
 	};
 	int o;
-	while ( (o = getopt_long(argc, argv, "l:", table, NULL)) != -1) {
+	while ( (o = getopt_long(argc, argv, "-hl:", table, NULL)) != -1) {
 		switch (o) {
 			case 'l': log_file = optarg; printf("aaa\n"); break;
 			case  1 : img_file = optarg; return 0; // non-option argument
