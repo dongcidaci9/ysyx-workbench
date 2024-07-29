@@ -6,9 +6,6 @@ all:
 # Top module
 TOP_MODULE = ysyx_23060201_TOP
 
-# Marco define 
-__GUEST_ISA__  = riscv32e;
-
 # --- 1. Some path variables ---
 # Verilog source directory
 VERILOG_SRC_DIR = vsrc
@@ -45,7 +42,11 @@ CXX := g++
 LD := $(CXX)
 CFLAGS := -O2 -MMD -Wall -Werror $(INCLUDES) $(CFLAGS)
 LDFLAGS := -O2 $(LDFLAGS)
+SO = -so
 
+INC_PATH := $(WORK_DIR)/include $(INC_PATH)
+OBJ_DIR  = $(BUILD_DIR)/obj-$(NAME)$(SO)
+BINARY   = $(BUILD_DIR)/$(NAME)$(SO)
 # --- 5. Generate bin file ---  
 $(BINARY):: $(OBJS) $(ARCHIVES)
 	@echo +LD $@
