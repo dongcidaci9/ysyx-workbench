@@ -133,8 +133,9 @@ void monitor_init(int argc, char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
-	sim_init();
 	monitor_init(argc, argv);
+
+	sim_init();
 
 	top->clk = 0; top->rst = 1;
 	step_and_dump_wave();
