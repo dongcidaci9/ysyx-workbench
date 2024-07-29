@@ -56,7 +56,7 @@ static int parse_args(int argc, char *argv[]) {
 	int o;
 	while ( (o = getopt_long(argc, argv, "l:", table, NULL)) != -1) {
 		switch (o) {
-			case 'l': log_file = optarg; break;
+			case 'l': log_file = optarg; printf("aaa\n"); break;
 			case  1 : img_file = optarg; return 0; // non-option argument
 			default:
  				printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
