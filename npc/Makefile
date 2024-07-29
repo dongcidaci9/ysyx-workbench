@@ -21,7 +21,7 @@ SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 # Object file directory
 WORK_DIR = $(shell pwd)
 BUILD_DIR = $(WORK_DIR)/build
-VOBJ_DIR = $(WORK_DIR)/obj-dir # Verilog object file
+VOBJ_DIR = $(WORK_DIR)/obj-dir
 
 # Include directory
 VINC_DIR = $(WORK_DIR)/include/verilog
