@@ -40,6 +40,7 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 TARRUN = $(VOBJ_DIR)/V$(TOP_MODULE)
 sim: $(TARGET)
+	$(TARRUN)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
 
