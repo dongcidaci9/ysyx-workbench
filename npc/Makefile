@@ -36,11 +36,13 @@ VINC_FLAGS := -I$(VINC_DIR)
 # --- 3. Generate target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
-	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGS)
+	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGSanyi)
 
+TARRUN = $(VOBJ_DIR)/V$(TOP_MODULE)
 sim: $(TARGET)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
+	$(TARRUN)
 
 # --- 4. Compilation flags ---
 CXX := g++
