@@ -17,11 +17,7 @@ SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 
 # Object file directory
 WORK_DIR = $(shell pwd)
-BUILD_DIR = $(WORK_DIR)/build
 VOBJ_DIR = $(WORK_DIR)/obj_dir
-
-# Include directory
-VINC_DIR = $(WORK_DIR)/include
 
 # --- 2. Simulation flags ---
 VERILATOR := verilator
@@ -38,12 +34,33 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
 # --- 4. Compilation flags ---
+NAME = riscv32e-npc-interpreter
+BUILD_DIR = $(WORK_DIR)/build
+INC_PATH := $(WORK_DIR)/include $(INC_PATH)
+OBJ_DIR = $(BUILD_DIR)/obj-$(NAME)$(SO)
+
 CXX := g++
 LD := $(CXX)
+INCLUDES = $(addprefix -I, $(INC_PATH))
 CFLAGS := -O2 -MMD -Wall -Werror $(INCLUDES) $(CFLAGS)
 LDFLAGS := -O2 $(LDFLAGS)
-SO = -so
-# --- 5. Generate bin file ---  
+
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) $(CXXSRC:%.cc=$(OBJ_DIR)/%.o)
+
+# Compilation patterns
+$(OBJ_DIR)/%.o: %.c
+	@echo + CC $<
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	$(call call_fixdep, $(@:.o=.d), $@)
+
+$(OBJ_DIR)/%.o: %.cc
+	@echo + CXX $<
+	@mkdir -p $(dir $@)
+	@$(CXX) $(CFLAGS) $(CXXFLAGS) -c -o $@ $<
+	$(call call_fixdep, $(@:.o=.d), $@)
+
+# --- 5. Link and bin file ---  
 $(BINARY):: $(OBJS) $(ARCHIVES)
 	@echo +LD $@
 	@$(LD) -o $@ $(OBJS) $(LDFLAGS) $(ARCHIVES) $(LIBS)
