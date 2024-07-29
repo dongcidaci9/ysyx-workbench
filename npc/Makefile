@@ -4,7 +4,7 @@ all:
 	@echo "Write this Makefile by your self."
 
 # Top module
-TOP_NAME = ysyx_23060201_TOP
+TOP_MODULE = ysyx_23060201_TOP
 
 # Marco define 
 __GUEST_ISA__  = riscv32;
@@ -28,13 +28,13 @@ VINC_DIR = $(WORK_DIR)/include/verilog
 
 # --- 2. Simulation flags ---
 VERILATOR := verilator
-TOP_FLAGS := --top-module $(TOP_NAME)
+TOP_FLAGS := --top-module $(TOP_MODULE)
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 VOBJ_FLAGS := --Mdir $(VOBJ_DIR)
 VINC_FLAGS := -I$(VINC_DIR)
 
 # --- 3. Generate target file --- 
-TARGET = $(OBJ_DIR)/V$(TOP_MODULE)
+TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGS)
 
