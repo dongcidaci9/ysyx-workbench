@@ -7,7 +7,7 @@ all:
 TOP_MODULE = ysyx_23060201_TOP
 
 # Marco define 
-__GUEST_ISA__  = riscv32;
+__GUEST_ISA__  = riscv32e;
 
 # --- 1. Some path variables ---
 # Verilog source directory
