@@ -49,7 +49,7 @@ $(BINARY):: $(OBJS) $(ARCHIVES)
 	@$(LD) -o $@ $(OBJS) $(LDFLAGS) $(ARCHIVES) $(LIBS)
 
 IMG ?=
-NPC_EXEC := $(IMG)
+NPC_EXEC := $(ARGS) $(IMG)
 
 # --- 6. Target command ---
 sim: $(TARGET)
