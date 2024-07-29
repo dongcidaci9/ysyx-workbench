@@ -27,7 +27,7 @@ typedef uint32_t addr_t;
 #define	MRIGHT (addr_t)MBASE + MSIZE - 1;
 
 static uint8_t *mem = NULL;
-void init_mem() {
+void mem_init() {
 	mem = (uint8_t*)malloc(MSIZE);
 }
 
@@ -122,23 +122,23 @@ static void sim_exit() {
 	delete vcd;
 }
 
-void init_monitor(int argc, char *argv[]) {
+void monitor_init(int argc, char *argv[]) {
 	parse_args(argc, argv);
 	// init_log(log_file);
-	init_mem();
+	mem_init();
 	long img_size = load_img();
 }
 
 int main(int argc, char *argv[]) {
 	sim_init();
-	init_monitor(argc, argv);
+	monitor_init(argc, argv);
 
 	top->clk = 0; top->rst = 1;
 	step_and_dump_wave();
 	top->clk = 1;
 	step_and_dump_wave();
 
-	top->clk = 0; 
+	top->clk = 0; top->inst = 0x00000000;
 	step_and_dump_wave();
 	top->clk = 1; 
 	step_and_dump_wave();
