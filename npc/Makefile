@@ -61,9 +61,8 @@ wave: $(WAVEFILE)
 	gtkwave $(WAVEFILE)
 
 run: sim
-	@echo $(IMG) 
-	@echo $(ARGS)
 	$(call git_commit, "run NPC")
+	$(IMG) 
 
 clean:
 	rm -rf $(VOBJ_DIR) wave.vcd
