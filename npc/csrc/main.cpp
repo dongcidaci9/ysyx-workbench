@@ -19,6 +19,11 @@
 #include <getopt.h>
 #include <cassert>
 
+static void welcome() {
+  Log("Build time: %s, %s", __TIME__, __DATE__);
+  printf("Welcome to %s-NPC!\n", ANSI_FMT("riscv32e", ANSI_FG_YELLOW ANSI_BG_RED));
+  printf("For help, type \"help\"\n");
+}
 
 static uint8_t *mem = NULL;
 void mem_init() {
@@ -64,7 +69,7 @@ static int parse_args(int argc, char *argv[]) {
 
 static long load_img() {
 	if (img_file == NULL) {
-		Log("No image is given. Use the default build-in image");
+		Log("No image is given. ");
 		return 4096;
 	}
 
@@ -122,6 +127,7 @@ void monitor_init(int argc, char *argv[]) {
 	// init_log(log_file);
 	mem_init();
 	long img_size = load_img();
+	welcome();
 }
 
 int main(int argc, char *argv[]) {
