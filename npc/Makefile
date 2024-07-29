@@ -26,6 +26,9 @@ VOBJ_DIR = $(WORK_DIR)/obj_dir
 # Include directory
 VINC_DIR = $(WORK_DIR)/include/verilog
 
+# Wave file
+WAVEFILE = $(VOBJ_DIR)/wave.vcd
+
 # --- 2. Simulation flags ---
 VERILATOR := verilator
 TOP_FLAGS := --top-module $(TOP_MODULE)
@@ -34,12 +37,11 @@ VOBJ_FLAGS := --Mdir $(VOBJ_DIR)
 VINC_FLAGS := -I$(VINC_DIR)
 
 # --- 3. Generate target file --- 
-TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGS)
 
 sim: $(TARGET)
-	$(VOBJ_DIR)/V$(TOP_MODULE) $(WORK_DIR)/wave.vcd
+	$(VOBJ_DIR)/V$(TOP_MODULE) 
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
 
