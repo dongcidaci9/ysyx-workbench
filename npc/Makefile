@@ -43,10 +43,11 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 sim: $(TARGET)
 	$(VOBJ_DIR)/V$(TOP_MODULE) 
-	gtkwave $(WAVEFILE)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 	@echo "Write this Makefile by your self."
 
+wave: $(WAVEFILE)
+	gtkwave $(WAVEFILE)
 # --- 4. Compilation flags ---
 CXX := g++
 LD := $(CXX)
