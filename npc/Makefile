@@ -34,9 +34,7 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
-NAME = riscv32e-npc-interpreter
-BUILD_DIR = $(WORK_DIR)/build
-BINARY = $(BUILD_DIR)/$(NAME)$(SO)
+BINARY = $(VOBJ_DIR)/V$(TOP_MODULE)
 
 IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
