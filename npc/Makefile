@@ -88,6 +88,7 @@ wave: $(WAVEFILE)
 run: sim
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
+	@echo $(NPC_EXEC)
 
 clean:
 	rm -rf $(VOBJ_DIR) wave.vcd
