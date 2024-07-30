@@ -1,5 +1,7 @@
 .DEFAULT_GOAL = all
 
+include $(NEMU_HOME)/scripts/build.mk
+
 all:
 	@echo "Write this Makefile by your self."
 
@@ -16,7 +18,6 @@ SIM_MAIN_SRC_DIR = csrc
 SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 
 # Object file directory
-WORK_DIR = $(shell pwd)
 VINC_DIR = $(WORK_DIR)/include
 VOBJ_DIR = $(WORK_DIR)/obj_dir
 
@@ -34,44 +35,8 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
-# --- 4. Compilation flags ---
-NAME = riscv32-npc-interpreter
-BUILD_DIR = $(WORK_DIR)/build
-CINC_PATH := $(WORK_DIR)/include $(INC_PATH)
-OBJ_DIR = $(BUILD_DIR)/obj-$(NAME)
-BINARY = $(BUILD_DIR)/$(NAME)
-
-CXX := g++
-LD := $(CXX)
-INCLUDES = $(addprefix -I, $(CINC_PATH))
-CFLAGS := -O2 -MMD -Wall -Werror $(INCLUDES) $(CFLAGS)
-LDFLAGS := -O2 $(LDFLAGS)
-
-OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o) $(CXXSRC:%.cc=$(OBJ_DIR)/%.o)
-
-# Compilation patterns
-$(OBJ_DIR)/%.o: %.c
-	@echo + CC $<
-	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c -o $@ $<
-	$(call call_fixdep, $(@:.o=.d), $@)
-
-$(OBJ_DIR)/%.o: %.cc
-	@echo + CXX $<
-	@mkdir -p $(dir $@)
-	@$(CXX) $(CFLAGS) $(CXXFLAGS) -c -o $@ $<
-	$(call call_fixdep, $(@:.o=.d), $@)
-	
-# Depencies
--include $(OBJS:.o=.d)
-
-# --- 5. Link and bin file ---  
-$(BINARY):: $(OBJS) $(ARCHIVES)
-	@echo +LD $@
-	@$(LD) -o $@ $(OBJS) $(LDFLAGS) $(ARCHIVES) $(LIBS)
-
 IMG ?=
-NPC_EXEC := $(IMG)
+NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 6. Target command ---
 app: $(BINARY)
