@@ -1,6 +1,5 @@
 .DEFAULT_GOAL = all
 
-include $(NEMU_HOME)/Makefile
 include $(NEMU_HOME)/scripts/build.mk
 
 all:
