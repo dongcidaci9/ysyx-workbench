@@ -17,7 +17,7 @@ SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 
 # Object file directory
 WORK_DIR = $(shell pwd)
-VINC_DIR = $(WORK_DIR)/include
+VINC_DIR = $(WORK_DIR)/$(VERILOG_SRC_DIR)/include
 VOBJ_DIR = $(WORK_DIR)/obj_dir
 
 # --- 2. Simulation flags ---
