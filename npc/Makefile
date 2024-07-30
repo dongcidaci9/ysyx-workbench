@@ -34,7 +34,7 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
-NAME = $(WORK_DIR)/riscv32e-npc-interpreter
+NAME = riscv32e-npc-interpreter
 BINARY = $(BUILD_DIR)/$(NAME)$(SO)
 
 IMG ?=
