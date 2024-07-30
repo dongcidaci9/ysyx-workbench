@@ -58,7 +58,7 @@ static int parse_args(int argc, char *argv[]) {
 	while ( (o = getopt_long(argc, argv, "-hl:", table, NULL)) != -1) {
 		switch (o) {
 			case 'l': log_file = optarg; break;
-			case  1 : printf("FUCK!!!\n"); return 0; // non-option argument
+			case  1 : img_file = optarg; return 0; // non-option argument
 			default:
  				printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
         		printf("\t-l,--log=FILE           output log to FILE\n");
