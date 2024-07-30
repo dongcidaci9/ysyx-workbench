@@ -1,7 +1,5 @@
 .DEFAULT_GOAL = all
 
-include $(NEMU_HOME)/scripts/build.mk
-
 all:
 	@echo "Write this Makefile by your self."
 
@@ -35,6 +33,7 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
+
 IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
@@ -51,6 +50,9 @@ run: sim
 	$(call git_commit, "run NPC")
 	@echo $(NPC_EXEC)
 	$(NPC_EXEC) 
+
+clean:
+	-rm -rf $(VOBJ_DIR) $(WAVEFILE)
 
 .PHONY:
 	all sim run wave clean
