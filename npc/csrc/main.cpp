@@ -12,8 +12,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 // include
-#include "debug.h"
-#include "macro.h"
+#include "include/debug.h"
+#include "include/macro.h"
 /////////////////////////////////////////////
 /*               Memory Init               */	
 /////////////////////////////////////////////
