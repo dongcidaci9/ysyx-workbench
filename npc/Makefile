@@ -34,6 +34,8 @@ $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
+NAME = riscv32e-npc-interpreter
+BINARY = $(BUILD_DIR)/$(NAME)$(SO)
 
 IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
@@ -51,7 +53,7 @@ run: sim
 	$(call git_commit, "run NPC")
 	@echo $(NPC_EXEC)
 	$(NPC_EXEC) 
-
+	
 clean:
 	-rm -rf $(VOBJ_DIR) $(WAVEFILE)
 
