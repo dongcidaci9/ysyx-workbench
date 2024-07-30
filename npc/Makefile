@@ -39,9 +39,6 @@ IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 6. Target command ---
-app: $(BINARY)
-	@echo $(BINARY)
-
 sim: $(TARGET)
 	$(VOBJ_DIR)/V$(TOP_MODULE) 
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
