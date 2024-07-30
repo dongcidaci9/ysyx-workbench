@@ -17,6 +17,7 @@ SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 
 # Object file directory
 WORK_DIR = $(shell pwd)
+VINC_DIR = $(WORK_DIR)/include
 VOBJ_DIR = $(WORK_DIR)/obj_dir
 
 # --- 2. Simulation flags ---
@@ -36,13 +37,13 @@ WAVEFILE = $(WORK_DIR)/wave.vcd
 # --- 4. Compilation flags ---
 NAME = riscv32-npc-interpreter
 BUILD_DIR = $(WORK_DIR)/build
-INC_PATH := $(WORK_DIR)/include $(INC_PATH)
+CINC_PATH := $(WORK_DIR)/include $(INC_PATH)
 OBJ_DIR = $(BUILD_DIR)/obj-$(NAME)
 BINARY = $(BUILD_DIR)/$(NAME)
 
 CXX := g++
 LD := $(CXX)
-INCLUDES = $(addprefix -I, $(INC_PATH))
+INCLUDES = $(addprefix -I, $(CINC_PATH))
 CFLAGS := -O2 -MMD -Wall -Werror $(INCLUDES) $(CFLAGS)
 LDFLAGS := -O2 $(LDFLAGS)
 
