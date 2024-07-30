@@ -43,14 +43,12 @@ NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 sim: $(TARGET)
 	$(VOBJ_DIR)/V$(TOP_MODULE) 
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	@echo "Write this Makefile by your self."
 
 wave: $(WAVEFILE)
 	gtkwave $(WAVEFILE)
 
 run: sim
 	$(call git_commit, "run NPC")
-	@echo $(NPC_EXEC)
 	$(NPC_EXEC) 
 	
 clean:
