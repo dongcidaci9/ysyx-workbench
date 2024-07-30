@@ -52,9 +52,6 @@ run: sim
 	@echo $(NPC_EXEC)
 	$(NPC_EXEC) 
 
-clean:
-	rm -rf $(VOBJ_DIR) wave.vcd
-
 .PHONY:
 	all sim run wave clean
 
