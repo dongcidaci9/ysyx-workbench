@@ -10,6 +10,6 @@ typedef uint32_t addr_t;
 #define MBASE  0x80000000
 #define MSIZE  0x8000000
 #define	MLEFT  (addr_t)MBASE
-#define	MRIGHT (addr_t)MBASE + MSIZE - 1;
+#define	MRIGHT (addr_t)MBASE + MSIZE - 1
 
 #endif

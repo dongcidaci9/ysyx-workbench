@@ -1,5 +1,5 @@
-`ifndef DEFINES_V
-`define DEFINES_V
+`ifndef __DEFINES_V__
+`define __DEFINES_V__
 
 `define MBASE 32'h80000000
 // type define

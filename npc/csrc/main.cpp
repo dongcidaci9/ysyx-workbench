@@ -146,6 +146,7 @@ int main(int argc, char *argv[]) {
 	step_and_dump_wave();
 	top->clk = 1; 
 	step_and_dump_wave();
+	printf("pc: %x\n", top->pc);
 
 	uint64_t n = 999;
 	for (;n > 0; n --) {
