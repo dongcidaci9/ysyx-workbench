@@ -42,7 +42,6 @@ NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 # --- 6. Target command ---
 sim: $(TARGET)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	gtkwave $(WAVEFILE)
 
 run: sim 
 	$(call git_commit, "run NPC")
