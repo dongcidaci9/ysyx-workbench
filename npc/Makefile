@@ -46,7 +46,7 @@ sim: $(TARGET)
 wave: $(WAVEFILE)
 	gtkwave $(WAVEFILE)
 
-run: sim wave
+run: sim
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
 	
