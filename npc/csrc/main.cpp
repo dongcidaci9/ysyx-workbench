@@ -40,7 +40,7 @@ static inline word_t mem_read(void *addr) {
 static word_t inst_fetch(addr_t* pc) {
 	int len = 4;
 	uint32_t inst = mem_read(pc_handler(*pc));
-	(*pc) += len;
+	// (*pc) += len;
 	return inst;
 } 
 
@@ -138,12 +138,10 @@ int main(int argc, char *argv[]) {
 	sim_init();
 
 	printf("pc: %x\n", top->pc);
-	top->clk = 0; 
-	step_and_dump_wave();
+	top->clk = 0; step_and_dump_wave();
 
 	top->rst = 1; // reset
-	top->clk = 1; 
-	step_and_dump_wave();
+	top->clk = 1; step_and_dump_wave();
 
 	uint64_t n = 999;
 	for (;n > 0; n --) {
