@@ -140,31 +140,20 @@ int main(int argc, char *argv[]) {
 	printf("pc: %x\n", top->pc);
 	top->clk = 0; 
 	step_and_dump_wave();
+
 	top->rst = 1; // reset
 	top->clk = 1; 
 	step_and_dump_wave();
-	top->rst = 0; 
-	printf("pc: %x\n", top->pc);
-	top->clk = 0; top->inst = 0x00000413;
-	step_and_dump_wave();
-	top->clk = 1; 
-	step_and_dump_wave();
-	printf("pc: %x\n", top->pc);
-	top->clk = 0; top->inst = 0x00009117;
-	step_and_dump_wave();
-	top->clk = 1; 
-	step_and_dump_wave();
-	printf("pc: %x\n", top->pc);
-	/*
+
 	uint64_t n = 999;
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
 		uint32_t pc_value = top->pc;
 		uint32_t* pc = reinterpret_cast<uint32_t*>(pc_value);
+		printf("pc: %x\n", top->pc);
 		top->inst = inst_fetch(pc);
 		top->clk = 1; step_and_dump_wave();
 	}
-	*/
 	// ebreak
 	sim_exit();
 }
