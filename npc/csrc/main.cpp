@@ -138,9 +138,11 @@ int main(int argc, char *argv[]) {
 	sim_init();
 
 	printf("pc: %x\n", top->pc);
-	top->clk = 0; top->rst = 1;
+	top->rst = 1; // reset
+	top->clk = 0; 
 	step_and_dump_wave();
-	top->clk = 1;
+	top->rst = 0;
+	top->clk = 1; 
 	step_and_dump_wave();
 	printf("pc: %x\n", top->pc);
 	top->clk = 0; top->inst = 0x00000413;
