@@ -142,13 +142,13 @@ int main(int argc, char *argv[]) {
 	top->clk = 1; step_and_dump_wave();
 	printf("pc: %x\n", top->pc);
 
-	top->rst = 0; // reset
+	top->rst = 0; 
 	uint64_t n = 9;
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
 		uint32_t pc = top->pc;
 		top->inst = inst_fetch(&pc);
-		printf("pc: %#x, inst: %#08x\n", top->pc, top->inst);
+		printf("pc: %#x, inst: %#10x\n", top->pc, top->inst);
 		top->clk = 1; step_and_dump_wave();
 	}
 	// ebreak
