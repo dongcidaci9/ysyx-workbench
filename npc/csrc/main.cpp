@@ -140,9 +140,11 @@ int main(int argc, char *argv[]) {
 	top->clk = 0; step_and_dump_wave();
 	top->rst = 1; // reset
 	top->clk = 1; step_and_dump_wave();
-	printf("pc: %#x(start)\n", top->pc);
+	printf("(start)\n");
+	printf("pc: %#x\n", top->pc);
 
 	top->rst = 0; 
+	printf("(NPC running)\n");
 	uint64_t n = 10;
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
