@@ -72,7 +72,7 @@ module ysyx_23060201_TOP(clk, rst, inst, pc);
 
 	ysyx_23060201_GPR ysyx_23060201_GPR(
 		.clk(gpr_clk),
-		.rst(rst),
+		// .rst(rst),
 		.ren(wire_ren),
 		.wen(wire_wen),
 		.raddr1(wire_raddr1),

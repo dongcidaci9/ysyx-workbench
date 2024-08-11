@@ -389,70 +389,6 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___stl_sequent__TOP__0(Vysyx_23060
                           [8U]))) & vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__gpr_ren__DOT__i0__DOT__data_list
               [8U]));
     vlSelf->ysyx_23060201_TOP__DOT__wire_ren = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__gpr_ren__DOT__i0__DOT__lut_out;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst0____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[1U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst1____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[2U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst2____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[3U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst3____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[4U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst4____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[5U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst5____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst6____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[7U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst7____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[8U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst8____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[9U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst9____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0xaU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst10____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0xbU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst11____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0xcU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst12____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0xdU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst13____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0xeU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst14____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0xfU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst15____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x10U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst16____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x11U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst17____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x12U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst18____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x13U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst19____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x14U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst20____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x15U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst21____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x16U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst22____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x17U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst23____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x18U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst24____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x19U] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst25____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x1aU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst26____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x1bU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst27____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x1cU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst28____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x1dU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst29____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x1eU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst30____pinNumber4;
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0x1fU] 
-        = vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst31____pinNumber4;
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_sel__DOT__i0__DOT__pair_list[6U] 
         = (0x300000000ULL | (QData)((IData)(vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_I)));
     vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_IDU__DOT__imm_sel__DOT__i0__DOT__pair_list[7U] 
@@ -1038,38 +974,6 @@ VL_ATTR_COLD void Vysyx_23060201_TOP___024root___ctor_var_reset(Vysyx_23060201_T
     for (int __Vi0 = 0; __Vi0 < 32; ++__Vi0) {
         vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[__Vi0] = VL_RAND_RESET_I(32);
     }
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst0____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst1____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst2____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst3____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst4____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst5____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst6____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst7____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst8____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst9____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst10____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst11____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst12____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst13____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst14____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst15____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst16____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst17____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst18____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst19____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst20____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst21____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst22____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst23____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst24____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst25____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst26____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst27____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst28____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst29____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst30____pinNumber4 = VL_RAND_RESET_I(32);
-    vlSelf->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT____Vcellout__rst31____pinNumber4 = VL_RAND_RESET_I(32);
     vlSelf->__Vtrigrprev__TOP__clk = VL_RAND_RESET_I(1);
     for (int __Vi0 = 0; __Vi0 < 3; ++__Vi0) {
         vlSelf->__Vm_traceActivity[__Vi0] = 0;

@@ -1,6 +1,6 @@
 module ysyx_23060201_GPR #(ADDR_WIDTH = 5, DATA_WIDTH = 32) (
 	input clk,
-	input rst,
+	// input rst,
 	input [1:0] ren, // R(rs2), R(rs1)
 	input wen, // R(rd)
 	input [ADDR_WIDTH-1:0] raddr1, 
@@ -23,6 +23,7 @@ module ysyx_23060201_GPR #(ADDR_WIDTH = 5, DATA_WIDTH = 32) (
 	assign rdata2 = (ren[1] != 1'b0) ? reg_file[raddr2] : 32'b0;
 
 	// Reset
+	/*
 	Reg #(32, 32'b0) rst0(clk, rst, reg_file[0], reg_file[0], 1'b0); 
 	Reg #(32, 32'b0) rst1(clk, rst, reg_file[1], reg_file[1], 1'b0); 
 	Reg #(32, 32'b0) rst2(clk, rst, reg_file[2], reg_file[2], 1'b0); 
@@ -55,4 +56,5 @@ module ysyx_23060201_GPR #(ADDR_WIDTH = 5, DATA_WIDTH = 32) (
 	Reg #(32, 32'b0) rst29(clk, rst, reg_file[29], reg_file[29], 1'b0); 
 	Reg #(32, 32'b0) rst30(clk, rst, reg_file[30], reg_file[30], 1'b0); 
 	Reg #(32, 32'b0) rst31(clk, rst, reg_file[31], reg_file[31], 1'b0); 
+	*/
 endmodule
