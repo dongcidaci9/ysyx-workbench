@@ -146,7 +146,7 @@ int main(int argc, char *argv[]) {
 	top->rst = 0; // reset
 	top->clk = 1; step_and_dump_wave();
 	printf("pc: %x\n", top->pc);
-	uint64_t n = 9;
+	uint64_t n = 19;
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
 		uint32_t pc = top->pc;
