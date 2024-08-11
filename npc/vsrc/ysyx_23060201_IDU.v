@@ -45,7 +45,7 @@ module ysyx_23060201_IDU(
 		`ysyx_23060201_OP_TYPE_U,   imm_U,	
 		`ysyx_23060201_OP_TYPE_UPC, imm_U,	
 		`ysyx_23060201_OP_TYPE_J,   imm_J,	
-		`ysyx_23060201_OP_TYPE_JR,  imm_J	
+		`ysyx_23060201_OP_TYPE_JR,  imm_I	
 	});
 
 	/////////////////////////////////////////////////////
