@@ -137,14 +137,14 @@ int main(int argc, char *argv[]) {
 
 	sim_init();
 
-	top->clk = 0; step_and_dump_wave();
 	top->rst = 1; // reset
+	top->clk = 0; step_and_dump_wave();
 	top->clk = 1; step_and_dump_wave();
 	printf("(start)\n");
 	printf("pc: %#x\n", top->pc);
 
+	top->rst = 0; 
 	top->clk = 0; step_and_dump_wave();
-	top->rst = 0; // reset
 	top->clk = 1; step_and_dump_wave();
 	printf("(NPC running)\n");
 	uint64_t n = 10;
