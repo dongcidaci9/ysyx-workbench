@@ -137,21 +137,18 @@ int main(int argc, char *argv[]) {
 
 	sim_init();
 
-	top->rst = 1; // reset
 	top->clk = 0; step_and_dump_wave();
-	top->clk = 1; step_and_dump_wave();
+	top->rst = 1; // reset
 	printf("(start)\n");
 	printf("pc: %#x\n", top->pc);
 
 	top->rst = 0; 
-	top->clk = 0; step_and_dump_wave();
-	top->clk = 1; step_and_dump_wave();
 	printf("(NPC running)\n");
 	uint64_t n = 10;
 	for (;n > 0; n --) {
-		top->clk = 0; step_and_dump_wave();
 		uint32_t pc = top->pc;
 		top->inst = inst_fetch(&pc);
+		top->clk = 0; step_and_dump_wave();
 		printf("pc: %#x, inst: %#010x\n", top->pc, top->inst);
 		top->clk = 1; step_and_dump_wave();
 	}
