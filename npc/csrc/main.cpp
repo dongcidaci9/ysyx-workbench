@@ -143,7 +143,7 @@ int main(int argc, char *argv[]) {
 	printf("pc: %#x(start)\n", top->pc);
 
 	top->rst = 0; 
-	uint64_t n = 20;
+	uint64_t n = 10;
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
 		uint32_t pc = top->pc;
