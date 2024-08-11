@@ -46,6 +46,7 @@ sim: $(TARGET)
 run: sim 
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
+	gtkwave $(WAVEFILE)
 	
 clean:
 	-rm -rf $(VOBJ_DIR) $(WAVEFILE)
