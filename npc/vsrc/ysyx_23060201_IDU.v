@@ -64,7 +64,7 @@ module ysyx_23060201_IDU(
 		`ysyx_23060201_OP_TYPE_U,   2'b00,	
 		`ysyx_23060201_OP_TYPE_UPC, 2'b00,	
 		`ysyx_23060201_OP_TYPE_J,   2'b00,	
-		`ysyx_23060201_OP_TYPE_JR,  2'b00
+		`ysyx_23060201_OP_TYPE_JR,  2'b01
 	}); 
 	
 	assign raddr1 = inst_rs1;
