@@ -149,9 +149,10 @@ int main(int argc, char *argv[]) {
 	for (;n > 0; n --) {
 		uint32_t pc = top->pc;
 		top->clk = 0; step_and_dump_wave();
+		top->clk = 1; 
 		top->inst = inst_fetch(&pc);
 		printf("pc: %#x, inst: %#010x\n", top->pc, top->inst);
-		top->clk = 1; step_and_dump_wave();
+		step_and_dump_wave();
 	}
 	// ebreak
 	sim_exit();
