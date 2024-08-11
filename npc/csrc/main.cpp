@@ -41,7 +41,6 @@ static word_t inst_fetch(addr_t* pc) {
 	// int len = 4;
 	// (*pc) += len;
 	uint32_t inst = mem_read(pc_handler(*pc));
-	printf("aaa\n");	
 	return inst;
 } 
 
@@ -149,7 +148,6 @@ int main(int argc, char *argv[]) {
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
 		uint32_t pc = top->pc;
-		// uint32_t* pc = reinterpret_cast<uint32_t*>(pc_value);
 		printf("pc: %x\n", top->pc);
 		top->inst = inst_fetch(&pc);
 		top->clk = 1; step_and_dump_wave();
