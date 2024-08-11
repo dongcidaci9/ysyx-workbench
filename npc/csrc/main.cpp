@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
 	top->rst = 0; // reset
 	top->clk = 1; step_and_dump_wave();
 	printf("(NPC running)\n");
-	uint64_t n = 11;
+	uint64_t n = 10;
 	for (;n > 0; n --) {
 		top->clk = 0; step_and_dump_wave();
 		uint32_t pc = top->pc;
