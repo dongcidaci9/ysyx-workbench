@@ -150,6 +150,7 @@ int main(int argc, char *argv[]) {
 		uint32_t* pc = reinterpret_cast<uint32_t*>(pc_value);
 		printf("pc: %x\n", top->pc);
 		top->inst = inst_fetch(pc);
+		printf("pc: %x\n", top->pc);
 		top->clk = 1; step_and_dump_wave();
 	}
 	// ebreak
