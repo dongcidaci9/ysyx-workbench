@@ -38,9 +38,10 @@ static inline word_t mem_read(void *addr) {
 }
 
 static word_t inst_fetch(addr_t* pc) {
-	int len = 4;
-	uint32_t inst = mem_read(pc_handler(*pc));
+	// int len = 4;
 	// (*pc) += len;
+	uint32_t inst = mem_read(pc_handler(*pc));
+	printf("aaa\n");	
 	return inst;
 } 
 
