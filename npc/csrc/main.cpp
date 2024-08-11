@@ -4,6 +4,13 @@
 // dpi-c
 #include "Vysyx_23060201_TOP__Dpi.h"
 #include <verilated_dpi.h>
+
+/////////////////////////////////////////////
+/*               Memory Init               */	
+/////////////////////////////////////////////
+// getopt
+#include <getopt.h>
+#include <cassert>
 // glibc
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,11 +21,6 @@
 // include
 #include "include/debug.h"
 #include "include/macro.h"
-/////////////////////////////////////////////
-/*               Memory Init               */	
-/////////////////////////////////////////////
-#include <getopt.h>
-#include <cassert>
 
 static void welcome() {
   Log("Build time: %s, %s", __TIME__, __DATE__);
