@@ -136,7 +136,6 @@ int main(int argc, char *argv[]) {
 	monitor_init(argc, argv);
 
 	sim_init();
-	uint32_t pc = top->pc;
 
 	top->clk = 0; step_and_dump_wave();
 	top->rst = 1; // reset
@@ -144,12 +143,11 @@ int main(int argc, char *argv[]) {
 	printf("(start)\n");
 	printf("pc: %#x\n", top->pc);
 
-	top->clk = 0; step_and_dump_wave();
 	top->rst = 0; 
-	top->clk = 1; step_and_dump_wave();
 	printf("(NPC running)\n");
 	uint64_t n = 10;
 	for (;n > 0; n --) {
+		uint32_t pc = top->pc;
 		top->clk = 0; step_and_dump_wave();
 		top->inst = inst_fetch(&pc);
 		printf("pc: %#x, inst: %#010x\n", top->pc, top->inst);
