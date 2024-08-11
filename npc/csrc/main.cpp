@@ -145,7 +145,7 @@ int main(int argc, char *argv[]) {
 
 	top->rst = 0; 
 	printf("(NPC running)\n");
-	uint64_t n = 12;
+	uint64_t n = 20;
 	for (;n > 0; n --) {
 		uint32_t pc = top->pc;
 		top->inst = inst_fetch(&pc);
