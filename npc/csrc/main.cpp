@@ -4,10 +4,20 @@
 // dpi-c
 #include "Vysyx_23060201_TOP__Dpi.h"
 #include <verilated_dpi.h>
+// include
+#include "include/debug.h"
+#include "include/macro.h"
+#include "include/cpu.h"
 
 //////////////////////////////////////////////
 /*                	Monitor           		*/	
 //////////////////////////////////////////////
+
+void set_npc_state(int state, addr_t pc, int halt_ret) {
+	npc_state.state 	= state;
+	npc_state.halt_pc 	= pc;
+	npc_state.halt_ret 	= halt_ret;
+}
 
 static void welcome() {
   Log("Build time: %s, %s", __TIME__, __DATE__);
@@ -28,25 +38,33 @@ static void welcome() {
 // readline
 #include <readline/readline.h>
 #include <readline/history.h>
-// include
-#include "include/debug.h"
-#include "include/macro.h"
 
 static uint8_t *mem = NULL;
+
+uint8_t* guest_to_host(addr_t paddr) { return mem + paddr - MBASE; }
+
+static const uint32_t img [] = {
+	0x00000287,
+	0x00028823,
+	0x0102c503,
+	0x00100073,
+	0xdeadbeef,
+};
+
+void init_isa() {
+	memcpy(guest_to_host(MBASE), img, sizeof(img));
+}
+
 void mem_init() {
 	mem = (uint8_t*)malloc(MSIZE);
 }
-
-uint8_t* pc_handler(addr_t paddr) { return mem + paddr - MBASE; }
 
 static inline word_t mem_read(void *addr) {
 	return *(addr_t *)addr;
 }
 
 static word_t inst_fetch(addr_t* pc) {
-	// int len = 4;
-	// (*pc) += len;
-	uint32_t inst = mem_read(pc_handler(*pc));
+	uint32_t inst = mem_read(guest_to_host(*pc));
 	return inst;
 } 
 
@@ -77,7 +95,7 @@ static int parse_args(int argc, char *argv[]) {
 
 static long load_img() {
 	if (img_file == NULL) {
-		Log("No image is given. ");
+		Log("No image is given. Use the default build-in image.");
 		return 4096;
 	}
 
@@ -90,7 +108,7 @@ static long load_img() {
 	Log("The image is %s, size = %ld", img_file, size);
 
 	fseek(fp, 0, SEEK_SET); // *fp seek to the start of this file
-	int ret = fread(pc_handler(MLEFT), size, 1, fp); // *fp read the data and save it to host
+	int ret = fread(guest_to_host(MLEFT), size, 1, fp); // *fp read the data and save it to host
 	assert(ret == 1);
 
 	fclose(fp);
@@ -130,10 +148,11 @@ static void sim_exit() {
 	delete vcd;
 }
 
-void init_moniotr(int argc, char *argv[]) {
+void init_monitor(int argc, char *argv[]) {
 	parse_args(argc, argv);
 	// init_log(log_file);
 	init_mem();
+	init_isa();
 	long img_size = load_img();
 	welcome();
 }
@@ -177,7 +196,6 @@ int main(int argc, char *argv[]) {
 
 	sim_init();
 
-	top->clk = 0; step_and_dump_wave();
 	top->rst = 1; // reset
 	top->clk = 1; step_and_dump_wave();
 	printf("(start)\n");
@@ -193,8 +211,8 @@ int main(int argc, char *argv[]) {
 }
 
 // DPI-C
-extern "C" void npc_trap(){
-	printf("0x%x <ebreak>\n", top->pc);
+extern "C" void npc_trap() {
+	NPCTRAP(top->pc, 0);
 	sim_exit();
 	exit(0);
 }
