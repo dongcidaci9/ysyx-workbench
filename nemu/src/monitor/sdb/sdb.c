@@ -18,7 +18,7 @@
 #include <readline/history.h>
 #include "sdb.h"
 
-static int is_batch_mode = false;
+static bool is_batch_mode = false;
 
 void init_regex();
 void expr_test();
@@ -53,17 +53,11 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_x(char *args);
-
 static int cmd_info(char *args);
-
 static int cmd_si(char *args);
-
 static int cmd_p(char *args);
-
 static int cmd_w(char *args);
-
 static int cmd_d(char *args);
-
 static int cmd_help(char *args);
 
 // Order register table:
@@ -72,13 +66,13 @@ static struct {
   const char *description;
   int (*handler) (char *);
 } cmd_table [] = {
-  { "help", "Usage: help: display information about all supported commands", cmd_help },
+  	{ "help", "Usage: help: display information about all supported commands", cmd_help },
 	{ "c", "Usage: c: continue running the suspended program", cmd_c },
 	{ "q", "Usage: q: Exit NEMU", cmd_q },
-  { "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
-  { "info", "Usage: info SUBCMD: press \"r\" can print registers status/ Press \"w\" can print watchpoints status", cmd_info },
-  { "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
-  { "p", "Usage: p EXPR: find the value of the expression EXPR/ Press \"test\" can do the testing", cmd_p },
+ 	{ "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
+ 	{ "info", "Usage: info SUBCMD: press \"r\" can print registers status/ Press \"w\" can print watchpoints status", cmd_info },
+ 	{ "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
+ 	{ "p", "Usage: p EXPR: find the value of the expression EXPR/ Press \"test\" can do the testing", cmd_p },
 	{ "w", "Usage: w EXPR: When the value of the expression EXPR changes, program execution is suspended", cmd_w },
 	{ "d", "Usage: d N: Delete the watch point with serial number N", cmd_d }
 

@@ -11,10 +11,16 @@
 #include "include/macro.h"
 #include "include/cpu.h"
 
+NPCState npc_state = { .state = NPC_STOP };
+
 //////////////////////////////////////////////
 /*            	Simple Debugger        		*/	
 //////////////////////////////////////////////
-static int is_batch_mode = false;
+
+#include <readline/readline.h>
+#include <readline/history.h>
+
+static bool is_batch_mode = false;
 
 static char* rl_gets() {
 	static char *line_read = NULL;
@@ -33,16 +39,106 @@ static char* rl_gets() {
 	return line_read;
 }
 
-static int cmd_c(char *args) {
+static int cmd_help	(char *args); 
+static int cmd_c	(char *args); 
+static int cmd_q	(char *args);
+static int cmd_si	(char *args);
+static int cmd_x	(char *args);
+
+static struct {
+	const char *name;
+	const char *description;
+	int (*handler) (char *);
+} cmd_table [] = {	
+	{ "help", "Usage: help: display information about all supported commands", cmd_help },
+	{ "c", "Usage: c: continue running the suspended program", cmd_c },
+	{ "q", "Usage: q: Exit NEMU", cmd_q },
+ 	{ "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
+ 	{ "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
+}
+
+#define NR_CMD ARRLEN(cmd_table)
+
+static int cmd_help(char* args) {
+  if (args == NULL) {
+    /* no argument given */
+    for (int i = 0; i < NR_CMD; i ++) {
+      printf("\033[1;33mRule - %s:\033[0m\n%s\n", cmd_table[i].name, cmd_table[i].description);
+    }
+  } else {
+    for (int i = 0; i < NR_CMD; i ++) {
+      if (strcmp(args, cmd_table[i].name) == 0) {
+        printf("Rule - %s:\n  %s\n", cmd_table[i].name, cmd_table[i].description);
+        return 0;
+      }
+    }
+  }
+  return 0;
+
+}
+
+static int cmd_c(char* args) {
 	cpu_exec(-1);
 	return 0;
 }
 
+static int cmd_q(char* args) {
+	npc_state.state = NPC_QUIT;
+	return -1;
+}
+
+static int cmd_si(char* args) {
+	int step;
+
+	if (args == NULL) step = 1;
+	else sscanf(args, "%d", &step);
+
+	cpu_exec(step);
+
+	return 0;
+}
+
+static int cmd_x(char* args) {
+	printf("hello world!\n");
+
+	return 0;
+}
+
+void sdb_set_batch_mode() {
+	is_batch_mode = true;
+}
+
+void sdb_mainloop() {
+	if (is_batch_mode) {
+		cmd_c(NULL);
+		return;
+	}
+
+	for (char *str; (str = rl_gets()) != NULL; ) {
+		char *str_end = str + strlen(str);
+
+		char *cmd = strtok(str, " ");
+		if (cmd == NULL) { continue; }
+
+		char *args = cmd + strlen(cmd) + 1;
+		if (args >= str_end) {
+			args = NULL;
+		}
+
+		int i;
+		for (i = 0; i < NR_CMD; i ++) {
+			if (strcmp(cmd, cmd_table[i].name) == 0) {
+				if (cmd_table[i].handler(args) < 0 ) { return; }
+				break;
+			}
+		}
+
+		if (i == NR_CMD) { printf("Unknown comand '%s'\n", cmd); }
+	}
+}
 //////////////////////////////////////////////
 /*                	Monitor           		*/	
 //////////////////////////////////////////////
-
-NPCState npc_state = { .state = NPC_STOP };
 
 void set_npc_state(int state, addr_t pc, int halt_ret) {
 	npc_state.state 	= state;
@@ -128,13 +224,15 @@ static char *img_file = NULL;
 // command line
 static int parse_args(int argc, char *argv[]) {
 	const struct option table[] = {
+		{"batch" , no_argument		, NULL, 'b'},
 		{"log"   , required_argument, NULL, 'l'},
     	{"help"  , no_argument      , NULL, 'h'},
 		{0       , 0                , NULL,  0 },
 	};
 	int o;
-	while ( (o = getopt_long(argc, argv, "-hl:", table, NULL)) != -1) {
+	while ( (o = getopt_long(argc, argv, "-bhl:", table, NULL)) != -1) {
 		switch (o) {
+			case 'b': sdb_set_batch_mode(); break;
 			case 'l': log_file = optarg; break;
 			case  1 : img_file = optarg; return 0; // non-option argument
 			default:
@@ -208,7 +306,6 @@ void init_monitor(int argc, char *argv[]) {
 	init_mem();
 	init_isa();
 	long img_size = load_img();
-	init_sdb();
 	welcome();
 }
 
@@ -261,13 +358,10 @@ int main(int argc, char *argv[]) {
 	top->clk = 0; step_and_dump_wave();
 	top->rst = 1; // reset
 	top->clk = 1; step_and_dump_wave();
-	printf("(start)\n");
-	printf("pc: %#x\n", top->pc);
-
 	top->rst = 0; 
+
 	printf("(NPC running)\n");
-	uint64_t n = -1;
-	cpu_exec(n);
+	sdb_mainloop();	
 
 	// ebreak
 	sim_exit();
