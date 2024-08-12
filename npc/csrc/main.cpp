@@ -12,6 +12,21 @@
 #include "include/cpu.h"
 
 //////////////////////////////////////////////
+/*            	Simple Debugger        		*/	
+//////////////////////////////////////////////
+static int is_batch_mode = false;
+
+static char* rl_gets() {
+	static char *line_read = NULL;
+
+	if (line_read) {
+		free(line_read);
+		line_read = NULL;
+	}
+
+	line_read = readline("(nemu)");
+}
+//////////////////////////////////////////////
 /*                	Monitor           		*/	
 //////////////////////////////////////////////
 
@@ -181,6 +196,7 @@ void init_monitor(int argc, char *argv[]) {
 	init_mem();
 	init_isa();
 	long img_size = load_img();
+	init_sdb();
 	welcome();
 }
 
