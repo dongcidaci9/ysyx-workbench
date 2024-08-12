@@ -102,11 +102,18 @@ static int cmd_x(char *args) {
 
 	int n = strtol(arg1, NULL, 10);
 	paddr_t expr = strtol(arg2, NULL, 16);
-
-	for (int i = 0; i < n ; i ++) {
-		printf("0x%08x\n", paddr_read(expr, 4));
-		expr += 4;
-	}
+	
+	int i, j;
+  	for (i = 0; i < n;) {
+    	printf("0x%08x\n", expr);
+    
+    	for (j = 0; i < n && j < 4; i++, j++) {
+      		word_t w = paddr_read(expr, 8);
+      		expr += 8;
+      		printf("0x%08x ", w);
+    	}
+    puts("");
+  	}
 	return 0;
 }
 
