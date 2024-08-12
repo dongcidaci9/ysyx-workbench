@@ -89,23 +89,23 @@ static struct {
 #define NR_CMD ARRLEN(cmd_table)
 
 static int cmd_x(char *args) {
-
-	if (args == NULL) {
+	char *arg1 = strtok(NULL, " ");
+	if (arg1 == NULL) {
+		printf("Usage:\nx N EXPR\n");
+		return 0;
+	}
+	char *arg2 = strtok(NULL, " ");
+	if (arg2 == NULL) {
 		printf("Usage:\nx N EXPR\n");
 		return 0;
 	}
 
-	char *baseaddr = strtok(NULL, " ");
+	int n = strtol(arg1, NULL, 10);
+	paddr_t expr = strtol(arg2, NULL, 16);
 
-	int len = 0;
-	paddr_t addr = 0;
-	sscanf(args, "%d", &len);
-	sscanf(baseaddr, "%x", &addr);
-
-	int i = 0;
-	for (i = 0; i < len ; i ++) {
-		printf("%#x\n", paddr_read(addr, 4));
-		addr += 4;
+	for (int i = 0; i < n ; i ++) {
+		printf("0x%08x\n", paddr_read(expr, 4));
+		expr += 4;
 	}
 	return 0;
 }
