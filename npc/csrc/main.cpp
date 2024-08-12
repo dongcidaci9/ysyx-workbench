@@ -212,7 +212,7 @@ void cpu_exec(uint64_t n) {
 	g_timer += timer_end - timer_start;
 
 	switch (npc_state.state) {
-		case NPC_RUNNING: npc_state.state = NPC_STOP; break;
+		case NPC_RUNNING: npc_state.state = NPC_STOP; printf("aaa"); break;
 
 		case NPC_END: case NPC_ABORT:
 			Log("npc %s at pc = 0x%08x" , 
