@@ -230,9 +230,9 @@ int main(int argc, char *argv[]) {
 
 	sim_init();
 
+	top->clk = 0; step_and_dump_wave();
 	top->rst = 1; // reset
 	top->clk = 1; step_and_dump_wave();
-	top->clk = 0; step_and_dump_wave();
 	printf("(start)\n");
 	printf("pc: %#x\n", top->pc);
 
