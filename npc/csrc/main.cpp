@@ -239,7 +239,7 @@ int main(int argc, char *argv[]) {
 	top->rst = 0; 
 	printf("(NPC running)\n");
 	uint64_t n = -1;
-	execute(n);
+	cpu_exec(n);
 
 	// ebreak
 	sim_exit();
