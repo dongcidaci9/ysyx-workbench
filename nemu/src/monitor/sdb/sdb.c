@@ -105,7 +105,7 @@ static int cmd_x(char *args) {
 	
 	int i, j;
   	for (i = 0; i < n;) {
-    	printf("0x%08x\n", expr);
+    	printf(ANSI_FMT("0x%08x\n", ANSI_FG_YELLOW), expr);
     
     	for (j = 0; j < 4; i ++, j ++) {
       		printf("0x%08x ", paddr_read(expr, 4));
