@@ -108,9 +108,8 @@ static int cmd_x(char *args) {
     	printf("0x%08x\n", expr);
     
     	for (j = 0; i < n && j < 4; i++, j++) {
-      		word_t w = paddr_read(expr, 8);
+      		printf("0x%08x ", paddr_read(expr, 8));
       		expr += 8;
-      		printf("0x%08x ", w);
     	}
     puts("");
   	}
