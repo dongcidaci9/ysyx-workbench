@@ -17,10 +17,11 @@ NPCState npc_state = { .state = NPC_STOP };
 /*            	Simple Debugger        		*/	
 //////////////////////////////////////////////
 
+static bool is_batch_mode = false;
+
+// readline
 #include <readline/readline.h>
 #include <readline/history.h>
-
-static bool is_batch_mode = false;
 
 static char* rl_gets() {
 	static char *line_read = NULL;
@@ -55,7 +56,7 @@ static struct {
 	{ "q", "Usage: q: Exit NEMU", cmd_q },
  	{ "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
  	{ "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
-}
+};
 
 #define NR_CMD ARRLEN(cmd_table)
 
@@ -133,7 +134,7 @@ void sdb_mainloop() {
 			}
 		}
 
-		if (i == NR_CMD) { printf("Unknown comand '%s'\n", cmd); }
+		if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
 	}
 }
 //////////////////////////////////////////////
@@ -360,7 +361,6 @@ int main(int argc, char *argv[]) {
 	top->clk = 1; step_and_dump_wave();
 	top->rst = 0; 
 
-	printf("(NPC running)\n");
 	sdb_mainloop();	
 
 	// ebreak
