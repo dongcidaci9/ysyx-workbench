@@ -107,7 +107,7 @@ static int cmd_x(char *args) {
   	for (i = 0; i < n;) {
     	printf("0x%08x\n", expr);
     
-    	for (j = 0; j < 4; i ++, j ++) {
+    	for (j = 0; i < n && j < 4; i ++, j ++) {
       		printf("0x%08x ", paddr_read(expr, 8));
       		expr += 8;
     	}
