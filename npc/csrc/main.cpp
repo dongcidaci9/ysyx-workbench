@@ -247,6 +247,7 @@ int main(int argc, char *argv[]) {
 
 // DPI-C
 extern "C" void npc_trap() {
+	printf("aaa\n");
 	NPCTRAP(top->pc, 0);
 	sim_exit();
 	exit(0);
