@@ -14,6 +14,7 @@
 #include <memory/paddr.h>
 #include <isa.h>
 #include <cpu/cpu.h>
+// readline
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
