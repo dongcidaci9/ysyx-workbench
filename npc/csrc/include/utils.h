@@ -5,15 +5,19 @@
 
 // ----------- state ----------
 
-enum { NPC_RUNNING, NPC_STOP, NPC_END, NPC_ABROT, NPC_QUIT };
+enum { NPC_RUNNING, NPC_STOP, NPC_END, NPC_ABORT, NPC_QUIT };
 
 typedef struct {
     int state;
     addr_t halt_pc;
     uint32_t halt_ret;
-} NPCstate;
+} NPCState;
 
-extern NPCstate npc_state;
+// extern NPCstate npc_state;
+
+// ----------- timer -----------
+
+// uint64_t get_time();
 
 // ----------- log -----------
 
