@@ -170,7 +170,7 @@ static void sim_init() {
 // Exit
 static void sim_exit() {
 	vcd->close();
-	printf("Simulation finished. Total simulation time: %ld\n", contextp->time());
+	Log("Simulation finished. Total simulation time: %ld\n", contextp->time());
 	delete top;
 	delete vcd;
 }
