@@ -170,7 +170,7 @@ static void sim_init() {
 // Exit
 static void sim_exit() {
 	vcd->close();
-	Log("Total simulation time: %ld\n", contextp->time());
+	Log("total simulation time: %ld\n", contextp->time());
 	delete top;
 	delete vcd;
 }
@@ -215,7 +215,7 @@ void cpu_exec(uint64_t n) {
 		case NPC_RUNNING: npc_state.state = NPC_STOP; break;
 
 		case NPC_END: case NPC_ABORT:
-			Log("npc %s at pc = 0x%08x" , 
+			Log("npc: %s at pc = 0x%08x" , 
 				(npc_state.state == NPC_ABORT ? ANSI_FMT("ABORT", ANSI_FG_RED) :
 					(npc_state.halt_ret == 0 ? ANSI_FMT("HIT GOOD TRAP", ANSI_FG_GREEN) :
 						ANSI_FMT("HIT BAD TRAP", ANSI_FG_RED))),
