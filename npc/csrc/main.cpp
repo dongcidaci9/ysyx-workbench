@@ -6,7 +6,7 @@
 #include <verilated_dpi.h>
 
 //////////////////////////////////////////////
-/*             Simple debugger           	*/	
+/*                	Monitor           		*/	
 //////////////////////////////////////////////
 
 static void welcome() {
@@ -130,13 +130,14 @@ static void sim_exit() {
 	delete vcd;
 }
 
-void monitor_init(int argc, char *argv[]) {
+void init_moniotr(int argc, char *argv[]) {
 	parse_args(argc, argv);
 	// init_log(log_file);
-	mem_init();
+	init_mem();
 	long img_size = load_img();
 	welcome();
 }
+
 static void execute(uint64_t n) {
 	for (;n > 0; n --) {
 		uint32_t pc = top->pc;
@@ -146,7 +147,6 @@ static void execute(uint64_t n) {
 		top->clk = 1; step_and_dump_wave();
 		if (npc_state.state != NPC_RUNNING) break;
 	}
-
 }
 
 void cpu_exec(uint64_t n) {
@@ -173,7 +173,7 @@ void cpu_exec(uint64_t n) {
 }
 
 int main(int argc, char *argv[]) {
-	monitor_init(argc, argv);
+	init_monitor(argc, argv);
 
 	sim_init();
 
