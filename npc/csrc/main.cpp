@@ -201,7 +201,7 @@ void cpu_exec(uint64_t n) {
 		case NPC_END: case NPC_ABORT:
 			printf("Program execution has ended. To restart the program, exit NPC and run again.\n");
 			return;
-		default: npc_state.state = NPC_RUNNING;	printf("aaa\n");
+		default: npc_state.state = NPC_RUNNING;	
 	}
 	
 	uint64_t timer_start = get_time();
