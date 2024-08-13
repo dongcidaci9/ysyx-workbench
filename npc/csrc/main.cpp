@@ -54,10 +54,15 @@ const char *regs[] = {
 
 #define REG_NUM ARRLEN(top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file)
 
+static word_t cpu_gpr(int n) {
+	word_t ret = top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[n];
+	return ret;
+} 
+
 void reg_display() {
 	printf(ANSI_FMT("GPR information:\n", ANSI_FG_GREEN));
 	for (int i = 0; i < REG_NUM; i ++) {
-		printf("(%02d) %3s: 0x%08x\t", i, regs[i], top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[i]);
+		printf("(%02d) %3s: 0x%08x\t", i, regs[i], cpu_gpr(i));
 		if((i + 1) % 2 == 0) {
 			printf("\n");
 		}	
@@ -144,6 +149,6 @@ int main(int argc, char *argv[]) {
 
 // DPI-C
 extern "C" void npc_trap() {
-	NPCTRAP(top->pc, 0);
+	NPCTRAP(top->pc, cpu_gpr(10));
 }
 
