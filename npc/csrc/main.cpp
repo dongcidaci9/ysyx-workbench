@@ -8,6 +8,7 @@
 // include
 #include "include/utils.h"
 #include "include/debug.h"
+#include "include/macro.h"
 #include "include/cpu.h"
 #include "include/sdb.h"
 #include "include/monitor.h"
@@ -44,6 +45,25 @@ static void sim_exit() {
 	delete vcd;
 }
 
+const char *regs[] = {
+  "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
+  "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
+  "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7",
+  "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
+};
+
+#define REG_NUM ARRLEN(top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file)
+
+void reg_display() {
+	printf(ANSI_FMT("GPR information:", ANSI_FG_GREEN));
+	for (int i = 0; i < REG_NUM; i ++) {
+		printf("%02d %s: 0x%08x\t", i, regs[i], top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[i]);
+		if((i + 1) % 2 == 0) {
+			printf("\n");
+		}	
+	}
+}
+
 /////////////////////////////////////////////
 /*                cpu-exec	               */	
 /////////////////////////////////////////////
@@ -67,7 +87,6 @@ static void execute(uint64_t n) {
 		top->inst = inst_fetch(&pc);
 		g_nr_guest_inst ++;
 		printf("pc: 0x%08x, inst: 0x%08x\n", top->pc, top->inst);
-		printf("0x%08x\n", top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0]);
 		top->clk = 0; step_and_dump_wave();
 		top->clk = 1; step_and_dump_wave();
 		if (npc_state.state != NPC_RUNNING) break;

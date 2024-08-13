@@ -5,4 +5,6 @@
 
 word_t mem_read(addr_t addr);
 
+void reg_display();
+
 #endif

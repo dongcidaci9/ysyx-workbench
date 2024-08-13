@@ -35,7 +35,8 @@ static int cmd_help	(char *args);
 static int cmd_c	(char *args); 
 static int cmd_q	(char *args);
 static int cmd_si	(char *args);
-static int cmd_x	(char *args);
+static int cmd_x 	(char *args);
+static int cmd_info	(char *args);
 
 static struct {
 	const char *name;
@@ -47,6 +48,7 @@ static struct {
 	{ "q", "Usage: q: Exit NEMU", cmd_q },
  	{ "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
  	{ "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
+ 	{ "info", "Usage: info SUBCMD: press \"r\" can print registers status/ Press \"w\" can print watchpoints status", cmd_info },
 };
 
 #define NR_CMD ARRLEN(cmd_table)
@@ -115,6 +117,19 @@ static int cmd_x(char* args) {
     	}
     puts("");
   	}
+	return 0;
+}
+
+static int cmd_info(char *args) {
+	if (args == NULL) {
+		printf("Usage: info r or info w\n");
+	} else {
+		if (strcmp(args, "r") == 0 ) {
+			reg_display();
+		} else {
+			printf("Usage: info r or info w\n");
+		}
+	}
 	return 0;
 }
 
