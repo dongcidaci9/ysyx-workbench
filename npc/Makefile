@@ -29,7 +29,6 @@ VINC_FLAGS := -I$(VINC_DIR)
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 
 CXX = g++
-CXXFLAGS = -O2 -I/usr/include/readline
 # --- 3. Linkage flags ---
 
 # --- 4. Target file --- 
