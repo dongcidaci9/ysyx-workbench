@@ -115,8 +115,7 @@ int main(int argc, char *argv[]) {
 	top->clk = 1; step_and_dump_wave();
 	top->rst = 0; 
 
-	uint64_t n = -1;
-	cpu_exec(n);
+	sdb_mainloop();
 
 	// ebreak
 	sim_exit();
