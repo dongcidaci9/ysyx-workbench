@@ -29,13 +29,13 @@ VINC_FLAGS := -I$(VINC_DIR)
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 
 # --- 3. Linkage flags ---
-LDFLGAS := -LDFLAGS -"lreadline"
+
 # --- 4. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
 	$(VERILATOR) $(TOP_FLAGS) $(VOBJ_FLAGS) $(VINC_FLAGS) $(VFLAGS) \
 	$(VERILOG_SRC) $(SIM_MAIN_SRC) \
-	$(LDFLAGS)
+	-LDFLAGS -"lreadline"
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
