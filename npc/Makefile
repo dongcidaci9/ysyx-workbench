@@ -19,7 +19,7 @@ SIM_MAIN_SRC += $(wildcard $(SIM_MAIN_SRC_DIR)/*.c)
 # Object file directory
 WORK_DIR = $(shell pwd)
 VINC_DIR = $(WORK_DIR)/$(VERILOG_SRC_DIR)/include
-VOBJ_DIR = $(WORK_DIR)/obj_dir
+VOBJ_DIR = $(WORK_DIR)/build
 
 # --- 2. Compilation flags ---
 VERILATOR := verilator
