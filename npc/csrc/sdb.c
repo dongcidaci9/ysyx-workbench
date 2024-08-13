@@ -4,6 +4,7 @@
 #include "include/utils.h"
 #include "include/macro.h"
 #include "include/cpu.h"
+#include "include/memory.h"
 // bool
 #include <stdbool.h>
 // readline
@@ -90,8 +91,30 @@ static int cmd_si(char* args) {
 }
 
 static int cmd_x(char* args) {
-	printf("hello world!\n");
+	char *arg1 = strtok(NULL, " ");
+	if (arg1 == NULL) {
+		printf("Usage:\nx N EXPR\n");
+		return 0;
+	}
+	char *arg2 = strtok(NULL, " ");
+	if (arg2 == NULL) {
+		printf("Usage:\nx N EXPR\n");
+		return 0;
+	}
 
+	int n = strtol(arg1, NULL, 10);
+	addr_t expr = strtol(arg2, NULL, 16);
+
+	int i, j;	
+	for (i = 0; i < n;) {
+    	printf(ANSI_FMT("0x%08x\n", ANSI_FG_YELLOW), expr);
+    
+    	for (j = 0; j < 4; i ++, j ++) {
+      		printf("0x%08x ", mem_read(expr));
+      		expr += 4;
+    	}
+    puts("");
+  	}
 	return 0;
 }
 

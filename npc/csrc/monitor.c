@@ -23,7 +23,7 @@ void welcome() {
 
 // default build-in image
 static const uint32_t img [] = {
-	0x00000287,
+	0x00000297,
 	0x00028823,
 	0x0102c503,
 	0x00100073,
@@ -39,12 +39,18 @@ void init_mem() {
 	mem = (uint8_t*)malloc(MSIZE);
 }
 
-static inline word_t mem_read(void *addr) {
+static inline word_t host_read(void *addr) {
 	return *(addr_t *)addr;
 }
 
-word_t inst_fetch(addr_t* pc) {
-	uint32_t inst = mem_read(guest_to_host(*pc));
+word_t mem_read(addr_t addr) {
+	word_t ret = host_read(guest_to_host(addr));
+	return ret;
+}
+
+// addr_t* pc_addr = &pc; *pc_addr = pc; 
+word_t inst_fetch(addr_t* pc_addr) {
+	uint32_t inst = mem_read(*pc_addr);
 	return inst;
 } 
 
