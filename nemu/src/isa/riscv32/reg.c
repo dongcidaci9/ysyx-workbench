@@ -20,10 +20,9 @@ const char *regs[] = {
 #define REG_NUM ARRLEN(regs)
 
 void isa_reg_display() {
-	int i;
-	printf("\033[0;32mGPR info:\33[0m\n");
-	for (i = 0; i < REG_NUM; i ++) {
-		printf("\033[0;32m%02d %s: %#-20x\033[0m\t", i, regs[i], cpu.gpr[i]);
+	printf(ANSI_FMT("GPR information:\n", ANSI_FG_GREEN));
+	for (int i = 0; i < REG_NUM; i ++) {
+		printf("(%02d) %3s: 0x%08x\t", i, regs[i], cpu.gpr[i]);
 		if((i+1) % 2 == 0) {
 			printf("\n");
 		}
