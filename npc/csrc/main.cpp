@@ -67,7 +67,7 @@ static void execute(uint64_t n) {
 		top->inst = inst_fetch(&pc);
 		g_nr_guest_inst ++;
 		printf("pc: 0x%08x, inst: 0x%08x\n", top->pc, top->inst);
-		printf("func3: %d\n", top->rootp->ysyx_23060201_TOP__DOT__wire_func3);
+		printf("0x%08x\n", top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[0]);
 		top->clk = 0; step_and_dump_wave();
 		top->clk = 1; step_and_dump_wave();
 		if (npc_state.state != NPC_RUNNING) break;
