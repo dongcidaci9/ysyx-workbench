@@ -21,17 +21,23 @@ WORK_DIR = $(shell pwd)
 VINC_DIR = $(WORK_DIR)/$(VERILOG_SRC_DIR)/include
 VOBJ_DIR = $(WORK_DIR)/obj_dir
 
-# --- 2. Simulation flags ---
+# --- 2. Compilation flags ---
 VERILATOR := verilator
 TOP_FLAGS := --top-module $(TOP_MODULE)
-VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 VOBJ_FLAGS := --Mdir $(VOBJ_DIR)
 VINC_FLAGS := -I$(VINC_DIR)
+VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 
-# --- 3. Target file --- 
+CXX = g++
+CXXFLAGS = -O2 -I/usr/include/readline
+# --- 3. Linkage flags ---
+
+# --- 4. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
-	$(VERILATOR) $(TOP_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) $(SIM_MAIN_SRC) $(VOBJ_FLAGS)
+	$(VERILATOR) $(TOP_FLAGS) $(VOBJ_FLAGS) $(VINC_FLAGS) $(VFLAGS) \
+	$(VERILOG_SRC) $(SIM_MAIN_SRC) \
+	-LDFLAGS -"lreadline"
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
