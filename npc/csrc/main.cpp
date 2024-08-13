@@ -1,4 +1,5 @@
 #include "Vysyx_23060201_TOP.h"
+#include "Vysyx_23060201_TOP___024root.h"
 #include "verilated.h"
 #include "verilated_vcd_c.h" // generate wave.vcd
 // dpi-c
@@ -14,10 +15,10 @@
 /*                Simulation               */	
 /////////////////////////////////////////////
 
-static Vysyx_23060201_TOP* top;
+static Vysyx_23060201_TOP* top = nullptr;
 
-VerilatedContext* contextp = NULL;
-VerilatedVcdC* vcd = NULL;
+VerilatedContext* contextp = nullptr;
+VerilatedVcdC* vcd = nullptr;
 
 static void step_and_dump_wave() {
 	top->eval(); // State update
@@ -66,6 +67,7 @@ static void execute(uint64_t n) {
 		top->inst = inst_fetch(&pc);
 		g_nr_guest_inst ++;
 		printf("pc: 0x%08x, inst: 0x%08x\n", top->pc, top->inst);
+		printf("func3: %d\n", top->rootp->ysyx_23060201_TOP__DOT__wire_func3);
 		top->clk = 0; step_and_dump_wave();
 		top->clk = 1; step_and_dump_wave();
 		if (npc_state.state != NPC_RUNNING) break;
