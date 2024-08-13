@@ -19,12 +19,12 @@ SIM_MAIN_SRC += $(wildcard $(SIM_MAIN_SRC_DIR)/*.c)
 # Object file directory
 WORK_DIR = $(shell pwd)
 VINC_DIR = $(WORK_DIR)/$(VERILOG_SRC_DIR)/include
-VOBJ_DIR = $(WORK_DIR)/build
+BUILD_DIR = $(WORK_DIR)/build
 
 # --- 2. Compilation flags ---
 VERILATOR := verilator
 TOP_FLAGS := --top-module $(TOP_MODULE)
-VOBJ_FLAGS := --Mdir $(VOBJ_DIR)
+BUILD_FLAGS := --Mdir $(BUILD_DIR)
 VINC_FLAGS := -I$(VINC_DIR)
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 
@@ -33,13 +33,13 @@ VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace
 # --- 4. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
-	$(VERILATOR) $(TOP_FLAGS) $(VOBJ_FLAGS) $(VINC_FLAGS) $(VFLAGS) \
+	$(VERILATOR) $(TOP_FLAGS) $(BUILD_FLAGS) $(VINC_FLAGS) $(VFLAGS) \
 	$(VERILOG_SRC) $(SIM_MAIN_SRC) \
 	-LDFLAGS -"lreadline"
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
-BINARY = $(VOBJ_DIR)/V$(TOP_MODULE)
+BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
 
 IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
@@ -56,9 +56,9 @@ run: sim
 	$(NPC_EXEC) 
 	
 clean:
-	-rm -rf $(VOBJ_DIR) $(WAVEFILE)
+	-rm -rf $(BUILD_DIR) $(WAVEFILE)
 
 .PHONY:
-	all sim run wave clean
+	all sim wave run wave clean
 
 include ../Makefile
