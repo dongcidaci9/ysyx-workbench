@@ -1,9 +1,14 @@
 #ifndef __DEBUG_H__
 #define __DEBUG_H__
 
-#include <stdio.h>
+#include <cassert>
 #include "common.h"
 #include "utils.h"
+
+#define _Log(...) \
+    do { \
+        printf(__VA_ARGS__); \
+    } while (0)
 
 #define Log(format, ...) \
     _Log(ANSI_FMT("[%s:%d %s] " format, ANSI_FG_BLUE) "\n", \

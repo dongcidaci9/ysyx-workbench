@@ -1,7 +1,11 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
+// glic
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdint.h>
+
 // some defines
 typedef uint32_t word_t;
 typedef uint32_t addr_t; 

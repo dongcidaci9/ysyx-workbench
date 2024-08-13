@@ -13,7 +13,8 @@ VERILOG_SRC = $(wildcard $(VERILOG_SRC_DIR)/*.v)
 
 # Simulation main func source directory
 SIM_MAIN_SRC_DIR = csrc
-SIM_MAIN_SRC = $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
+SIM_MAIN_SRC += $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
+SIM_MAIN_SRC += $(wildcard $(SIM_MAIN_SRC_DIR)/*.c)
 
 # Object file directory
 WORK_DIR = $(shell pwd)

@@ -5,269 +5,11 @@
 #include "Vysyx_23060201_TOP__Dpi.h"
 #include <verilated_dpi.h>
 // include
-#include "include/common.h"
 #include "include/utils.h"
 #include "include/debug.h"
-#include "include/macro.h"
 #include "include/cpu.h"
-
-NPCState npc_state = { .state = NPC_STOP };
-
-//////////////////////////////////////////////
-/*            	Simple Debugger        		*/	
-//////////////////////////////////////////////
-
-static bool is_batch_mode = false;
-
-// readline
-#include <readline/readline.h>
-#include <readline/history.h>
-
-static char* rl_gets() {
-	static char *line_read = NULL;
-
-	if (line_read) {
-		free(line_read);
-		line_read = NULL;
-	}
-
-	line_read = readline("(npc) ");
-
-	if (line_read && *line_read) {
-		add_history(line_read);
-	}
-
-	return line_read;
-}
-
-static int cmd_help	(char *args); 
-static int cmd_c	(char *args); 
-static int cmd_q	(char *args);
-static int cmd_si	(char *args);
-static int cmd_x	(char *args);
-
-static struct {
-	const char *name;
-	const char *description;
-	int (*handler) (char *);
-} cmd_table [] = {	
-	{ "help", "Usage: help: display information about all supported commands", cmd_help },
-	{ "c", "Usage: c: continue running the suspended program", cmd_c },
-	{ "q", "Usage: q: Exit NEMU", cmd_q },
- 	{ "si", "Usage: si [N]: program pauses execution after executing N instructions in a single step, when N is not given, the default is 1", cmd_si },
- 	{ "x", "Usage: x N EXPR: as starting memory address, output N consecutive 4 bytes in hexadecimal form", cmd_x },
-};
-
-#define NR_CMD ARRLEN(cmd_table)
-
-static int cmd_help(char* args) {
-  if (args == NULL) {
-    /* no argument given */
-    for (int i = 0; i < NR_CMD; i ++) {
-      printf("\033[1;33mRule - %s:\033[0m\n%s\n", cmd_table[i].name, cmd_table[i].description);
-    }
-  } else {
-    for (int i = 0; i < NR_CMD; i ++) {
-      if (strcmp(args, cmd_table[i].name) == 0) {
-        printf("Rule - %s:\n  %s\n", cmd_table[i].name, cmd_table[i].description);
-        return 0;
-      }
-    }
-  }
-  return 0;
-
-}
-
-static int cmd_c(char* args) {
-	cpu_exec(-1);
-	return 0;
-}
-
-static int cmd_q(char* args) {
-	npc_state.state = NPC_QUIT;
-	return -1;
-}
-
-static int cmd_si(char* args) {
-	int step;
-
-	if (args == NULL) step = 1;
-	else sscanf(args, "%d", &step);
-
-	cpu_exec(step);
-
-	return 0;
-}
-
-static int cmd_x(char* args) {
-	printf("hello world!\n");
-
-	return 0;
-}
-
-void sdb_set_batch_mode() {
-	is_batch_mode = true;
-}
-
-void sdb_mainloop() {
-	if (is_batch_mode) {
-		cmd_c(NULL);
-		return;
-	}
-
-	for (char *str; (str = rl_gets()) != NULL; ) {
-		char *str_end = str + strlen(str);
-
-		char *cmd = strtok(str, " ");
-		if (cmd == NULL) { continue; }
-
-		char *args = cmd + strlen(cmd) + 1;
-		if (args >= str_end) {
-			args = NULL;
-		}
-
-		int i;
-		for (i = 0; i < NR_CMD; i ++) {
-			if (strcmp(cmd, cmd_table[i].name) == 0) {
-				if (cmd_table[i].handler(args) < 0 ) { return; }
-				break;
-			}
-		}
-
-		if (i == NR_CMD) { printf("Unknown command '%s'\n", cmd); }
-	}
-}
-//////////////////////////////////////////////
-/*                	Monitor           		*/	
-//////////////////////////////////////////////
-
-void set_npc_state(int state, addr_t pc, int halt_ret) {
-	npc_state.state 	= state;
-	npc_state.halt_pc 	= pc;
-	npc_state.halt_ret 	= halt_ret;
-}
-
-static void welcome() {
-  Log("Build time: %s, %s", __TIME__, __DATE__);
-  printf("Welcome to %s-NPC!\n", ANSI_FMT(str(__GUEST_ISA__), ANSI_FG_YELLOW ANSI_BG_RED));
-  printf("For help, type \"help\"\n");
-}
-
-//////////////////////////////////////////////
-/*                	Timer           		*/	
-//////////////////////////////////////////////
-#include <sys/time.h>
-
-uint64_t g_nr_guest_inst = 0;
-static uint64_t g_timer = 0; // unit: us
-
-static uint64_t get_time() {
-	struct timeval now;
-	gettimeofday(&now, NULL);
-	uint64_t us = now.tv_sec * 1000000 + now.tv_usec;
-	return us;
-}
-
-static void statistic() {
-#define NUMBERIC_FMT "%lu"
-	Log("host time spent = " NUMBERIC_FMT " us", g_timer);
-	Log("total guest instructions = " NUMBERIC_FMT " us", g_nr_guest_inst);
-	if (g_timer > 0) Log("simulation frequency = " NUMBERIC_FMT " inst/s", g_nr_guest_inst * 1000000 / g_timer);
-	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
-}
-
-//////////////////////////////////////////////
-/*                Memory Init              	*/	
-//////////////////////////////////////////////
-// getopt
-#include <getopt.h>
-#include <cassert>
-// glibc
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
-// readline
-#include <readline/readline.h>
-#include <readline/history.h>
-
-static uint8_t *mem = NULL;
-
-uint8_t* guest_to_host(addr_t paddr) { return mem + paddr - MBASE; }
-
-static const uint32_t img [] = {
-	0x00000287,
-	0x00028823,
-	0x0102c503,
-	0x00100073,
-	0xdeadbeef,
-};
-
-void init_isa() {
-	memcpy(guest_to_host(MBASE), img, sizeof(img));
-}
-
-void init_mem() {
-	mem = (uint8_t*)malloc(MSIZE);
-}
-
-static inline word_t mem_read(void *addr) {
-	return *(addr_t *)addr;
-}
-
-static word_t inst_fetch(addr_t* pc) {
-	uint32_t inst = mem_read(guest_to_host(*pc));
-	return inst;
-} 
-
-static char *log_file = NULL;
-static char *img_file = NULL;
-
-// command line
-static int parse_args(int argc, char *argv[]) {
-	const struct option table[] = {
-		{"batch" , no_argument		, NULL, 'b'},
-		{"log"   , required_argument, NULL, 'l'},
-    	{"help"  , no_argument      , NULL, 'h'},
-		{0       , 0                , NULL,  0 },
-	};
-	int o;
-	while ( (o = getopt_long(argc, argv, "-bhl:", table, NULL)) != -1) {
-		switch (o) {
-			case 'b': sdb_set_batch_mode(); break;
-			case 'l': log_file = optarg; break;
-			case  1 : img_file = optarg; return 0; // non-option argument
-			default:
- 				printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
-        		printf("\t-l,--log=FILE           output log to FILE\n");
-        		printf("\n");
-        		exit(0);
-		}
-	}
-	return 0;
-}
-
-static long load_img() {
-	if (img_file == NULL) {
-		Log("No image is given. Use the default build-in image.");
-		return 4096;
-	}
-
-	FILE *fp = fopen(img_file, "rb");
-	// assert(fp, "Can not open '%s'", img_file);
-
-	fseek(fp, 0, SEEK_END); // *fp seek to the end of this file
-	long size = ftell(fp);
-
-	Log("The image is %s, size = %ld", img_file, size);
-
-	fseek(fp, 0, SEEK_SET); // *fp seek to the start of this file
-	int ret = fread(guest_to_host(MLEFT), size, 1, fp); // *fp read the data and save it to host
-	assert(ret == 1);
-
-	fclose(fp);
-	return size;
-}
-
+#include "include/sdb.h"
+#include "include/monitor.h"
 /////////////////////////////////////////////
 /*                Simulation               */	
 /////////////////////////////////////////////
@@ -301,13 +43,21 @@ static void sim_exit() {
 	delete vcd;
 }
 
-void init_monitor(int argc, char *argv[]) {
-	parse_args(argc, argv);
-	// init_log(log_file);
-	init_mem();
-	init_isa();
-	long img_size = load_img();
-	welcome();
+/////////////////////////////////////////////
+/*                cpu-exec	               */	
+/////////////////////////////////////////////
+
+NPCState npc_state = { .state = NPC_RUNNING };
+
+uint64_t g_nr_guest_inst = 0;
+static uint64_t g_timer = 0; // unit: us
+
+static void statistic() {
+#define NUMBERIC_FMT "%lu"
+	Log("host time spent = " NUMBERIC_FMT " us", g_timer);
+	Log("total guest instructions = " NUMBERIC_FMT " us", g_nr_guest_inst);
+	if (g_timer > 0) Log("simulation frequency = " NUMBERIC_FMT " inst/s", g_nr_guest_inst * 1000000 / g_timer);
+	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
 static void execute(uint64_t n) {
@@ -351,6 +101,10 @@ void cpu_exec(uint64_t n) {
 	}
 }
 
+/////////////////////////////////////////////
+/*                npc-main	               */	
+/////////////////////////////////////////////
+
 int main(int argc, char *argv[]) {
 	init_monitor(argc, argv);
 
@@ -361,7 +115,8 @@ int main(int argc, char *argv[]) {
 	top->clk = 1; step_and_dump_wave();
 	top->rst = 0; 
 
-	sdb_mainloop();	
+	uint64_t n = -1;
+	cpu_exec(n);
 
 	// ebreak
 	sim_exit();
