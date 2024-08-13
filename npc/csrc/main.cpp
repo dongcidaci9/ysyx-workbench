@@ -55,7 +55,7 @@ const char *regs[] = {
 #define REG_NUM ARRLEN(top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file)
 
 void reg_display() {
-	printf(ANSI_FMT("GPR information:", ANSI_FG_GREEN));
+	printf(ANSI_FMT("GPR information:\n", ANSI_FG_GREEN));
 	for (int i = 0; i < REG_NUM; i ++) {
 		printf("%02d %s: 0x%08x\t", i, regs[i], top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[i]);
 		if((i + 1) % 2 == 0) {
