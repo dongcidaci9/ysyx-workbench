@@ -89,9 +89,6 @@ static void statistic() {
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-	
-void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
-
 typedef struct Decode {
 	IFDEF(CONFIG_ITRACE, char logbuf[128]);
 } Decode;
@@ -103,6 +100,8 @@ static void trace_and_difftest(Decode *_this) {
 }
 
 #ifdef CONFIG_ITRACE
+
+void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
 
 static void inst_trace(Decode *s) {
 	char *p = s->logbuf;
