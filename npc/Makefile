@@ -38,7 +38,7 @@ VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace
 COMPILE += -CFLAGS "-I$(CINC_DIR) -std=c++14"
 
 ## Link flags
-LIBS += -LDFLAGS -lreadline
+LIBS += -LDFLAGS "-lreadline"
 
 # --- 4. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)

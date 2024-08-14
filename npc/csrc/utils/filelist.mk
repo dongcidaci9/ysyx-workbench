@@ -14,5 +14,5 @@
 #**************************************************************************************/
 
 SIM_SRC += csrc/utils/disasm.cc
-COMPILE += $(shell llvm-config --cxxflags) -fPIE
-LIBS += $(shell llvm-config --libs)
+COMPILE += -CLFAGS "$(shell llvm-config --cxxflags) -fPIE"
+LIBS += -LDFLAGS "$(shell llvm-config --libs)"
