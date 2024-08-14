@@ -89,12 +89,11 @@ static void statistic() {
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-#ifdef CONFIG_ITRACE
 	
 void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
 
 typedef struct Decode {
-	char logbuf[128];
+	IFDEF(CONFIG_ITRACE, char logbuf[128]);
 } Decode;
 
 static void trace_and_difftest(Decode *_this) {
@@ -102,6 +101,8 @@ static void trace_and_difftest(Decode *_this) {
 		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
 	}
 }
+
+#ifdef CONFIG_ITRACE
 
 static void inst_trace(Decode *s) {
 	char *p = s->logbuf;
@@ -122,23 +123,21 @@ static void inst_trace(Decode *s) {
 }
 #endif
 
-static void exec_once() {
+static void exec_once(Decode *s) {
 	uint32_t pc = top->pc;
 	top->inst = inst_fetch(&pc);
+	top->clk = 0; step_and_dump_wave();
+	top->clk = 1; step_and_dump_wave();
+	IFDEF(CONFIG_ITRACE, inst_trace(s));
 }
 
 static void execute(uint64_t n) {
+	Decode s;
 	for (;n > 0; n --) {
-		exec_once();
-		#ifdef CONFIG_ITRACE
-			inst_trace(&s);
-			trace_and_difftest(&s);
-			Decode s;	
-		#endif
-
+		exec_once(&s);
 		g_nr_guest_inst ++;
-		top->clk = 0; step_and_dump_wave();
-		top->clk = 1; step_and_dump_wave();
+		trace_and_difftest(&s);
+
 		if (npc_state.state != NPC_RUNNING) break;
 	}
 }
