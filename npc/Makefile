@@ -35,7 +35,7 @@ VINC_FLAGS := -I$(VINC_DIR)
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 
 ## C/C++ files compile flags
-COMPILE += -CFLAGS "-I$(CINC_DIR) -std=c++14"
+COMPILE += -CFLAGS "-I$(CINC_DIR)"
 
 ## Link flags
 LIBS += -LDFLAGS "-lreadline"
@@ -64,7 +64,7 @@ include $(NPC_HOME)/scripts/config.mk
 
 # --- 6. filelists ---
 FILELIST_MK = $(shell find -L ./csrc -name "filelist.mk")
-#include $(FILELIST_MK)
+include $(FILELIST_MK)
 
 # --- 7. Target command ---
 sim: $(TARGET)
