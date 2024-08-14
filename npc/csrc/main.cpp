@@ -98,6 +98,7 @@ typedef struct Decode {
 
 static void trace_and_difftest(Decode *_this) {
 	if (g_print_step) {
+		printf("aaa");
 		IFDEF(CONFIG_ITRACE, puts("aa"));
 	}
 }
@@ -144,7 +145,6 @@ static void execute(uint64_t n) {
 
 void cpu_exec(uint64_t n) {
 	g_print_step = (n < MAX_INST_TO_PRINT);
-	printf("%d\n", g_print_step);
 	switch (npc_state.state) {
 		case NPC_END: case NPC_ABORT:
 			printf("Program execution has ended. To restart the program, exit NPC and run again.\n");
