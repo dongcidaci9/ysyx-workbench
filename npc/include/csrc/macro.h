@@ -3,6 +3,7 @@
 
 #include <string.h>
 
+// macro stringizing
 #define str_temp(x) #x
 #define str(x) str_temp(x)
 
