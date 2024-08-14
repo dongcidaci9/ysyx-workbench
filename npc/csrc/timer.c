@@ -1,8 +1,9 @@
 //////////////////////////////////////////////
 /*                	Timer           		*/	
 //////////////////////////////////////////////
+#include <common.h>
+
 #include <sys/time.h>
-#include "include/common.h"
 
 uint64_t get_time() {
 	struct timeval now;

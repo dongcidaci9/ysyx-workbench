@@ -1,10 +1,10 @@
 //////////////////////////////////////////////
 /*            	Simple Debugger        		*/	
 //////////////////////////////////////////////
-#include "include/utils.h"
-#include "include/macro.h"
-#include "include/cpu.h"
-#include "include/memory.h"
+#include <utils.h>
+#include <macro.h>
+#include <cpu.h>
+#include <memory.h>
 // bool
 #include <stdbool.h>
 // readline

@@ -7,34 +7,42 @@ all:
 TOP_MODULE = ysyx_23060201_TOP
 
 # --- 1. Some path variables ---
-# Verilog source directory
+
+## Verilog source directory
 VERILOG_SRC_DIR = vsrc
 VERILOG_SRC = $(wildcard $(VERILOG_SRC_DIR)/*.v)
 
-# Simulation main func source directory
+## Simulation main func source directory
 SIM_MAIN_SRC_DIR = csrc
 SIM_MAIN_SRC += $(wildcard $(SIM_MAIN_SRC_DIR)/*.cpp)
 SIM_MAIN_SRC += $(wildcard $(SIM_MAIN_SRC_DIR)/*.c)
 
-# Object file directory
+## Object file directory
 WORK_DIR = $(shell pwd)
-VINC_DIR = $(WORK_DIR)/include
+VINC_DIR = $(WORK_DIR)/include/vsrc
+CINC_DIR = $(WORK_DIR)/include/csrc
 BUILD_DIR = $(WORK_DIR)/build
 
 # --- 2. Compilation flags ---
+
 VERILATOR := verilator
+
+## Verilog files compile flags
 TOP_FLAGS := --top-module $(TOP_MODULE)
 BUILD_FLAGS := --Mdir $(BUILD_DIR)
 VINC_FLAGS := -I$(VINC_DIR)
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
+
+## C/C++ files compile flags
+CFLGAS := -CFLAGS "-I$(CINC_DIR)"
 
 # --- 3. Linkage flags ---
 
 # --- 4. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
 $(TARGET): $(VERILOG_SRC) $(SIM_MAIN_SRC)
-	$(VERILATOR) $(TOP_FLAGS) $(BUILD_FLAGS) $(VINC_FLAGS) $(VFLAGS) \
-	$(VERILOG_SRC) $(SIM_MAIN_SRC) \
+	$(VERILATOR) $(TOP_FLAGS) $(BUILD_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) \
+	-CFLAGS "-I$(CINC_DIR)" $(SIM_MAIN_SRC) \
 	-LDFLAGS -"lreadline"
 
 WAVEFILE = $(WORK_DIR)/wave.vcd

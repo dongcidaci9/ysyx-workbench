@@ -2,10 +2,10 @@
 #include <getopt.h>
 
 // include
-#include "include/debug.h"
-#include "include/cpu.h"
-#include "include/macro.h"
-#include "include/sdb.h"
+#include <debug.h>
+#include <cpu.h>
+#include <macro.h>
+#include <sdb.h>
 
 //////////////////////////////////////////////
 /*                	Monitor           		*/	

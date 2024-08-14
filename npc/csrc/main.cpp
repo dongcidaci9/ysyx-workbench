@@ -6,12 +6,12 @@
 #include "Vysyx_23060201_TOP__Dpi.h"
 #include <verilated_dpi.h>
 // include
-#include "include/utils.h"
-#include "include/debug.h"
-#include "include/macro.h"
-#include "include/cpu.h"
-#include "include/sdb.h"
-#include "include/monitor.h"
+#include <utils.h>
+#include <debug.h>
+#include <macro.h>
+#include <cpu.h>
+#include <sdb.h>
+#include <monitor.h>
 
 /////////////////////////////////////////////
 /*                Simulation               */	
