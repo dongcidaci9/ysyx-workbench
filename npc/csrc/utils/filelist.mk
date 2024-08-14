@@ -13,6 +13,6 @@
 # See the Mulan PSL v2 for more details.
 #**************************************************************************************/
 
-SIM_SRC += csrc/utils/disasm.cpp
+SIM_SRC += csrc/utils/disasm.cc
 COMPILE += $(shell llvm-config --cxxflags) -fPIE
 LIBS += $(shell llvm-config --libs)

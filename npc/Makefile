@@ -36,6 +36,7 @@ VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace
 
 ## C/C++ files compile flags
 COMPILE = -CFLAGS  
+#COMPILE += -std=c++14
 COMPILE += -I$(CINC_DIR) 
 
 ## Link flags
