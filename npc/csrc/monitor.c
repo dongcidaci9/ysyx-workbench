@@ -7,8 +7,6 @@
 #include <macro.h>
 #include <sdb.h>
 
-#include <../generated/autoconf.h>
-
 //////////////////////////////////////////////
 /*                	Monitor           		*/	
 //////////////////////////////////////////////
