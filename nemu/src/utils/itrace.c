@@ -2,6 +2,9 @@
 
 #define MAX_IRINGBUF 16
 
+#ifdef CONFIG_ITRACE
+void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
+
 typedef struct {
   word_t pc;
   uint32_t inst;
@@ -11,7 +14,6 @@ ItraceNode iringbuf[MAX_IRINGBUF];
 int p_cur = 0;
 bool full = false;
 
-#ifdef CONFIG_ITRACE
 void trace_inst(word_t pc, uint32_t inst) {
   iringbuf[p_cur].pc = pc;
   iringbuf[p_cur].inst = inst;
@@ -25,7 +27,6 @@ void display_inst() {
   int end = p_cur;
   int i = full ? p_cur : 0;
 
-	void disassemble(char *str, int size, uint64_t pc, uint8_t *code, int nbyte);
   char buf[128]; // 128 should be enough!
   char *p;
   printf("Most recently executed instructions:\n");
