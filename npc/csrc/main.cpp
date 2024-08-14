@@ -145,6 +145,7 @@ static void execute(uint64_t n) {
 
 void cpu_exec(uint64_t n) {
 	g_print_step = (n < MAX_INST_TO_PRINT);
+	IFDEF(CONFIG_ITRACE, puts("aa"));
 	switch (npc_state.state) {
 		case NPC_END: case NPC_ABORT:
 			printf("Program execution has ended. To restart the program, exit NPC and run again.\n");
