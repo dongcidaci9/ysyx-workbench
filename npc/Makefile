@@ -17,6 +17,7 @@ SIM_SRC_DIR = csrc
 SIM_SRC += $(wildcard $(SIM_SRC_DIR)/*.cpp)
 SIM_SRC += $(wildcard $(SIM_SRC_DIR)/*.cc)
 SIM_SRC += $(wildcard $(SIM_SRC_DIR)/*.c)
+SIM_SRC += $(SIM_SRC_DIR)/utils/disasm.cpp
 
 ## Object file directory
 WORK_DIR = $(shell pwd)
@@ -41,6 +42,7 @@ COMPILE += -I$(CINC_DIR)
 ## Link flags
 LIBS = -LDFLAGS
 LIBS += -lreadline
+LIBS += $(shell llvm-config --libs)
 
 # --- 4. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
