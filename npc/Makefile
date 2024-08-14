@@ -34,7 +34,6 @@ VINC_FLAGS := -I$(VINC_DIR)
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 
 ## C/C++ files compile flags
-CFLGAS := -CFLAGS "-I$(CINC_DIR)"
 
 # --- 3. Linkage flags ---
 
