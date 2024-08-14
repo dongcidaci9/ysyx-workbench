@@ -12,6 +12,8 @@
 #include "include/cpu.h"
 #include "include/sdb.h"
 #include "include/monitor.h"
+#include "include/decode.h"
+
 /////////////////////////////////////////////
 /*                Simulation               */	
 /////////////////////////////////////////////
@@ -72,11 +74,13 @@ void reg_display() {
 /////////////////////////////////////////////
 /*                cpu-exec	               */	
 /////////////////////////////////////////////
+#define MAX_INST_TO_PRINT 100
 
 NPCState npc_state = { .state = NPC_RUNNING };
 
 uint64_t g_nr_guest_inst = 0;
 static uint64_t g_timer = 0; // unit: us
+static bool g_print_step = false;
 
 static void statistic() {
 #define NUMBERIC_FMT "%lu"
@@ -86,6 +90,39 @@ static void statistic() {
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
+static void trace_and_difftest(Decode *_this, addr_t dnpc) {
+	if (g_print_step) {
+		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
+	}
+}
+
+#ifdef CONFIG_ITRACE
+	
+void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
+
+typedef struct Decode {
+	char logbuf[128];
+} Decode;
+
+static void inst_trace(Decode *s) {
+	char *p = s->logbuf;
+	p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);
+
+	int ilen = 4;
+	uint8_t* inst = (uint8_t *)&top->inst;
+	for (int i = ilen - 1; i >= 0; i --) {
+		p += snprintf(p, 4 " %02x", inst[i]);
+	}
+	int ilen_max = 4;
+	int space_len = ilen_max - ilen;
+	if (space_len < 0) space_len = 0;
+	space_len = space_len * 3 + 1;
+	memset(p, ' ', space_len);
+	p += space_len;
+	disassemble(p, s->logbuf + sizeof(s->logbuf) - p, top->pc, (uint8_t*)&top->inst, ilen);
+}
+#endif
+
 static void exec_once() {
 	uint32_t pc = top->pc;
 	top->inst = inst_fetch(&pc);
@@ -93,6 +130,11 @@ static void exec_once() {
 }
 
 static void execute(uint64_t n) {
+	#ifdef CONFIG_ITRACE
+		Decode s;	
+		inst_trace(&s);
+	#endif
+
 	for (;n > 0; n --) {
 		exec_once();
 		g_nr_guest_inst ++;
@@ -103,6 +145,7 @@ static void execute(uint64_t n) {
 }
 
 void cpu_exec(uint64_t n) {
+	g_print_step = (n < MAX_INST_TO_PRINT);
 	switch (npc_state.state) {
 		case NPC_END: case NPC_ABORT:
 			printf("Program execution has ended. To restart the program, exit NPC and run again.\n");
