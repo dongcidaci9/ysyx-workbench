@@ -91,7 +91,7 @@ static void execute(uint64_t n) {
 		uint32_t pc = top->pc;
 		top->inst = inst_fetch(&pc);
 		g_nr_guest_inst ++;
-		printf("0x%08x, inst: 0x%08x\n", top->pc, top->inst);
+		printf("0x%08x: inst: 0x%08x\n", top->pc, top->inst);
 		top->clk = 0; step_and_dump_wave();
 		top->clk = 1; step_and_dump_wave();
 		if (npc_state.state != NPC_RUNNING) break;
