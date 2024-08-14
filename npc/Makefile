@@ -36,10 +36,10 @@ VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace
 ## C/C++ files compile flags
 COMPILE = -CFLAGS  
 COMPILE += -I$(CINC_DIR) 
-COMPILE +=  
 
 ## Link flags
-LIBS += -LDFLAGS -lreadline
+LIBS = -LDFLAGS
+LIBS += -lreadline
 
 # --- 4. Target file --- 
 TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
