@@ -18,7 +18,7 @@ SIM_MAIN_SRC += $(wildcard $(SIM_MAIN_SRC_DIR)/*.c)
 
 # Object file directory
 WORK_DIR = $(shell pwd)
-VINC_DIR = $(WORK_DIR)/$(VERILOG_SRC_DIR)/include
+VINC_DIR = $(WORK_DIR)/include
 BUILD_DIR = $(WORK_DIR)/build
 
 # --- 2. Compilation flags ---
@@ -43,6 +43,10 @@ BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
 
 IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
+
+# --- 5. some rules for menuconfig ---
+# Include rules for menuconfig 
+include $(NPC_HOME)/scripts/config.mk
 
 # --- 6. Target command ---
 sim: $(TARGET)
