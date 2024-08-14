@@ -98,7 +98,7 @@ typedef struct Decode {
 
 static void trace_and_difftest(Decode *_this) {
 	if (g_print_step) {
-		printf("aaa");
+		puts("aaa");
 		IFDEF(CONFIG_ITRACE, puts("aa"));
 	}
 }
