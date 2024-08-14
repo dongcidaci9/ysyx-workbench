@@ -15,6 +15,7 @@ VERILOG_SRC = $(wildcard $(VERILOG_SRC_DIR)/*.v)
 ## Simulation main func source directory
 SIM_SRC_DIR = csrc
 SIM_SRC += $(wildcard $(SIM_SRC_DIR)/*.cpp)
+SIM_SRC += $(wildcard $(SIM_SRC_DIR)/*.cc)
 SIM_SRC += $(wildcard $(SIM_SRC_DIR)/*.c)
 
 ## Object file directory
