@@ -128,7 +128,6 @@ static void exec_once() {
 }
 
 static void execute(uint64_t n) {
-
 	for (;n > 0; n --) {
 		exec_once();
 		#ifdef CONFIG_ITRACE
