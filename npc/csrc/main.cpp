@@ -131,9 +131,9 @@ static void execute(uint64_t n) {
 	for (;n > 0; n --) {
 		exec_once();
 		#ifdef CONFIG_ITRACE
-			Decode s;	
 			inst_trace(&s);
 			trace_and_difftest(&s);
+			Decode s;	
 		#endif
 
 		g_nr_guest_inst ++;
