@@ -89,7 +89,6 @@ static void statistic() {
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-
 #ifdef CONFIG_ITRACE
 	
 void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
@@ -126,7 +125,6 @@ static void inst_trace(Decode *s) {
 static void exec_once() {
 	uint32_t pc = top->pc;
 	top->inst = inst_fetch(&pc);
-	printf("0x%08x: %08x\n", top->pc, top->inst);
 }
 
 static void execute(uint64_t n) {
