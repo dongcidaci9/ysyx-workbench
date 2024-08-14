@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#include <../generated/autoconf.h>
 // some defines
 typedef uint32_t word_t;
 typedef uint32_t addr_t; 

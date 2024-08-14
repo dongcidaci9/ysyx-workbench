@@ -98,8 +98,7 @@ typedef struct Decode {
 
 static void trace_and_difftest(Decode *_this) {
 	if (g_print_step) {
-		puts("aaa");
-		IFDEF(CONFIG_ITRACE, puts("aa"));
+		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
 	}
 }
 
@@ -107,12 +106,12 @@ static void trace_and_difftest(Decode *_this) {
 
 static void inst_trace(Decode *s) {
 	char *p = s->logbuf;
-	p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);
+	p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", top->pc);
 
 	int ilen = 4;
 	uint8_t* inst = (uint8_t *)&top->inst;
 	for (int i = ilen - 1; i >= 0; i --) {
-		p += snprintf(p, 4 " %02x", inst[i]);
+		p += snprintf(p, 4, " %02x", inst[i]);
 	}
 	int ilen_max = 4;
 	int space_len = ilen_max - ilen;
