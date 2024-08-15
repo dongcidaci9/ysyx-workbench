@@ -101,7 +101,7 @@ static void trace_and_difftest(Decode *_this) {
 
 #ifdef CONFIG_ITRACE
 
-void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
+extern void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
 
 static void inst_trace(Decode *s) {
 	char *p = s->logbuf;
