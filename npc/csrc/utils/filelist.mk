@@ -14,6 +14,6 @@
 #**************************************************************************************/
 
 SIM_SRC += csrc/utils/disasm.cc
-COMPILE += -CFLAGS "-I/usr/lib/llvm-14/include"
+COMPILE += -CFLAGS "-I/usr/lib/llvm-14/include -std=c++14"
 LIBS += -LDFLAGS "$(shell llvm-config --ldflags)"
 LIBS += -LDFLAGS "$(shell llvm-config --libs)"
