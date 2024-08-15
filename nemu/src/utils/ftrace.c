@@ -283,7 +283,7 @@ static void display_section_headers(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[]) 
 	ftrace_write("========================================");
 	ftrace_write("========================================\n");
 
-	for(int i = 0; i < eh.e_shnum; i++) {
+	for(int i = 0; i < eh.e_shnum; i ++) {
 		ftrace_write(" %03d ", i);
 		ftrace_write("0x%08lx ", sh_tbl[i].sh_offset);
 		ftrace_write("0x%08lx ", sh_tbl[i].sh_addr);
@@ -363,8 +363,8 @@ void init_elf(const char *elf_file) {
   	Elf64_Ehdr eh;
 	read_elf_header(fd, &eh);
   	display_elf_hedaer(eh);
-
-  	Elf64_Shdr *sh_tbl = malloc(eh.e_shnum * eh.e_shentsize);
+ 	
+	Elf64_Shdr sh_tbl[eh.e_shentsize * eh.e_shnum];
 	read_section_headers(fd, eh, sh_tbl);
   	display_section_headers(fd, eh, sh_tbl);
 
