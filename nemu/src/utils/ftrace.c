@@ -211,7 +211,6 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 	 * Add support below to parse ELF file flags on ARM
 	 */
 	int32_t ef = eh.e_flags;
-	ftrace_write("\t\t  ");
 
 	if(ef & EF_ARM_RELEXEC)
 		ftrace_write(" RELEXEC ");
