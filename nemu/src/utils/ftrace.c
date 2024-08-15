@@ -5,10 +5,10 @@
 
 #ifdef CONFIG_FTRACE
 typedef struct {
-	char name[32]; // func name, 32 should be enough
+	char name[32]; // func name, 32 shoud be enough
 	paddr_t addr;
 	unsigned char info;
-	Elf64_Xword size;
+	Elf32_Xword size;
 } SymEntry;
 
 SymEntry *symbol_tbl = NULL; // dynamic allocated
@@ -23,9 +23,9 @@ typedef struct tail_rec_node {
 TailRecNode *tail_rec_head = NULL; // linklist with head, dynamic allocated
 
 // header
-static void read_elf_header(int fd, Elf64_Ehdr *eh) {
+static void read_elf_header(int fd, Elf32_Ehdr *eh) {
 	assert(lseek(fd, 0, SEEK_SET) == 0);
-  	assert(read(fd, (void *)eh, sizeof(Elf64_Ehdr)) == sizeof(Elf64_Ehdr));
+  	assert(read(fd, (void *)eh, sizeof(Elf32_Ehdr)) == sizeof(Elf32_Ehdr));
 
 	  // check if is elf using fixed format of Magic: 7f 45 4c 46 ...
   if(strncmp((char*)eh->e_ident, "\177ELF", 4)) {
@@ -33,7 +33,7 @@ static void read_elf_header(int fd, Elf64_Ehdr *eh) {
 	}
 }
 
-static void display_elf_hedaer(Elf64_Ehdr eh) {
+static void display_elf_hedaer(Elf32_Ehdr eh) {
 	ftrace_write("========== Display elf header ==========\n");
 	/* Storage capacity class */
 	ftrace_write("Storage class\t= ");
@@ -179,7 +179,7 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 			break;
 
 		case EM_RISCV:
-			ftrace_write("RISC-V (0x%x)\n", EM_RISCV);
+			ftrace_write("RISCV (0x%x)\n", EM_RISCV);
 			break;
 		
 		default: 
@@ -188,20 +188,20 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 	}
 
 	/* Entry point */
-	ftrace_write("Entry point\t= 0x%08lx\n", eh.e_entry);
+	ftrace_write("Entry point\t= 0x%08x\n", eh.e_entry);
 
 	/* ELF header size in bytes */
 	ftrace_write("ELF header size\t= 0x%08x\n", eh.e_ehsize);
 
 	/* Program Header */
 	ftrace_write("Program Header\t= ");
-	ftrace_write("0x%08lx\n", eh.e_phoff);		/* start */
+	ftrace_write("0x%08x\n", eh.e_phoff);		/* start */
 	ftrace_write("\t\t  %d entries\n", eh.e_phnum);	/* num entry */
 	ftrace_write("\t\t  %d bytes\n", eh.e_phentsize);	/* size/entry */
 
 	/* Section header starts at */
 	ftrace_write("Section Header\t= ");
-	ftrace_write("0x%08lx\n", eh.e_shoff);		/* start */
+	ftrace_write("0x%08x\n", eh.e_shoff);		/* start */
 	ftrace_write("\t\t  %d entries\n", eh.e_shnum);	/* num entry */
 	ftrace_write("\t\t  %d bytes\n", eh.e_shentsize);	/* size/entry */
 	ftrace_write("\t\t  0x%08x (string table offset)\n", eh.e_shstrndx);
@@ -241,7 +241,7 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 		ftrace_write(" NEW_ABI ");
 
 	if(ef & EF_ARM_OLD_ABI)
-		ftrace_write(" OLD_ABI ");
+		ftrace_write(" Od_ABI ");
 
 	if(ef & EF_ARM_SOFT_FLOAT)
 		ftrace_write(" SOFT_FLOAT ");
@@ -260,20 +260,20 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 	ftrace_write("\n");	/* End of ELF header */
 }
 
-static void read_section(int fd, Elf64_Shdr sh, void *dst) {
+static void read_section(int fd, Elf32_Shdr sh, void *dst) {
 	assert(dst != NULL);
 	assert(lseek(fd, (off_t)sh.sh_offset, SEEK_SET) == (off_t)sh.sh_offset);
 	assert(read(fd, dst, sh.sh_size) == sh.sh_size);
 }
 
-static void read_section_headers(int fd, Elf64_Ehdr eh, Elf64_Shdr *sh_tbl) {
+static void read_section_headers(int fd, Elf32_Ehdr eh, Elf32_Shdr *sh_tbl) {
 	assert(lseek(fd, eh.e_shoff, SEEK_SET) == eh.e_shoff);
 	for(int i = 0; i < eh.e_shnum; i++) {
 		assert(read(fd, (void *)&sh_tbl[i], eh.e_shentsize) == eh.e_shentsize);
 	}
 }
 
-static void display_section_headers(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[]) {
+static void display_section_headers(int fd, Elf32_Ehdr eh, Elf32_Shdr sh_tbl[]) {
   // warn: C99
 	char sh_str[sh_tbl[eh.e_shstrndx].sh_size];
   read_section(fd, sh_tbl[eh.e_shstrndx], sh_str);
@@ -289,11 +289,11 @@ static void display_section_headers(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[]) 
 
 	for(int i = 0; i < eh.e_shnum; i ++) {
 		ftrace_write(" %03d ", i);
-		ftrace_write("0x%08lx ", sh_tbl[i].sh_offset);
-		ftrace_write("0x%08lx ", sh_tbl[i].sh_addr);
-		ftrace_write("0x%08lx ", sh_tbl[i].sh_size);
-		ftrace_write("%-4ld ", sh_tbl[i].sh_addralign);
-		ftrace_write("0x%08lx ", sh_tbl[i].sh_flags);
+		ftrace_write("0x%08x ", sh_tbl[i].sh_offset);
+		ftrace_write("0x%08x ", sh_tbl[i].sh_addr);
+		ftrace_write("0x%08x ", sh_tbl[i].sh_size);
+		ftrace_write("%-4d ", sh_tbl[i].sh_addralign);
+		ftrace_write("0x%08x ", sh_tbl[i].sh_flags);
 		ftrace_write("0x%08x ", sh_tbl[i].sh_type);
 		ftrace_write("%s\t", (sh_str + sh_tbl[i].sh_name));
 		ftrace_write("\n");
@@ -303,22 +303,22 @@ static void display_section_headers(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[]) 
 	ftrace_write("\n");	/* end of section header table */
 }
 
-static void read_symbol_table(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[], int sym_idx) {
-  Elf64_Sym sym_tbl[sh_tbl[sym_idx].sh_size];
+static void read_symbol_table(int fd, Elf32_Ehdr eh, Elf32_Shdr sh_tbl[], int sym_idx) {
+  Elf32_Sym sym_tbl[sh_tbl[sym_idx].sh_size];
   read_section(fd, sh_tbl[sym_idx], sym_tbl);
   
   int str_idx = sh_tbl[sym_idx].sh_link;
   char str_tbl[sh_tbl[str_idx].sh_size];
   read_section(fd, sh_tbl[str_idx], str_tbl);
   
-  int sym_count = (sh_tbl[sym_idx].sh_size / sizeof(Elf64_Sym));
+  int sym_count = (sh_tbl[sym_idx].sh_size / sizeof(Elf32_Sym));
 	// log
   ftrace_write("Symbol count: %d\n", sym_count);
   ftrace_write("====================================================\n");
   ftrace_write(" num    value            type size       name\n");
   ftrace_write("====================================================\n");
   for (int i = 0; i < sym_count; i++) {
-    ftrace_write(" %-3d    %016lx %-4d %-10ld %s\n",
+    ftrace_write(" %-3d    %016x %-4d %-10d %s\n",
       i,
       sym_tbl[i].st_value, 
       ELF64_ST_TYPE(sym_tbl[i].st_info),
@@ -340,7 +340,7 @@ static void read_symbol_table(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[], int sy
   }
 }
 
-static void read_symbols(int fd, Elf64_Ehdr eh, Elf64_Shdr sh_tbl[]) {
+static void read_symbols(int fd, Elf32_Ehdr eh, Elf32_Shdr sh_tbl[]) {
   for (int i = 0; i < eh.e_shnum; i++) {
 		switch (sh_tbl[i].sh_type) {
 		case SHT_SYMTAB: case SHT_DYNSYM:
@@ -364,11 +364,11 @@ void init_elf(const char *elf_file) {
   	int fd = open(elf_file, O_RDONLY);
   	Assert(fd >= 0, "Error %d: unable to open %s\n", fd, elf_file);
   
-  	Elf64_Ehdr eh;
+  	Elf32_Ehdr eh;
 	read_elf_header(fd, &eh);
   	display_elf_hedaer(eh);
  	
-	Elf64_Shdr sh_tbl[eh.e_shentsize * eh.e_shnum];
+	Elf32_Shdr sh_tbl[eh.e_shentsize * eh.e_shnum];
 	read_section_headers(fd, eh, sh_tbl);
   	display_section_headers(fd, eh, sh_tbl);
 
