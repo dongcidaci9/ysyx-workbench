@@ -34,6 +34,7 @@ static void read_elf_header(int fd, Elf64_Ehdr *eh) {
 }
 
 static void display_elf_hedaer(Elf64_Ehdr eh) {
+	ftrace_write("========== Display elf header ==========\n");
 	/* Storage capacity class */
 	ftrace_write("Storage class\t= ");
 	switch(eh.e_ident[EI_CLASS])
@@ -178,7 +179,7 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 			break;
 
 		default:
-			ftrace_write(" 0x%x\n", eh.e_machine);
+			ftrace_write("UNKNOWN (0x%x)\n", eh.e_machine);
 			break;
 	}
 
@@ -202,7 +203,7 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 	ftrace_write("\t\t  0x%08x (string table offset)\n", eh.e_shstrndx);
 
 	/* File flags (Machine specific)*/
-	ftrace_write("File flags \t= 0x%08x\n", eh.e_flags);
+	ftrace_write("File flags \t= 0x%08x", eh.e_flags);
 
 	/* ELF file flags are machine specific.
 	 * INTEL implements NO flags.
@@ -213,40 +214,40 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 	ftrace_write("\t\t  ");
 
 	if(ef & EF_ARM_RELEXEC)
-		ftrace_write(",RELEXEC ");
+		ftrace_write(" RELEXEC ");
 
 	if(ef & EF_ARM_HASENTRY)
-		ftrace_write(",HASENTRY ");
+		ftrace_write(" HASENTRY ");
 
 	if(ef & EF_ARM_INTERWORK)
-		ftrace_write(",INTERWORK ");
+		ftrace_write(" INTERWORK ");
 
 	if(ef & EF_ARM_APCS_26)
-		ftrace_write(",APCS_26 ");
+		ftrace_write(" APCS_26 ");
 
 	if(ef & EF_ARM_APCS_FLOAT)
-		ftrace_write(",APCS_FLOAT ");
+		ftrace_write(" APCS_FLOAT ");
 
 	if(ef & EF_ARM_PIC)
-		ftrace_write(",PIC ");
+		ftrace_write(" PIC ");
 
 	if(ef & EF_ARM_ALIGN8)
-		ftrace_write(",ALIGN8 ");
+		ftrace_write(" ALIGN8 ");
 
 	if(ef & EF_ARM_NEW_ABI)
-		ftrace_write(",NEW_ABI ");
+		ftrace_write(" NEW_ABI ");
 
 	if(ef & EF_ARM_OLD_ABI)
-		ftrace_write(",OLD_ABI ");
+		ftrace_write(" OLD_ABI ");
 
 	if(ef & EF_ARM_SOFT_FLOAT)
-		ftrace_write(",SOFT_FLOAT ");
+		ftrace_write(" SOFT_FLOAT ");
 
 	if(ef & EF_ARM_VFP_FLOAT)
-		ftrace_write(",VFP_FLOAT ");
+		ftrace_write(" VFP_FLOAT ");
 
 	if(ef & EF_ARM_MAVERICK_FLOAT)
-		ftrace_write(",MAVERICK_FLOAT ");
+		ftrace_write(" MAVERICK_FLOAT ");
 
 	ftrace_write("\n");
 
