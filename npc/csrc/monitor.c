@@ -113,7 +113,7 @@ void init_monitor(int argc, char *argv[]) {
 	init_mem();
 	init_isa();
 	long img_size = load_img();
-	IFDEF(CONFIG_ITRACE, init(disasm("riscv32" "-pc-linux-gnu")))
+	IFDEF(CONFIG_ITRACE, init_disasm("riscv32" "-pc-linux-gnu"));
 	welcome();
 }
 

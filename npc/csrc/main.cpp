@@ -11,7 +11,6 @@
 #include <macro.h>
 #include <cpu.h>
 #include <sdb.h>
-#include <monitor.h>
 
 /////////////////////////////////////////////
 /*                Simulation               */	
@@ -75,8 +74,10 @@ void reg_display() {
 /////////////////////////////////////////////
 #define MAX_INST_TO_PRINT 100
 
-NPCState npc_state = { .state = NPC_RUNNING };
+word_t inst_fetch(addr_t* pc);
+void init_monitor(int argc, char *argv[]);
 
+NPCState npc_state = { .state = NPC_RUNNING };
 uint64_t g_nr_guest_inst = 0;
 static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
@@ -101,7 +102,7 @@ static void trace_and_difftest(Decode *_this) {
 
 #ifdef CONFIG_ITRACE
 
-extern void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
+void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
 
 static void inst_trace(Decode *s) {
 	char *p = s->logbuf;
