@@ -178,7 +178,11 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 			ftrace_write("AARCH64 (0x%x)\n", EM_AARCH64);
 			break;
 
-		default:
+		case EM_RISCV:
+			ftrace_write("RISCV (0x%x)\n", EM_RISCV);
+			break;
+		
+		default: 
 			ftrace_write("UNKNOWN (0x%x)\n", eh.e_machine);
 			break;
 	}
