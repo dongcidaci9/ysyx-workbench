@@ -179,7 +179,7 @@ static void display_elf_hedaer(Elf64_Ehdr eh) {
 			break;
 
 		case EM_RISCV:
-			ftrace_write("RISCV (0x%x)\n", EM_RISCV);
+			ftrace_write("RISC-V (0x%x)\n", EM_RISCV);
 			break;
 		
 		default: 
