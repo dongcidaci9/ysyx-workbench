@@ -25,7 +25,7 @@ TailRecNode *tail_rec_head = NULL; // linklist with head, dynamic allocated
 // header
 static void read_elf_header(int fd, Elf64_Ehdr *eh) {
 	assert(lseek(fd, 0, SEEK_SET) == 0);
-  assert(read(fd, (void *)eh, sizeof(Elf64_Ehdr)) == sizeof(Elf64_Ehdr));
+  	assert(read(fd, (void *)eh, sizeof(Elf64_Ehdr)) == sizeof(Elf64_Ehdr));
 
 	  // check if is elf using fixed format of Magic: 7f 45 4c 46 ...
   if(strncmp((char*)eh->e_ident, "\177ELF", 4)) {
@@ -364,7 +364,7 @@ void init_elf(const char *elf_file) {
 	read_elf_header(fd, &eh);
   	display_elf_hedaer(eh);
 
-  	Elf64_Shdr sh_tbl[eh.e_shentsize * eh.e_shnum];
+  	Elf64_Shdr *sh_tbl = malloc(eh.e_shnum * eh.e_shentsize);
 	read_section_headers(fd, eh, sh_tbl);
   	display_section_headers(fd, eh, sh_tbl);
 
