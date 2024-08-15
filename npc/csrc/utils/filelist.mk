@@ -15,6 +15,6 @@
 
 SIM_SRC += csrc/utils/disasm.cc
 COMPILE += -CFLAGS "$(shell llvm-config --cxxflags) -fPIE"
-COMPILE += -CFLAGS "-Wno-redundant-decls"
+COMPILE += -CFLAGS " -fvisibility=hidden"
 LIBS += -LDFLAGS "$(shell llvm-config --ldflags)"
 LIBS += -LDFLAGS "$(shell llvm-config --libs)"
