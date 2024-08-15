@@ -263,7 +263,7 @@ static void read_section(int fd, Elf64_Shdr sh, void *dst) {
 }
 
 static void read_section_headers(int fd, Elf64_Ehdr eh, Elf64_Shdr *sh_tbl) {
-	assert(lseek(fd, (off_t)eh.e_shoff, SEEK_SET) == (off_t)eh.e_shoff);
+	assert(lseek(fd, eh.e_shoff, SEEK_SET) == eh.e_shoff);
 	for(int i = 0; i < eh.e_shnum; i++) {
 		assert(read(fd, (void *)&sh_tbl[i], eh.e_shentsize) == eh.e_shentsize);
 	}
