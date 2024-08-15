@@ -357,18 +357,18 @@ void init_elf(const char *elf_file) {
   if (elf_file == NULL) return;
   
 	Log("specified ELF file: %s", elf_file);
-  int fd = open(elf_file, O_RDONLY|O_SYNC);
-  Assert(fd >= 0, "Error %d: unable to open %s\n", fd, elf_file);
+  	int fd = open(elf_file, O_RDONLY|O_SYNC);
+  	Assert(fd >= 0, "Error %d: unable to open %s\n", fd, elf_file);
   
-  Elf64_Ehdr eh;
+  	Elf64_Ehdr eh;
 	read_elf_header(fd, &eh);
-  display_elf_hedaer(eh);
+  	display_elf_hedaer(eh);
 
-  Elf64_Shdr sh_tbl[eh.e_shentsize * eh.e_shnum];
+  	Elf64_Shdr sh_tbl[eh.e_shentsize * eh.e_shnum];
 	read_section_headers(fd, eh, sh_tbl);
-  display_section_headers(fd, eh, sh_tbl);
+  	display_section_headers(fd, eh, sh_tbl);
 
-  read_symbols(fd, eh, sh_tbl);
+  	read_symbols(fd, eh, sh_tbl);
 
 	init_tail_rec_list();
 

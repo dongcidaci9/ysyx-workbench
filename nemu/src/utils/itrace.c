@@ -42,3 +42,8 @@ void display_inst() {
   puts(ANSI_NONE);
 }
 #endif
+
+#ifdef CONFIG_FTRACE
+
+
+#endif

@@ -16,6 +16,7 @@
 void init_rand();
 void init_log(const char *log_file);
 void init_mem();
+void init_elf(const char *elf_file);
 void init_difftest(char *ref_so_file, long img_size, int port);
 void init_device();
 void init_sdb();
@@ -118,6 +119,9 @@ void init_monitor(int argc, char *argv[]) {
   /* Initialize memory. */
   init_mem();
 
+  /* Open the elf file. */
+  init_elf(elf_file);
+  
   /* Initialize devices. */
   IFDEF(CONFIG_DEVICE, init_device());
 
