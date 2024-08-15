@@ -31,11 +31,12 @@ VERILATOR := verilator
 ## Verilog files compile flags
 TOP_FLAGS := --top-module $(TOP_MODULE)
 BUILD_FLAGS := --Mdir $(BUILD_DIR)
-VINC_FLAGS := -I$(VINC_DIR)
+VINC_FLAGS := $(addprefix -I, $(VINC_DIR))
 VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace 
 
 ## C/C++ files compile flags
-COMPILE += -CFLAGS "-I$(CINC_DIR)"
+CINC_FLAGS := $(addprefix -I, $(CINC_DIR))
+COMPILE += -CFLAGS "$(CINC_FLAGS)"
 
 ## Link flags
 LIBS += -LDFLAGS "-lreadline"
