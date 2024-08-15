@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <elf.h>
 
-#ifdef CONFIG_FTRACE_COND
+#ifdef CONFIG_FTRACE
 typedef struct {
 	char name[32]; // func name, 32 should be enough
 	paddr_t addr;
