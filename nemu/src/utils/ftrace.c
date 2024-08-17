@@ -4,6 +4,7 @@
 #include <elf.h>
 
 #ifdef CONFIG_FTRACE
+
 typedef struct {
 	char name[32]; // func name, 32 shoud be enough
 	paddr_t addr;
@@ -11,16 +12,17 @@ typedef struct {
 	Elf32_Xword size;
 } SymEntry;
 
-SymEntry *symbol_tbl = NULL; // dynamic allocated
-int symbol_tbl_size = 0;
-int call_depth = 0;
-
 typedef struct tail_rec_node {
 	paddr_t pc;
 	paddr_t depth;
 	struct tail_rec_node *next;
 } TailRecNode;
+
+// global variable
 TailRecNode *tail_rec_head = NULL; // linklist with head, dynamic allocated
+SymEntry *symbol_tbl = NULL; // dynamic allocated
+int symbol_tbl_size = 0;
+int call_depth = 0;
 
 // header
 static void read_elf_header(int fd, Elf32_Ehdr *eh) {
@@ -260,6 +262,7 @@ static void display_elf_hedaer(Elf32_Ehdr eh) {
 	ftrace_write("\n");	/* End of ELF header */
 }
 
+// section header
 static void read_section(int fd, Elf32_Shdr sh, void *dst) {
 	assert(dst != NULL);
 	assert(lseek(fd, (off_t)sh.sh_offset, SEEK_SET) == (off_t)sh.sh_offset);
@@ -303,6 +306,7 @@ static void display_section_headers(int fd, Elf32_Ehdr eh, Elf32_Shdr sh_tbl[]) 
 	ftrace_write("\n");	/* end of section header table */
 }
 
+// symbol
 static void read_symbol_table(int fd, Elf32_Ehdr eh, Elf32_Shdr sh_tbl[], int sym_idx) {
   Elf32_Sym sym_tbl[sh_tbl[sym_idx].sh_size];
   read_section(fd, sh_tbl[sym_idx], sym_tbl);
@@ -413,7 +417,7 @@ static void remove_tail_rec() {
 void trace_func_call(paddr_t pc, paddr_t target, bool is_tail) {
 	if (symbol_tbl == NULL) return;
 
-	++call_depth;
+	++ call_depth;
 
 	if (call_depth <= 2) return; // ignore _trm_init & main
 	
