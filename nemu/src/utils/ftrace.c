@@ -336,7 +336,7 @@ static void read_symbol_table(int fd, Elf32_Ehdr eh, Elf32_Shdr sh_tbl[], int sy
 	symbol_tbl_size = sym_count;
 	symbol_tbl = malloc(sizeof(SymEntry) * sym_count);
   for (int i = 0; i < sym_count; i++) {
-    symbol_tbl[i].addr = sym_tbl[i].st_value;
+    	symbol_tbl[i].addr = sym_tbl[i].st_value;
 		symbol_tbl[i].info = sym_tbl[i].st_info;
 		symbol_tbl[i].size = sym_tbl[i].st_size;
 		memset(symbol_tbl[i].name, 0, 32);
@@ -387,6 +387,7 @@ void init_elf(const char *elf_file) {
 static int find_symbol_func(paddr_t target, bool is_call) {
 	int i;
 	for (i = 0; i < symbol_tbl_size; i++) {
+		// if type == 2 (aka FUNC)
 		if (ELF64_ST_TYPE(symbol_tbl[i].info) == STT_FUNC) {
 			if (is_call) {
 				if (symbol_tbl[i].addr == target) break;
