@@ -82,12 +82,12 @@ static int decode_exec(Decode *s) {
   INSTPAT("0000001 ????? ????? 100 ????? 01100 11", div    , R, R(rd) = (sword_t)src1 / (sword_t)src2);
   INSTPAT("0000001 ????? ????? 101 ????? 01100 11", divu   , R, R(rd) = (word_t)src1 / (word_t)src2);
 	INSTPAT("??????? ????? ????? ??? ????? 11011 11", jal    , J, R(rd) = s->snpc; s->dnpc = s->pc + imm; 
-			IFDEF(CONFIG_FTRACE, if (rd == 1) trace_func_call(s->pc, s->dnpc, false)));
+			IFDEF(CONFIG_FTRACE, if (rd == 1) trace_func_call(s->pc, s->dnpc, false))); // x1: ra: save return address for jumps
 	INSTPAT("??????? ????? ????? 000 ????? 11001 11", jalr   , I, R(rd) = s->snpc; s->dnpc = (src1 +imm) & ~1; 
 			IFDEF(CONFIG_FTRACE, 
-				if (s->isa.inst.val == 0x00008067) trace_func_ret(s->pc);
-				else if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
-				else if (rd == 0 && imm == 0) trace_func_call(s->pc, s->dnpc, true);
+				if (s->isa.inst.val == 0x00008067) trace_func_ret(s->pc); // (rd == 0 && imm == 0 && rs1 = 1) ret -> jalr x0, 0(x1) : jumps to 0(x1); dump the return address
+				else if (rd == 1) trace_func_call(s->pc, s->dnpc, false); // save return address for jumps
+				else if (rd == 0 && imm == 0) trace_func_call(s->pc, s->dnpc, true); // jalr x0, 0(rs1) -> jumps to 0(rs1); dump the return address (jumps without return)
 			));
 	INSTPAT("??????? ????? ????? 100 ????? 00000 11", lbu    , I, R(rd) = Mr(src1 + imm, 1));
   INSTPAT("??????? ????? ????? 101 ????? 00000 11", lhu    , I, R(rd) = Mr(src1 + imm, 2));
