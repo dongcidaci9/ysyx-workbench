@@ -9,4 +9,10 @@ SIM_SRC += csrc/utils/ftrace.c
 endif
 
 ifeq ($(CONFIG_DIFFTEST), y)
-LIBS += -LDFLAGS "-L $(NEMU_HOME)/build -lriscv32-nemu-interpreter-so"
+DIFF_REF_PATH = $(NEMU_HOME)/build
+DIFF_REF_SO = $(DIFF_REF_PATH)/riscv32-nemu-interpreter-so
+#MKFLAGS = GUEST_ISA=$(GUEST_ISA) SHARE=1 ENGINE=interpreter
+ARGS_DIFF = --diff=$(DIFF_REF_SO)
+
+LIBS += -LDFLAGS "-L $(DIFF_REF_PATH) -l$(DIFF_REF_SO)"
+endif
