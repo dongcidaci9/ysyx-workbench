@@ -132,11 +132,11 @@ void trace_func_ret(addr_t pc);
 
 static void func_trace()
 {
-	uint32_t 	inst 	= top->inst;
-	word_t 		pc 		= top->pc;
-	word_t 		snpc 	= top->pc + 4;
-	word_t 		dnpc 	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
-	word_t 		imm 	= top->rootp->ysyx_23060201_TOP__DOT__wire_imm;
+	uint32_t inst 	= top->inst;
+	word_t pc 		= top->pc;
+	word_t snpc 	= top->pc + 4;
+	word_t dnpc 	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
+	word_t imm 		= top->rootp->ysyx_23060201_TOP__DOT__wire_imm;
 	
 	uint8_t	opcode 	= BITS(inst, 6, 0);
 	uint8_t rd 		= BITS(inst, 11, 7);
