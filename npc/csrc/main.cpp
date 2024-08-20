@@ -92,10 +92,6 @@ static void statistic() {
 
 
 typedef struct Decode {
-	addr_t pc;
-	addr_t snpc;
-	addr_t dnpc;
-	uint32_t inst;	
 	IFDEF(CONFIG_ITRACE, char logbuf[128]);
 } Decode;
 
@@ -134,20 +130,23 @@ static void inst_trace(Decode *s) {
 void trace_func_call(addr_t pc, addr_t target, bool is_tail);
 void trace_func_ret(addr_t pc);
 
-static void func_trace(Decode *s)
+static void func_trace()
 {
-	uint32_t inst = s->inst;
+	uint32_t 	inst 	= top->inst;
+	word_t 		pc 		= top->pc;
+	word_t 		snpc 	= top->pc + 4;
+	word_t 		dnpc 	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
+	word_t 		imm 	= top->rootp->ysyx_23060201_TOP__DOT__wire_imm;
+	
 	uint8_t	opcode 	= BITS(inst, 6, 0);
-	uint8_t rd 		= BITS(inst, 7, 11);
-
+	uint8_t rd 		= BITS(inst, 11, 7);
 	if (opcode == 1101111) {
-		if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
+		if (rd == 1) trace_func_call(pc, dnpc, false);
 	}
 	if (opcode == 1100111) {
-		uint32_t imm = SEXT(BITS(inst, 31, 20), 12);
-		if (inst == 0x00008067) trace_func_ret(s->pc);
-		else if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
-		else if (rd == 0 && imm == 0) trace_func_call(s->pc, s->dnpc, true);
+		if (inst == 0x00008067) trace_func_ret(pc);
+		else if (rd == 1) trace_func_call(pc, dnpc, false);
+		else if (rd == 0 && imm == 0) trace_func_call(pc, dnpc, true);
 	}
 }
 
@@ -156,15 +155,12 @@ static void func_trace(Decode *s)
 static void exec_once(Decode *s) {
 	word_t pc = top->pc;	
 	top->inst = inst_fetch(&pc);
-
-	s->inst = top->inst;
-	s->pc 	= top->pc;
-	s->snpc = top->pc + 4;
-	s->dnpc = top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
 	
+	IFDEF(CONFIG_ITRACE, inst_trace(s));
+	IFDEF(CONFIG_FTRACE, func_trace());
+
 	top->clk = 0; step_and_dump_wave();
 	top->clk = 1; step_and_dump_wave();
-	IFDEF(CONFIG_ITRACE, inst_trace(s));
 }
 
 static void execute(uint64_t n) {
