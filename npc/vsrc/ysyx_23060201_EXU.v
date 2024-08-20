@@ -15,19 +15,26 @@ module ysyx_23060201_EXU(
 	output wen,
 	output [4:0] waddr,
 	output [31:0] wdata,
-	output [31:0] npc
+	output [31:0] dnpc
 );
 
 	/////////////////////////////////////////////////////
 	/*                    A L U                        */ 
 	/////////////////////////////////////////////////////
 
-	// dnpc, snpc
-	wire [31:0] snpc = pc + 4;
-
 	// alu signal
+	wire [31:0] snpc;
 	wire [31:0] alu_a, alu_b;
 	wire [3:0] alu_ctl;
+	
+	// wen
+	assign wen = 1'b1;
+
+	// gpr_clk
+	assign clk_b = clk_a;
+	
+	// dnpc, snpc
+	assign snpc = pc + 4;
 
 	// alu_a_sel
 	MuxKeyWithDefault #(7, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
@@ -67,23 +74,17 @@ module ysyx_23060201_EXU(
 	/*                     gpr write                   */ 
 	/////////////////////////////////////////////////////
 
-	// gpr_clk
-	assign clk_b = clk_a;
-
 	// waddr_sel
 	MuxKeyWithDefault #(1, 7, 5) waddr_sel(waddr, op, rd, {
 		`ysyx_23060201_OP_TYPE_S, raddr1 + imm[4:0]
 	});
-
-	// wen
-	assign wen = 1'b1;
 
 	/////////////////////////////////////////////////////
 	/*                     npc select                  */ 
 	/////////////////////////////////////////////////////
 
 	// dnpc
-	MuxKeyWithDefault #(2, 7, 32) npc_sel(npc, op, snpc, {
+	MuxKeyWithDefault #(2, 7, 32) dnpc_sel(dnpc, op, snpc, {
 		`ysyx_23060201_OP_TYPE_J,  pc + imm, 
 		`ysyx_23060201_OP_TYPE_JR, (rdata1 + imm) & (~1)
 	});
