@@ -90,7 +90,12 @@ static void statistic() {
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
+
 typedef struct Decode {
+	addr_t pc;
+	addr_t snpc;
+	addr_t dnpc;
+	uint32_t inst;	
 	IFDEF(CONFIG_ITRACE, char logbuf[128]);
 } Decode;
 
@@ -128,10 +133,19 @@ static void inst_trace(Decode *s) {
 
 static void trace_func()
 {
-	if (jal) if (rd == 1) trace_func_call
+	uint32_t i = top->inst;
+	uint8_t	opcode 	= BITS(i, 6, 0);
+	uint8_t rd 		= BITS(i, 7, 11);
+
+	if (opcode = 1101111) {
+		if (rd == 1) trace_func_call(top->pc, )
+	if (opcode = 1100111) 	if (rd == 1) trace_func_call
 }
 
+#endif
+
 static void exec_once(Decode *s) {
+	s->pc = top-pc;
 	uint32_t pc = top->pc;
 	top->inst = inst_fetch(&pc);
 	top->clk = 0; step_and_dump_wave();
