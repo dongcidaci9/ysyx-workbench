@@ -64,8 +64,7 @@ include $(NPC_HOME)/scripts/config.mk
 -include $(NPC_HOME)/include/config/auto.conf.cmd
 
 # --- 6. filelists ---
-FILELIST_MK = $(shell find -L ./csrc -name "filelist.mk")
-include $(FILELIST_MK)
+include $(NPC_HOME)/scripts/filelist.mk
 
 # --- 7. Target command ---
 sim: $(TARGET)
