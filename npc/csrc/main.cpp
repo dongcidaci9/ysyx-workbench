@@ -131,17 +131,20 @@ static void inst_trace(Decode *s) {
 
 #ifdef CONFIG_FTRACE
 
+void trace_func_call(addr_t pc, addr_t target, bool is_tail);
+void trace_func_ret(addr_t pc);
+
 static void func_trace(Decode *s)
 {
 	uint32_t inst = s->inst;
 	uint8_t	opcode 	= BITS(inst, 6, 0);
 	uint8_t rd 		= BITS(inst, 7, 11);
 
-	if (opcode = 1101111) {
+	if (opcode == 1101111) {
 		if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
 	}
-	if (opcode = 1100111) {
-		uint32_t imm == SEXT(BITS(inst, 31, 20), 12);
+	if (opcode == 1100111) {
+		uint32_t imm = SEXT(BITS(inst, 31, 20), 12);
 		if (inst == 0x00008067) trace_func_ret(s->pc);
 		else if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
 		else if (rd == 0 && imm == 0) trace_func_call(s->pc, s->dnpc, true);
@@ -151,12 +154,13 @@ static void func_trace(Decode *s)
 #endif
 
 static void exec_once(Decode *s) {
+	word_t pc = top->pc;	
 	top->inst = inst_fetch(&pc);
 
 	s->inst = top->inst;
 	s->pc 	= top->pc;
 	s->snpc = top->pc + 4;
-	s->dnpc = top->ysyx_23060201_TOP__DOT__wire_dnpc;
+	s->dnpc = top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
 	
 	top->clk = 0; step_and_dump_wave();
 	top->clk = 1; step_and_dump_wave();

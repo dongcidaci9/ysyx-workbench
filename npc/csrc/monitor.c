@@ -7,6 +7,7 @@
 #include <macro.h>
 #include <sdb.h>
 
+void init_elf(const char *elf_file);
 void init_disasm(const char *triple);
 
 //////////////////////////////////////////////
