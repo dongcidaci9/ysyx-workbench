@@ -50,11 +50,11 @@ static void trace_and_difftest(Decode *_this, vaddr_t dnpc) {
 
 static void exec_once(Decode *s, vaddr_t pc) {
   s->pc = pc;
-  printf("%d\n", s->pc);
+  printf("0x%08x\n", s->pc);
   s->snpc = pc;
-  printf("%d\n", s->snpc);
+  printf("0x%08x\n", s->snpc);
   isa_exec_once(s);
-  printf("%d\n", s->snpc);
+  printf("0x%08x\n", s->snpc);
   cpu.pc = s->dnpc;
 #ifdef CONFIG_ITRACE
   char *p = s->logbuf;
