@@ -1,8 +1,8 @@
 #ifndef __CPU_H__
 #define __CPU_H__
 
-#include "common.h"
-#include "utils.h"
+#include <common.h>
+#include <utils.h>
 
 void cpu_exec(uint64_t n);
 
