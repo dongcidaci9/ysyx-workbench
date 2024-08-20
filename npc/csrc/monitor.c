@@ -60,25 +60,29 @@ word_t inst_fetch(addr_t* pc_addr) {
 
 static char *log_file = NULL;
 static char *img_file = NULL;
+static char *elf_file = NULL;
 
 // command line
 static int parse_args(int argc, char *argv[]) {
 	const struct option table[] = {
 		{"batch" , no_argument		, NULL, 'b'},
 		{"log"   , required_argument, NULL, 'l'},
+		{"elf"   , required_argument, NULL, 'e'},
     	{"help"  , no_argument      , NULL, 'h'},
 		{0       , 0                , NULL,  0 },
 	};
 	int o;
-	while ( (o = getopt_long(argc, argv, "-bhl:", table, NULL)) != -1) {
+	while ( (o = getopt_long(argc, argv, "-bhl:e:", table, NULL)) != -1) {
 		switch (o) {
 			case 'b': sdb_set_batch_mode(); break;
 			case 'l': log_file = optarg; break;
+			case 'e': elf_file = optarg; break;
 			case  1 : img_file = optarg; return 0; // non-option argument
 			default:
  				printf("Usage: %s [OPTION...] IMAGE [args]\n\n", argv[0]);
         		printf("\t-b,--batch           		run with batch mode\n");
         		printf("\t-l,--log=FILE           	output log to FILE\n");
+        		printf("\t-e,--elf=FILE           	elf file to be parsed\n");
         		printf("\n");
         		exit(0);
 		}
@@ -114,6 +118,7 @@ void init_monitor(int argc, char *argv[]) {
 	init_isa();
 	long img_size = load_img();
 	IFDEF(CONFIG_ITRACE, init_disasm("riscv32" "-pc-linux-gnu"));
+	IFDEF(CONFIG_FTRACE, init_elf(elf_file));
 	welcome();
 }
 

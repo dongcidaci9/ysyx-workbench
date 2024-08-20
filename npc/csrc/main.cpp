@@ -121,7 +121,15 @@ static void inst_trace(Decode *s) {
 	p += space_len;
 	disassemble(p, s->logbuf + sizeof(s->logbuf) - p, top->pc, inst, ilen);
 }
+
 #endif
+
+#ifdef CONFIG_FTRACE
+
+static void trace_func()
+{
+	if (jal) if (rd == 1) trace_func_call
+}
 
 static void exec_once(Decode *s) {
 	uint32_t pc = top->pc;
