@@ -1,8 +1,8 @@
 #ifndef __DEBUG_H__
 #define __DEBUG_H__
 
-#include "common.h"
-#include "utils.h"
+#include <common.h>
+#include <utils.h>
 #include <cassert>
 
 #define _Log(...) \
