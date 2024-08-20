@@ -7,3 +7,6 @@ endif
 ifeq ($(CONFIG_FTRACE), y)
 SIM_SRC += csrc/utils/ftrace.c
 endif
+
+ifeq ($(CONFIG_DIFFTEST), y)
+LIBS += -LDFLAGS "-L $(NEMU_HOME)/build -lriscv32-nemu-interpreter-so"
