@@ -75,9 +75,7 @@ sim: $(BINARY)
 wave: $(WAVEFILE)
 	gtkwave $(WAVEFILE)
 
-run-env: $(BINARY) $(DIFF_REF_SO)
-
-run: run-env
+run: 
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
 	
