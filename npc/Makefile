@@ -42,20 +42,15 @@ COMPILE += -CFLAGS "$(CINC_FLAGS)"
 LIBS += -LDFLAGS "-lreadline"
 
 # --- 4. Target file --- 
-TARGET = $(VOBJ_DIR)/V$(TOP_MODULE)
-$(TARGET): $(VERILOG_SRC) $(SIM_SRC)
+BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
+$(BINARY): $(VERILOG_SRC) $(SIM_SRC)
 	$(VERILATOR) $(TOP_FLAGS) $(BUILD_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) \
 	$(COMPILE) $(SIM_SRC) \
 	$(LIBS)
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
-BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
-
-IMG ?=
-NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
-
-# --- 5. menuconfig ---
+# --- 5. Include ---
 # Include rules for menuconfig 
 include $(NPC_HOME)/scripts/config.mk
 
@@ -63,8 +58,16 @@ include $(NPC_HOME)/scripts/config.mk
 -include $(NPC_HOME)/include/config/auto.conf
 -include $(NPC_HOME)/include/config/auto.conf.cmd
 
-# --- 6. filelists ---
+# Include filelists
 include $(NPC_HOME)/scripts/filelist.mk
+
+# --- 6. Command to 
+
+override ARGS ?= --log=$(BUILD_DIR)/npc-log.txt
+override ARGS += $(ARGS_DIFF)
+
+IMG ?=
+NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 7. Target command ---
 sim: $(TARGET)
@@ -73,7 +76,9 @@ sim: $(TARGET)
 wave: $(WAVEFILE)
 	gtkwave $(WAVEFILE)
 
-run: sim 
+run-env: $(BINARY) $(DIFF_REF_SO)
+
+run: run-env sim
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
 	
