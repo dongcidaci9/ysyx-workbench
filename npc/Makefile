@@ -75,7 +75,7 @@ sim: $(BINARY)
 wave: $(WAVEFILE)
 	gtkwave $(WAVEFILE)
 
-run: 
+run: sim
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
 	
