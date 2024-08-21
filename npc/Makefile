@@ -50,7 +50,7 @@ $(BINARY): $(VERILOG_SRC) $(SIM_SRC)
 
 WAVEFILE = $(WORK_DIR)/wave.vcd
 
-# --- 5. Include ---
+# --- 5. Include some rules ---
 # Include rules for menuconfig 
 include $(NPC_HOME)/scripts/config.mk
 
@@ -61,8 +61,7 @@ include $(NPC_HOME)/scripts/config.mk
 # Include filelists
 include $(NPC_HOME)/scripts/filelist.mk
 
-# --- 6. Command to 
-
+# --- 6. Command to run ---
 override ARGS ?= --log=$(BUILD_DIR)/npc-log.txt
 override ARGS += $(ARGS_DIFF)
 
@@ -78,7 +77,7 @@ wave: $(WAVEFILE)
 
 run-env: $(BINARY) $(DIFF_REF_SO)
 
-run: run-env sim
+run: run-env
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
 	
