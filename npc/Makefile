@@ -54,7 +54,7 @@ LIBS += -LDFLAGS "-lreadline"
 
 # --- 4. Target file --- 
 BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
-$(BINARY): $(VERILOG_SRC) $(SIM_SRC)
+$(BINARY):: $(VERILOG_SRC) $(SIM_SRC)
 	@echo 111
 	$(VERILATOR) $(TOP_FLAGS) $(BUILD_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) \
 	$(COMPILE) $(SIM_SRC) \
