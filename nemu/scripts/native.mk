@@ -28,7 +28,7 @@ override ARGS ?= --log=$(BUILD_DIR)/nemu-log.txt
 override ARGS += $(ARGS_DIFF)
 
 # Command to execute NEMU
-ifeq ($(CONFIG_TARGET_SHARE), n)
+ifneq ($(SHARE), 1)
 IMG ?=
 NEMU_EXEC := $(BINARY) $(ARGS) $(IMG)
 endif
