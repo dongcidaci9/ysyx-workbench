@@ -20,6 +20,7 @@
 
 #include <isa-def.h>
 #include <../local-include/reg.h>
+#include <../include/isa-def.h>
 
 #ifdef CONFIG_TARGET_SHARE
 
@@ -30,7 +31,7 @@ void diff_memcpy(paddr_t dest, void *src, size_t n) {
 }
 
 void diff_set_regs(void* diff_context) {
-  struct CPU_state* ctx = (struct CPU_state*)diff_context;
+  CPU_state* ctx = (CPU_state*)diff_context;
   for (int i = 0; i < NR_GPR; i ++) {
     cpu.gpr[i] = (sword_t)ctx->gpr[i];
   }
@@ -38,7 +39,7 @@ void diff_set_regs(void* diff_context) {
 }
 
 void diff_get_regs(void* diff_context) {
-  struct CPU_state* ctx = (struct CPU_state*)diff_context;
+  CPU_state* ctx = (CPU_state*)diff_context;
   for (int i = 0; i < NR_GPR; i ++) {
     ctx->gpr[i] = cpu.gpr[i];
   }
@@ -46,7 +47,7 @@ void diff_get_regs(void* diff_context) {
 }
 
 void diff_step(uint64_t n) {
-  execute(n);
+  cpu_exec(n);
 }
 
 __EXPORT void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
