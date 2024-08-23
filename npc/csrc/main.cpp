@@ -11,6 +11,7 @@
 #include <macro.h>
 #include <cpu.h>
 #include <sdb.h>
+#include <difftest.h>
 
 /////////////////////////////////////////////
 /*                Simulation               */	
@@ -45,6 +46,9 @@ static void sim_exit() {
 	delete vcd;
 }
 
+CPU_state cpu = {};
+NPCState npc_state = { .state = NPC_RUNNING };
+
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
@@ -52,17 +56,17 @@ const char *regs[] = {
   "s8", "s9", "s10", "s11", "t3", "t4", "t5", "t6"
 };
 
-#define REG_NUM ARRLEN(top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file)
-
-static word_t cpu_gpr(int n) {
-	word_t ret = top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[n];
-	return ret;
+static void cpu_update() {
+	cpu.pc = top->pc;
+	for (int i = 0; i < NR_GPR; i ++) {
+		cpu.gpr[i] = top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[i];
+	}
 } 
 
 void reg_display() {
 	printf(ANSI_FMT("GPR information:\n", ANSI_FG_GREEN));
-	for (int i = 0; i < REG_NUM; i ++) {
-		printf("(%02d) %3s: 0x%08x\t", i, regs[i], cpu_gpr(i));
+	for (int i = 0; i < NR_GPR; i ++) {
+		printf("(%02d) %3s: 0x%08x\t", i, regs[i], cpu.gpr[i]);
 		if((i + 1) % 2 == 0) {
 			printf("\n");
 		}	
@@ -77,7 +81,6 @@ void reg_display() {
 word_t inst_fetch(addr_t* pc);
 void init_monitor(int argc, char *argv[]);
 
-NPCState npc_state = { .state = NPC_RUNNING };
 uint64_t g_nr_guest_inst = 0;
 static uint64_t g_timer = 0; // unit: us
 static bool g_print_step = false;
@@ -92,10 +95,14 @@ static void statistic() {
 
 
 typedef struct Decode {
+	addr_t pc;
+	addr_t snpc;
+	addr_t dnpc;
 	IFDEF(CONFIG_ITRACE, char logbuf[128]);
 } Decode;
 
 static void trace_and_difftest(Decode *_this) {
+	IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc));
 	if (g_print_step) {
 		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
 	}
@@ -130,37 +137,37 @@ static void inst_trace(Decode *s) {
 void trace_func_call(addr_t pc, addr_t target, bool is_tail);
 void trace_func_ret(addr_t pc);
 
-static void func_trace()
+static void func_trace(Decode *s)
 {
 	uint32_t inst 	= top->inst;
-	word_t pc 		= top->pc;
-	word_t snpc 	= top->pc + 4;
-	word_t dnpc 	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
 	word_t imm 		= top->rootp->ysyx_23060201_TOP__DOT__wire_imm;
 	
 	uint8_t	opcode 	= BITS(inst, 6, 0);
 	uint8_t rd 		= BITS(inst, 11, 7);
 	if (opcode == 1101111) {
-		if (rd == 1) trace_func_call(pc, dnpc, false);
+		if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
 	}
 	if (opcode == 1100111) {
-		if (inst == 0x00008067) trace_func_ret(pc);
-		else if (rd == 1) trace_func_call(pc, dnpc, false);
-		else if (rd == 0 && imm == 0) trace_func_call(pc, dnpc, true);
+		if (inst == 0x00008067) trace_func_ret(s->pc);
+		else if (rd == 1) trace_func_call(s->pc, s->dnpc, false);
+		else if (rd == 0 && imm == 0) trace_func_call(s->pc, s->dnpc, true);
 	}
 }
 
 #endif
 
 static void exec_once(Decode *s) {
-	word_t pc = top->pc;	
-	top->inst = inst_fetch(&pc);
+	s->pc = top->pc;
+	s->snpc	= top->pc + 4;
+	s->dnpc	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
 	
 	IFDEF(CONFIG_ITRACE, inst_trace(s));
-	IFDEF(CONFIG_FTRACE, func_trace());
+	IFDEF(CONFIG_FTRACE, func_trace(s));
 
+	top->inst = inst_fetch(&s->pc);
 	top->clk = 0; step_and_dump_wave();
 	top->clk = 1; step_and_dump_wave();
+	cpu_update();
 }
 
 static void execute(uint64_t n) {
@@ -226,6 +233,6 @@ int main(int argc, char *argv[]) {
 
 // DPI-C
 extern "C" void npc_trap() {
-	NPCTRAP(top->pc, cpu_gpr(10));
+	NPCTRAP(top->pc, cpu.gpr[10]);
 }
 
