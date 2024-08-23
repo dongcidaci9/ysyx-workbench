@@ -82,7 +82,6 @@ run: sim
 clean:
 	-rm -rf $(BUILD_DIR) $(WAVEFILE)
 
-.PHONY:
-	all sim wave run wave clean
+.PHONY: all sim wave run wave clean
 
 include ../Makefile
