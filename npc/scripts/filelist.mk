@@ -9,6 +9,7 @@ SIM_SRC += csrc/utils/ftrace.c
 endif
 
 ifeq ($(CONFIG_DIFFTEST), y)
+SIM_SRC += csrc/utils/difftest.c
 DIFF_REF_PATH = $(NEMU_HOME)
 DIFF_REF_SO = $(DIFF_REF_PATH)/build/riscv32-nemu-interpreter-so
 MKFLAGS = run 
