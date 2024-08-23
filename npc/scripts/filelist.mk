@@ -5,7 +5,7 @@ LIBS += -LDFLAGS "$(shell llvm-config --libs)"
 endif
 
 ifeq ($(CONFIG_FTRACE), y)
-SIM_SRC += csrc/utils/ftrace.c
+SIM_SRC += csrc/utils/ftrace.cc
 endif
 
 ifeq ($(CONFIG_DIFFTEST), y)
