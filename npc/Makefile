@@ -55,7 +55,6 @@ LIBS += -LDFLAGS "-lreadline"
 # --- 4. Target file --- 
 BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
 $(BINARY): $(VERILOG_SRC) $(SIM_SRC)
-	@echo 111
 	$(VERILATOR) $(TOP_FLAGS) $(BUILD_FLAGS) $(VINC_FLAGS) $(VFLAGS) $(VERILOG_SRC) \
 	$(COMPILE) $(SIM_SRC) \
 	$(LIBS)
@@ -70,7 +69,7 @@ IMG ?=
 NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 6. Target command ---
-sim: $(BINARY)
+sim: $(BINARY) $(DIFF_REF_SO)
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 
 wave: $(WAVEFILE)
