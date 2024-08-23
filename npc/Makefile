@@ -80,7 +80,7 @@ run: sim
 	$(NPC_EXEC) 
 	
 clean:
-	-rm -rf $(BUILD_DIR) $(WAVEFILE)
+	-rm -rf $(BUILD_DIR) $(WAVEFILE) $(DIFF_REF_SO)
 
 .PHONY: all sim wave run wave clean
 
