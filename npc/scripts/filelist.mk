@@ -1,5 +1,5 @@
 ifeq ($(CONFIG_ITRACE), y)
-SIM_SRC += csrc/utils/disasm.ccccc
+SIM_SRC += csrc/utils/disasm.cc
 #SIM_SRC += csrc/utils/itrace.c
 LIBS += -LDFLAGS "$(shell llvm-config --libs)"
 endif

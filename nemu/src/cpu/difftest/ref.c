@@ -21,8 +21,9 @@
 #include <isa-def.h>
 #include <../local-include/reg.h>
 
-#define NR_GPR 32
+#ifdef CONFIG_TARGET_SHARE
 
+#define NR_GPR 32
 
 void diff_memcpy(paddr_t dest, void *src, size_t n) {
   memcpy(guest_to_host(dest), src, n);
@@ -78,3 +79,5 @@ __EXPORT void difftest_init(int port) {
   /* Perform ISA dependent initialization. */
   init_isa();
 }
+
+#endif
