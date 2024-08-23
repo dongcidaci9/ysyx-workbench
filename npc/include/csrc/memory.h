@@ -4,6 +4,7 @@
 #include <common.h>
 
 word_t mem_read(addr_t addr);
+uint8_t* guest_to_host(addr_t paddr);
 
 void reg_display();
 
