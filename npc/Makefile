@@ -78,7 +78,6 @@ wave: $(WAVEFILE)
 run: sim 
 	$(call git_commit, "run NPC")
 	$(NPC_EXEC) 
-	clean
 	
 clean:
 	-rm -rf $(BUILD_DIR) $(WAVEFILE) $(DIFF_REF_SO)
