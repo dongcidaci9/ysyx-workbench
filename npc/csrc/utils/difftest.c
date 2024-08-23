@@ -17,6 +17,22 @@ void (*ref_difftest_raise_intr)(uint64_t NO) = NULL;
 
 enum { DIFFTEST_TO_DUT, DIFFTEST_TO_REF };
 
+static bool is_skip_ref = false;
+static int skip_dut_nr_inst = 0;
+
+void difftest_skip_ref() {
+    is_skip_ref = true;
+    skip_dut_nr_inst = 0;
+}
+
+void difftest_skip_dut(int nr_ref, int nr_dut) {
+    skip_dut_nr_inst += nr_dut;
+
+    while (nr_ref -- > 0) {
+        ref_difftest_exec(1);
+    }
+}
+
 void init_difftest(char *ref_so_file, long img_size, int port) {
     assert(ref_so_file != NULL);
 
