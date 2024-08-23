@@ -71,6 +71,7 @@ NPC_EXEC := $(BINARY) $(ARGS) $(IMG)
 
 # --- 6. Target command ---
 sim: $(BINARY)
+	@echo 222
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
 
 wave: $(WAVEFILE)
