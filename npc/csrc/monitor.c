@@ -130,6 +130,7 @@ void init_monitor(int argc, char *argv[]) {
 	long img_size = load_img();
 	IFDEF(CONFIG_ITRACE, init_disasm("riscv32" "-pc-linux-gnu"));
 	IFDEF(CONFIG_FTRACE, init_elf(elf_file));
+	IFDEF(CONFIG_DIFFTEST, init_difftest(diff_so_file, img_size, difftest_port));
 	welcome();
 }
 
