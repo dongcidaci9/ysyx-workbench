@@ -168,7 +168,9 @@ static void exec_once(Decode *s) {
 	IFDEF(CONFIG_ITRACE, inst_trace(s));
 	IFDEF(CONFIG_FTRACE, func_trace(s));
 
+  	printf("aaa0x%08x\n", cpu.pc);
 	cpu_update();
+	printf("bbb0x%08x\n", cpu.pc);
 }
 
 static void execute(uint64_t n) {
