@@ -48,6 +48,7 @@ VFLAGS := --timing -Wall -cc -build -exe -j 0 -trace
 ## C/C++ files compile flags
 CINC_FLAGS := $(addprefix -I, $(CINC_DIR))
 COMPILE += -CFLAGS "$(CINC_FLAGS)"
+COMPILE += -CFLAGS "-O2 -MMD -Wall -Werror"
 
 ## Link flags
 LIBS += -LDFLAGS "-lreadline"
