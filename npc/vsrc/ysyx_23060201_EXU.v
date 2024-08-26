@@ -35,6 +35,7 @@ module ysyx_23060201_EXU(
 	
 	// dnpc, snpc
 	assign snpc = pc + 4;
+	assign waddr = rd;
 
 	// alu_a_sel
 	MuxKeyWithDefault #(6, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
@@ -73,10 +74,6 @@ module ysyx_23060201_EXU(
 	/*                     gpr write                   */ 
 	/////////////////////////////////////////////////////
 
-	// waddr_sel
-	MuxKeyWithDefault #(1, 7, 5) waddr_sel(waddr, op, rd, {
-		`ysyx_23060201_OP_TYPE_S, raddr1 + imm[4:0]
-	});
 
 	/////////////////////////////////////////////////////
 	/*                     npc select                  */ 
