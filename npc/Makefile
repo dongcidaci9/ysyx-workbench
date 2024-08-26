@@ -53,6 +53,8 @@ COMPILE += -CFLAGS "-O2 -MMD -Wall -Werror"
 ## Link flags
 LIBS += -LDFLAGS "-lreadline"
 
+## Depencies
+
 # --- 4. Target file --- 
 BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
 $(BINARY): $(VERILOG_SRC) $(SIM_SRC)
