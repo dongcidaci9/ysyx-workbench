@@ -104,7 +104,7 @@ static int parse_args(int argc, char *argv[]) {
 static long load_img() {
 	if (img_file == NULL) {
 		Log("No image is given. Use the default build-in image.");
-		return 5;
+		return 4096;
 	}
 
 	FILE *fp = fopen(img_file, "rb");

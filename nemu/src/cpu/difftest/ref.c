@@ -27,13 +27,7 @@
 #define NR_GPR 32
 
 void diff_memcpy(paddr_t dest, void *src, size_t n) {
-  for (size_t i = 0; i < n; i ++) {
-    printf("0x%08x\n", *((uint32_t*)src + i));
-  }
   memcpy(guest_to_host(dest), src, n);
-  for (size_t i = 0; i < n; i ++) {
-    printf("0x%08x\n", *((uint32_t*)guest_to_host(dest) + i));
-  }
 }
 
 void diff_set_regs(void* diff_context) {
@@ -41,6 +35,7 @@ void diff_set_regs(void* diff_context) {
   for (int i = 0; i < NR_GPR; i ++) {
     cpu.gpr[i] = (sword_t)ctx->gpr[i];
   }
+  printf("0x%08x\n", cpu.pc);
   cpu.pc = ctx->pc;
 }
 
