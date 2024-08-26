@@ -93,7 +93,6 @@ static void statistic() {
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-
 typedef struct Decode {
 	addr_t pc;
 	addr_t snpc;
