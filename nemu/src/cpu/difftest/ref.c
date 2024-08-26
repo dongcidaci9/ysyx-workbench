@@ -35,7 +35,7 @@ void diff_set_regs(void* diff_context) {
   for (int i = 0; i < NR_GPR; i ++) {
     cpu.gpr[i] = (sword_t)ctx->gpr[i];
   }
-  printf("0x%08x\n", ctx.pc);
+  printf("0x%08x\n", ctx->pc);
   cpu.pc = ctx->pc;
 }
 
