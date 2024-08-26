@@ -60,7 +60,6 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
     ref_difftest_init(port);
     ref_difftest_memcpy(MBASE, guest_to_host(MBASE), img_size, DIFFTEST_TO_REF);
     ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
-  printf("0x%08x\n", cpu.pc);
 }
 
 static bool difftest_checkregs(CPU_state *ref_r, addr_t pc) {
@@ -76,7 +75,6 @@ static bool difftest_checkregs(CPU_state *ref_r, addr_t pc) {
     }
     return true;
 }
-
 
 static void checkregs(CPU_state *ref, addr_t pc) {
   if (!difftest_checkregs(ref, pc)) {
