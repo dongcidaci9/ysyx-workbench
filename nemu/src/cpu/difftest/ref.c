@@ -27,6 +27,9 @@
 #define NR_GPR 32
 
 void diff_memcpy(paddr_t dest, void *src, size_t n) {
+  for (size_t i = 0; i < n; i ++) {
+    printf("0x%08x\n", *((uint8_t*)src + i));
+  }
   memcpy(guest_to_host(dest), src, n);
 }
 
