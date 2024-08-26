@@ -31,6 +31,9 @@ void diff_memcpy(paddr_t dest, void *src, size_t n) {
     printf("0x%08x\n", *((uint8_t*)src + i));
   }
   memcpy(guest_to_host(dest), src, n);
+  for (size_t i = 0; i < n; i ++) {
+    printf("0x%08x\n", *((uint8_t*)guest_to_host(dest) + i));
+  }
 }
 
 void diff_set_regs(void* diff_context) {
