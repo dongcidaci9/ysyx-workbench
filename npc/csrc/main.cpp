@@ -218,7 +218,6 @@ void cpu_exec(uint64_t n) {
 
 int main(int argc, char *argv[]) {
 	sim_init();
-
 	top->clk = 0; step_and_dump_wave();
 	top->rst = 1; // reset
 	top->clk = 1; step_and_dump_wave();
