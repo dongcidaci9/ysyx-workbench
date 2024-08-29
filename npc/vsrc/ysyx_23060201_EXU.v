@@ -70,10 +70,6 @@ module ysyx_23060201_EXU(
 	);
 
 	/////////////////////////////////////////////////////
-	/*                     gpr write                   */ 
-	/////////////////////////////////////////////////////
-
-	/////////////////////////////////////////////////////
 	/*                     npc select                  */ 
 	/////////////////////////////////////////////////////
 
@@ -82,5 +78,28 @@ module ysyx_23060201_EXU(
 		`ysyx_23060201_OP_TYPE_J,  pc + imm, 
 		`ysyx_23060201_OP_TYPE_JR, (rdata1 + imm) & (~1)
 	});
+
+	/////////////////////////////////////////////////////
+	/*                pmem read & write                */ 
+	/////////////////////////////////////////////////////
+
+	/*	
+	import "DPI-C" function word_t pmem_read(input addr_t raddr);
+	import "DPI-C" function void pmem_write(
+		input addr_t waddr, input word_t wdata, input char wmask);
+
+	reg [31:0] rdata;
+	always @(*) begin
+		if (valid) begin
+			rdata = pmem_read(raddr);
+			if (wen) begin
+				pmem_write(waddr, wdata, wmask);
+			end
+		end
+		else begin
+			rdata = 0;
+		end
+	end
+	*/
 
 endmodule

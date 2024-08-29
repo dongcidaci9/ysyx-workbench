@@ -112,7 +112,7 @@ static int cmd_x(char* args) {
     	printf(ANSI_FMT("0x%08x\n", ANSI_FG_YELLOW), expr);
     
     	for (j = 0; j < 4; i ++, j ++) {
-      		printf("0x%08x ", mem_read(expr));
+      		printf("0x%08x ", pmem_read(expr));
       		expr += 4;
     	}
     puts("");
