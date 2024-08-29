@@ -8,7 +8,6 @@ module ysyx_23060201_EXU(
 	input [6:0] op,
 	input [4:0] rd,
 	input [2:0] func3,
-	input [4:0] raddr1,
 	input [31:0] rdata1, rdata2, // read from gpr from ifu
 
 	output clk_b,
@@ -73,7 +72,6 @@ module ysyx_23060201_EXU(
 	/////////////////////////////////////////////////////
 	/*                     gpr write                   */ 
 	/////////////////////////////////////////////////////
-
 
 	/////////////////////////////////////////////////////
 	/*                     npc select                  */ 

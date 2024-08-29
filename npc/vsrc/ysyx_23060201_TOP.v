@@ -58,7 +58,6 @@ module ysyx_23060201_TOP(clk, rst, inst, pc);
 		.op(wire_op),
 		.rd(wire_rd),
 		.func3(wire_func3),
-		.raddr1(wire_raddr1),
 		// .raddr2(5'bz),
 		.rdata1(wire_rdata1),
 		.rdata2(wire_rdata2),
