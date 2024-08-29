@@ -6,7 +6,10 @@
 #include <cpu.h>
 #include <macro.h>
 #include <sdb.h>
+#include <memory.h>
 
+void init_isa();
+void init_mem();
 void init_disasm(const char *triple);
 void init_elf(const char *elf_file);
 void init_difftest(char *ref_so_file, long img_size, int port);
@@ -14,10 +17,6 @@ void init_difftest(char *ref_so_file, long img_size, int port);
 //////////////////////////////////////////////
 /*                	Monitor           		*/	
 //////////////////////////////////////////////
-
-static uint8_t *mem = NULL;
-
-uint8_t* guest_to_host(addr_t paddr) { return mem + paddr - MBASE; }
 
 void welcome() {
   Log("Tracer: %s", MUXDEF(CONFIG_TRACE, ANSI_FMT("ON", ANSI_FG_GREEN), ANSI_FMT("OFF", ANSI_FG_RED)));
@@ -27,52 +26,6 @@ void welcome() {
   printf("Welcome to %s-NPC!\n", ANSI_FMT(str(__GUEST_ISA__), ANSI_FG_YELLOW ANSI_BG_RED));
   printf("For help, type \"help\"\n");
 }
-
-// default build-in image
-static const uint32_t img [] = {
-	0x00000297,
-	0x00028823,
-	0x0102c503,
-	0x00100073,
-	0xdeadbeef,
-};
-
-void init_isa() {
-	memcpy(guest_to_host(MBASE), img, sizeof(img));
-}
-
-// initialize memory
-void init_mem() {
-	mem = (uint8_t*)malloc(MSIZE);
-}
-
-static inline word_t host_read(void *addr) {
-	return *(addr_t *)addr;
-}
-
-word_t pmem_read(addr_t raddr) {
-	// 总是读取地址为`raddr & ~0x3u`的4字节返回
-	word_t addr = raddr & ~0x3u;
-	word_t ret = host_read(guest_to_host(addr));
-
-	return ret;
-}
-
-/*
-extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
-  // 总是往地址为`waddr & ~0x3u`的4字节按写掩码`wmask`写入`wdata`
-  // `wmask`中每比特表示`wdata`中1个字节的掩码,
-  // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
-	word_t data = wdata & wmask;
-	memset(guest_to_host(waddr), data, 4);
-}
-*/
-
-// addr_t* pc_addr = &pc; *pc_addr = pc; 
-word_t inst_fetch(addr_t* pc_addr) {
-	uint32_t inst = pmem_read(*pc_addr);
-	return inst;
-} 
 
 static char *log_file = NULL;
 static char *img_file = NULL;
