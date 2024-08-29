@@ -15,7 +15,7 @@ module ysyx_23060201_GPR #(ADDR_WIDTH = 5, DATA_WIDTH = 32) (
 	
 	// Write back the changed value
 	always @(posedge clk) begin
-    	if (wen) reg_file[waddr] <= wdata;
+    	if (wen) reg_file[waddr] <= (waddr != 5'd0) ? wdata : 32'b0;
   	end
 
 	// Get the value
