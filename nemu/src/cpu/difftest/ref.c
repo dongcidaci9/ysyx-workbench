@@ -47,7 +47,7 @@ void diff_get_regs(void* diff_context) {
 }
 
 void diff_step(uint64_t n) {
-  cpu_exec(n);
+  execute(n);
 }
 
 __EXPORT void difftest_memcpy(paddr_t addr, void *buf, size_t n, bool direction) {
