@@ -28,7 +28,6 @@ static inline word_t host_read(void *addr) {
 }
 
 word_t mem_read(addr_t addr) {
-	// 总是读取地址为`raddr & ~0x3u`的4字节返回
 	word_t ret = host_read(guest_to_host(addr));
 
 	return ret;
@@ -41,8 +40,9 @@ word_t inst_fetch(addr_t* pc_addr) {
 }
 
 extern "C" word_t pmem_read(addr_t raddr) {
-    addr_t addr = raddr & ~0x3u;
-    word_t ret = host_read(guest_to_host(addr)); 
+	// 总是读取地址为`raddr & ~0x3u`的4字节返回
+    addr_t aligned_raddr = raddr & ~0x3u;
+    word_t ret = host_read(guest_to_host(aligned_raddr)); 
 
     return ret;
 }
@@ -51,6 +51,12 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
   // 总是往地址为`waddr & ~0x3u`的4字节按写掩码`wmask`写入`wdata`
   // `wmask`中每比特表示`wdata`中1个字节的掩码,
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
-	word_t data = wdata & wmask;
-	memset(guest_to_host(waddr), data, 4);
+    addr_t aligned_waddr = waddr & ~0x3u;
+
+    for (int i = 0; i < 4; i ++) {
+        if (wmask & (1 << i)) {
+            memset(guest_to_host(aligned_waddr) + i, 
+            (wdata >> (i * 8)) & 0xFF, 1);
+        }
+    }
 }
