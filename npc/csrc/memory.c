@@ -40,10 +40,10 @@ word_t inst_fetch(addr_t* pc_addr) {
 	return inst;
 }
 
-extern "C" word_t pmem_read(addr_t raddr) {
+extern "C" word_t pmem_read(int raddr) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
-    addr_t aligned_raddr = raddr & ~0x3u;
-    word_t ret = host_read(guest_to_host(aligned_raddr)); 
+    int aligned_raddr = raddr & ~0x3u;
+    int ret = host_read(guest_to_host(aligned_raddr)); 
 
     return ret;
 }
