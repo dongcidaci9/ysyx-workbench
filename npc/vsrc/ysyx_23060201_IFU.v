@@ -7,7 +7,9 @@ module ysyx_23060201_IFU(
   
   wire valid;
   wire [31:0] raddr;
-  
+
+  reg [31:0] rdata;
+
   assign valid = (pc >= 'h80000000) ? 1 : 0;
   assign raddr = pc - 'h80000000;
   assign inst = rdata;
