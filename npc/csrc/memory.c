@@ -23,7 +23,7 @@ void init_mem() {
 	mem = (uint8_t*)malloc(MSIZE);
 }
 
-static inline word_t host_read(void *addr) {
+static word_t host_read(void *addr) {
 	return *(addr_t *)addr;
 }
 
