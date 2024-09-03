@@ -28,7 +28,7 @@ module ysyx_23060201_TOP(clk, rst, pc ,inst);
 	assign pc = wire_pc										;
 	assign inst = wire_inst									;			
 
-	assign wire_mem_ren = (pc > `MBASE) ? 'b1 : 'b0		;
+	assign wire_mem_ren = (pc >= `MBASE && clk == 'b1) ? 'b1 : 'b0		;
 	// pc
 	ysyx_23060201_PC ysyx_23060201_PC(
 		.clk(clk),
