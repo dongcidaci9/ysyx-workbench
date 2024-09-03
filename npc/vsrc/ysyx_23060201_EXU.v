@@ -12,7 +12,6 @@ module ysyx_23060201_EXU(
 
 	output clk_b,
 	output gpr_wen,
-	output mem_ren,
 	output [4:0] waddr,
 	output [31:0] wdata,
 	output [31:0] dnpc
@@ -27,8 +26,6 @@ module ysyx_23060201_EXU(
 	wire [31:0] alu_a, alu_b;
 	wire [3:0] alu_ctl;
 
-	// mem
-	assign mem_ren = 1'b1;	
 	// gpr
 	assign clk_b = clk_a;
 	assign gpr_wen = 1'b1;

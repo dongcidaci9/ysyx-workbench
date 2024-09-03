@@ -1,8 +1,9 @@
 `include "defines.v"
 
-module ysyx_23060201_TOP(clk, rst, pc ,inst);
+module ysyx_23060201_TOP(clk, rst, mem_ren, pc, inst);
 	input clk;
 	input rst;
+	input mem_ren;
 	output [31:0] inst;
 	output [31:0] pc;
 
@@ -15,7 +16,6 @@ module ysyx_23060201_TOP(clk, rst, pc ,inst);
 	wire gpr_clk											;	
 	wire wire_gpr_wen										;
 	wire [1:0] wire_gpr_ren									;
-	wire wire_mem_ren										;
 	wire [4:0] wire_waddr									;
 	wire [31:0] wire_wdata									;
 	wire [4:0] wire_raddr1, wire_raddr2						;
@@ -37,8 +37,8 @@ module ysyx_23060201_TOP(clk, rst, pc ,inst);
 	
 	// mem 
 	ysyx_23060201_MEM ysyx_23060201_MEM(
+		.mem_ren(mem_ren),
 		.mem_raddr(wire_pc),
-		.mem_ren(wire_mem_ren),
 		.mem_rdata(wire_inst)	
 	);
 
@@ -70,7 +70,6 @@ module ysyx_23060201_TOP(clk, rst, pc ,inst);
 
 		.clk_b(gpr_clk),
 		.gpr_wen(wire_gpr_wen),
-		.mem_ren(wire_mem_ren),
 		.waddr(wire_waddr),
 		.wdata(wire_wdata),
 		.dnpc(wire_dnpc)
