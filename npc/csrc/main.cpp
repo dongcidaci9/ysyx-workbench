@@ -113,7 +113,7 @@ void disassemble(char *str, int size, uint64_t pc, uint8_t* code, int nbyte);
 
 static void inst_trace(Decode *s) {
 	char *p = s->logbuf;
-	p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", top->pc);
+	p += snprintf(p, sizeof(s->logbuf), FMT_WORD ":", s->pc);
 
 	int ilen = 4;
 	uint8_t* inst = (uint8_t *)&top->inst;
@@ -126,7 +126,7 @@ static void inst_trace(Decode *s) {
 	space_len = space_len * 3 + 1;
 	memset(p, ' ', space_len);
 	p += space_len;
-	disassemble(p, s->logbuf + sizeof(s->logbuf) - p, top->pc, inst, ilen);
+	disassemble(p, s->logbuf + sizeof(s->logbuf) - p, s->pc, inst, ilen);
 }
 
 #endif
@@ -156,11 +156,11 @@ static void func_trace(Decode *s)
 #endif
 
 static void exec_once(Decode *s) {
-	s->pc = top->pc;
+	s->pc	= top->pc;
 	s->snpc	= top->pc + 4;
 	s->dnpc	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
 	
-	top->inst = inst_fetch(&s->pc);
+	// top->inst = inst_fetch(&s->pc);
 	
 	IFDEF(CONFIG_ITRACE, inst_trace(s));
 	IFDEF(CONFIG_FTRACE, func_trace(s));

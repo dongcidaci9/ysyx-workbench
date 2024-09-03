@@ -15,6 +15,9 @@ module ysyx_23060201_IDU(
  
 	assign inst_op = inst[6:0];
 	assign inst_rd = inst[11:7];
+	
+	assign raddr1 = inst_rs1;
+	assign raddr2 = inst_rs2;
 
 	MuxKeyWithDefault #(2, 7, 3) func3_aupic(inst_func3, inst_op, inst[14:12], {
 		`ysyx_23060201_OP_TYPE_UPC, 3'b000,
@@ -66,8 +69,6 @@ module ysyx_23060201_IDU(
 		`ysyx_23060201_OP_TYPE_JR,  2'b01
 	}); 
 	
-	assign raddr1 = inst_rs1;
-	assign raddr2 = inst_rs2;
 
 	// DPI-C
 	import "DPI-C" function void npc_trap();
