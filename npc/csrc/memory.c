@@ -41,7 +41,7 @@ word_t inst_fetch(addr_t* pc_addr) {
 }
 
 extern "C" void print(addr_t mem_raddr) {
-    uint32_t* memb = NULL;
+    uint8_t* memb = NULL;
 
     addr_t aligned_mem_raddr = mem_raddr & ~0x3u;
     
