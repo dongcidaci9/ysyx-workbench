@@ -44,7 +44,7 @@ extern "C" void print(addr_t mem_raddr) {
     addr_t aligned_mem_raddr = mem_raddr & ~0x3u;
     word_t* ret = (word_t*)guest_to_host(aligned_mem_raddr);
 
-    printf("0x%08x\n", ret);
+    printf("0x%08x\n", *ret);
 }
 
 extern "C" word_t pmem_read(addr_t raddr) {
