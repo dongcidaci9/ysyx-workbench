@@ -21,7 +21,7 @@ module ysyx_23060201_IFU(
       rdata = pmem_read(raddr);
     end
     else begin
-      rdata = 'b0;
+      rdata = 'h0;
     end
   end
 
