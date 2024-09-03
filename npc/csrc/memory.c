@@ -21,7 +21,7 @@ void init_isa() {
 // initialize memory
 void init_mem() {
 	mem = (uint8_t*)malloc(MSIZE);
-    printf("hello\n");
+    printf("0x%08x\n", *mem);
 }
 
 word_t host_read(void* addr) {
