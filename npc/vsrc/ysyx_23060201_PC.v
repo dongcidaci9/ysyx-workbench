@@ -1,9 +1,15 @@
+`include "defines.v"
+
 module ysyx_23060201_PC(
 	input clk,
 	input rst,
 	input [31:0] dnpc,
-	output [31:0] pc
+	output reg [31:0] pc
 );
+	initial begin
+		pc = `MBASE;
+	end
+
 	wire [31:0] npc;
 
 	assign npc = (dnpc != pc + 4) ? dnpc : pc + 4;
