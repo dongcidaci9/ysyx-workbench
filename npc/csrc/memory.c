@@ -40,7 +40,11 @@ word_t inst_fetch(addr_t* pc_addr) {
 	return inst;
 }
 
-extern "C" void print(int mem_raddr) {
+extern "C" void print(addr_t mem_raddr) {
+    /* 
+    addr_t aligend_mem_raddr = mem_raddr & ~0x3u;
+    word_t ret = host_read(guest_to_host(aligned_raddr)); 
+    */ 
     printf("0x%08x\n", mem_raddr);
 }
 

@@ -1,3 +1,5 @@
+`include "defines.v"
+
 module ysyx_23060201_TOP(clk, rst, pc ,inst);
 	input clk;
 	input rst;
