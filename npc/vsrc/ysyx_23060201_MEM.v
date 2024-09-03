@@ -13,7 +13,7 @@ module ysyx_23060201_MEM(
   output reg [31:0]   mem_rdata 
 );
 
-  import "DPI-C" function void print(input int mem_raddr); 
+  import "DPI-C" function void print(int mem_raddr); 
   /* 
   import "DPI-C" function int pmem_read(input int mem_raddr);
   import "DPI-C" function void pmem_write(
