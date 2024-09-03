@@ -1,7 +1,7 @@
 #include <common.h>
 #include <utils.h>
 
-uint8_t *mem = NULL;
+static uint8_t *mem = NULL;
 
 uint8_t* guest_to_host(addr_t paddr) { return mem + paddr - MBASE; }
 
