@@ -43,7 +43,7 @@ word_t inst_fetch(addr_t* pc_addr) {
 extern "C" void print(addr_t mem_raddr) {
     addr_t aligned_mem_raddr = mem_raddr & ~0x3u;
     
-    printf("0x%08x\n", aligned_mem_raddr);
+    printf("0x%08x\n", *mem);
 }
 
 extern "C" word_t pmem_read(addr_t raddr) {
