@@ -9,17 +9,17 @@ module ysyx_23060201_IFU(
   wire [31:0] raddr;
   
   assign valid = (pc >= 'h80000000) ? 1 : 0;
-  assign raddr = pc - `MBASE;
+  assign raddr = pc - 'h80000000;
   assign inst = rdata;
 
   import "DPI-C" function int pmem_read(input int raddr);
 
   always @(*) begin
     if (valid) begin
-      inst = pmem_read(raddr);
+      rdata = pmem_read(raddr);
     end
     else begin
-      inst = 'b0;
+      rdata = 'b0;
     end
   end
 
