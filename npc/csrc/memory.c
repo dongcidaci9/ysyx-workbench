@@ -39,8 +39,9 @@ word_t inst_fetch(addr_t* pc_addr) {
 	uint32_t inst = mem_read(*pc_addr);
 	return inst;
 }
-extern "C" void print() {
-    printf("hello\n");
+
+extern "C" void print(int mem_raddr) {
+    printf("0x%08x\n", mem_raddr);
 }
 
 extern "C" word_t pmem_read(addr_t raddr) {

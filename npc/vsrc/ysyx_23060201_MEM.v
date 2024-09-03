@@ -13,7 +13,7 @@ module ysyx_23060201_MEM(
   output reg [31:0]   mem_rdata 
 );
 
-  import "DPI-C" function void print(); 
+  import "DPI-C" function void print(input int mem_raddr); 
   /* 
   import "DPI-C" function int pmem_read(input int mem_raddr);
   import "DPI-C" function void pmem_write(
@@ -21,9 +21,9 @@ module ysyx_23060201_MEM(
   */
 
   always @(*) begin
-    if (mem_ren && mem_raddr >= `MBASE) begin
+    if (mem_ren) begin
       // mem_rdata = pmem_read(mem_raddr);
-      print();
+      print(mem_raddr);
       mem_rdata = 32'h0;
     end
     else begin
