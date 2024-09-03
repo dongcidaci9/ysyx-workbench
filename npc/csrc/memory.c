@@ -28,7 +28,8 @@ static inline word_t host_read(void *addr) {
 }
 
 word_t mem_read(addr_t addr) {
-	word_t ret = host_read(guest_to_host(addr));
+    addr_t aligned_addr = addr & ~0x3u;
+	word_t ret = host_read(guest_to_host(aligned_addr));
 
 	return ret;
 }
@@ -55,8 +56,7 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
 
     for (int i = 0; i < 4; i ++) {
         if (wmask & (1 << i)) {
-            memset(guest_to_host(aligned_waddr) + i, 
-            (wdata >> (i * 8)) & 0xFF, 1);
+            memset(guest_to_host(aligned_waddr) + i, (wdata >> (i * 8)) & 0xFF, 1);
         }
     }
 }
