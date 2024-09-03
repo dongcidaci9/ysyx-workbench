@@ -4,29 +4,29 @@ module ysyx_23060201_TOP(clk, rst, pc ,inst);
 	output [31:0] inst;
 	output [31:0] pc;
 
-	wire [31:0] wire_dnpc					;
-	wire [6:0] wire_op						;
-	wire [2:0] wire_func3					;
-	wire [4:0] wire_rd						;
-	wire [31:0] wire_imm					;
+	wire [31:0] wire_dnpc									;
+	wire [6:0] wire_op										;
+	wire [2:0] wire_func3									;
+	wire [4:0] wire_rd										;
+	wire [31:0] wire_imm									;
 
-	wire gpr_clk							;	
-	wire wire_gpr_wen						;
-	wire [1:0] wire_gpr_ren					;
-	wire [4:0] wire_waddr					;
-	wire [31:0] wire_wdata					;
-	wire [4:0] wire_raddr1, wire_raddr2		;
-	wire [31:0] wire_rdata1, wire_rdata2	;
+	wire gpr_clk											;	
+	wire wire_gpr_wen										;
+	wire [1:0] wire_gpr_ren									;
+	wire [4:0] wire_waddr									;
+	wire [31:0] wire_wdata									;
+	wire [4:0] wire_raddr1, wire_raddr2						;
+	wire [31:0] wire_rdata1, wire_rdata2					;
 
-	wire [31:0] wire_pc						;
-	wire [31:0] wire_inst					;
+	wire [31:0] wire_pc										;
+	wire [31:0] wire_inst									;
 
-	wire wire_ren							;
+	wire wire_mem_ren										;
 
-	assign pc = wire_pc						;
-	assign inst = wire_inst					;			
+	assign pc = wire_pc										;
+	assign inst = wire_inst									;			
 
-	assign wire_ren = 1'b1					;
+	assign wire_mem_ren = (pc >= `MBASE) ? 'b1 : 'b0		;
 	// pc
 	ysyx_23060201_PC ysyx_23060201_PC(
 		.clk(clk),
@@ -38,7 +38,7 @@ module ysyx_23060201_TOP(clk, rst, pc ,inst);
 	// mem 
 	ysyx_23060201_MEM ysyx_23060201_MEM(
 		.mem_raddr(wire_pc),
-		.mem_ren(wire_ren),
+		.mem_ren(wire_mem_ren),
 		.mem_rdata(wire_inst)	
 	);
 
