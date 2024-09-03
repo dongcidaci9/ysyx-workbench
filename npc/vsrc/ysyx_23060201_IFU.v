@@ -14,7 +14,8 @@ module ysyx_23060201_IFU(
   assign raddr = pc - `MBASE;
   assign inst = rdata;
 
-  import "DPI-C" function int pmem_read(input int raddr); 
+  import "DPI-C" function int pmem_read(input int raddr);
+
   always @(*) begin
     if (valid) begin
       rdata = pmem_read(raddr);
