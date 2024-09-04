@@ -84,13 +84,13 @@ static void checkregs(CPU_state *ref, addr_t pc) {
   }
 }
 
-void difftest_step(addr_t pc) {
+void difftest_step(addr_t npc) {
   CPU_state ref_r;
 
   ref_difftest_exec(1);
   ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
 
-  checkregs(&ref_r, pc);
+  checkregs(&ref_r, npc);
 }
 
 #endif
