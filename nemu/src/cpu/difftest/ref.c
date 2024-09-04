@@ -64,7 +64,6 @@ __EXPORT void difftest_regcpy(void *dut, bool direction) {
   } else {
     diff_get_regs(dut);
   }
-  printf("0x%08x\n", cpu.pc);
 }
 
 __EXPORT void difftest_exec(uint64_t n) {
