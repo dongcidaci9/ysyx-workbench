@@ -24,7 +24,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	wire [31:0] wire_pc										;
 	wire [31:0] wire_inst									;
 
-	wire wire_mem_ren 									;
+	wire wire_mem_ren 										;
 
 	assign pc = wire_pc										;
 	assign inst = wire_inst									;			
