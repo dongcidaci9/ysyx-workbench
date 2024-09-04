@@ -62,9 +62,9 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
     // ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
 }
 
-static bool difftest_checkregs(CPU_state *ref_r, addr_t pc) {
+static bool difftest_checkregs(CPU_state *ref_r, addr_t npc) {
     if (ref_r -> pc != cpu.pc) {
-		printf("\npc:\nShould: %#x\t Not: %#x\n", ref_r -> pc, cpu.pc);
+		printf("\npc:\nShould: %#x\t Not: %#x\n", ref_r -> pc, npc);
 		return false;
 	}
     for (int i = 0 ; i < NR_GPR; i ++) {
