@@ -217,9 +217,9 @@ void cpu_exec(uint64_t n) {
 int main(int argc, char *argv[]) {
 	sim_init();
 
+	init_monitor(argc, argv);
 	cpu_update();
 
-	init_monitor(argc, argv);
 	sdb_mainloop();
 
 	// ebreak
