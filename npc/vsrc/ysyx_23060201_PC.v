@@ -9,6 +9,7 @@ module ysyx_23060201_PC(
 	initial begin
 		pc = `MBASE;
 	end
+
 	wire [31:0] npc;
 
 	assign npc = (dnpc != pc + 4) ? dnpc : pc + 4;
