@@ -101,7 +101,7 @@ typedef struct Decode {
 } Decode;
 
 static void trace_and_difftest(Decode *_this) {
-	addr_t pc = _this->pc + 0x80000000; 
+	addr_t pc = 0x80000000; 
 	IFDEF(CONFIG_DIFFTEST, difftest_step(pc));
 	if (g_print_step) {
 		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
