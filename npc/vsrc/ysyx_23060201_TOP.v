@@ -6,6 +6,10 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	output [31:0] inst;
 	output reg [31:0] pc;
 
+	initial begin
+		pc = `MBASE;
+	end
+
 	wire gpr_clk											;	
 	wire mem_ren											;
 	
