@@ -101,7 +101,6 @@ typedef struct Decode {
 } Decode;
 
 static void trace_and_difftest(Decode *_this) {
-	printf("0x%08x\n", _this->dnpc);
 	IFDEF(CONFIG_DIFFTEST, difftest_step(_this->dnpc));
 	if (g_print_step) {
 		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
@@ -163,7 +162,6 @@ static void exec_once(Decode *s) {
 	s->pc	= top->pc;
 	s->snpc	= top->pc + 4;
 	s->dnpc	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
-	printf("0x%08x\n", s->dnpc);
 	
 	IFDEF(CONFIG_ITRACE, inst_trace(s));
 	IFDEF(CONFIG_FTRACE, func_trace(s));
