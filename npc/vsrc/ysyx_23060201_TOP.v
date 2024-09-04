@@ -7,7 +7,6 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	output reg [31:0] pc;
 
 	wire gpr_clk											;	
-	wire mem_ren											;
 	
 	wire [31:0] wire_dnpc									;
 	wire [6:0] wire_op										;
@@ -25,7 +24,8 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	wire [31:0] wire_pc										;
 	wire [31:0] wire_inst									;
 
-	assign mem_ren = 'b1									; 
+	wire wire_mem_ren 									;
+
 	assign pc = wire_pc										;
 	assign inst = wire_inst									;			
 
@@ -34,13 +34,14 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.clk(clk),
 		.rst(rst),
 		.dnpc(wire_dnpc),
-		.pc(wire_pc)
+		.pc(wire_pc),
+		.mem_ren(wire_mem_ren)
 	);
 	
 	// mem 
 	ysyx_23060201_MEM ysyx_23060201_MEM(
-		.clk(clk),
-		.mem_ren(mem_ren),
+		// .clk(clk),
+		.mem_ren(wire_mem_ren),
 		.mem_raddr(wire_pc),
 		.mem_rdata(wire_inst)	
 	);

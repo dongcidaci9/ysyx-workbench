@@ -8,7 +8,7 @@ module ysyx_23060201_MEM(
 
   input wire          mem_wen, 
   */
-  input wire          clk       , 
+  // input wire          clk       , 
   input wire [31:0]   mem_raddr ,
   input wire          mem_ren   , 
   output reg [31:0]   mem_rdata 
@@ -20,9 +20,9 @@ module ysyx_23060201_MEM(
     input int waddr, input int wdata, input byte wmask);
   */
 
-  always @(posedge clk) begin
+  always @(*) begin
     if (mem_ren) begin
-      mem_rdata <= pmem_read(mem_raddr);
+      mem_rdata = pmem_read(mem_raddr);
     end
     else begin
       mem_rdata = 32'h0;
