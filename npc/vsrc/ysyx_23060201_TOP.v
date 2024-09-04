@@ -4,7 +4,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	input clk;
 	input rst;
 	output [31:0] inst;
-	output [31:0] pc;
+	output reg [31:0] pc;
 
 	wire gpr_clk											;	
 	wire mem_ren											;

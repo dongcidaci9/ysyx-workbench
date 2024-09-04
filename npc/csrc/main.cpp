@@ -216,7 +216,7 @@ void cpu_exec(uint64_t n) {
 
 int main(int argc, char *argv[]) {
 	sim_init();
-	
+
 	cpu_update();
 	init_monitor(argc, argv);
 
