@@ -160,8 +160,8 @@ static void exec_once(Decode *s) {
 	s->snpc	= top->pc + 4;
 	s->dnpc	= top->rootp->ysyx_23060201_TOP__DOT__wire_dnpc;
 	
-	top->clk = 1; step_and_dump_wave();
 	top->clk = 0; step_and_dump_wave();
+	top->clk = 1; step_and_dump_wave();
 	
 	IFDEF(CONFIG_ITRACE, inst_trace(s));
 	IFDEF(CONFIG_FTRACE, func_trace(s));
@@ -217,8 +217,8 @@ void cpu_exec(uint64_t n) {
 int main(int argc, char *argv[]) {
 	sim_init();
 
-	top->clk = 1; step_and_dump_wave();
 	top->clk = 0; step_and_dump_wave();
+	top->clk = 1; step_and_dump_wave();
 
 	cpu_update();
 	init_monitor(argc, argv);
