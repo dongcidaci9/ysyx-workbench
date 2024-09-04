@@ -101,7 +101,7 @@ typedef struct Decode {
 } Decode;
 
 static void trace_and_difftest(Decode *_this) {
-	IFDEF(CONFIG_DIFFTEST, difftest_step(_this->dnpc));
+	IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc));
 	if (g_print_step) {
 		IFDEF(CONFIG_ITRACE, puts(_this->logbuf));
 	}
@@ -156,8 +156,8 @@ static void func_trace(Decode *s)
 #endif
 
 static void exec_once(Decode *s) {
-	top->clk = 1; step_and_dump_wave();
 	top->clk = 0; step_and_dump_wave();
+	top->clk = 1; step_and_dump_wave();
 	
 	s->pc	= top->pc;
 	s->snpc	= top->pc + 4;
