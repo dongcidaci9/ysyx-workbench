@@ -87,7 +87,7 @@ static void checkregs(CPU_state *ref, addr_t pc) {
 void difftest_step(addr_t pc) {
   CPU_state ref_r;
 
-  printf("aaa\n");
+  printf("0x%08x\n", pc);
   ref_difftest_exec(1);
   ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
 
