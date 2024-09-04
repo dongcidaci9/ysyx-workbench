@@ -39,6 +39,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	
 	// mem 
 	ysyx_23060201_MEM ysyx_23060201_MEM(
+		.clk(clk),
 		.mem_ren(mem_ren),
 		.mem_raddr(wire_pc),
 		.mem_rdata(wire_inst)	
