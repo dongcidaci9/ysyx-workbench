@@ -218,7 +218,6 @@ int main(int argc, char *argv[]) {
 	sim_init();
 
 	cpu_update();
-  	printf("0x%08x\n", cpu.pc);
 	init_monitor(argc, argv);
 
 	sdb_mainloop();
