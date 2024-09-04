@@ -36,7 +36,7 @@ void diff_set_regs(void* diff_context) {
     cpu.gpr[i] = (sword_t)ctx->gpr[i];
   }
   if (ctx->pc == 0) cpu.pc = 0x80000000;
-  else cpu.pc->ctx->pc;
+  else cpu.pc = ctx->pc;
 }
 
 void diff_get_regs(void* diff_context) {
