@@ -89,6 +89,7 @@ void difftest_step(addr_t pc) {
 
   ref_difftest_exec(1);
   ref_difftest_regcpy(&ref_r, DIFFTEST_TO_DUT);
+  printf("aaa\n");
 
   checkregs(&ref_r, pc);
 }
