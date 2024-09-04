@@ -8,6 +8,7 @@ module ysyx_23060201_PC(
 );
 	initial begin
 		pc = `MBASE;
+		$display("Value of pc: %h", pc);
 	end
 
 	wire [31:0] npc;
