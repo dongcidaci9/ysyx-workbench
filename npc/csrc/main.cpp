@@ -165,8 +165,8 @@ static void exec_once(Decode *s) {
 	IFDEF(CONFIG_ITRACE, inst_trace(s));
 	IFDEF(CONFIG_FTRACE, func_trace(s));
 	
-	top->clk = 0; step_and_dump_wave();
 	top->clk = 1; step_and_dump_wave();
+	top->clk = 0; step_and_dump_wave();
 
 	cpu_update();
 }
