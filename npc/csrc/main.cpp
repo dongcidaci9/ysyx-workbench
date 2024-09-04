@@ -57,7 +57,8 @@ const char *regs[] = {
 };
 
 static void cpu_update() {
-	cpu.pc = top->pc;
+	if (top->pc == 0) cpu.pc = 0x80000000;
+	else cpu.pc = top->pc;
 	for (int i = 0; i < NR_GPR; i ++) {
 		cpu.gpr[i] = top->rootp->ysyx_23060201_TOP__DOT__ysyx_23060201_GPR__DOT__reg_file[i];
 	}
@@ -217,9 +218,6 @@ void cpu_exec(uint64_t n) {
 int main(int argc, char *argv[]) {
 	sim_init();
 	
-	top->clk = 1; step_and_dump_wave();
-	top->clk = 0; step_and_dump_wave();
-
 	cpu_update();
 	init_monitor(argc, argv);
 
