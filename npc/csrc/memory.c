@@ -1,5 +1,6 @@
 #include <common.h>
 #include <utils.h>
+#include <memory.h>
 
 static uint8_t *mem = NULL;
 
@@ -44,6 +45,11 @@ extern "C" word_t pmem_read(addr_t raddr) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
     addr_t aligned_raddr = raddr & ~0x3u;
     word_t ret = host_read(guest_to_host(aligned_raddr)); 
+    // mtrace
+    #ifdef CONFIG_MTRACE 
+    int len = 4;
+    display_mread(raddr, len);
+    #endif
 
     return ret;
 }
