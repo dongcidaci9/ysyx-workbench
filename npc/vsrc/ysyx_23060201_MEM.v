@@ -19,7 +19,6 @@ module ysyx_23060201_MEM(
   import "DPI-C" function void pmem_write(
     input int waddr, input int wdata, input byte wmask);
   */
-
   always @(*) begin
     if (mem_ren) begin
       mem_rdata = pmem_read(mem_raddr);
@@ -27,14 +26,14 @@ module ysyx_23060201_MEM(
     else begin
       mem_rdata = 32'h0;
     end
-  /*
-    if (wen) begin
+    /*
+    if (mem_wen) begin
       pmem_write(waddr, wdata, wmask);
     end 
     else begin 
       pmem_write(waddr, wdata, 0);
     end 
-  */ 
+    */
   end
 
 endmodule
