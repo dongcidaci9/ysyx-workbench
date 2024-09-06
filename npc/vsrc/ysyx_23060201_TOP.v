@@ -1,20 +1,22 @@
 `include "defines.v"
 
 module ysyx_23060201_TOP(clk, rst, pc, inst);
-	input wire clk;
-	input wire rst;
-	output wire [31:0] inst;
-	output reg [31:0] pc;
+	input wire 			clk									;
+	input wire 			rst									;
+	output wire [31:0] 	inst								;
+	output reg 	[31:0] 	pc									;
 
 	// pc
-	wire [31:0] 	wire_pc										;
+	wire [31:0] 	wire_pc									;
+	// ifu
+	wire [31:0] 	wire_inst								;
 	
-	wire [31:0] 	wire_dnpc									;
-	wire [6:0] 		wire_op										;
-	wire [2:0] 		wire_func3									;
-	wire [6:0] 		wire_func7									;
-	wire [4:0] 		wire_rd										;
-	wire [31:0] 	wire_imm									;
+	wire [31:0] 	wire_dnpc								;
+	wire [6:0] 		wire_op									;
+	wire [2:0] 		wire_func3								;
+	wire [6:0] 		wire_func7								;
+	wire [4:0] 		wire_rd									;
+	wire [31:0] 	wire_imm								;
 	
 	// gpr
 	wire 			gpr_clk									;	
@@ -30,26 +32,26 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	wire [31:0] 	wire_mem_waddr							;
 	wire [31:0] 	wire_mem_wdata							;
 	wire [7:0] 		wire_mem_wmask							;
-	wire 			wire_mem_ren 							;	
 
-	/* verilator lint_off UNOPTFLAT */
-	wire [31:0] 	wire_mem_rdata							;
-
-	assign pc = wire_pc										;
-	assign inst = wire_mem_rdata							;			
+	assign pc 	= 	wire_pc									;
+	assign inst = 	wire_inst								;			
 
 	// pc
 	ysyx_23060201_PC ysyx_23060201_PC(
 		.clk(clk),
 		.rst(rst),
 		.dnpc(wire_dnpc),
+		.pc(wire_pc)
+	);
+
+	ysyx_23060201_IFU ysyx23060201_IFU(
 		.pc(wire_pc),
-		.mem_ren(wire_mem_ren)
+		.inst(wire_inst)
 	);
 
 	// idu
 	ysyx_23060201_IDU ysyx_23060201_IDU(
-		.inst(wire_mem_rdata),
+		.inst(wire_inst),
 
 		.inst_imm(wire_imm),
 		.inst_op(wire_op),
@@ -84,20 +86,21 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.mem_waddr(wire_mem_waddr),
 		.mem_wdata(wire_mem_wdata),
 		.mem_wmask(wire_mem_wmask),
+		
 		.dnpc(wire_dnpc)
 	);
 
 	ysyx_23060201_GPR ysyx_23060201_GPR(
-		.clk(gpr_clk),
+		.gpr_clk(gpr_clk),
 		// .rst(rst),
 		.gpr_ren(wire_gpr_ren),
 		.gpr_wen(wire_gpr_wen),
-		.raddr1(wire_gpr_raddr1),
-		.raddr2(wire_gpr_raddr2),
-		.waddr(wire_gpr_waddr),
-		.wdata(wire_gpr_wdata),
-		.rdata1(wire_gpr_rdata1),
-		.rdata2(wire_gpr_rdata2)
+		.gpr_waddr(wire_gpr_waddr),
+		.gpr_wdata(wire_gpr_wdata),
+		.gpr_raddr1(wire_gpr_raddr1),
+		.gpr_raddr2(wire_gpr_raddr2),
+		.gpr_rdata1(wire_gpr_rdata1),
+		.gpr_rdata2(wire_gpr_rdata2)
 	);
 	
 	// mem 
@@ -106,9 +109,11 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.mem_wen(wire_mem_wen),
 		.mem_waddr(wire_mem_waddr),
 		.mem_wdata(wire_mem_wdata),
-		.mem_wmask(wire_mem_wmask),
+		.mem_wmask(wire_mem_wmask)
+		/*
 		.mem_ren(wire_mem_ren),
 		.mem_raddr(wire_pc),
 		.mem_rdata(wire_mem_rdata)	
+		*/
 	);
 endmodule

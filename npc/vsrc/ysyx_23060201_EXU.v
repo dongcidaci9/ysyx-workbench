@@ -43,12 +43,9 @@ module ysyx_23060201_EXU(
 	});
 
 	// mem
-	assign mem_wen = (op == `ysyx_23060201_OP_TYPE_S) ? 1'b1 : 1'b0 ;
-	/*
 	MuxKeyWithDefault #(1, 7, 1) mem_wen_sel(mem_wen, op, 1'b0, {
 		`ysyx_23060201_OP_TYPE_S,	1'b1
 	});
-	*/
 
 	MuxKeyWithDefault #(1, 7, 32) mem_waddr_sel(mem_waddr, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_S,	rs1 + imm	

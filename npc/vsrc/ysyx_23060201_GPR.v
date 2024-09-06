@@ -1,26 +1,29 @@
-module ysyx_23060201_GPR #(ADDR_WIDTH = 5, DATA_WIDTH = 32) (
-	input clk,
-	// input rst,
-	input [1:0] gpr_ren, // R(rs2), R(rs1)
-	input gpr_wen, // R(rd)
-	input [ADDR_WIDTH-1:0] raddr1, 
-	input [ADDR_WIDTH-1:0] raddr2, 
-	input [ADDR_WIDTH-1:0] waddr, 
-	input [DATA_WIDTH-1:0] wdata,
-	output [DATA_WIDTH-1:0] rdata1,
-	output [DATA_WIDTH-1:0] rdata2 
+module ysyx_23060201_GPR # (
+	GPR_ADDR_WIDTH 	= 5, 
+	DATA_WIDTH 		= 32
+) 
+(
+	input wire 							gpr_clk				,
+	input wire [1:0] 					gpr_ren				, 
+	input wire 							gpr_wen				, 
+	input wire 	[GPR_ADDR_WIDTH-1:0] 	gpr_waddr			, 
+	input wire 	[DATA_WIDTH-1:0] 		gpr_wdata			,
+	input wire 	[GPR_ADDR_WIDTH-1:0] 	gpr_raddr1			, 
+	input wire 	[GPR_ADDR_WIDTH-1:0] 	gpr_raddr2			, 
+	output wire [DATA_WIDTH-1:0] 		gpr_rdata1			,
+	output wire [DATA_WIDTH-1:0] 		gpr_rdata2 
 );
 		
-	reg [DATA_WIDTH-1:0] reg_file [2**ADDR_WIDTH-1:0]; 
+	reg [DATA_WIDTH-1:0] reg_file [2**GPR_ADDR_WIDTH-1:0]; 
 	
 	// Write back the changed value
-	always @(negedge clk) begin
-    	if (gpr_wen) reg_file[waddr] <= (waddr != 5'd0) ? wdata : 32'b0;
+	always @(negedge gpr_clk) begin
+    	if (gpr_wen) reg_file[gpr_waddr] <= (gpr_waddr != 5'd0) ? gpr_wdata : 32'b0;
   	end
 
 	// Get the value
-	assign rdata1 = (gpr_ren[0] != 1'b0) ? reg_file[raddr1] : 32'b0; 
-	assign rdata2 = (gpr_ren[1] != 1'b0) ? reg_file[raddr2] : 32'b0;
+	assign gpr_rdata1 = (gpr_ren[0] != 1'b0) ? reg_file[gpr_raddr1] : 32'b0; 
+	assign gpr_rdata2 = (gpr_ren[1] != 1'b0) ? reg_file[gpr_raddr2] : 32'b0;
 
 	// Reset
 	/*
