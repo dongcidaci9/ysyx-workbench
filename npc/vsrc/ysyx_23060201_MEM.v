@@ -18,7 +18,7 @@ module ysyx_23060201_MEM # (
 
   // import "DPI-C" function int pmem_read(input int mem_raddr);
   import "DPI-C" function void pmem_write(
-    input int waddr, input int wdata, input byte wmask);
+    input int mem_waddr, input int mem_wdata, input byte mem_wmask);
   
   always @(*) begin
     /*
