@@ -32,9 +32,6 @@ module ysyx_23060201_MEM # (
     if (mem_wen) begin
       pmem_write(mem_waddr, mem_wdata, mem_wmask);
     end 
-    else begin 
-      pmem_write(mem_waddr, mem_wdata, 0);
-    end 
   end
 
 endmodule
