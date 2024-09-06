@@ -25,9 +25,9 @@ module ysyx_23060201_IFU # (
   	
 	import "DPI-C" function int pmem_read(input int mem_raddr);
   
-  	always @(*) begin
+  	always @(posedge clk) begin
 		if (inst_fetch) begin
-   			inst = pmem_read(pc);
+   			inst <= pmem_read(pc);
 		end
 		else begin
 			inst = 32'h0;
