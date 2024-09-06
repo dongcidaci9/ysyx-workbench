@@ -36,15 +36,11 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	assign pc 	= 	wire_pc									;
 	assign inst = 	wire_inst								;			
 
-	// pc
-	ysyx_23060201_PC ysyx_23060201_PC(
+	// ifu 
+	ysyx_23060201_IFU ysyx_23060201_IFU(
 		.clk(clk),
 		.rst(rst),
 		.dnpc(wire_dnpc),
-		.pc(wire_pc)
-	);
-
-	ysyx_23060201_IFU ysyx23060201_IFU(
 		.pc(wire_pc),
 		.inst(wire_inst)
 	);
