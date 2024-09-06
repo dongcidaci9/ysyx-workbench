@@ -1,26 +1,28 @@
 `include "defines.v"
 
 module ysyx_23060201_EXU(
-	input clk_a,
-	input [31:0] pc,
+	input wire clk_a,
+	input wire [31:0] pc,
 
-	input [31:0] imm,
-	input [6:0] op,
-	input [4:0] rd,
-	input [2:0] func3,
-	input [6:0] func7,
-	input [31:0] rs1, rs2, // read from gpr from ifu
-
-	output clk_b,
-	output gpr_wen,
-	output [4:0] waddr,
-	output [31:0] wdata,
-	output [31:0] dnpc
+	input wire [31:0] imm,
+	input wire [6:0] op,
+	input wire [4:0] rd,
+	input wire [2:0] func3,
+	input wire [6:0] func7,
+	input wire [31:0] rs1, rs2, // read from gpr from ifu
+	// gpr
+	output wire clk_b,
+	output wire gpr_wen,
+	output wire [4:0] gpr_waddr,
+	output wire [31:0] gpr_wdata,
+	// mem
+	output wire mem_wen,
+	output wire [31:0] mem_waddr,
+	output wire [31:0] mem_wdata,
+	output wire [3:0] mem_wmask,
+	// pc	
+	output wire [31:0] dnpc
 );
-
-	/////////////////////////////////////////////////////
-	/*                    A L U                        */ 
-	/////////////////////////////////////////////////////
 
 	// alu signal
 	wire [31:0] snpc					;
@@ -33,13 +35,34 @@ module ysyx_23060201_EXU(
 	// dnpc, snpc
 	assign snpc = pc + 4				;
 
-	// waddr_sel
-	MuxKeyWithDefault #(2, 7, 5) waddr_sel(waddr, op, rd, {
+	// wmask -> 'h1, 'h3, 'h15
+	
+	// gpr
+	MuxKeyWithDefault #(2, 7, 5) gpr_waddr_sel(gpr_waddr, op, rd, {
 		`ysyx_23060201_OP_TYPE_S,   5'b0,
 		`ysyx_23060201_OP_TYPE_B,   5'b0
 	});
 
-	// alu_a_sel
+	// mem
+	MuxKeyWithDefault #(1, 7, 1) mem_wen_sel(mem_wen, op, 1'b0, {
+		`ysyx_23060201_OP_TYPE_S,	1'b1
+	});
+
+	MuxKeyWithDefault #(1, 7, 32) mem_waddr_sel(mem_waddr, op, 32'b0, {
+		`ysyx_23060201_OP_TYPE_S,	rs1 + imm	
+	});
+	
+	MuxKeyWithDefault #(1, 7, 32) mem_wdata_sel(mem_waddr, op, 32'b0, {
+		`ysyx_23060201_OP_TYPE_S,	rs2 	
+	});
+
+	MuxKeyWithDefault #(3, 3, 4) mem_wmask_sel(mem_wmask, func3, 4'b0000, {
+		`ysyx_23060201_FUNC3_SB,	4'b0001,
+		`ysyx_23060201_FUNC3_SH,	4'b0011,
+		`ysyx_23060201_FUNC3_SW,	4'b1111
+	});
+
+	// alu
 	MuxKeyWithDefault #(6, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_R,   rs1,
 		`ysyx_23060201_OP_TYPE_I,   rs1,
@@ -49,14 +72,11 @@ module ysyx_23060201_EXU(
 		`ysyx_23060201_OP_TYPE_JR,  snpc
 	});
 
-	// alu_b_sel
 	MuxKeyWithDefault #(3, 7, 32) alu_b_sel(alu_b, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_R,   rs2,
 		`ysyx_23060201_OP_TYPE_I,   imm,
 		`ysyx_23060201_OP_TYPE_UPC, imm
 	});
-	// alu_ctl_sel
-	// only for R and I
 	MuxKey #(8, 3, 3) alu_ctl_sel1(alu_ctl[2:0], func3, {
 		`ysyx_23060201_FUNC3_ADDSUB	, 	3'b000,
 		`ysyx_23060201_FUNC3_XOR	,   3'b100,
@@ -78,7 +98,7 @@ module ysyx_23060201_EXU(
 		.a(alu_a),
 		.b(alu_b),
 		.ctl(alu_ctl),
-		.res(wdata)
+		.res(gpr_wdata)
 	);
 	// dnpc
 	MuxKeyWithDefault #(2, 7, 32) dnpc_sel(dnpc, op, snpc, {
