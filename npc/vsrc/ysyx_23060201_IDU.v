@@ -6,7 +6,7 @@ module ysyx_23060201_IDU(
 	output [6:0] inst_op,
 	output [4:0] inst_rd,
 	output [2:0] inst_func3,
-	// output [6:0] inst_func7,
+	output [6:0] inst_func7,
 
 	// goto gpr
 	output [1:0] gpr_ren,
@@ -22,13 +22,13 @@ module ysyx_23060201_IDU(
 	wire [31:0] imm_U;
 	wire [31:0] imm_J;
 
-	assign inst_op = inst[6:0];
-	assign inst_rd = inst[11:7];
-	// assign [6:0] inst_func7 = inst[31:25];
-	assign inst_rs1 = inst[19:15];
-	assign inst_rs2 = inst[24:20];
-	assign raddr1 = inst_rs1;
-	assign raddr2 = inst_rs2;
+	assign inst_op 		= inst[6:0]						;
+	assign inst_rd 		= inst[11:7]					;
+	assign inst_func7 	= inst[31:25]					;
+	assign inst_rs1 	= inst[19:15]					;
+	assign inst_rs2 	= inst[24:20]					;
+	assign raddr1 		= inst_rs1						;
+	assign raddr2 		= inst_rs2						;
 
  	/////////////////////////////////////////////////////
 	/*                     imm                         */ 

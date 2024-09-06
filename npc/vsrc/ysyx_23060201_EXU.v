@@ -8,6 +8,7 @@ module ysyx_23060201_EXU(
 	input [6:0] op,
 	input [4:0] rd,
 	input [2:0] func3,
+	input [6:0] func7,
 	input [31:0] rdata1, rdata2, // read from gpr from ifu
 
 	output clk_b,
@@ -22,18 +23,16 @@ module ysyx_23060201_EXU(
 	/////////////////////////////////////////////////////
 
 	// alu signal
-	wire [31:0] snpc;
-	wire [31:0] alu_a, alu_b;
-	wire [3:0] alu_ctl;
+	wire [31:0] snpc					;
+	wire [31:0] alu_a, alu_b			;
+	wire [3:0] alu_ctl					;
 
 	// gpr
-	assign clk_b = clk_a;
-	assign gpr_wen = 1'b1;
+	assign clk_b = clk_a				;
+	assign gpr_wen = 1'b1				;
 	// dnpc, snpc
-	assign snpc = pc + 4;
-	assign waddr = rd;
-
-	// mem read & write
+	assign snpc = pc + 4				;
+	assign waddr = rd					;
 
 	// alu_a_sel
 	MuxKeyWithDefault #(6, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
@@ -51,12 +50,23 @@ module ysyx_23060201_EXU(
 		`ysyx_23060201_OP_TYPE_UPC, imm
 	});
 	// alu_ctl_sel
-	MuxKey #(4, 3, 4) alu_ctl_sel(alu_ctl, func3, {
-		`ysyx_23060201_FUNC3_ADDSUB, 4'b0000,
-		`ysyx_23060201_FUNC3_XOR,    4'b0100,
-		`ysyx_23060201_FUNC3_AND,    4'b0110,
-		`ysyx_23060201_FUNC3_OR,     4'b0111
+	// only for R and I
+	MuxKey #(8, 3, 3) alu_ctl_sel1(alu_ctl[2:0], func3, {
+		`ysyx_23060201_FUNC3_ADDSUB	, 	3'b000,
+		`ysyx_23060201_FUNC3_XOR	,   3'b100,
+		`ysyx_23060201_FUNC3_OR		,   3'b111,
+		`ysyx_23060201_FUNC3_AND	,   3'b110,
+		`ysyx_23060201_FUNC3_SLL	,	3'b001,
+		`ysyx_23060201_FUNC3_SR		,	3'b101,
+		`ysyx_23060201_FUNC3_SLT	,	3'b010,
+		`ysyx_23060201_FUNC3_SLTU	,	3'b011
 	});
+
+	MuxKeyWithDefault #(2, 7, 1) alu_ctl_sel2(alu_ctl[3], func7, 1'b0, {
+		`ysyx_23060201_FUNC7_SUB	, 	1'b1,
+		`ysyx_23060201_FUNC7_SRA	, 	1'b1
+	});
+
 	// ALU work
 	ysyx_23060201_ALU ysyx_23060201_ALU(
 		.a(alu_a),

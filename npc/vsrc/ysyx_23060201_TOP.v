@@ -11,6 +11,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	wire [31:0] wire_dnpc									;
 	wire [6:0] wire_op										;
 	wire [2:0] wire_func3									;
+	wire [6:0] wire_func7									;
 	wire [4:0] wire_rd										;
 	wire [31:0] wire_imm									;
 
@@ -53,6 +54,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.inst_op(wire_op),
 		.inst_rd(wire_rd),
 		.inst_func3(wire_func3),
+		.inst_func7(wire_func7),
 
 		.gpr_ren(wire_gpr_ren),
 		.raddr1(wire_raddr1),
@@ -68,6 +70,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.op(wire_op),
 		.rd(wire_rd),
 		.func3(wire_func3),
+		.func7(wire_func7),
 		// .raddr2(5'bz),
 		.rdata1(wire_rdata1),
 		.rdata2(wire_rdata2),
