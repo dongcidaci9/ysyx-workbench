@@ -1,13 +1,13 @@
 `include "defines.v"
 
 module ysyx_23060201_MEM(
-  input wire          mem_wen, 
-  input wire [31:0]   mem_waddr,
-  input wire [31:0]   mem_wdata,
-  input wire [3:0]    mem_wmask,
-  input wire          mem_ren   , 
-  input wire [31:0]   mem_raddr ,
-  output reg [31:0]   mem_rdata 
+  input wire          mem_wen         , 
+  input wire [31:0]   mem_waddr       ,
+  input wire [31:0]   mem_wdata       ,
+  input wire [7:0]    mem_wmask       ,
+  input wire          mem_ren         , 
+  input wire [31:0]   mem_raddr       ,
+  output reg [31:0]   mem_rdata /*verilator split_var*/
 );
 
   import "DPI-C" function int pmem_read(input int mem_raddr);
