@@ -33,7 +33,7 @@ module ysyx_23060201_MEM # (
       pmem_write(mem_waddr, mem_wdata, mem_wmask);
     end 
     else begin
-      pmem_write('h00000000, mem_wdata, 8'b0);
+      pmem_write(mem_waddr, mem_wdata, mem_wmask);
     end
   end
 

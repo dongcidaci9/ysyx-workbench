@@ -54,6 +54,7 @@ module ysyx_23060201_EXU(
 	MuxKeyWithDefault #(1, 7, 32) mem_wdata_sel(mem_wdata, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_S,	rs2 	
 	});
+
 	MuxKeyWithDefault #(3, 3, 8) mem_wmask_sel(mem_wmask, func3, 8'b0000, {
 		`ysyx_23060201_FUNC3_SB,	8'b0001,
 		`ysyx_23060201_FUNC3_SH,	8'b0011,
