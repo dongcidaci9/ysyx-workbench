@@ -105,7 +105,7 @@ module ysyx_23060201_TOP #
 	
 	// mem 
 	ysyx_23060201_MEM ysyx_23060201_MEM(
-		// .clk(clk),
+		.clk(clk),
 		.mem_wen(wire_mem_wen),
 		.mem_waddr(wire_mem_waddr),
 		.mem_wdata(wire_mem_wdata),
