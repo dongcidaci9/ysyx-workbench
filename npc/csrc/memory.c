@@ -69,7 +69,7 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
         int len;
         if (wmask = 0x1) len = 1;
         else if (wmask = 0x3) len = 2;
-        else if (wmask = 0x15) len = 4;
+        else if (wmask = 0xf) len = 4;
         else len = 0;
         display_mwrite(waddr, len, wdata);
     #endif
