@@ -3,15 +3,15 @@ module ysyx_23060201_GPR # (
 	MEM_ADDR_WIDTH 		= 32
 ) 
 (
-	input wire 							clk					,
+	input wire							clk					, 
 	input wire [1:0] 					gpr_ren				, 
 	input wire 							gpr_wen				, 
 	input wire 	[GPR_ADDR_WIDTH-1:0] 	gpr_waddr			, 
-	input wire 	[MEM_ADDR_WIDTH-1:0] 		gpr_wdata			,
+	input wire 	[MEM_ADDR_WIDTH-1:0] 	gpr_wdata			,
 	input wire 	[GPR_ADDR_WIDTH-1:0] 	gpr_raddr1			, 
 	input wire 	[GPR_ADDR_WIDTH-1:0] 	gpr_raddr2			, 
-	output wire [MEM_ADDR_WIDTH-1:0] 		gpr_rdata1			,
-	output wire [MEM_ADDR_WIDTH-1:0] 		gpr_rdata2 
+	output wire [MEM_ADDR_WIDTH-1:0] 	gpr_rdata1			,
+	output wire [MEM_ADDR_WIDTH-1:0] 	gpr_rdata2 
 );
 		
 	reg [MEM_ADDR_WIDTH-1:0] reg_file [2**GPR_ADDR_WIDTH-1:0]; 
@@ -29,39 +29,4 @@ module ysyx_23060201_GPR # (
 	assign gpr_rdata1 = (gpr_ren[0] != 1'b0) ? reg_file[gpr_raddr1] : 32'b0; 
 	assign gpr_rdata2 = (gpr_ren[1] != 1'b0) ? reg_file[gpr_raddr2] : 32'b0;
 
-	// Reset
-	/*
-	Reg #(32, 32'b0) rst0(clk, rst, reg_file[0], reg_file[0], 1'b0); 
-	Reg #(32, 32'b0) rst1(clk, rst, reg_file[1], reg_file[1], 1'b0); 
-	Reg #(32, 32'b0) rst2(clk, rst, reg_file[2], reg_file[2], 1'b0); 
-	Reg #(32, 32'b0) rst3(clk, rst, reg_file[3], reg_file[3], 1'b0); 
-	Reg #(32, 32'b0) rst4(clk, rst, reg_file[4], reg_file[4], 1'b0); 
-	Reg #(32, 32'b0) rst5(clk, rst, reg_file[5], reg_file[5], 1'b0); 
-	Reg #(32, 32'b0) rst6(clk, rst, reg_file[6], reg_file[0], 1'b0); 
-	Reg #(32, 32'b0) rst7(clk, rst, reg_file[7], reg_file[7], 1'b0); 
-	Reg #(32, 32'b0) rst8(clk, rst, reg_file[8], reg_file[8], 1'b0); 
-	Reg #(32, 32'b0) rst9(clk, rst, reg_file[9], reg_file[9], 1'b0); 
-	Reg #(32, 32'b0) rst10(clk, rst, reg_file[10], reg_file[10], 1'b0); 
-	Reg #(32, 32'b0) rst11(clk, rst, reg_file[11], reg_file[11], 1'b0); 
-	Reg #(32, 32'b0) rst12(clk, rst, reg_file[12], reg_file[12], 1'b0); 
-	Reg #(32, 32'b0) rst13(clk, rst, reg_file[13], reg_file[13], 1'b0); 
-	Reg #(32, 32'b0) rst14(clk, rst, reg_file[14], reg_file[14], 1'b0); 
-	Reg #(32, 32'b0) rst15(clk, rst, reg_file[15], reg_file[15], 1'b0); 
-	Reg #(32, 32'b0) rst16(clk, rst, reg_file[16], reg_file[16], 1'b0); 
-	Reg #(32, 32'b0) rst17(clk, rst, reg_file[17], reg_file[17], 1'b0); 
-	Reg #(32, 32'b0) rst18(clk, rst, reg_file[18], reg_file[18], 1'b0); 
-	Reg #(32, 32'b0) rst19(clk, rst, reg_file[19], reg_file[19], 1'b0); 
-	Reg #(32, 32'b0) rst20(clk, rst, reg_file[20], reg_file[20], 1'b0); 
-	Reg #(32, 32'b0) rst21(clk, rst, reg_file[21], reg_file[21], 1'b0); 
-	Reg #(32, 32'b0) rst22(clk, rst, reg_file[22], reg_file[22], 1'b0); 
-	Reg #(32, 32'b0) rst23(clk, rst, reg_file[23], reg_file[23], 1'b0); 
-	Reg #(32, 32'b0) rst24(clk, rst, reg_file[24], reg_file[24], 1'b0); 
-	Reg #(32, 32'b0) rst25(clk, rst, reg_file[25], reg_file[25], 1'b0); 
-	Reg #(32, 32'b0) rst26(clk, rst, reg_file[26], reg_file[26], 1'b0); 
-	Reg #(32, 32'b0) rst27(clk, rst, reg_file[27], reg_file[27], 1'b0); 
-	Reg #(32, 32'b0) rst28(clk, rst, reg_file[28], reg_file[28], 1'b0); 
-	Reg #(32, 32'b0) rst29(clk, rst, reg_file[29], reg_file[29], 1'b0); 
-	Reg #(32, 32'b0) rst30(clk, rst, reg_file[30], reg_file[30], 1'b0); 
-	Reg #(32, 32'b0) rst31(clk, rst, reg_file[31], reg_file[31], 1'b0); 
-	*/
 endmodule
