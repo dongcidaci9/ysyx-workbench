@@ -68,7 +68,7 @@ module ysyx_23060201_IDU(
 	MuxKeyWithDefault #(9, 7, 2) gpr_ren_sel(gpr_ren, inst_op, 2'b00, {
 		`ysyx_23060201_OP_TYPE_R,   2'b11,	
 		`ysyx_23060201_OP_TYPE_I,   2'b01,	
-		`ysyx_23060201_OP_TYPE_IL,  2'b11,	
+		`ysyx_23060201_OP_TYPE_IL,  2'b01,	
 		`ysyx_23060201_OP_TYPE_S,   2'b11,	
 		`ysyx_23060201_OP_TYPE_B,   2'b11,	
 		`ysyx_23060201_OP_TYPE_U,   2'b00,	

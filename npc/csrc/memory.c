@@ -42,14 +42,25 @@ word_t inst_fetch(addr_t* pc_addr) {
 	return inst;
 }
 */
-extern "C" word_t pmem_read(addr_t raddr) {
+extern "C" word_t pmem_read(addr_t raddr, char rmask) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
     addr_t aligned_raddr = raddr & ~0x3u;
-    word_t ret = host_read(guest_to_host(aligned_raddr)); 
-    // mtrace
+    word_t rdata = host_read(guest_to_host(aligned_raddr));
+    
+    word_t ret;
+    word_t* ptr = &ret;
+    for (int i = 0; i < 4; i ++) {
+        if (rmask & (1 << i)) {
+            memset(ptr + i, (rdata >> (i * 8)) & 0xFF, 1);
+        }
+    }
     #ifdef CONFIG_MTRACE 
-        int len = 4;
-        display_mread(raddr, len);
+    int len;
+    if (rmask == 0x1) len = 1;
+    else if (rmask == 0x3) len = 2;
+    else if (rmask == 0xf) len = 4;
+    else len = 0;
+    display_mread(raddr, len);
     #endif
 
     return ret;
@@ -59,7 +70,6 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
   // 总是往地址为`waddr & ~0x3u`的4字节按写掩码`wmask`写入`wdata`
   // `wmask`中每比特表示`wdata`中1个字节的掩码,
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
-
     addr_t aligned_waddr = waddr & ~0x3u;
     for (int i = 0; i < 4; i ++) {
         if (wmask & (1 << i)) {
