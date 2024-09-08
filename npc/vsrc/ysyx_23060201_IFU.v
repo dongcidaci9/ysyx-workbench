@@ -14,19 +14,22 @@ module ysyx_23060201_IFU #
   	output reg 	[DATA_WIDTH-1:0]    	inst 			
 );
 
-	wire [MEM_ADDR_WIDTH-1:0]			npc				;
 	wire [MEM_ADDR_WIDTH-1:0]			snpc			;
 
 	wire 								ifen			;
+	
+	reg [MEM_ADDR_WIDTH-1:0]			npc				;
+	reg									inst			;
 
 	initial begin
-		pc = `MBASE;
+		pc 	= `MBASE;
+		npc	= `MBASE;
 	end
 
 	assign snpc		= pc + 'h4							; 		
 	assign ifen 	= 'b1								; 
 
-	MuxKey #(2, 1, 32) npc_sel(npc, jump_en, {
+	MuxKeyWithDefault #(2, 1, 32) npc_sel(npc, jump_en, `MBASE, {
 		1'b0,	snpc,
 		1'b1, 	dnpc
 	});
@@ -34,9 +37,9 @@ module ysyx_23060201_IFU #
 	Reg #(32, `MBASE) pc_reg(clk, rst, npc, pc, 1'b1); 
   	
 	import "DPI-C" function int pmem_read(input int mem_raddr);
-  	always @(posedge clk) begin
+  	always @(*) begin
 		if (ifen) begin
-   			inst <= pmem_read(npc);
+   			inst = pmem_read(npc);
 		end
 		else begin
 			inst = 32'h0;
