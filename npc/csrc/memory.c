@@ -61,7 +61,6 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
 
     addr_t aligned_waddr = waddr & ~0x3u;
 
-    printf("%d\n", wmask); 
     for (int i = 0; i < 4; i ++) {
         if (wmask & (1 << i)) {
             memset(guest_to_host(aligned_waddr) + i, (wdata >> (i * 8)) & 0xFF, 1);
