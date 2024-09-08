@@ -18,12 +18,10 @@ module ysyx_23060201_IFU #
 
 	wire 								ifen			;
 	
-	reg [MEM_ADDR_WIDTH-1:0]			npc				;
-	reg									inst			;
+	wire [MEM_ADDR_WIDTH-1:0]			npc				;
 
 	initial begin
 		pc 	= `MBASE;
-		npc	= `MBASE;
 	end
 
 	assign snpc		= pc + 'h4							; 		
@@ -39,7 +37,7 @@ module ysyx_23060201_IFU #
 	import "DPI-C" function int pmem_read(input int mem_raddr);
   	always @(*) begin
 		if (ifen) begin
-   			inst = pmem_read(npc);
+   			inst = pmem_read(pc);
 		end
 		else begin
 			inst = 32'h0;
