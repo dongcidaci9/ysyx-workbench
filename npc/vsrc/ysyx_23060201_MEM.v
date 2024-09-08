@@ -29,11 +29,12 @@ module ysyx_23060201_MEM # (
       mem_rdata = 32'h0;
     end
     */
+      $display(mem_wmask);
     if (mem_wen) begin
       pmem_write(mem_waddr, mem_wdata, mem_wmask);
     end 
     else begin
-      pmem_write(mem_waddr, mem_wdata, 8'b0000);
+      pmem_write(32'h0, mem_wdata, 8'b0000);
     end
   end
 
