@@ -11,23 +11,24 @@ module ysyx_23060201_IFU # (
 	output reg 	[MEM_ADDR_WIDTH-1:0] 	pc			,		
   	output reg 	[DATA_WIDTH-1:0]    	inst 
 );
-	initial begin
-		pc = `MBASE;
-	end
 
-	wire inst_fetch										;
+	reg inst_fetch										;
 	wire [31:0] npc										;
 
-	assign inst_fetch = 1'b1							;
 	assign npc = (dnpc != pc + 4) ? dnpc : pc + 4		;
+
+	initial begin
+		pc = `MBASE;
+		inst_fetch = 1'b1							;
+	end
 
 	Reg #(32, `MBASE) pc_reg(clk, rst, npc, pc, 1'b1)	; // next pc
   	
 	import "DPI-C" function int pmem_read(input int mem_raddr);
   
-  	always @(posedge clk) begin
+  	always @(*) begin
 		if (inst_fetch) begin
-   			inst <= pmem_read(pc);
+   			inst = pmem_read(pc);
 		end
 		else begin
 			inst = 32'h0;
