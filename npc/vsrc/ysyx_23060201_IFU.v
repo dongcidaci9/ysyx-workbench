@@ -7,7 +7,7 @@ module ysyx_23060201_IFU #
 )
 (
 	input wire 							clk				,
-	input wire 							rst				,
+	input wire 							rst_n			,
 	input wire 							jump_en			,
 	input wire	[MEM_ADDR_WIDTH-1:0] 	dnpc			,
   	output reg 	[MEM_ADDR_WIDTH-1:0]  	pc 				,
@@ -32,7 +32,7 @@ module ysyx_23060201_IFU #
 		1'b1, 	dnpc
 	});
 
-	Reg #(32, `MBASE) pc_reg(clk, rst, npc, pc, 1'b1); 
+	Reg #(32, `MBASE) pc_reg(~clk, ~rst_n, npc, pc, 1'b1); 
   	
 	import "DPI-C" function int pmem_read(input int mem_raddr);
   	always @(*) begin

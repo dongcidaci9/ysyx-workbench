@@ -6,7 +6,7 @@ module ysyx_23060201_TOP #
 )
 (
 	input wire 			clk									,
-	input wire 			rst									,
+	input wire 			rst_n								,
 	output wire [31:0] 	inst								,
 	output wire	[31:0] 	pc
 );
@@ -14,7 +14,7 @@ module ysyx_23060201_TOP #
 	// pc
 	wire [MEM_ADDR_WIDTH-1:0] 	wire_pc						;	
 	wire						wire_jump_en				;
-	wire [MEM_ADDR_WIDTH-1:0] 	wire_dnpc				;		;	
+	wire [MEM_ADDR_WIDTH-1:0] 	wire_dnpc					;	
 	
 	// ifu
 	wire [31:0] 	wire_inst								;
@@ -44,7 +44,7 @@ module ysyx_23060201_TOP #
 	// ifu 
 	ysyx_23060201_IFU ysyx_23060201_IFU(
 		.clk(clk),
-		.rst(rst),
+		.rst_n(rst_n),
 		.jump_en(wire_jump_en),
 		.dnpc(wire_dnpc),
 		.pc(wire_pc),
