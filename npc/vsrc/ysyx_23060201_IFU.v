@@ -27,7 +27,7 @@ module ysyx_23060201_IFU #
 	assign snpc		= pc + 'h4							; 		
 	assign ifen 	= 'b1								; 
 
-	MuxKeyWithDefault #(2, 1, 32) npc_sel(npc, jump_en, `MBASE, {
+	MuxKey #(2, 1, 32) npc_sel(npc, jump_en, {
 		1'b0,	snpc,
 		1'b1, 	dnpc
 	});

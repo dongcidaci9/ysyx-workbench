@@ -63,12 +63,12 @@ module ysyx_23060201_EXU # (
 
 	// alu
 	MuxKeyWithDefault #(6, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
-		`ysyx_23060201_OP_TYPE_R,   rs1,
-		`ysyx_23060201_OP_TYPE_I,   rs1,
-		`ysyx_23060201_OP_TYPE_U,   imm,
-		`ysyx_23060201_OP_TYPE_UPC, pc,
-		`ysyx_23060201_OP_TYPE_J,   snpc,
-		`ysyx_23060201_OP_TYPE_JR,  snpc
+		`ysyx_23060201_OP_TYPE_R	,   rs1,
+		`ysyx_23060201_OP_TYPE_I	,   rs1,
+		`ysyx_23060201_OP_TYPE_U	,   imm,
+		`ysyx_23060201_OP_TYPE_UPC	, 	pc,
+		`ysyx_23060201_OP_TYPE_J	,   snpc,
+		`ysyx_23060201_OP_TYPE_JR	,  	snpc
 	});
 
 	MuxKeyWithDefault #(3, 7, 32) alu_b_sel(alu_b, op, 32'b0, {
