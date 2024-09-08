@@ -58,15 +58,19 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
   // 总是往地址为`waddr & ~0x3u`的4字节按写掩码`wmask`写入`wdata`
   // `wmask`中每比特表示`wdata`中1个字节的掩码,
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
-    int len;
+
     addr_t aligned_waddr = waddr & ~0x3u;
     
     for (int i = 0; i < 4; i ++) {
         if (wmask & (1 << i)) {
-            len ++;
             memset(guest_to_host(aligned_waddr) + i, (wdata >> (i * 8)) & 0xFF, 1);
         }
     #ifdef CONFIG_MTRACE 
+        int len;
+        if (wmask = 0x1) len = 1;
+        else if (wmask = 0x3) len = 2;
+        else if (wmask = 0x15) len = 4;
+        else len = 0;
         display_mwrite(waddr, len, wdata);
     #endif
     }
