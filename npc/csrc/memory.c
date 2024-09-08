@@ -35,12 +35,13 @@ word_t mem_read(addr_t addr) {
 	return ret;
 }
 
+/*
 // addr_t* pc_addr = &pc; *pc_addr = pc; 
 word_t inst_fetch(addr_t* pc_addr) {
 	uint32_t inst = mem_read(*pc_addr);
 	return inst;
 }
-
+*/
 extern "C" word_t pmem_read(addr_t raddr) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
     addr_t aligned_raddr = raddr & ~0x3u;
