@@ -217,8 +217,6 @@ void cpu_exec(uint64_t n) {
 int main(int argc, char *argv[]) {
 	sim_init();
 	
-	top->clk = 0; step_and_dump_wave();
-
 	cpu_update();
 	init_monitor(argc, argv);
 
