@@ -48,10 +48,9 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     word_t rdata = host_read(guest_to_host(aligned_raddr));
     
     word_t ret;
-    word_t* ptr = &ret;
     for (int i = 0; i < 4; i ++) {
         if (rmask & (1 << i)) {
-            memset(ptr + i, (rdata >> (i * 8)) & 0xFF, 1);
+            memset(&ret + i, (rdata >> (i * 8)) & 0xFF, 1);
         }
     }
     #ifdef CONFIG_MTRACE 
