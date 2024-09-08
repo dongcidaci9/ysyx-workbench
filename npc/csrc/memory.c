@@ -60,14 +60,15 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
 
     addr_t aligned_waddr = waddr & ~0x3u;
-    
+
+    printf("%d\n", wmask); 
     for (int i = 0; i < 4; i ++) {
         if (wmask & (1 << i)) {
             memset(guest_to_host(aligned_waddr) + i, (wdata >> (i * 8)) & 0xFF, 1);
         }
     #ifdef CONFIG_MTRACE 
         int len;
-        if (wmask = 0x1) len = 2;
+        if (wmask = 0x1) len = 1;
         else if (wmask = 0x3) len = 2;
         else if (wmask = 0xf) len = 4;
         else len = 0;
