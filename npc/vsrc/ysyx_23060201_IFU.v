@@ -5,21 +5,22 @@ module ysyx_23060201_IFU # (
   DATA_WIDTH      = 32
 )
 (
-	input wire 							clk			,
-	input wire 							rst			,
-	input wire 	[MEM_ADDR_WIDTH-1:0] 	dnpc		,
-	output reg 	[MEM_ADDR_WIDTH-1:0] 	pc			,		
+	input wire 							clk				,
+	input wire 							rst				,
+	input wire 	[MEM_ADDR_WIDTH-1:0] 	dnpc			,
+	output reg 	[MEM_ADDR_WIDTH-1:0] 	pc				,			
   	output reg 	[DATA_WIDTH-1:0]    	inst 
 );
 
-	reg inst_fetch										;
-	wire [31:0] npc										;
+	wire [31:0] 						npc				;
+	
+	reg 								inst_fetch		;
 
 	assign npc = (dnpc != pc + 4) ? dnpc : pc + 4		;
 
 	initial begin
-		pc = `MBASE;
-		inst_fetch = 1'b1							;
+		pc = `MBASE										;
+		inst_fetch = 1'b1								;
 	end
 
 	Reg #(32, `MBASE) pc_reg(clk, rst, npc, pc, 1'b1)	; // next pc
