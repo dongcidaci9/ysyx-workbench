@@ -1,17 +1,23 @@
 `include "defines.v"
 
-module ysyx_23060201_TOP(clk, rst, pc, inst);
-	input wire 			clk									;
-	input wire 			rst									;
-	output wire [31:0] 	inst								;
-	output reg 	[31:0] 	pc									;
+module ysyx_23060201_TOP # 
+(
+	MEM_ADDR_WIDTH  = 32 
+)
+(
+	input wire 			clk									,
+	input wire 			rst									,
+	output wire [31:0] 	inst								,
+	output wire	[31:0] 	pc
+);
 
 	// pc
-	wire [31:0] 	wire_pc									;
+	wire [MEM_ADDR_WIDTH-1:0] 	wire_pc						;	
+	wire						wire_jump_en				;
+	wire [MEM_ADDR_WIDTH-1:0] 	wire_dnpc				;		;	
+	
 	// ifu
 	wire [31:0] 	wire_inst								;
-	
-	wire [31:0] 	wire_dnpc								;
 	wire [6:0] 		wire_op									;
 	wire [2:0] 		wire_func3								;
 	wire [6:0] 		wire_func7								;
@@ -19,7 +25,6 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	wire [31:0] 	wire_imm								;
 	
 	// gpr
-	wire 			gpr_clk									;	
 	wire 			wire_gpr_wen							;
 	wire [1:0] 		wire_gpr_ren							;
 	wire [4:0] 		wire_gpr_waddr							;
@@ -40,6 +45,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 	ysyx_23060201_IFU ysyx_23060201_IFU(
 		.clk(clk),
 		.rst(rst),
+		.jump_en(wire_jump_en),
 		.dnpc(wire_dnpc),
 		.pc(wire_pc),
 		.inst(wire_inst)
@@ -62,9 +68,7 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 
 	// exu
 	ysyx_23060201_EXU ysyx_23060201_EXU(
-		.clk_a(clk),
 		.pc(pc),
-
 		.imm(wire_imm),
 		.op(wire_op),
 		.rd(wire_rd),
@@ -73,7 +77,6 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.rs1(wire_gpr_rdata1),
 		.rs2(wire_gpr_rdata2),
 
-		.clk_b(gpr_clk),
 		.gpr_wen(wire_gpr_wen),
 		.gpr_waddr(wire_gpr_waddr),
 		.gpr_wdata(wire_gpr_wdata),
@@ -82,12 +85,13 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.mem_waddr(wire_mem_waddr),
 		.mem_wdata(wire_mem_wdata),
 		.mem_wmask(wire_mem_wmask),
-		
+
+		.jump_en(wire_jump_en),
 		.dnpc(wire_dnpc)
 	);
 
 	ysyx_23060201_GPR ysyx_23060201_GPR(
-		.gpr_clk(gpr_clk),
+		.clk(clk),
 		// .rst(rst),
 		.gpr_ren(wire_gpr_ren),
 		.gpr_wen(wire_gpr_wen),
@@ -112,4 +116,5 @@ module ysyx_23060201_TOP(clk, rst, pc, inst);
 		.mem_rdata(wire_mem_rdata)	
 		*/
 	);
+
 endmodule

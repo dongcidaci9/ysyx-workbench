@@ -156,8 +156,8 @@ static void func_trace(Decode *s)
 #endif
 
 static void exec_once(Decode *s) {
-	top->clk = 1; step_and_dump_wave();
 	top->clk = 0; step_and_dump_wave();
+	top->clk = 1; step_and_dump_wave();
 	
 	s->pc	= top->pc;
 	s->snpc	= top->pc + 4;
@@ -219,6 +219,10 @@ int main(int argc, char *argv[]) {
 	
 	init_monitor(argc, argv);
 
+	top->rst = 1;
+	top->clk = 1; step_and_dump_wave();
+	top->rst = 0;
+	top->clk = 0; step_and_dump_wave();
 	cpu_update();
 	
 	sdb_mainloop();

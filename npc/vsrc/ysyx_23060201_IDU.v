@@ -1,16 +1,16 @@
 `include "defines.v"
 
 module ysyx_23060201_IDU(
-	input [31:0] inst,
-	output [31:0] inst_imm, 
-	output [6:0] inst_op,
-	output [4:0] inst_rd,
-	output [2:0] inst_func3,
-	output [6:0] inst_func7,
-
-	// goto gpr
-	output [1:0] gpr_ren,
-	output [4:0] raddr1, raddr2
+	input wire [31:0] inst,
+	output wire [31:0] inst_imm, 
+	output wire [6:0] inst_op,
+	output wire [4:0] inst_rd,
+	output wire [2:0] inst_func3,
+	output wire [6:0] inst_func7,
+	// gpr
+	output wire [1:0] gpr_ren,
+	output wire [4:0] raddr1,
+	output wire [4:0] raddr2
 );
  
 	wire [4:0] inst_rs1;
