@@ -31,10 +31,10 @@ module ysyx_23060201_EXU(
 	wire [3:0] 	alu_ctl					;
 
 	// gpr
-	assign clk_b 		= clk_a				;
-	assign gpr_wen	 	= 1'b1				;
+	assign clk_b 		= clk_a			;
+	assign gpr_wen	 	= 1'b1			;
 	// dnpc, snpc
-	assign snpc 		= pc + 4			;
+	assign snpc 		= pc + 4		;	
 
 	// gpr
 	MuxKeyWithDefault #(2, 7, 5) gpr_waddr_sel(gpr_waddr, op, rd, {
