@@ -19,8 +19,12 @@ module ysyx_23060201_IFU #
 
 	wire 								ifen			;
 
+	initial begin
+		pc = `MBASE;
+	end
+
 	assign snpc		= pc + 'h4							; 		
-	assign ifen 	= (pc < `MBASE) ? 'b0 : 'b1			;
+	assign ifen 	= 'b0								; 
 
 	MuxKey #(2, 1, 32) npc_sel(npc, jump_en, {
 		1'b0,	snpc,
@@ -32,7 +36,7 @@ module ysyx_23060201_IFU #
 	import "DPI-C" function int pmem_read(input int mem_raddr);
   	always @(*) begin
 		if (ifen) begin
-   			inst = pmem_read(pc);
+   			inst = pmem_read(npc);
 		end
 		else begin
 			inst = 32'h0;
