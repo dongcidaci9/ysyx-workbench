@@ -46,11 +46,12 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
     addr_t aligned_raddr = raddr & ~0x3u;
     word_t rdata = host_read(guest_to_host(aligned_raddr));
-    
+
     word_t ret;
+    char * ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
         if (rmask & (1 << i)) {
-            memset(&ret + i, (rdata >> (i * 8)) & 0xFF, 1);
+            memset(ptr + i, (rdata >> (i * 8)) & 0xFF, 1);
         }
     }
     #ifdef CONFIG_MTRACE 
