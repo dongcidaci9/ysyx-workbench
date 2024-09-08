@@ -20,12 +20,12 @@ module ysyx_23060201_EXU # (
 	// mem
 	output wire 						mem_wen			,
 	output wire [MEM_ADDR_WIDTH-1:0] 	mem_waddr		,
-	output wire [DATA_WIDTH-1:0] 		mem_wdata		,
 	output wire [7:0] 					mem_wmask		,
+	output wire [DATA_WIDTH-1:0] 		mem_wdata		,
 	output wire 						mem_ren			,
 	output wire [MEM_ADDR_WIDTH-1:0] 	mem_raddr		,
 	output wire [7:0] 					mem_rmask		,
-	input wire [MEM_ADDR_WIDTH-1:0] 	mem_rdata		,
+	input wire [DATA_WIDTH-1:0] 		mem_rdata		,
 
 	output wire 						jump_en			,
 	output wire [MEM_ADDR_WIDTH-1:0] 	dnpc 		
@@ -61,9 +61,9 @@ module ysyx_23060201_EXU # (
 	});
 
 	MuxKeyWithDefault #(3, 3, 8) mem_wmask_sel(mem_wmask, func3, 8'b0000, {
-		`ysyx_23060201_FUNC3_BYTE,	8'b0001,
-		`ysyx_23060201_FUNC3_HALF,	8'b0011,
-		`ysyx_23060201_FUNC3_WORD,	8'b1111
+		`ysyx_23060201_FUNC3_B,		8'b0001,
+		`ysyx_23060201_FUNC3_H,		8'b0011,
+		`ysyx_23060201_FUNC3_W,		8'b1111
 	});
 
 	MuxKeyWithDefault #(1, 7, 1) mem_ren_sel(mem_ren, op, 1'b0, {
@@ -74,11 +74,14 @@ module ysyx_23060201_EXU # (
 		`ysyx_23060201_OP_TYPE_IL,	rs1 + imm	
 	});
 
-	MuxKeyWithDefault #(3, 3, 8) mem_rmask_sel(mem_rmask, func3, 8'b0000, {
-		`ysyx_23060201_FUNC3_BYTE,	8'b0001,
-		`ysyx_23060201_FUNC3_HALF,	8'b0011,
-		`ysyx_23060201_FUNC3_WORD,	8'b1111
+	MuxKeyWithDefault #(5, 3, 8) mem_rmask_sel(mem_rmask, func3, 8'b0, {
+		`ysyx_23060201_FUNC3_B,		8'b10001,
+		`ysyx_23060201_FUNC3_H,		8'b10011,
+		`ysyx_23060201_FUNC3_W,		8'b11111,
+		`ysyx_23060201_FUNC3_BU,	8'b00001,
+		`ysyx_23060201_FUNC3_HU,	8'b00011	
 	});
+
 	// alu
 	MuxKeyWithDefault #(6, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_R	,   rs1,
@@ -124,8 +127,8 @@ module ysyx_23060201_EXU # (
 	});
 
 	MuxKeyWithDefault #(2, 7, 1) jump_en_sel(jump_en, op, 1'b0, {
-		`ysyx_23060201_OP_TYPE_J,  1'b1, 
-		`ysyx_23060201_OP_TYPE_JR, 1'b1 
+		`ysyx_23060201_OP_TYPE_J	,  	1'b1, 
+		`ysyx_23060201_OP_TYPE_JR	, 	1'b1 
 	});
 
 	MuxKeyWithDefault #(2, 7, 32) dnpc_sel(dnpc, op, snpc, {

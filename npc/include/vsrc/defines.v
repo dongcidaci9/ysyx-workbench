@@ -23,9 +23,11 @@
 `define ysyx_23060201_FUNC3_SLT     3'b010
 `define ysyx_23060201_FUNC3_SLTU    3'b011
 
-`define ysyx_23060201_FUNC3_BYTE    3'b000
-`define ysyx_23060201_FUNC3_HALF    3'b001
-`define ysyx_23060201_FUNC3_WORD    3'b010
+`define ysyx_23060201_FUNC3_B       3'b000
+`define ysyx_23060201_FUNC3_H       3'b001
+`define ysyx_23060201_FUNC3_W       3'b010
+`define ysyx_23060201_FUNC3_BU      3'b100
+`define ysyx_23060201_FUNC3_HU      3'b101
 
 // func7 define
 `define ysyx_23060201_FUNC7_SUB     7'h20
