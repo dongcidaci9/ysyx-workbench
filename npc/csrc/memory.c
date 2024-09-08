@@ -68,9 +68,9 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
         }
     #ifdef CONFIG_MTRACE 
         int len;
-        if (wmask = 1) len = 1;
-        else if (wmask = 3) len = 2;
-        else if (wmask = 15) len = 4;
+        if (wmask == 1) len = 1;
+        else if (wmask == 3) len = 2;
+        else if (wmask == 15) len = 4;
         else len = 0;
         display_mwrite(waddr, len, wdata);
     #endif
