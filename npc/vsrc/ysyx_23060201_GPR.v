@@ -15,6 +15,10 @@ module ysyx_23060201_GPR # (
 );
 		
 	reg [DATA_WIDTH-1:0] reg_file [2**GPR_ADDR_WIDTH-1:0]; 
+
+	initial begin
+		reg_file[0] = 32'h0;
+	end
 	
 	// Write back the changed value
 	always @(posedge gpr_clk) begin

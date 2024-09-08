@@ -31,6 +31,7 @@ module ysyx_23060201_EXU(
 	wire [3:0] 	alu_ctl					;
 
 	// gpr
+	assign clk_b 		= clk_a			;
 	assign gpr_wen	 	= 1'b1			;
 	// dnpc, snpc
 	assign snpc 		= pc + 4		;	
@@ -103,7 +104,5 @@ module ysyx_23060201_EXU(
 		`ysyx_23060201_OP_TYPE_J,  pc + imm, 
 		`ysyx_23060201_OP_TYPE_JR, (rs1 + imm) & (~1)
 	});
-
-	assign clk_b 		= clk_a			;
 
 endmodule
