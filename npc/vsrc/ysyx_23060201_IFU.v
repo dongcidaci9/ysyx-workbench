@@ -15,10 +15,10 @@ module ysyx_23060201_IFU #
 );
 
 	wire [MEM_ADDR_WIDTH-1:0]			snpc			;
+	wire [MEM_ADDR_WIDTH-1:0]			npc				;
 
 	wire 								ifen			;
 	
-	wire [MEM_ADDR_WIDTH-1:0]			npc				;
 
 	initial begin
 		pc 	= `MBASE;
