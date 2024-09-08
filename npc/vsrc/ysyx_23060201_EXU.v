@@ -33,10 +33,6 @@ module ysyx_23060201_EXU(
 	// gpr
 	assign clk_b 		= clk_a				;
 	assign gpr_wen	 	= 1'b1				;
-	// mem
-	assign mem_wen 		= (op != `ysyx_23060201_OP_TYPE_S) ? 'b0 	: 'b1		; 
-	assign mem_waddr 	= (op != `ysyx_23060201_OP_TYPE_S) ? 32'b0 	: rs1 + imm	; 
-	assign mem_wdata 	= (op != `ysyx_23060201_OP_TYPE_S) ? 32'b0 	: rs2		;	 
 	// dnpc, snpc
 	assign snpc 		= pc + 4			;
 
@@ -47,7 +43,6 @@ module ysyx_23060201_EXU(
 	});
 
 	// mem
-	/*	
 	MuxKeyWithDefault #(1, 7, 1) mem_wen_sel(mem_wen, op, 1'b0, {
 		`ysyx_23060201_OP_TYPE_S,	1'b1
 	});
@@ -59,7 +54,6 @@ module ysyx_23060201_EXU(
 	MuxKeyWithDefault #(1, 7, 32) mem_wdata_sel(mem_wdata, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_S,	rs2 	
 	});
-	*/
 	MuxKeyWithDefault #(3, 3, 8) mem_wmask_sel(mem_wmask, func3, 8'b0000, {
 		`ysyx_23060201_FUNC3_SB,	8'b0001,
 		`ysyx_23060201_FUNC3_SH,	8'b0011,
