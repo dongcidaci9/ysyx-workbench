@@ -34,9 +34,9 @@ module ysyx_23060201_IFU #
 	Reg #(32, `MBASE) pc_reg(clk, rst, npc, pc, 1'b1); 
   	
 	import "DPI-C" function int pmem_read(input int mem_raddr);
-  	always @(*) begin
+  	always @(posedge clk) begin
 		if (ifen) begin
-   			inst = pmem_read(pc);
+   			inst <= pmem_read(npc);
 		end
 		else begin
 			inst = 32'h0;
