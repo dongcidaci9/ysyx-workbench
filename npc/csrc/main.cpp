@@ -217,9 +217,12 @@ void cpu_exec(uint64_t n) {
 int main(int argc, char *argv[]) {
 	sim_init();
 	
-	cpu_update();
 	init_monitor(argc, argv);
 
+	top->clk = 1; step_and_dump_wave();
+	top->clk = 0; step_and_dump_wave();
+	cpu_update();
+	
 	sdb_mainloop();
 
 	// ebreak
