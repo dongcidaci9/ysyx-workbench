@@ -22,7 +22,6 @@ void init_isa() {
 // initialize memory
 void init_mem() {
 	mem = (uint8_t*)malloc(MSIZE);
-    memset(mem, 0x0, sizeof(mem));
 }
 
 word_t host_read(void* addr) {
@@ -58,9 +57,9 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
             memset(ptr + i, (rdata >> (i * 8)) & 0xFF, 1);
         }
     }
-    printf("aaa0x%08x\n", ret);
     if (rmask2 == 0) ret = (uint32_t)ret; 
     else if (rmask == 1) ret = (int32_t)ret;
+    printf("aaa0x%08x\n", ret);
     #ifdef CONFIG_MTRACE 
     int len;
     if (rmask1 == 0x1) len = 1;
