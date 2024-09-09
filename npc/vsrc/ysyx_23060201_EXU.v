@@ -71,7 +71,7 @@ module ysyx_23060201_EXU # (
 	});
 
 	MuxKeyWithDefault #(1, 7, 32) mem_raddr_sel(mem_raddr, op, 32'b0, {
-		`ysyx_23060201_OP_TYPE_IL,	imm	
+		`ysyx_23060201_OP_TYPE_IL,	rs1 + imm	
 	});
 
 	MuxKeyWithDefault #(5, 3, 8) mem_rmask_sel(mem_rmask, func3, 8'b0, {
