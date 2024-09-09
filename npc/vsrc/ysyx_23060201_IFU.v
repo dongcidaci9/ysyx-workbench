@@ -21,7 +21,7 @@ module ysyx_23060201_IFU #
 	reg [MEM_ADDR_WIDTH-1:0]			npc				;
 	
 	assign snpc			= pc + 'h4						; 		
-	assign ifen 		= (pc >= `MBASE) ? 'b1 : 'b0	; 
+	assign ifen 		= 'b1							; 
 
 	initial begin
 		npc = `MBASE;
