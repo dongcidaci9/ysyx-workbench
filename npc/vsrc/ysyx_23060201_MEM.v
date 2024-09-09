@@ -22,7 +22,7 @@ module ysyx_23060201_MEM # (
     input int mem_waddr, input int mem_wdata, input byte mem_wmask);
 
   always @(*) begin
-    $display("%b", mem_ren);
+    $display("%h", mem_raddr);
   end
 
   always @(posedge clk) begin
