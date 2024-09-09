@@ -81,6 +81,8 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
             memset(guest_to_host(aligned_waddr) + i, (wdata >> (i * 8)) & 0xFF, 1);
         }
     }
+    word_t ret = *(word_t *)guest_to_host(aligned_waddr);
+    printf("0x%08x\n", ret);
     #ifdef CONFIG_MTRACE 
         int len;
         if (wmask == 0x1) len = 1;
