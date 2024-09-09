@@ -11,8 +11,8 @@ module ysyx_23060201_MEM # (
   input wire [7:0]                  mem_wmask           ,           
   input wire [DATA_WIDTH-1:0]       mem_wdata           ,
   input wire                        mem_ren             , 
-  input reg [MEM_ADDR_WIDTH-1:0]    mem_raddr           ,
-  input reg [7:0]                   mem_rmask           ,           
+  input wire [MEM_ADDR_WIDTH-1:0]   mem_raddr           ,
+  input wire [7:0]                  mem_rmask           ,           
   output reg [DATA_WIDTH-1:0]       mem_rdata 
 );
   
