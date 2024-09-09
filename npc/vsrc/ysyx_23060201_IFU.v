@@ -20,7 +20,7 @@ module ysyx_23060201_IFU #
 	reg [MEM_ADDR_WIDTH-1:0]			npc				;
 	
 	assign snpc			= pc + 'h4						; 		
-	assign ifen 		= (pc < `MBASE) ? 'b0 : 'b1		; 
+	assign ifen 		= (pc >= `MBASE) ? 'b1 : 'b0	; 
 	
 	MuxKey #(2, 1, 32) npc_sel(npc, jump_en, {
 		1'b0,	snpc,
