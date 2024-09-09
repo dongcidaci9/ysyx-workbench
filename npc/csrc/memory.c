@@ -1,6 +1,7 @@
 #include <common.h>
 #include <utils.h>
 #include <memory.h>
+#include <macro.h>
 
 static uint8_t *mem = NULL;
 
@@ -34,7 +35,6 @@ word_t mem_read(addr_t addr) {
 
 	return ret;
 }
-
 /*
 // addr_t* pc_addr = &pc; *pc_addr = pc; 
 word_t inst_fetch(addr_t* pc_addr) {
@@ -50,7 +50,6 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     char rmask1 = rmask & 0x0F;
     char rmask2 = (rmask >> 4) & 0x01;
 
-    printf("aaa0x%08x\n", rdata);
     word_t ret;
     char * ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
@@ -60,14 +59,13 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     }
     if (rmask2 == 0) ret = (uint32_t)ret; 
     else if (rmask == 1) ret = (int32_t)ret;
-    printf("aaa0x%08x\n", ret);
     #ifdef CONFIG_MTRACE 
     int len;
     if (rmask1 == 0x1) len = 1;
     else if (rmask1 == 0x3) len = 2;
     else if (rmask1 == 0xf) len = 4;
     else len = 0;
-    display_mread(raddr, len);
+    display_mread(raddr, len, ret);
     #endif
 
     return ret;
