@@ -50,6 +50,7 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     char rmask1 = rmask & 0x0F;
     char rmask2 = (rmask >> 4) & 0x01;
 
+    printf("aaa0x%08x\n", rdata);
     word_t ret;
     char * ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
