@@ -14,7 +14,7 @@ module ysyx_23060201_GPR # (
 	output wire	[DATA_WIDTH-1:0] 		gpr_rdata2 
 );
 
-	reg [DATA_WIDTH-1:0] reg_file [2**GPR_ADDR_WIDTH-1:0]; 
+	reg [DATA_WIDTH-1:0] reg_file [2**GPR_ADDR_WIDTH-1:0]	; 
 
 	initial begin
 		reg_file[0] = 32'h0;
