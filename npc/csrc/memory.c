@@ -47,14 +47,14 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     addr_t aligned_raddr = raddr & ~0x3u;
     word_t rdata = host_read(guest_to_host(aligned_raddr));
 
-    char rmask1 = rmask & 0x0Fu;
+    char rmask1 = rmask & 0x0F;
     char rmask2 = rmask & 0x10;
 
     word_t ret;
     char* ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
         if (rmask1 & (1 << i)) {
-            memset(ptr + i, (rdata >> (i * 8)) & 0xFFu, 1);
+            memset(ptr + i, (rdata >> (i * 8)) & 0xFF, 1);
         }
     }
     #ifdef CONFIG_MTRACE 
@@ -63,7 +63,7 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     else if (rmask1 == 0x3) len = 2;
     else if (rmask1 == 0xf) len = 4;
     else len = 0;
-    display_mread(raddr, len, ret);
+    display_mread(raddr, len, rdata);
     #endif
 
     return ret;
