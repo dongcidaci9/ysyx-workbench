@@ -23,11 +23,11 @@ module ysyx_23060201_GPR # (
 	// read gpr 
 	MuxKeyWithDefault #(2, 1, 32) gpr_rdata1_sel(gpr_rdata1, gpr_ren[0], 32'b0, {
 		1'b0, 	32'b0,	
-		1'b1,	{27'b0, {gpr_raddr1}} 	
+		1'b1,	reg_file[0]	
 	});
 
 	MuxKeyWithDefault #(2, 1, 32) gpr_rdata2_sel(gpr_rdata2, gpr_ren[1], 32'b0, {
-		1'b0, 	32'b0,	
+		1'b0,	reg_file[gpr_raddr1],	
 		1'b1,	reg_file[gpr_raddr2] 	
 	});
 
