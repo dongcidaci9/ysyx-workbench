@@ -23,7 +23,7 @@ module ysyx_23060201_MEM # (
 
   always @(*) begin
     if (mem_ren) begin
-      $display("%h", mem_rmask);
+      $display("%h", mem_raddr);
     end
   end
 
