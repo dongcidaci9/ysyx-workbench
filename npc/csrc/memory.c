@@ -57,6 +57,7 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
             memset(ptr + i, (rdata >> (i * 8)) & 0xFF, 1);
         }
     }
+    printf("aaa0x%08x\n", ret);
     if (rmask2 == 0) ret = (uint32_t)ret; 
     else if (rmask == 1) ret = (int32_t)ret;
     #ifdef CONFIG_MTRACE 
