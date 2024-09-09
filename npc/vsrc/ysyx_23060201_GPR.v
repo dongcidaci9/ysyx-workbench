@@ -20,12 +20,7 @@ module ysyx_23060201_GPR # (
 		reg_file[0] = 32'h0;
 	end
 	
-	// Write back the changed value
-	always @(posedge clk) begin
-    	if (gpr_wen) reg_file[gpr_waddr] <= (gpr_waddr != 5'd0) ? gpr_wdata : 32'b0;
-	end
-
-	// Get the value
+	// read gpr 
 	MuxKeyWithDefault #(2, 1, 32) gpr_rdata1_sel(gpr_rdata1, gpr_ren[0], 32'b0, {
 		1'b0, 	32'b0,	
 		1'b1,	reg_file[gpr_raddr1] 	
@@ -35,5 +30,10 @@ module ysyx_23060201_GPR # (
 		1'b0, 	32'b0,	
 		1'b1,	reg_file[gpr_raddr2] 	
 	});
+
+	// write gpr
+	always @(posedge clk) begin
+    	if (gpr_wen) reg_file[gpr_waddr] <= (gpr_waddr != 5'd0) ? gpr_wdata : 32'b0;
+	end
 
 endmodule
