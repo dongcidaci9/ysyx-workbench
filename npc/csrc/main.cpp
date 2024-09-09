@@ -218,6 +218,7 @@ int main(int argc, char *argv[]) {
 	
 	init_monitor(argc, argv);
 
+	top->rst_n = 0;
 	top->clk = 1; step_and_dump_wave();
 	top->rst_n = 1;
 	cpu_update();
