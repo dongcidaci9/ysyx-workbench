@@ -64,7 +64,7 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     else if (rmask1 == 0x3) len = 2;
     else if (rmask1 == 0xf) len = 4;
     else len = 0;
-    display_mread(raddr, len, rdata);
+    display_mread(raddr, len, ret);
     #endif
 
     return ret;
