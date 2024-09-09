@@ -37,12 +37,12 @@ module ysyx_23060201_IFU #
   	
 	import "DPI-C" function int pmem_read(
 		input int mem_raddr, input byte mem_rmask);
-  	always @(negedge clk) begin
+  	always @(*) begin
 		if (ifen) begin
-   			inst <= pmem_read(npc, 8'b1111);
+   			inst = pmem_read(npc, 8'b1111);
 		end
 		else begin
-			inst <= 32'h0;
+			inst = 32'h0;
 		end
   	end
 
