@@ -82,7 +82,7 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
         }
     }
     word_t ret = *(word_t *)guest_to_host(aligned_waddr);
-    printf("0x%08x\n", ret);
+    printf("aaa0x%08x\n", ret);
     #ifdef CONFIG_MTRACE 
         int len;
         if (wmask == 0x1) len = 1;
