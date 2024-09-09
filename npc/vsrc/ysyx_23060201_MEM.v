@@ -23,14 +23,17 @@ module ysyx_23060201_MEM # (
 
   always @(*) begin
     if (mem_ren) begin
-      mem_rdata = pmem_read(mem_raddr, mem_rmask);
-    end
-    else begin
-      mem_rdata = 32'h0; 
+      $display("aaa");
     end
   end
 
-  always @(posedge clk) begin
+  always @(posedge clk) begin  
+    if (mem_ren) begin
+      mem_rdata <= pmem_read(mem_raddr, mem_rmask);
+    end
+    else begin
+      mem_rdata <= 32'h0; 
+    end
     if (mem_wen) begin
       pmem_write(mem_waddr, mem_wdata, mem_wmask);
     end 
