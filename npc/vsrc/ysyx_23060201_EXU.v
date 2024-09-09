@@ -98,7 +98,7 @@ module ysyx_23060201_EXU # (
 		`ysyx_23060201_OP_TYPE_UPC	, 	imm
 	});
 
-	MuxKey #(8, 3, 3) alu_ctl_sel1(alu_ctl[2:0], func3, {
+	MuxKeyWithDefault #(8, 3, 3) alu_ctl_sel1(alu_ctl[2:0], func3, 3'b000, {
 		`ysyx_23060201_FUNC3_ADDSUB	, 	3'b000,
 		`ysyx_23060201_FUNC3_XOR	,   3'b100,
 		`ysyx_23060201_FUNC3_OR		,   3'b111,
