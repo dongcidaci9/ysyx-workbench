@@ -53,6 +53,7 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     word_t ret;
     char* ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
+        memset(ptr + i, 0x00, 1);
         if (rmask1 & (1 << i)) {
             memset(ptr + i, (rdata >> (i * 8)) & 0xFF, 1);
         }
