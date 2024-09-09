@@ -23,7 +23,6 @@ module ysyx_23060201_GPR # (
 	// Write back the changed value
 	always @(posedge clk) begin
     	if (gpr_wen) reg_file[gpr_waddr] <= (gpr_waddr != 5'd0) ? gpr_wdata : 32'b0;
-		$display("hi");
 	end
 
 	// Get the value
