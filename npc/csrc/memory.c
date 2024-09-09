@@ -61,9 +61,9 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     else if (rmask == 1) ret = (int32_t)ret;
     #ifdef CONFIG_MTRACE 
     int len;
-    if (rmask == 0x1) len = 1;
-    else if (rmask == 0x3) len = 2;
-    else if (rmask == 0xf) len = 4;
+    if (rmask1 == 0x1) len = 1;
+    else if (rmask1 == 0x3) len = 2;
+    else if (rmask1 == 0xf) len = 4;
     else len = 0;
     display_mread(raddr, len);
     #endif
