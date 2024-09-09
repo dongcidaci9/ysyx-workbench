@@ -38,7 +38,7 @@ module ysyx_23060201_IFU #
 		input int mem_raddr, input byte mem_rmask);
   	always @(negedge clk) begin
 		if (ifen) begin
-   			inst <= pmem_read(npc, 8'b1111);
+   			inst <= pmem_read(pc, 8'b1111);
 		end
 		else begin
 			inst = 32'h0;
