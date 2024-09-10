@@ -19,7 +19,11 @@ module ysyx_23060201_MEM # (
 
   reg                               stop                ;
 
-  Reg #(1, 'b0) stop_reg(clk, ~rst_n, 'b0, stop, mem_ren) ;
+  Reg #(1, 'b0) stop_reg(clk, ~rst_n, 'b1, stop, mem_ren);
+
+  initial begin
+    stop = 'b0;
+  end
 
   import "DPI-C" function int pmem_read(
     input int mem_raddr, input byte mem_rmask);
