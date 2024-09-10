@@ -62,12 +62,6 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     }
 
     #ifdef CONFIG_MTRACE
-    /*
-    if (rmask1 == 0x1) len = 1;
-    else if (rmask1 == 0x3) len = 2;
-    else if (rmask1 == 0xf) len = 4;
-    else len = 0;
-    */ 
     display_mread(raddr, len, ret);
     #endif
 
@@ -79,17 +73,14 @@ extern "C" void pmem_write(addr_t waddr, word_t wdata, char wmask) {
   // `wmask`中每比特表示`wdata`中1个字节的掩码,
   // 如`wmask = 0x3`代表只写入最低2个字节, 内存中的其它字节保持不变
     addr_t aligned_waddr = waddr & ~0x3u;
+    char len = 0;
     for (int i = 0; i < 4; i ++) {
         if (wmask & (1 << i)) {
             memset(guest_to_host(aligned_waddr) + i, (wdata >> (i * 8)) & 0xFF, 1);
+            len ++; 
         }
     }
     #ifdef CONFIG_MTRACE 
-        int len;
-        if (wmask == 0x1) len = 1;
-        else if (wmask == 0x3) len = 2;
-        else if (wmask == 0xf) len = 4;
-        else len = 0;
-        display_mwrite(waddr, len, wdata);
+    display_mwrite(waddr, len, wdata);
     #endif
 }
