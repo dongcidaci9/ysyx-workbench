@@ -42,6 +42,11 @@ module ysyx_23060201_EXU # (
 	assign gpr_wen	 	= 1'b1								;
 
 	// gpr
+	MuxKeyWithDefault #(2, 7, 1) gpr_wen_sel(gpr_wen, op, 1'b1, {
+		`ysyx_23060201_OP_TYPE_S,   1'b0,
+		`ysyx_23060201_OP_TYPE_B,   1'b0
+	});
+
 	MuxKeyWithDefault #(2, 7, 5) gpr_waddr_sel(gpr_waddr, op, rd, {
 		`ysyx_23060201_OP_TYPE_S,   5'b0,
 		`ysyx_23060201_OP_TYPE_B,   5'b0
