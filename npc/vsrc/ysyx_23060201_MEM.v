@@ -39,7 +39,7 @@ module ysyx_23060201_MEM # (
       mem_rdata = pmem_read(mem_raddr, mem_rmask);
     end
     else begin
-      mem_rdata = 32'h0; 
+      mem_rdata = 32'h1; 
     end
   end
 
