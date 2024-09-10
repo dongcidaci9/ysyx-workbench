@@ -49,19 +49,25 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     char rmask1 = rmask & 0x0F;
     char rmask2 = rmask & 0x10;
 
+    int len;
     word_t ret;
     char* ret_ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
-        if (rmask1 & (1 << i)) ret_ptr[i] = (rdata >> (i * 8)) & 0xFF;
+        if (rmask1 & (1 << i)) {
+            ret_ptr[i] = (rdata >> (i * 8)) & 0xFF;
+            len ++;
+        } else {
+            ret_ptr[i] = 0;
+        }
     }
 
-    #ifdef CONFIG_MTRACE 
-    int len;
+    #ifdef CONFIG_MTRACE
+    /*
     if (rmask1 == 0x1) len = 1;
     else if (rmask1 == 0x3) len = 2;
     else if (rmask1 == 0xf) len = 4;
     else len = 0;
-    
+    */ 
     display_mread(raddr, len, ret);
     #endif
 
