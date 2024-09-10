@@ -35,12 +35,11 @@ module ysyx_23060201_MEM # (
     input int mem_waddr, input int mem_wdata, input byte mem_wmask);
 
   always @(*) begin
-    if (mem_ren && ~clk) begin
+    if (mem_ren) begin
       mem_rdata = pmem_read(mem_raddr, mem_rmask);
     end
     else begin
       mem_rdata = 32'h1; 
-      $display("aaa");
     end
   end
 
