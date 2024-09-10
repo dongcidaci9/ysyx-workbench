@@ -49,7 +49,7 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     char rmask1 = rmask & 0x0F;
     char rmask2 = rmask & 0x10;
 
-    char len;
+    char len = 0;
     word_t ret;
     char* ret_ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
