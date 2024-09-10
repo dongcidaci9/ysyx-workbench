@@ -1,7 +1,6 @@
 #include <common.h>
 #include <utils.h>
 #include <memory.h>
-#include <macro.h>
 
 static uint8_t *mem = NULL;
 
@@ -54,7 +53,6 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     char* ret_ptr = (char *)&ret;
     for (int i = 0; i < 4; i ++) {
         if (rmask1 & (1 << i)) ret_ptr[i] = (rdata >> (i * 8)) & 0xFF;
-        else ret_ptr[i] = 0; 
     }
 
     #ifdef CONFIG_MTRACE 
