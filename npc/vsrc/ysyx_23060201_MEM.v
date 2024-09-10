@@ -6,6 +6,7 @@ module ysyx_23060201_MEM # (
 ) 
 (
   input wire                        clk                 ,
+  input wire                        rst_n               ,
   input wire                        mem_wen             , 
   input wire [MEM_ADDR_WIDTH-1:0]   mem_waddr           , 
   input wire [7:0]                  mem_wmask           ,           
@@ -15,15 +16,19 @@ module ysyx_23060201_MEM # (
   input wire [7:0]                  mem_rmask           ,           
   output reg [DATA_WIDTH-1:0]       mem_rdata 
 );
-  
+
+  reg                               stop                ;
+
+  Reg #(1, 'b0) stop_reg(clk, ~rst_n, 'b0, stop, mem_ren) ;
+
   import "DPI-C" function int pmem_read(
     input int mem_raddr, input byte mem_rmask);
   import "DPI-C" function void pmem_write(
     input int mem_waddr, input int mem_wdata, input byte mem_wmask);
 
   always @(*) begin
-    if (mem_ren) begin
-      mem_rdata = pmem_read(mem_raddr, mem_rmask);
+    if (mem_ren && ~stop) begin
+      mem_rdata = pmem_read(mem_raddr, mem_rmask)       ;
     end
     else begin
       mem_rdata = 32'h0; 
