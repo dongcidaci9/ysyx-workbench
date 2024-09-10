@@ -35,7 +35,6 @@ module ysyx_23060201_MEM # (
   always @(*) begin
     if (mem_ren && ~mem_rstop) begin
       mem_rdata = pmem_read(mem_raddr, mem_rmask);
-      $display("%h", mem_rdata);
     end
     else begin
       mem_rdata = 32'h0; 
