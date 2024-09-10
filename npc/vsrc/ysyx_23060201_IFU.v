@@ -31,7 +31,9 @@ module ysyx_23060201_IFU #
 		1'b1, 	dnpc
 	});
 
-	Reg #(32, `MBASE) pc_reg(~clk, ~rst_n, npc, pc, 1'b1); 
+	Reg #(32, `MBASE) pc_reg(
+		~clk, ~rst_n, npc, pc, 1'b1
+	); 
   	
 	import "DPI-C" function int pmem_read(
 		input int mem_raddr, input byte mem_rmask);

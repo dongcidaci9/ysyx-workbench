@@ -17,9 +17,11 @@ module ysyx_23060201_MEM # (
   output reg [DATA_WIDTH-1:0]       mem_rdata 
 );
 
-  reg                               stop                ;
+  reg                               mem_rstop           ;
 
-  Reg #(1, 'b0) stop_reg(clk, ~rst_n, 'b1, stop, mem_ren);
+  Reg #(1, 'b0) mem_rstop_reg(
+    clk, ~rst_n, 'b1, mem_rstop, mem_ren
+  );
 
   initial begin
     stop = 'b0;
