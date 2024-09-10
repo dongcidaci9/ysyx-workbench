@@ -20,7 +20,7 @@ module ysyx_23060201_MEM # (
   reg                               mem_rstop           ;
 
   Reg #(1, 'b0) mem_rstop_reg(
-    clk, ~rst_n, 'b1, mem_rstop, mem_ren
+    clk, ~rst_n, ~mem_rstop, mem_rstop, 1'b1 
   );
 
   initial begin
