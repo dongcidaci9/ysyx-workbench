@@ -40,6 +40,7 @@ module ysyx_23060201_MEM # (
     end
     else begin
       mem_rdata = 32'h1; 
+      $display("aaa");
     end
   end
 
