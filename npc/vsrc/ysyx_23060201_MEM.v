@@ -24,7 +24,7 @@ module ysyx_23060201_MEM # (
   );
 
   initial begin
-    stop = 'b0;
+    mem_rstop = 'b0;
   end
 
   import "DPI-C" function int pmem_read(
@@ -33,7 +33,7 @@ module ysyx_23060201_MEM # (
     input int mem_waddr, input int mem_wdata, input byte mem_wmask);
 
   always @(*) begin
-    if (mem_ren && ~stop) begin
+    if (mem_ren && ~mem_rstop) begin
       mem_rdata = pmem_read(mem_raddr, mem_rmask)       ;
     end
     else begin
