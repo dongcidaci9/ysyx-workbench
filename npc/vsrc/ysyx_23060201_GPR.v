@@ -15,9 +15,12 @@ module ysyx_23060201_GPR # (
 );
 
 	reg [DATA_WIDTH-1:0] reg_file [2**GPR_ADDR_WIDTH-1:0]	; 
-
+	
+	integer i;
 	initial begin
-		reg_file[0] = 32'h0;
+		for (i = 0; i < 32; i = i + 1) begin
+			reg_file[i] = 'h0;
+		end
 	end
 	
 	// read gpr 
