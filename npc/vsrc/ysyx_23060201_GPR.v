@@ -36,7 +36,7 @@ module ysyx_23060201_GPR # (
 	});
 
 	// write gpr
-	always @(posedge clk) begin
+	always @(negedge clk) begin
     	if (gpr_wen) reg_file[gpr_waddr] <= (gpr_waddr != 5'd0) ? gpr_wdata : 32'b0;
 	end
 
