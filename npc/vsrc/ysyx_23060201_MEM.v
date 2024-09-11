@@ -19,14 +19,9 @@ module ysyx_23060201_MEM # (
 
   /*
   reg                               mem_rstop           ;
-
   Reg #(1, 'b0) mem_rstop_reg(
     ~clk, ~rst_n, ~mem_rstop, mem_rstop, 1'b1 
   );
-
-  initial begin
-    mem_rstop = 'b0;
-  end
   */
 
   import "DPI-C" function int pmem_read(
@@ -34,15 +29,14 @@ module ysyx_23060201_MEM # (
   import "DPI-C" function void pmem_write(
     input int mem_waddr, input int mem_wdata, input byte mem_wmask);
 
-  always @(mem_raddr) begin
+  always @(mem_rmask) begin
     if (mem_ren) begin
       mem_rdata <= pmem_read(mem_raddr, mem_rmask);
     end
     else begin
       mem_rdata <= 32'h0;
-      $display("aaa"); 
     end
-  end
+end
 
   always @(posedge clk) begin
     if (mem_wen) begin
