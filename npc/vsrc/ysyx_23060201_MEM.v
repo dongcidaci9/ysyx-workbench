@@ -38,7 +38,7 @@ module ysyx_23060201_MEM # (
     end
 end
 
-  always @(posedge clk) begin
+  always @(negedge clk) begin
     if (mem_wen) begin
       pmem_write(mem_waddr, mem_wdata, mem_wmask);
     end 
