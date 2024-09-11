@@ -103,6 +103,7 @@ module ysyx_23060201_TOP #
 
 	ysyx_23060201_GPR ysyx_23060201_GPR(
 		.clk(clk),
+		.rst_n(rst_n),
 		.gpr_ren(wire_gpr_ren),
 		.gpr_wen(wire_gpr_wen),
 		.gpr_waddr(wire_gpr_waddr),
