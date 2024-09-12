@@ -156,14 +156,9 @@ static void func_trace(Decode *s)
 #endif
 
 static void exec_once(Decode *s) {
-	if (g_nr_guest_inst == 0) {
-		top->rst_n = 0;
-		top->clk = 0; step_and_dump_wave();
-	} else {
-		top->rst_n = 1;
-		top->clk = 1; step_and_dump_wave();
-		top->clk = 0; step_and_dump_wave();
-	}
+	top->rst_n = 1;
+	top->clk = 1; step_and_dump_wave();
+	top->clk = 0; step_and_dump_wave();
 	
 	s->pc	= top->pc;
 	s->snpc	= top->pc + 4;
@@ -222,6 +217,8 @@ void cpu_exec(uint64_t n) {
 int main(int argc, char *argv[]) {
 	sim_init();
 	
+	top->rst_n = 0;
+	top->clk = 0; step_and_dump_wave();
 	init_monitor(argc, argv);
 
 	cpu_update();
