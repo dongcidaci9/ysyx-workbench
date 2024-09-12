@@ -153,7 +153,7 @@ module ysyx_23060201_EXU # (
 	});
 
 	MuxKeyWithDefault #(8, 6, 1) jump_en_sel(jump_en, {branch, eq, lt, ltu}, 1'b0, { 
-		6'b001010,	1'b1,
+		6'b00101x,	1'b1,
 		6'b010xxx,	1'b1,
 		6'b1001xx,	1'b1,
 		6'b1010xx,	1'b1,
