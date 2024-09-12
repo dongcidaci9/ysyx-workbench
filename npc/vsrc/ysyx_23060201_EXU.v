@@ -95,8 +95,8 @@ module ysyx_23060201_EXU # (
 	MuxKeyWithDefault #(8, 3, 3) alu_ctl_sel1(alu_ctl[2:0], func3, 3'b000, {
 		`ysyx_23060201_FUNC3_ADDSUB	, 	3'b000,
 		`ysyx_23060201_FUNC3_XOR	,   3'b100,
-		`ysyx_23060201_FUNC3_OR		,   3'b111,
-		`ysyx_23060201_FUNC3_AND	,   3'b110,
+		`ysyx_23060201_FUNC3_OR		,   3'b110,
+		`ysyx_23060201_FUNC3_AND	,   3'b111,
 		`ysyx_23060201_FUNC3_SLL	,	3'b001,
 		`ysyx_23060201_FUNC3_SR		,	3'b101,
 		`ysyx_23060201_FUNC3_SLT	,	3'b010,
