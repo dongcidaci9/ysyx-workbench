@@ -87,7 +87,7 @@ module ysyx_23060201_EXU # (
 	MuxKeyWithDefault #(7, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_R	,   rs1,
 		`ysyx_23060201_OP_TYPE_I	,   rs1,
-		`ysyx_23060201_OP_TYPE_U	,   imm << 12,
+		`ysyx_23060201_OP_TYPE_U	,   imm,
 		`ysyx_23060201_OP_TYPE_UPC	, 	pc,
 		`ysyx_23060201_OP_TYPE_B	,   rs1,
 		`ysyx_23060201_OP_TYPE_J	,   snpc,
