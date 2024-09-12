@@ -164,9 +164,9 @@ module ysyx_23060201_EXU # (
 	});	
 	
 	MuxKeyWithDefault #(3, 7, 32) dnpc_sel(dnpc, op, snpc, {
-		`ysyx_23060201_OP_TYPE_B,  pc + imm, 
-		`ysyx_23060201_OP_TYPE_J,  pc + imm, 
-		`ysyx_23060201_OP_TYPE_JR, (rs1 + imm) & (~1)
+		`ysyx_23060201_OP_TYPE_B	,  	pc + imm, 
+		`ysyx_23060201_OP_TYPE_J	,  	pc + imm, 
+		`ysyx_23060201_OP_TYPE_JR	, 	(rs1 + imm) & (~1)
 	});
 
 endmodule
