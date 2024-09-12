@@ -65,7 +65,7 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     else if (len == 4) ret = (int32_t)ret;
     else ret = ret;
 
-    if (rmask2 == 1) ret = (uint32_t)ret;
+    if (rmask2 == 0) ret = (uint32_t)ret;
     else ret = (int32_t)ret; 
 
     #ifdef CONFIG_MTRACE
