@@ -42,9 +42,11 @@ module ysyx_23060201_EXU # (
 	wire								lt					; 
 	wire								ltu					; 
 	wire [2:0] 							branch				;
+	wire [3:0] 							branch_en			;
 	
 	assign snpc	 		= pc + 'h4							;
 	assign gpr_wen	 	= 1'b1								;
+	assign jump_en		= |branch_en						;
 
 	// mem
 	MuxKeyWithDefault #(1, 7, 1) mem_wen_sel(mem_wen, op, 1'b0, {
@@ -141,9 +143,7 @@ module ysyx_23060201_EXU # (
 		.ltu(ltu)
 	);
 
-	MuxKeyWithDefault #(8, 10, 3) branch_sel(branch, {op, func3}, 3'b0, {
-		`ysyx_23060201_INST_JAL		,	3'b001,	
-		`ysyx_23060201_INST_JALR	,	3'b010,	
+	MuxKeyWithDefault #(6, 10, 3) branch_sel(branch, {op, func3}, 3'b0, {
 		`ysyx_23060201_INST_BEQ		,	3'b100,	
 		`ysyx_23060201_INST_BNE		,	3'b101,	
 		`ysyx_23060201_INST_BLT		,	3'b110,	
@@ -152,18 +152,26 @@ module ysyx_23060201_EXU # (
 		`ysyx_23060201_INST_BGEU	,	3'b111	
 	});
 
-	MuxKeyWithDefault #(9, 6, 1) jump_en_sel(jump_en, {branch, eq, lt, ltu}, 1'b0, { 
-		6'b001x1x,	1'b1,
-		6'b001x0x,	1'b1,
-		6'b010xxx,	1'b1,
-		6'b1001xx,	1'b1,
-		6'b1010xx,	1'b1,
-		6'b110x1x,	1'b1,
-		6'b111x0x,	1'b1,
-		6'b110xx1,	1'b1,
-		6'b111x0x,	1'b1
+	MuxKeyWithDefault #(2, 7, 1) branch_en0_sel(branch_en[0], op, 1'b0, { 
+		`ysyx_23060201_OP_TYPE_J	,  	1'b1,	
+		`ysyx_23060201_OP_TYPE_JR	, 	1'b1	
+	});	
+
+	MuxKeyWithDefault #(2, 4, 1) branch_en1_sel(branch_en[1], {branch, eq}, 1'b0, { 
+		4'b1001,	1'b1,
+		4'b1010,	1'b1
 	});	
 	
+	MuxKeyWithDefault #(2, 4, 1) branch_en2_sel(branch_en[2], {branch, lt}, 1'b0, { 
+		4'b1101,	1'b1,
+		4'b1110,	1'b1
+	});
+
+	MuxKeyWithDefault #(2, 4, 1) branch_en3_sel(branch_en[3], {branch, ltu}, 1'b0, { 
+		4'b1101,	1'b1,
+		4'b1110,	1'b1
+	});
+
 	MuxKeyWithDefault #(3, 7, 32) dnpc_sel(dnpc, op, snpc, {
 		`ysyx_23060201_OP_TYPE_B	,  	pc + imm, 
 		`ysyx_23060201_OP_TYPE_J	,  	pc + imm, 
