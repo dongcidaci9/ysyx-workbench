@@ -38,6 +38,11 @@ module ysyx_23060201_EXU # (
 	wire [3:0] 							alu_ctl				;
 	wire [DATA_WIDTH-1:0] 				alu_res				;
 
+	wire								eq					; 
+	wire								lt					; 
+	wire								ltu					; 
+	wire [2:0] 							branch				;
+	
 	assign snpc	 		= pc + 'h4							;
 	assign gpr_wen	 	= 1'b1								;
 
@@ -77,19 +82,21 @@ module ysyx_23060201_EXU # (
 	});
 
 	// alu
-	MuxKeyWithDefault #(6, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
+	MuxKeyWithDefault #(7, 7, 32) alu_a_sel(alu_a, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_R	,   rs1,
 		`ysyx_23060201_OP_TYPE_I	,   rs1,
 		`ysyx_23060201_OP_TYPE_U	,   imm,
 		`ysyx_23060201_OP_TYPE_UPC	, 	pc,
+		`ysyx_23060201_OP_TYPE_B	,   rs1,
 		`ysyx_23060201_OP_TYPE_J	,   snpc,
 		`ysyx_23060201_OP_TYPE_JR	,  	snpc
 	});
 
-	MuxKeyWithDefault #(3, 7, 32) alu_b_sel(alu_b, op, 32'b0, {
+	MuxKeyWithDefault #(4, 7, 32) alu_b_sel(alu_b, op, 32'b0, {
 		`ysyx_23060201_OP_TYPE_R 	,   rs2,
 		`ysyx_23060201_OP_TYPE_I	,   imm,
-		`ysyx_23060201_OP_TYPE_UPC	, 	imm
+		`ysyx_23060201_OP_TYPE_UPC	, 	imm,
+		`ysyx_23060201_OP_TYPE_B	,   rs2
 	});
 
 	MuxKeyWithDefault #(8, 3, 3) alu_ctl_sel1(alu_ctl[2:0], func3, 3'b000, {
@@ -128,15 +135,36 @@ module ysyx_23060201_EXU # (
 		.a(alu_a),
 		.b(alu_b),
 		.ctl(alu_ctl),
-		.res(alu_res)
+		.res(alu_res),
+		.eq(eq),
+		.lt(lt),
+		.ltu(ltu)
 	);
 
-	MuxKeyWithDefault #(2, 7, 1) jump_en_sel(jump_en, op, 1'b0, {
-		`ysyx_23060201_OP_TYPE_J	,  	1'b1, 
-		`ysyx_23060201_OP_TYPE_JR	, 	1'b1 
+	MuxKeyWithDefault #(8, 10, 3) branch_sel(branch, {op, func3}, 3'b0, {
+		`ysyx_23060201_INST_JAL		,	3'b001,	
+		`ysyx_23060201_INST_JALR	,	3'b010,	
+		`ysyx_23060201_INST_BEQ		,	3'b100,	
+		`ysyx_23060201_INST_BNE		,	3'b101,	
+		`ysyx_23060201_INST_BLT		,	3'b110,	
+		`ysyx_23060201_INST_BGE		,	3'b111,	
+		`ysyx_23060201_INST_BLTU	,	3'b110,	
+		`ysyx_23060201_INST_BGEU	,	3'b111	
 	});
 
-	MuxKeyWithDefault #(2, 7, 32) dnpc_sel(dnpc, op, snpc, {
+	MuxKeyWithDefault #(8, 6, 1) jump_en_sel(jump_en, {branch, eq, lt, ltu}, 1'b0, { 
+		6'b001xxx,	1'b1,
+		6'b010xxx,	1'b1,
+		6'b1001xx,	1'b1,
+		6'b1010xx,	1'b1,
+		6'b110x1x,	1'b1,
+		6'b111x0x,	1'b1,
+		6'b110xx1,	1'b1,
+		6'b111x0x,	1'b1
+	});	
+	
+	MuxKeyWithDefault #(3, 7, 32) dnpc_sel(dnpc, op, snpc, {
+		`ysyx_23060201_OP_TYPE_B,  pc + imm, 
 		`ysyx_23060201_OP_TYPE_J,  pc + imm, 
 		`ysyx_23060201_OP_TYPE_JR, (rs1 + imm) & (~1)
 	});

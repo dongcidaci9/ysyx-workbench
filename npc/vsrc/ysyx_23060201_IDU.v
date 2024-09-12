@@ -30,15 +30,11 @@ module ysyx_23060201_IDU(
 	assign raddr1 		= inst_rs1						;
 	assign raddr2 		= inst_rs2						;
 
- 	/////////////////////////////////////////////////////
-	/*                     imm                         */ 
-	/////////////////////////////////////////////////////
-	
 	// imm 
 	assign imm_I = {{20{inst[31]}}, inst[31:20]}									;
 	assign imm_S = {{20{inst[31]}}, inst[31:25], inst[11:7]}						;
-	assign imm_B = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0}		;
-	assign imm_U = {inst[31:12], 12'b0}											;
+	assign imm_B = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0}			;
+	assign imm_U = {inst[31:12], 12'b0}												;
 	assign imm_J = {{12{inst[31]}}, inst[19:12], inst[20:20], inst[30:21], 1'b0}	;
 
 	MuxKeyWithDefault #(2, 7, 3) func3_aupic(inst_func3, inst_op, inst[14:12], {
@@ -46,7 +42,6 @@ module ysyx_23060201_IDU(
 		`ysyx_23060201_OP_TYPE_J, 	3'b000
 	});
 
-	// imm_sel
 	MuxKey #(8, 7, 32) imm_sel(inst_imm, inst_op, {
 		`ysyx_23060201_OP_TYPE_I,   imm_I,	
 		`ysyx_23060201_OP_TYPE_IL,  imm_I,	
@@ -58,6 +53,8 @@ module ysyx_23060201_IDU(
 		`ysyx_23060201_OP_TYPE_JR,  imm_I	
 	});
 
+	// branch branch_en(op == TYPEB)
+	// branch branch_ctl(zero, less than, less than (unsigned))
 	/////////////////////////////////////////////////////
 	/*                   g p r read                    */ 
 	/////////////////////////////////////////////////////
