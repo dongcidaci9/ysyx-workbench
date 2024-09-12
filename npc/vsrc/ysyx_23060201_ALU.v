@@ -10,9 +10,9 @@ module ysyx_23060201_ALU(
 	wire [31:0] alu_xor  = a ^ b;
 	wire [31:0] alu_and = a & b;
 	wire [31:0] alu_or  = a | b;
-	wire [31:0] alu_sll = a >> b; // shift left logical
-	wire [31:0] alu_srl = a >> b; // shift right logical
-	wire [31:0] alu_sra = a >>> b; // shift right arithmatical
+	wire [31:0] alu_sll = a >> b[4:0]; // shift left logical
+	wire [31:0] alu_srl = a >> b[4:0]; // shift right logical
+	wire [31:0] alu_sra = a >>> b[4:0]; // shift right arithmatical
 	wire [31:0] alu_slt = (a < b) ? 1 : 0;
 	wire [31:0] alu_sltu = ($unsigned(a) < $unsigned(b)) ? 1 : 0;
 	

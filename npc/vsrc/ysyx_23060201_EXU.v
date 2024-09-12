@@ -32,7 +32,7 @@ module ysyx_23060201_EXU # (
 );
 
 	wire [MEM_ADDR_WIDTH-1:0] 			snpc				;
-	
+
 	wire [DATA_WIDTH-1:0] 				alu_a				;
 	wire [DATA_WIDTH-1:0] 				alu_b				;
 	wire [3:0] 							alu_ctl				;
@@ -87,7 +87,7 @@ module ysyx_23060201_EXU # (
 	});
 
 	MuxKeyWithDefault #(3, 7, 32) alu_b_sel(alu_b, op, 32'b0, {
-		`ysyx_23060201_OP_TYPE_R	,   rs2,
+		`ysyx_23060201_OP_TYPE_R 	,   rs2,
 		`ysyx_23060201_OP_TYPE_I	,   imm,
 		`ysyx_23060201_OP_TYPE_UPC	, 	imm
 	});

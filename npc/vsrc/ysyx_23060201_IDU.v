@@ -63,7 +63,6 @@ module ysyx_23060201_IDU(
 	/////////////////////////////////////////////////////
 	
 	// read R(rs1), R(rs2)
-
 	// gpr: ren[0] -> R(rs1), gpr_ren[1] -> R(rs2)
 	MuxKeyWithDefault #(9, 7, 2) gpr_ren_sel(gpr_ren, inst_op, 2'b00, {
 		`ysyx_23060201_OP_TYPE_R,   2'b11,	
@@ -75,8 +74,9 @@ module ysyx_23060201_IDU(
 		`ysyx_23060201_OP_TYPE_UPC, 2'b00,	
 		`ysyx_23060201_OP_TYPE_J,   2'b00,	
 		`ysyx_23060201_OP_TYPE_JR,  2'b01
-	}); 
-	
+	});
+
+
 	// DPI-C
 	import "DPI-C" function void npc_trap();
 	always @(*) begin
