@@ -34,8 +34,6 @@
 `define ysyx_23060201_FUNC7_SRA     7'h20
 
 // branch define
-`define ysyx_23060201_INST_JAL      10'b1101111xxx 
-`define ysyx_23060201_INST_JALR     10'b1100111000 
 `define ysyx_23060201_INST_BEQ      10'b1100011000 
 `define ysyx_23060201_INST_BNE      10'b1100011001 
 `define ysyx_23060201_INST_BLT      10'b1100011100 
