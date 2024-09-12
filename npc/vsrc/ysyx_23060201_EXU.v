@@ -143,11 +143,11 @@ module ysyx_23060201_EXU # (
 		.ltu(ltu)
 	);
 
-	MuxKeyWithDefault #(6, 10, 3) branch_sel(branch, {op, func3}, 3'b0, {
-		`ysyx_23060201_INST_BEQ		,	3'b100,	
-		`ysyx_23060201_INST_BNE		,	3'b101,	
-		`ysyx_23060201_INST_BLT		,	3'b110,	
-		`ysyx_23060201_INST_BGE		,	3'b111,	
+	MuxKeyWithDefault #(6, 10, 3) branch_sel(branch, {op, func3}, 3'b00, {
+		`ysyx_23060201_INST_BEQ		,	3'b010,	
+		`ysyx_23060201_INST_BNE		,	3'b011,	
+		`ysyx_23060201_INST_BLT		,	3'b100,	
+		`ysyx_23060201_INST_BGE		,	3'b101,	
 		`ysyx_23060201_INST_BLTU	,	3'b110,	
 		`ysyx_23060201_INST_BGEU	,	3'b111	
 	});
@@ -158,13 +158,13 @@ module ysyx_23060201_EXU # (
 	});	
 
 	MuxKeyWithDefault #(2, 4, 1) branch_en1_sel(branch_en[1], {branch, eq}, 1'b0, { 
-		4'b1001,	1'b1,
-		4'b1010,	1'b1
+		4'b0101,	1'b1,
+		4'b0110,	1'b1
 	});	
 	
 	MuxKeyWithDefault #(2, 4, 1) branch_en2_sel(branch_en[2], {branch, lt}, 1'b0, { 
-		4'b1101,	1'b1,
-		4'b1110,	1'b1
+		4'b1001,	1'b1,
+		4'b1010,	1'b1
 	});
 
 	MuxKeyWithDefault #(2, 4, 1) branch_en3_sel(branch_en[3], {branch, ltu}, 1'b0, { 
