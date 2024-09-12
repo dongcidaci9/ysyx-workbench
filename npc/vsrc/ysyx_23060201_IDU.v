@@ -38,8 +38,8 @@ module ysyx_23060201_IDU(
 	assign imm_J = {{12{inst[31]}}, inst[19:12], inst[20:20], inst[30:21], 1'b0}	;
 
 	MuxKeyWithDefault #(2, 7, 3) func3_aupic(inst_func3, inst_op, inst[14:12], {
-		`ysyx_23060201_OP_TYPE_UPC, 3'b000,
-		`ysyx_23060201_OP_TYPE_J, 	3'b000
+		`ysyx_23060201_OP_TYPE_U	,	3'b000,
+		`ysyx_23060201_OP_TYPE_UPC	,	3'b000
 	});
 
 	MuxKey #(8, 7, 32) imm_sel(inst_imm, inst_op, {
@@ -55,6 +55,7 @@ module ysyx_23060201_IDU(
 
 	// branch branch_en(op == TYPEB)
 	// branch branch_ctl(zero, less than, less than (unsigned))
+	// branch 
 	/////////////////////////////////////////////////////
 	/*                   g p r read                    */ 
 	/////////////////////////////////////////////////////
