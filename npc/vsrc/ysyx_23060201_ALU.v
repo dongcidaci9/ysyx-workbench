@@ -28,7 +28,7 @@ module ysyx_23060201_ALU #
 	assign alu_xor  	= a ^ b										;
 	assign alu_and 		= a & b										;
 	assign alu_or  		= a | b										;
-	assign alu_sll 		= a >> b[4:0]								; // shift left logical
+	assign alu_sll 		= a << b[4:0]								; // shift left logical
 	assign alu_srl 		= a >> b[4:0]								; // shift right logical
 	assign alu_sra 		= ($signed(a)) >>> b[4:0]					; // shift right arithmatical
 	assign alu_slt 		= ($signed(a) < $signed(b)) ? 'b1 : 'b0		; 
