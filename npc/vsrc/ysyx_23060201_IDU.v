@@ -37,7 +37,8 @@ module ysyx_23060201_IDU(
 	assign imm_U = {inst[31:12], 12'b0}												;
 	assign imm_J = {{12{inst[31]}}, inst[19:12], inst[20:20], inst[30:21], 1'b0}	;
 
-	MuxKeyWithDefault #(2, 7, 3) func3_aupic(inst_func3, inst_op, inst[14:12], {
+	MuxKeyWithDefault #(3, 7, 3) func3_aupic(inst_func3, inst_op, inst[14:12], {
+		`ysyx_23060201_OP_TYPE_J	,	3'b000,
 		`ysyx_23060201_OP_TYPE_U	,	3'b000,
 		`ysyx_23060201_OP_TYPE_UPC	,	3'b000
 	});
