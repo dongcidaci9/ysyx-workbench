@@ -115,7 +115,7 @@ void assert_fail_msg() {
 }
 
 static void trace_and_difftest(Decode *_this) {
-	if (g_nr_guest_inst > 0) {
+	if (g_nr_guest_inst > 1) {
 		IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc));
 	}
 	if (g_print_step) {
