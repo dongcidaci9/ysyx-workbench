@@ -57,6 +57,8 @@ static int sim_exit() {
 	return is_exit_status_bad();
 }
 
+/*                cpu-exec	               */	
+
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
   "s0", "s1", "a0", "a1", "a2", "a3", "a4", "a5",
@@ -81,7 +83,6 @@ void reg_display() {
 	}
 }
 
-/*                cpu-exec	               */	
 #define MAX_INST_TO_PRINT 100
 
 typedef struct Decode {
@@ -107,7 +108,6 @@ static void statistic() {
 }
 
 void assert_fail_msg() {
-	void display_inst();
 	IFDEF(CONFIG_ITRACE, display_inst());
 	reg_display();
 	statistic();
@@ -235,7 +235,6 @@ int main(int argc, char *argv[]) {
 	
 	sdb_mainloop();
 
-	// ebreak
 	return sim_exit();
 }
 
