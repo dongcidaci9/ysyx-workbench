@@ -24,6 +24,8 @@ VINC_DIR = $(WORK_DIR)/include/vsrc
 CINC_DIR = $(WORK_DIR)/include/csrc
 BUILD_DIR = $(WORK_DIR)/build
 
+OBJS = $(wildcard $(BUILD_DIR)/*.o)
+
 # --- 2. Include some rules ---
 # Include rules for menuconfig 
 include $(NPC_HOME)/scripts/config.mk
@@ -53,6 +55,7 @@ COMPILE += -CFLAGS "$(CINC_FLAGS)"
 LIBS += -LDFLAGS "-lreadline"
 
 ## Depencies
+-include $(OBJS: .o=.d)
 
 # --- 4. Target file --- 
 BINARY = $(BUILD_DIR)/V$(TOP_MODULE)
