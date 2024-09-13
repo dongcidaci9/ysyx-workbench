@@ -9,14 +9,14 @@
 
 typedef struct {
 	char name[32]; // func name, 32 shoud be enough
-	addr_t addr;
+	paddr_t addr;
 	unsigned char info;
 	Elf32_Xword size;
 } SymEntry;
 
 typedef struct tail_rec_node {
-	addr_t pc;
-	addr_t depth;
+	paddr_t pc;
+	paddr_t depth;
 	struct tail_rec_node *next;
 } TailRecNode;
 
@@ -386,7 +386,7 @@ void init_elf(const char *elf_file) {
 }
 
 //
-static int find_symbol_func(addr_t target, bool is_call) {
+static int find_symbol_func(paddr_t target, bool is_call) {
 	int i;
 	for (i = 0; i < symbol_tbl_size; i++) {
 		// if type == 2 (aka FUNC)
@@ -402,7 +402,7 @@ static int find_symbol_func(addr_t target, bool is_call) {
 }
 
 // tail_rec_insert & remove
-static void insert_tail_rec(addr_t pc, addr_t depth) {
+static void insert_tail_rec(paddr_t pc, paddr_t depth) {
 	TailRecNode *node = (TailRecNode *)malloc(sizeof(TailRecNode));
 	node->pc = pc;
 	node->depth = depth;
@@ -417,7 +417,7 @@ static void remove_tail_rec() {
 }
 
 // trace_func_call & ret
-void trace_func_call(addr_t pc, addr_t target, bool is_tail) {
+void trace_func_call(paddr_t pc, paddr_t target, bool is_tail) {
 	if (symbol_tbl == NULL) return;
 
 	++ call_depth;
@@ -438,7 +438,7 @@ void trace_func_call(addr_t pc, addr_t target, bool is_tail) {
 	}
 }
 
-void trace_func_ret(addr_t pc) {
+void trace_func_ret(paddr_t pc) {
 	if (symbol_tbl == NULL) return;
 	
 	if (call_depth <= 2) return; // ignore _trm_init & main
@@ -457,7 +457,7 @@ void trace_func_ret(addr_t pc) {
 	if (node != NULL) {
 		int depth_i = find_symbol_func(node->depth, true);
 		if (depth_i == i) {
-			addr_t ret_target = node->pc;
+			paddr_t ret_target = node->pc;
 			remove_tail_rec();
 			trace_func_ret(ret_target);
 		}
