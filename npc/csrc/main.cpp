@@ -12,6 +12,7 @@
 #include <cpu.h>
 #include <sdb.h>
 #include <difftest.h>
+#include <memory.h>
 
 /////////////////////////////////////////////
 /*                Simulation               */	
