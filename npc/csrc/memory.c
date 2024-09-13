@@ -65,14 +65,13 @@ extern "C" int pmem_read(addr_t raddr, char rmask) {
         if (len == 1) ret = (uint32_t)(uint8_t)ret;
         if (len == 2) ret = (uint32_t)(uint16_t)ret;
         if (len == 4) ret = (uint32_t)ret;
+        printf("aaa\n");
     } else if (rmask2 == 1) {
         if (len == 1) ret = (int32_t)(int8_t)ret;
         if (len == 2) ret = (int32_t)(int16_t)ret;
         if (len == 4) ret = (int32_t)ret;
-        printf("aaa\n");
+        printf("bbb\n");
     }
-
-    ret = (int)ret;
 
     #ifdef CONFIG_MTRACE
     display_mread(raddr, len, ret);
