@@ -1,8 +1,9 @@
 #include <common.h>
 #include <utils.h>
+#include <macro.h>
+#include <debug.h>
 #include <memory.h>
 #include <cpu.h>
-#include <debug.h>
 
 extern CPU_state cpu;
 
