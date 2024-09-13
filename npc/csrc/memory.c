@@ -21,12 +21,12 @@ static const uint32_t img [] = {
 
 void init_isa() {
 	memcpy(guest_to_host(CONFIG_MBASE), img, sizeof(img));
-    Log("physical memory area [" FMT_PADDR ", " FMT_PADDR "]", PMEM_LEFT, PMEM_RIGHT);
 }
 
 // initialize memory
 void init_mem() {
 	mem = (uint8_t*)malloc(CONFIG_MSIZE);
+    Log("physical memory area [" FMT_PADDR ", " FMT_PADDR "]", PMEM_LEFT, PMEM_RIGHT);
 }
 
 word_t host_read(void* addr) {
@@ -81,7 +81,7 @@ extern "C" int pmem_read(paddr_t raddr, char rmask) {
     display_mread(raddr, len, ret);
     #endif
 
-    out_of_bound(raddr);
+    if (in_pmem(raddr)) out_of_bound(raddr);
     return ret;
 }
 
@@ -104,6 +104,6 @@ extern "C" void pmem_write(paddr_t waddr, word_t wdata, char wmask) {
     display_mwrite(waddr, len, wdata);
     #endif
     
-    out_of_bound(waddr);
+    if (in_pmem(waddr)) out_of_bound(waddr);
 }
 
