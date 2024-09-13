@@ -45,8 +45,7 @@ static int sim_exit() {
 	delete top;
 	delete vcd;
 
-	printf("aaa");
-	return 0;
+	return -1;
 }
 
 CPU_state cpu = {};
