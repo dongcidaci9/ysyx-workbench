@@ -24,9 +24,8 @@ VINC_DIR = $(WORK_DIR)/include/vsrc
 CINC_DIR = $(WORK_DIR)/include/csrc
 BUILD_DIR = $(WORK_DIR)/build
 
-OBJS = $(wildcard $(BUILD_DIR)/*.o)
-
 # --- 2. Include some rules ---
+
 # Include rules for menuconfig 
 include $(NPC_HOME)/scripts/config.mk
 
@@ -39,9 +38,8 @@ include $(NPC_HOME)/scripts/filelist.mk
 
 # --- 3. Compile and link flags ---
 
-VERILATOR := verilator
-
 ## Verilog files compile flags
+VERILATOR := verilator
 TOP_FLAGS := --top-module $(TOP_MODULE)
 BUILD_FLAGS := --Mdir $(BUILD_DIR)
 VINC_FLAGS := $(addprefix -I, $(VINC_DIR))
