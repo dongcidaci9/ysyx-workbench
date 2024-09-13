@@ -43,8 +43,8 @@ word_t inst_fetch(addr_t* pc_addr) {
 */
 extern "C" word_t pmem_read(addr_t raddr, char rmask) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
-    addr_t aligned_raddr = raddr & ~0x3u;
-    word_t rdata = host_read(guest_to_host(aligned_raddr));
+    // addr_t aligned_raddr = raddr & ~0x3u;
+    word_t rdata = host_read(guest_to_host(raddr));
 
     char rmask1 = rmask & 0x0F;
     char rmask2 = rmask & 0x10;
