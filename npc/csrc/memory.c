@@ -77,9 +77,7 @@ extern "C" int pmem_read(paddr_t raddr, char rmask) {
         if (len == 4) ret = (int32_t)ret;
     }
 
-    #ifdef CONFIG_MTRACE
-    display_mread(raddr, len, ret);
-    #endif
+    IFDEF(CONFIG_MTRACE, display_mread(raddr, len, ret));
 
     if (!in_pmem(raddr)) out_of_bound(raddr);
     return ret;
@@ -100,9 +98,7 @@ extern "C" void pmem_write(paddr_t waddr, word_t wdata, char wmask) {
             len ++; 
         }
     }
-    #ifdef CONFIG_MTRACE 
-    display_mwrite(waddr, len, wdata);
-    #endif
+    IFDEF(CONFIG_MTRACE, display_mwrite(waddr, len, wdata));
     
     if (!in_pmem(waddr)) out_of_bound(waddr);
 }
