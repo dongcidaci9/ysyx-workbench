@@ -39,6 +39,11 @@ word_t mem_read(paddr_t addr) {
 	return ret;
 }
 
+static void out_of_bound(paddr_t addr) { 
+    panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR "] at pc = " FMT_WORD,
+      addr, PMEM_LEFT, PMEM_RIGHT, cpu.pc);
+}
+
 extern "C" int pmem_read(paddr_t raddr, char rmask) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
     // paddr_t aligned_raddr = raddr & ~0x3u;
@@ -75,6 +80,7 @@ extern "C" int pmem_read(paddr_t raddr, char rmask) {
     display_mread(raddr, len, ret);
     #endif
 
+    out_of_bound(raddr);
     return ret;
 }
 
@@ -96,9 +102,7 @@ extern "C" void pmem_write(paddr_t waddr, word_t wdata, char wmask) {
     #ifdef CONFIG_MTRACE 
     display_mwrite(waddr, len, wdata);
     #endif
+    
+    out_of_bound(waddr);
 }
 
-static void out_of_bound(paddr_t addr) { 
-    panic("address = " FMT_PADDR " is out of bound of pmem [" FMT_PADDR ", " FMT_PADDR "] at pc = " FMT_WORD,
-      addr, PMEM_LEFT, PMEM_RIGHT, cpu.pc);
-}
