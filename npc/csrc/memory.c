@@ -65,7 +65,10 @@ extern "C" int pmem_read(addr_t raddr, char rmask) {
     else if (rmask2 == 0 && len == 2) ret = (uint32_t)(uint16_t)ret;
     else if (rmask2 == 0 && len == 4) ret = (uint32_t)ret;
     else if (rmask2 == 1 && len == 1) ret = (int32_t)(int8_t)ret;
-    else if (rmask2 == 1 && len == 2) ret = (int32_t)(uint16_t)ret;
+    else if (rmask2 == 1 && len == 2) {
+        ret = (int32_t)(int16_t)ret;
+        printf("aaa\n");
+    }
     else if (rmask2 == 1 && len == 4) ret = (int32_t)ret;
 
     ret = (int)ret;
