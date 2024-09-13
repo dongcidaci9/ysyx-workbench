@@ -17,7 +17,7 @@
 /*                Simulation               */	
 /////////////////////////////////////////////
 
-CPU_state cpu = {};
+CPU_state cpu;
 NPCState npc_state = { .state = NPC_RUNNING };
 
 int is_exit_status_bad() {
@@ -81,12 +81,18 @@ void reg_display() {
 	}
 }
 
-/////////////////////////////////////////////
 /*                cpu-exec	               */	
-/////////////////////////////////////////////
+
 #define MAX_INST_TO_PRINT 100
 
-word_t inst_fetch(addr_t* pc);
+typedef struct Decode {
+	paddr_t pc;
+	paddr_t snpc;
+	paddr_t dnpc;
+	IFDEF(CONFIG_ITRACE, char logbuf[128]);
+} Decode;
+
+word_t inst_fetch(paddr_t* pc);
 void init_monitor(int argc, char *argv[]);
 
 uint64_t g_nr_guest_inst = 0;
@@ -95,18 +101,17 @@ static bool g_print_step = false;
 
 static void statistic() {
 #define NUMBERIC_FMT "%lu"
-	Log("host time spent = " NUMBERIC_FMT " us", g_timer);
-	Log("total guest instructions = " NUMBERIC_FMT " us", g_nr_guest_inst);
-	if (g_timer > 0) Log("simulation frequency = " NUMBERIC_FMT " inst/s", g_nr_guest_inst * 1000000 / g_timer);
+	Log("Host time spent = " NUMBERIC_FMT " us", g_timer);
+	Log("Total guest instructions = " NUMBERIC_FMT " us", g_nr_guest_inst);
+	if (g_timer > 0) Log("Simulation frequency = " NUMBERIC_FMT " inst/s", g_nr_guest_inst * 1000000 / g_timer);
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-typedef struct Decode {
-	addr_t pc;
-	addr_t snpc;
-	addr_t dnpc;
-	IFDEF(CONFIG_ITRACE, char logbuf[128]);
-} Decode;
+void assert_fail_msg(){
+	IFDEF(CONFIG_ITRACE, display_inst());
+	reg_display();
+	statistic();
+}
 
 static void trace_and_difftest(Decode *_this) {
 	IFDEF(CONFIG_DIFFTEST, difftest_step(_this->pc));
@@ -141,8 +146,8 @@ static void inst_trace(Decode *s) {
 
 #ifdef CONFIG_FTRACE
 
-void trace_func_call(addr_t pc, addr_t target, bool is_tail);
-void trace_func_ret(addr_t pc);
+void trace_func_call(paddr_t pc, paddr_t target, bool is_tail);
+void trace_func_ret(paddr_t pc);
 
 static void func_trace(Decode *s)
 {

@@ -105,7 +105,7 @@ static int cmd_x(char* args) {
 	}
 
 	int n = strtol(arg1, NULL, 10);
-	addr_t expr = strtol(arg2, NULL, 16);
+	paddr_t expr = strtol(arg2, NULL, 16);
 
 	int i, j;	
 	for (i = 0; i < n;) {

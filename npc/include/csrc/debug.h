@@ -17,6 +17,8 @@
 #define Assert(cond, format, ...) \
   do { \
     if (!(cond)) { \
+      extern void assert_fail_msg(); \
+      assert_fail_msg(); \
       assert(cond); \
     } \
   } while (0)

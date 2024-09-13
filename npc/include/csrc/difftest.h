@@ -2,7 +2,9 @@
 #define __DIFFTEST_H__
 
 #ifdef CONFIG_DIFFTEST
-void difftest_step(addr_t pc);
+
+void difftest_step(paddr_t pc);
+
 #endif
 
 #endif

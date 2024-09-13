@@ -9,7 +9,7 @@
 
 extern CPU_state cpu;
 
-void (*ref_difftest_memcpy)(addr_t addr, void *buf, size_t n, bool direction) = NULL;
+void (*ref_difftest_memcpy)(paddr_t addr, void *buf, size_t n, bool direction) = NULL;
 void (*ref_difftest_regcpy)(void *dut, bool direction) = NULL;
 void (*ref_difftest_exec)(uint64_t n) = NULL;
 void (*ref_difftest_init)(int port) = NULL;
@@ -40,7 +40,7 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
     handle = dlopen(ref_so_file, RTLD_LAZY);
     assert(handle);
 
-    ref_difftest_memcpy = (void (*)(addr_t, void*, size_t, bool))dlsym(handle, "difftest_memcpy");
+    ref_difftest_memcpy = (void (*)(paddr_t, void*, size_t, bool))dlsym(handle, "difftest_memcpy");
     assert(ref_difftest_memcpy);
 
     ref_difftest_regcpy = (void (*)(void*, bool))dlsym(handle, "difftest_regcpy");
@@ -58,11 +58,11 @@ void init_difftest(char *ref_so_file, long img_size, int port) {
       "If it is not necessary, you can turn it off in menuconfig.", ref_so_file);
 
     ref_difftest_init(port);
-    ref_difftest_memcpy(MBASE, guest_to_host(MBASE), img_size, DIFFTEST_TO_REF);
+    ref_difftest_memcpy(CONFIG_MBASE, guest_to_host(CONFIG_MBASE), img_size, DIFFTEST_TO_REF);
     // ref_difftest_regcpy(&cpu, DIFFTEST_TO_REF);
 }
 
-static bool difftest_checkregs(CPU_state *ref_r, addr_t npc) {
+static bool difftest_checkregs(CPU_state *ref_r, paddr_t npc) {
     if (ref_r -> pc != npc) {
 		printf("\npc:\nShould: %#x\t Not: %#x\n", ref_r -> pc, npc);
 		return false;
@@ -76,7 +76,7 @@ static bool difftest_checkregs(CPU_state *ref_r, addr_t npc) {
     return true;
 }
 
-static void checkregs(CPU_state *ref, addr_t pc) {
+static void checkregs(CPU_state *ref, paddr_t pc) {
   if (!difftest_checkregs(ref, pc)) {
     npc_state.state = NPC_ABORT;
     npc_state.halt_pc = pc;
@@ -84,7 +84,7 @@ static void checkregs(CPU_state *ref, addr_t pc) {
   }
 }
 
-void difftest_step(addr_t npc) {
+void difftest_step(paddr_t npc) {
   CPU_state ref_r;
 
   ref_difftest_exec(1);

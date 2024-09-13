@@ -8,14 +8,13 @@
 
 typedef struct {
     word_t gpr[NR_GPR];
-    addr_t pc;
+    paddr_t pc;
 } riscv32_CPU_state;
 
 typedef riscv32_CPU_state CPU_state;
 
 void cpu_exec(uint64_t n);
-
-void set_npc_state(int state, addr_t pc, int halt_ret);
+void set_npc_state(int state, paddr_t pc, int halt_ret);
 
 #define NPCTRAP(thispc, code) set_npc_state(NPC_END, thispc, code)
 

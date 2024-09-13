@@ -82,7 +82,7 @@ static long load_img() {
 	Log("The image is %s, size = %ld", img_file, size);
 
 	fseek(fp, 0, SEEK_SET); // *fp seek to the start of this file
-	int ret = fread(guest_to_host(MLEFT), size, 1, fp); // *fp read the data and save it to host
+	int ret = fread(guest_to_host(PMEM_LEFT), size, 1, fp); // *fp read the data and save it to host
 	assert(ret == 1);
 
 	fclose(fp);
