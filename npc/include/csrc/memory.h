@@ -12,6 +12,10 @@ uint8_t* guest_to_host(paddr_t paddr);
 
 void reg_display();
 
+#ifdef CONFIG_ITRACE
+void display_inst();
+#endif
+
 #ifdef CONFIG_MTRACE
 void display_mread(paddr_t addr, int len, word_t data);
 void display_mwrite(paddr_t addr, int len, word_t data);

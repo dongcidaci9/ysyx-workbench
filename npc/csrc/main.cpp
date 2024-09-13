@@ -82,7 +82,6 @@ void reg_display() {
 }
 
 /*                cpu-exec	               */	
-
 #define MAX_INST_TO_PRINT 100
 
 typedef struct Decode {
@@ -107,7 +106,8 @@ static void statistic() {
 	else Log("Finish running in less than 1 us and can not calculate the simulation frequency");
 }
 
-void assert_fail_msg(){
+void assert_fail_msg() {
+	void display_inst();
 	IFDEF(CONFIG_ITRACE, display_inst());
 	reg_display();
 	statistic();

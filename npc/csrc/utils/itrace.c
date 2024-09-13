@@ -1,4 +1,5 @@
 #include <common.h>
+#include <utils.h>
 
 #define MAX_IRINGBUF 16
 
