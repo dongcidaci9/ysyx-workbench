@@ -210,9 +210,6 @@ void cpu_exec(uint64_t n) {
 	}
 }
 
-/////////////////////////////////////////////
-/*                npc-main	               */	
-/////////////////////////////////////////////
 int main(int argc, char *argv[]) {
 	sim_init();
 	
@@ -227,6 +224,7 @@ int main(int argc, char *argv[]) {
 
 	// ebreak
 	sim_exit();
+	printf("aaa");
 }
 
 // DPI-C
