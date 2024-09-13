@@ -60,13 +60,12 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
             ret_ptr[i] = 0;
         }
     }
-    if (len == 1) ret = (uint8_t)ret;
-    else if (len == 2) ret = (uint16_t)ret;
-    else if (len == 4) ret = (uint32_t)ret;
-    else ret = ret;
-
-    if (rmask2 == 0) ret = (int32_t)ret;
-    else ret = (uint32_t)ret; 
+    if (rmask2 == 0 && len == 1) ret = (int32_t)(int8_t)ret;
+    else if (rmask2 == 0 && len == 2) ret = (int32_t)(int16_t)ret;
+    else if (rmask2 == 0 && len == 4) ret = (int32_t)ret;
+    else if (rmask2 == 1 && len == 1) ret = (uint32_t)(uint8_t)ret;
+    else if (rmask2 == 1 && len == 2) ret = (uint32_t)(uint16_t)ret;
+    else if (rmask2 == 1 && len == 4) ret = (uint32_t)ret;
 
     #ifdef CONFIG_MTRACE
     display_mread(raddr, len, ret);
