@@ -41,7 +41,7 @@ word_t inst_fetch(addr_t* pc_addr) {
 	return inst;
 }
 */
-extern "C" word_t pmem_read(addr_t raddr, char rmask) {
+extern "C" int pmem_read(addr_t raddr, char rmask) {
 	// 总是读取地址为`raddr & ~0x3u`的4字节返回
     // addr_t aligned_raddr = raddr & ~0x3u;
     word_t rdata = host_read(guest_to_host(raddr));
@@ -67,6 +67,8 @@ extern "C" word_t pmem_read(addr_t raddr, char rmask) {
     else if (rmask2 == 1 && len == 1) ret = (int32_t)(int8_t)ret;
     else if (rmask2 == 1 && len == 2) ret = (int32_t)(int16_t)ret;
     else if (rmask2 == 1 && len == 4) ret = (int32_t)ret;
+
+    ret = (int)ret;
 
     #ifdef CONFIG_MTRACE
     display_mread(raddr, len, ret);
