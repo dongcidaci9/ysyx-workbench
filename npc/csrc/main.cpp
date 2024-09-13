@@ -17,6 +17,15 @@
 /*                Simulation               */	
 /////////////////////////////////////////////
 
+CPU_state cpu = {};
+NPCState npc_state = { .state = NPC_RUNNING };
+
+int is_exit_status_bad() {
+  int good = (npc_state.state == NPC_END && npc_state.halt_ret == 0) ||
+    (npc_state.state == NPC_QUIT);
+  return !good;
+}
+
 static Vysyx_23060201_TOP* top = nullptr;
 
 VerilatedContext* contextp = nullptr;
@@ -45,11 +54,8 @@ static int sim_exit() {
 	delete top;
 	delete vcd;
 
-	return -1;
+	return is_exit_status_bad();
 }
-
-CPU_state cpu = {};
-NPCState npc_state = { .state = NPC_RUNNING };
 
 const char *regs[] = {
   "$0", "ra", "sp", "gp", "tp", "t0", "t1", "t2",
