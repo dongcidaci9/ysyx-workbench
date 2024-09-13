@@ -47,7 +47,7 @@ extern "C" int pmem_read(addr_t raddr, char rmask) {
     word_t rdata = host_read(guest_to_host(raddr));
 
     char rmask1 = rmask & 0x0F;
-    char rmask2 = rmask & 0x10;
+    char rmask2 = (rmask & 0x10) >> 4;
 
     char len = 0;
     word_t ret;
