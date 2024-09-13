@@ -21,6 +21,7 @@ static const uint32_t img [] = {
 
 void init_isa() {
 	memcpy(guest_to_host(CONFIG_MBASE), img, sizeof(img));
+    Log("physical memory area [" FMT_PADDR ", " FMT_PADDR "]", PMEM_LEFT, PMEM_RIGHT);
 }
 
 // initialize memory
