@@ -39,11 +39,14 @@ static void sim_init() {
 }
 
 // Exit
-static void sim_exit() {
+static int sim_exit() {
 	vcd->close();
-	Log("total simulation time: %ld", contextp->time());
+	Log("Total simulation time: %ld", contextp->time());
 	delete top;
 	delete vcd;
+
+	printf("aaa");
+	return 0;
 }
 
 CPU_state cpu = {};
@@ -223,8 +226,7 @@ int main(int argc, char *argv[]) {
 	sdb_mainloop();
 
 	// ebreak
-	sim_exit();
-	printf("aaa");
+	return sim_exit();
 }
 
 // DPI-C
