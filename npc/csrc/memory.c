@@ -81,7 +81,7 @@ extern "C" int pmem_read(paddr_t raddr, char rmask) {
     display_mread(raddr, len, ret);
     #endif
 
-    if (in_pmem(raddr)) out_of_bound(raddr);
+    if (!in_pmem(raddr)) out_of_bound(raddr);
     return ret;
 }
 
@@ -104,6 +104,6 @@ extern "C" void pmem_write(paddr_t waddr, word_t wdata, char wmask) {
     display_mwrite(waddr, len, wdata);
     #endif
     
-    if (in_pmem(waddr)) out_of_bound(waddr);
+    if (!in_pmem(waddr)) out_of_bound(waddr);
 }
 
