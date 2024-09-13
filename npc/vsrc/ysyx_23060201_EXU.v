@@ -112,10 +112,10 @@ module ysyx_23060201_EXU # (
 		`ysyx_23060201_FUNC3_SLTU	,	3'b011
 	});
 
-	MuxKeyWithDefault #(3, 14, 1) alu_ctl_sel2(alu_ctl[3], {op, func7}, 1'b0, {
-		{`ysyx_23060201_OP_TYPE_R, `ysyx_23060201_FUNC7_SUB}	, 	1'b1,
-		{`ysyx_23060201_OP_TYPE_R, `ysyx_23060201_FUNC7_SRA}	, 	1'b1,
-		{`ysyx_23060201_OP_TYPE_I, `ysyx_23060201_FUNC7_SRA}	, 	1'b1
+	MuxKeyWithDefault #(3, 17, 1) alu_ctl_sel2(alu_ctl[3], {op, func3, func7}, 1'b0, {
+		{`ysyx_23060201_OP_TYPE_R, `ysyx_23060201_FUNC3_ADDSUB, `ysyx_23060201_FUNC7_SUB}	, 	1'b1,
+		{`ysyx_23060201_OP_TYPE_R, `ysyx_23060201_FUNC3_SR	  ,`ysyx_23060201_FUNC7_SRA}	, 	1'b1,
+		{`ysyx_23060201_OP_TYPE_I, `ysyx_23060201_FUNC3_SR	  ,`ysyx_23060201_FUNC7_SRA}	, 	1'b1
 	});
 
 	// gpr
